@@ -1,20 +1,6 @@
 import React from "react";
-import { IconButton, useColorMode } from "@chakra-ui/react";
-import { SunIcon, MoonIcon } from "@chakra-ui/icons";
 import { useAccentColors } from "../hooks/useAccentColors";
 
-
-function ColorModeButton() {
-  const { colorMode, toggleColorMode } = useColorMode();
-  return (
-    <IconButton
-      aria-label="Toggle color mode"
-      icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-      onClick={toggleColorMode}
-      variant="ghost"
-    />
-  );
-}
 
 export default function Home() {
   const { bgColor, textColor, cardBg, cardText, accentColor } = useAccentColors();
@@ -22,7 +8,8 @@ export default function Home() {
     <main
       style={{
         minHeight: "100vh",
-        width: "100vw",
+        width: "100%",
+        overflowX: "clip",
         background: `linear-gradient(135deg, ${bgColor} 70%, #69c58b 100%)`,
         color: textColor,
         fontFamily: "Inter, sans-serif",
@@ -38,16 +25,9 @@ export default function Home() {
         right: "2rem",
         zIndex: 10,
       }}>
-        <ColorModeButton />
       </div>
 
       <header style={{ padding: "2rem 0", textAlign: "center" }}>
-        <nav style={{ marginBottom: "2rem" }}>
-          <a href="#proyectos" style={{ color: accentColor, margin: "0 1.5rem", textDecoration: "none", fontWeight: 500 }}>Proyectos</a>
-          <a href="#educacion" style={{ color: accentColor, margin: "0 1.5rem", textDecoration: "none", fontWeight: 500 }}>Educación</a>
-          <a href="./Sobremi" style={{ color: accentColor, margin: "0 1.5rem", textDecoration: "none", fontWeight: 500 }}>Sobre mí</a>
-          <a href="#contacto" style={{ color: accentColor, margin: "0 1.5rem", textDecoration: "none", fontWeight: 500 }}>Contacto</a>
-        </nav>
         <div
           style={{
             display: "flex",
@@ -70,9 +50,9 @@ export default function Home() {
           Hola, soy <span style={{ color: accentColor }}>Agustin</span>
         </h1>
         <h2 style={{ fontSize: "1.25rem", fontWeight: 400, margin: "0.5rem 0" }}>
-          Ingeniero Informatico en curso. <span style={{ color: accentColor }}>Desarrollador Full Stack</span><br />
-          De Buenos Aires, Argentina.<br />
-          Apasionado por la creatividad.
+          Construyo experiencias web rápidas, accesibles y con diseño cuidado. <span style={{ color: accentColor }}>Desarrollador Full Stack</span><br />
+          De Salta, Argentina.<br />
+          Ingeniero Informatico en curso. 
         </h2>
         <div style={{ margin: "1.5rem 0" }}>
           <span style={{
@@ -88,7 +68,7 @@ export default function Home() {
           </span>
         </div>
         <div style={{ display: "flex", justifyContent: "center", gap: "1rem", flexWrap: "wrap" }}>
-          <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer"
+          <a href="https://www.linkedin.com/in/agustín-juárez0907" target="_blank" rel="noopener noreferrer"
             style={{
               background: cardBg,
               color: accentColor,
@@ -101,7 +81,7 @@ export default function Home() {
             }}>
             Linkedin
           </a>
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer"
+          <a href="https://github.com/Juarex9" target="_blank" rel="noopener noreferrer"
             style={{
               background: cardBg,
               color: accentColor,

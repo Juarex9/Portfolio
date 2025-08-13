@@ -23,3 +23,5 @@ const Sobremi = () => {
         </div>
     );
 }
+
+export default Sobremi;
