@@ -3,10 +3,10 @@ import { useAccentColors } from '../hooks/useAccentColors';
 
 
 const Educacion = () => {
-    const { cardBg, cardText, accentColor } = useAccentColors();
+    const { cardBg, cardText, accentColor, bgColor } = useAccentColors();
     return (
         <div style={{
-            background: cardBg,
+            background: bgColor,
             borderRadius: "1rem",
             padding: "2rem",
             marginBottom: "2rem",

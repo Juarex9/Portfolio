@@ -1,27 +1,174 @@
-import React from 'react';
-import { useAccentColors } from '../hooks/useAccentColors';
+import React from "react";
+import {
+  Box,
+  Heading,
+  Image,
+  Text,
+  Divider,
+  HStack,
+  Tag,
+  Wrap,
+  WrapItem,
+  useColorModeValue,
+  Container,
+  VStack,
+} from "@chakra-ui/react";
+import { useAccentColors } from "../hooks/useAccentColors";
 
+const BlogTags = ({ marginTop = 0, tags = [] }) => {
+  return (
+    <HStack spacing={2} marginTop={marginTop}>
+      {tags.map((tag) => (
+        <Tag size="md" variant="solid" colorScheme="orange" key={tag}>
+          {tag}
+        </Tag>
+      ))}
+    </HStack>
+  );
+};
 
-const Sobremi = () => {
-    const { cardBg, cardText, accentColor } = useAccentColors();
-    return (
-        <div style={{
-            background: cardBg,
-            borderRadius: "1rem",
-            padding: "2rem",
-            marginBottom: "2rem",
-            boxShadow: "0 2px 16px #0002",
-            color: cardText,
-        }}>
-            <h2 style={{ color: accentColor }}>Sobre mí</h2>
-            <p>
-                Soy un desarrollador web con experiencia en crear aplicaciones modernas y responsivas. Me apasiona aprender nuevas tecnologías y mejorar mis habilidades constantemente.
+const BlogAuthor = ({ date, name }) => {
+  return (
+    <HStack marginTop="2" spacing="2" display="flex" alignItems="center">
+      <Image
+        borderRadius="full"
+        boxSize="40px"
+        src="https://100k-faces.glitch.me/random-image"
+        alt={`Avatar of ${name}`}
+      />
+      <Text fontWeight="medium">{name}</Text>
+      <Text>—</Text>
+      <Text>{new Date(date).toLocaleDateString()}</Text>
+    </HStack>
+  );
+};
+
+const ArticleList = () => {
+  const { bgColor, textColor, cardBg, accentColor } = useAccentColors();
+  return (
+    <Container maxW="100%" p="12" bg={bgColor} color={textColor}>
+      <Heading as="h1" color={accentColor}>Un poco sobre mi</Heading>
+
+      <Box
+        marginTop={{ base: "1", sm: "5" }}
+        display="flex"
+        flexDirection={{ base: "column", sm: "row" }}
+        justifyContent="space-between"
+      >
+        <Box
+          display="flex"
+          flex="1"
+          marginRight="3"
+          position="relative"
+          alignItems="center"
+        >
+          <Box
+            width={{ base: "100%", sm: "85%" }}
+            zIndex="2"
+            marginLeft={{ base: "0", sm: "5%" }}
+            marginTop="5%"
+          >
+            <Box textDecoration="none" _hover={{ textDecoration: "none" }}>
+              <Image
+                borderRadius="lg"
+                src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=800&q=80"
+                alt="some good alt text"
+                objectFit="contain"
+              />
+            </Box>
+          </Box>
+
+          <Box zIndex="1" width="100%" position="absolute" height="100%">
+            <Box
+              bgGradient={useColorModeValue(
+                "radial(orange.600 1px, transparent 1px)",
+                "radial(orange.300 1px, transparent 1px)"
+              )}
+              backgroundSize="20px 20px"
+              opacity="0.4"
+              height="100%"
+            />
+          </Box>
+        </Box>
+
+        <Box
+          display="flex"
+          flex="1"
+          flexDirection="column"
+          justifyContent="center"
+          marginTop={{ base: "3", sm: "0" }}
+        >
+          <Heading>
+            <Text textDecoration="none" _hover={{ textDecoration: "none" }} color={accentColor}>
+              ¿Quien soy?
+            </Text>
+          </Heading>
+          <Text
+            as="p"
+            marginTop="2"
+            color={useColorModeValue("gray.700", "gray.200")}
+            fontSize="lg"
+          >
+            Me llamo Agustin, vivo en Salta, Argentina y soy un apasionado de la informática, la tecnologia y el desarrollo. <p>
+              Me dedico a crear aplicaciones web modernas y accesibles, siempre buscando aprender y mejorar mis habilidades. Me encanta colaborar en proyectos y compartir conocimientos con la comunidad. Siempre dispuesto a enfrentar nuevos desafios y aprender de ellos. 
+              <p>
+                Actualmente estoy estudiando Ingenieria Informatica y me interesa mucho el desarrollo Full Stack, aunque disfruto de todos los aspectos de la informática y la programación. 
+              </p>
             </p>
-            <p>
-                En mi tiempo libre, disfruto explorando nuevas herramientas de desarrollo, contribuyendo a proyectos de código abierto y compartiendo conocimientos con la comunidad.
-            </p>
-        </div>
-    );
-}
+          </Text>
+          <BlogAuthor name="John Doe" date="2021-04-06T19:01:27Z" />
+        </Box>
+      </Box>
 
-export default Sobremi;
+      <Heading as="h2" marginTop="5" color={accentColor}>
+        Latest articles
+      </Heading>
+      <Divider marginTop="5" />
+
+      <Wrap spacing="30px" marginTop="5">
+        <WrapItem width={{ base: "100%", sm: "45%", md: "45%", lg: "30%" }}>
+          <Box w="100%">
+            <Box borderRadius="lg" overflow="hidden">
+              <Box textDecoration="none" _hover={{ textDecoration: "none" }}>
+                <Image
+                  transform="scale(1.0)"
+                  src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=800&q=80"
+                  alt="some text"
+                  objectFit="contain"
+                  width="100%"
+                  transition="0.3s ease-in-out"
+                  _hover={{ transform: "scale(1.05)" }}
+                />
+              </Box>
+            </Box>
+            <Heading fontSize="xl" marginTop="2">
+              <Text textDecoration="none" _hover={{ textDecoration: "none" }}>
+                Some blog title
+              </Text>
+            </Heading>
+            <Text as="p" fontSize="md" marginTop="2">
+              Lorem Ipsum is simply dummy text of the printing and typesetting
+              industry…
+            </Text>
+            <BlogAuthor name="John Doe" date="2021-04-06T19:01:27Z" />
+          </Box>
+        </WrapItem>
+      </Wrap>
+
+      <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
+        <Heading as="h2" color={accentColor}>What we write about</Heading>
+        <Text as="p" fontSize="lg">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit…
+        </Text>
+        <Text as="p" fontSize="lg">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit…
+        </Text>
+        <Text as="p" fontSize="lg">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit…
+        </Text>
+      </VStack>
+    </Container>
+  );
+};
+
+export default ArticleList;
