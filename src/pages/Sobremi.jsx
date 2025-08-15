@@ -46,7 +46,7 @@ const BlogAuthor = ({ date, name }) => {
 const ArticleList = () => {
   const { bgColor, textColor, cardBg, accentColor } = useAccentColors();
   return (
-    <Container maxW="100%" p="12" bg={bgColor} color={textColor}>
+    <Container maxW="100%" p="12" bg={`linear-gradient(135deg, ${bgColor} 70%, #69c58b 100%)`} color={textColor}>
       <Heading as="h1" color={accentColor}>Un poco sobre mi</Heading>
 
       <Box
@@ -116,7 +116,6 @@ const ArticleList = () => {
               </p>
             </p>
           </Text>
-          <BlogAuthor name="John Doe" date="2021-04-06T19:01:27Z" />
         </Box>
       </Box>
 
@@ -150,7 +149,6 @@ const ArticleList = () => {
               Lorem Ipsum is simply dummy text of the printing and typesetting
               industry…
             </Text>
-            <BlogAuthor name="John Doe" date="2021-04-06T19:01:27Z" />
           </Box>
         </WrapItem>
       </Wrap>
