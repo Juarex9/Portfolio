@@ -30,7 +30,7 @@ import { useAccentColors } from '../hooks/useAccentColors'
 
 
 export default function Contact() {
-  const { accentColor, bgColor, textColor, cardBg } = useAccentColors();
+  const { accentColor, bgColor, textColor, cardBg, degreeBg } = useAccentColors();
   return (
     <div style={{
       width: '100%',

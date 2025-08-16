@@ -95,7 +95,7 @@ const ArticleList = () => {
           display="flex"
           flex="1"
           flexDirection="column"
-          justifyContent="center"
+          justifyContent="flex-start"
           marginTop={{ base: "3", sm: "0" }}
         >
           <Heading>
@@ -103,68 +103,90 @@ const ArticleList = () => {
               ¿Quien soy?
             </Text>
           </Heading>
-          <Text
-            as="p"
-            marginTop="2"
+          <VStack
+            align="start"
+            spacing={4}
+            mt="2"
+            maxW="70ch"
             color={useColorModeValue("gray.700", "gray.200")}
             fontSize="lg"
+            lineHeight="tall"
           >
-            Me llamo Agustin, vivo en Salta, Argentina y soy un apasionado de la informática, la tecnologia y el desarrollo. <p>
-              Me dedico a crear aplicaciones web modernas y accesibles, siempre buscando aprender y mejorar mis habilidades. Me encanta colaborar en proyectos y compartir conocimientos con la comunidad. Siempre dispuesto a enfrentar nuevos desafios y aprender de ellos. 
-              <p>
-                Actualmente estoy estudiando Ingenieria Informatica y me interesa mucho el desarrollo Full Stack, aunque disfruto de todos los aspectos de la informática y la programación. 
-              </p>
-            </p>
-          </Text>
+            <Text>
+              Me llamo Agustín, vivo en Salta – Argentina y soy un apasionado de la informática, la tecnología y el desarrollo.
+            </Text>
+            <Text>
+              Me dedico a crear aplicaciones web modernas y accesibles, siempre buscando aprender y mejorar mis habilidades.
+              Me encanta colaborar en proyectos y compartir conocimientos con la comunidad. Siempre dispuesto a enfrentar nuevos
+              desafíos y aprender de ellos.
+            </Text>
+            <Text>
+              Actualmente estoy estudiando Ingeniería Informática y me interesa mucho el desarrollo Full Stack, aunque disfruto
+              de todos los aspectos de la informática y la programación.
+            </Text>
+          </VStack>
+          <VStack
+            align="start"
+            spacing={4}
+            mt={{ base: 2, md: 8, lg: 12 }}
+            maxW="70ch"
+            color={useColorModeValue("gray.700", "gray.200")}
+            fontSize="lg"
+            lineHeight="tall">
+            <Text>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque dolorum iste officia recusandae soluta consequatur sapiente perferendis nisi aperiam! Ipsa consectetur perspiciatis error. Animi magnam alias esse ullam veritatis eaque!
+            </Text>
+          </VStack>
         </Box>
       </Box>
+      
+        <Heading as="h2" marginTop="30px" color={accentColor}>
+          Latest articles
+        </Heading>
 
-      <Heading as="h2" marginTop="5" color={accentColor}>
-        Latest articles
-      </Heading>
-      <Divider marginTop="5" />
-
-      <Wrap spacing="30px" marginTop="5">
-        <WrapItem width={{ base: "100%", sm: "45%", md: "45%", lg: "30%" }}>
-          <Box w="100%">
-            <Box borderRadius="lg" overflow="hidden">
-              <Box textDecoration="none" _hover={{ textDecoration: "none" }}>
-                <Image
-                  transform="scale(1.0)"
-                  src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=800&q=80"
-                  alt="some text"
-                  objectFit="contain"
-                  width="100%"
-                  transition="0.3s ease-in-out"
-                  _hover={{ transform: "scale(1.05)" }}
-                />
+      <Box display="grid" gridTemplateColumns={"1fr, 1fr"}>
+        <Wrap spacing="30px" marginTop="5">
+          <WrapItem width={{ base: "100%", sm: "45%", md: "45%", lg: "30%" }}>
+            <Box w="100%">
+              <Box borderRadius="lg" overflow="hidden">
+                <Box textDecoration="none" _hover={{ textDecoration: "none" }}>
+                  <Image
+                    transform="scale(1.0)"
+                    src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=800&q=80"
+                    alt="some text"
+                    objectFit="contain"
+                    width="100%"
+                    transition="0.3s ease-in-out"
+                    _hover={{ transform: "scale(1.05)" }}
+                  />
+                </Box>
               </Box>
-            </Box>
-            <Heading fontSize="xl" marginTop="2">
-              <Text textDecoration="none" _hover={{ textDecoration: "none" }}>
-                Some blog title
+              <Heading fontSize="xl" marginTop="2">
+                <Text textDecoration="none" _hover={{ textDecoration: "none" }}>
+                  Some blog title
+                </Text>
+              </Heading>
+              <Text as="p" fontSize="md" marginTop="2">
+                Lorem Ipsum is simply dummy text of the printing and typesetting
+                industry…
               </Text>
-            </Heading>
-            <Text as="p" fontSize="md" marginTop="2">
-              Lorem Ipsum is simply dummy text of the printing and typesetting
-              industry…
-            </Text>
-          </Box>
-        </WrapItem>
-      </Wrap>
+            </Box>
+          </WrapItem>
+        </Wrap>
 
-      <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
-        <Heading as="h2" color={accentColor}>What we write about</Heading>
-        <Text as="p" fontSize="lg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit…
-        </Text>
-        <Text as="p" fontSize="lg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit…
-        </Text>
-        <Text as="p" fontSize="lg">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit…
-        </Text>
-      </VStack>
+        <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
+          <Heading as="h2" color={accentColor}>What we write about</Heading>
+          <Text as="p" fontSize="lg">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit…
+          </Text>
+          <Text as="p" fontSize="lg">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit…
+          </Text>
+          <Text as="p" fontSize="lg">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit…
+          </Text>
+        </VStack>
+      </Box>
     </Container>
   );
 };

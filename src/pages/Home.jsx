@@ -3,7 +3,7 @@ import { useAccentColors } from "../hooks/useAccentColors";
 
 
 export default function Home() {
-  const { bgColor, textColor, cardBg, cardText, accentColor } = useAccentColors();
+  const { bgColor, textColor, cardBg, cardText, accentColor, degreeBg } = useAccentColors();
   return (
     <main
       style={{
@@ -124,7 +124,7 @@ export default function Home() {
           color: cardText,
         }}>
           <h3 style={{ fontSize: "1.25rem", fontWeight: 600, color: textColor }}>Newsletter Sign Up Form</h3>
-          <p style={{ color: "#b5cbb2" }}>
+          <p style={{ color: accentColor }}>
             En este proyecto construyo un formulario de registro a un newsletter, acompañado de un mensaje de agradecimiento.
           </p>
           <div style={{ marginTop: "1rem" }}>
