@@ -12,6 +12,8 @@ import {
   useColorModeValue,
   Container,
   VStack,
+  Grid,
+  GridItem,
 } from "@chakra-ui/react";
 import { useAccentColors } from "../hooks/useAccentColors";
 
@@ -139,27 +141,24 @@ const ArticleList = () => {
           </VStack>
         </Box>
       </Box>
-      
-        <Heading as="h2" marginTop="30px" color={accentColor}>
-          Latest articles
-        </Heading>
 
-      <Box display="grid" gridTemplateColumns={"1fr, 1fr"}>
-        <Wrap spacing="30px" marginTop="5">
-          <WrapItem width={{ base: "100%", sm: "45%", md: "45%", lg: "30%" }}>
-            <Box w="100%">
+      <Heading as="h2" marginTop="30px" color={accentColor}>
+        Latest articles
+      </Heading>
+
+      <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={8} alignItems="start">
+        <GridItem spacing="30px" marginTop="5">
+            <Box>
               <Box borderRadius="lg" overflow="hidden">
-                <Box textDecoration="none" _hover={{ textDecoration: "none" }}>
                   <Image
                     transform="scale(1.0)"
                     src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=800&q=80"
                     alt="some text"
                     objectFit="contain"
-                    width="100%"
+                    maxW="640px"
                     transition="0.3s ease-in-out"
                     _hover={{ transform: "scale(1.05)" }}
                   />
-                </Box>
               </Box>
               <Heading fontSize="xl" marginTop="2">
                 <Text textDecoration="none" _hover={{ textDecoration: "none" }}>
@@ -170,11 +169,13 @@ const ArticleList = () => {
                 Lorem Ipsum is simply dummy text of the printing and typesetting
                 industry…
               </Text>
+              <Text as="p" fontSize="lg">
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit…
+              </Text>
             </Box>
-          </WrapItem>
-        </Wrap>
+        </GridItem>
 
-        <VStack paddingTop="40px" spacing="2" alignItems="flex-start">
+        <GridItem spacing="2" alignItems="flex-start" maxW="60ch">
           <Heading as="h2" color={accentColor}>What we write about</Heading>
           <Text as="p" fontSize="lg">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit…
@@ -185,8 +186,9 @@ const ArticleList = () => {
           <Text as="p" fontSize="lg">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit…
           </Text>
-        </VStack>
-      </Box>
+        </GridItem>
+      </Grid>
+
     </Container>
   );
 };
