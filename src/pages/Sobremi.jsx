@@ -143,7 +143,7 @@ const ArticleList = () => {
       </Box>
 
       <Heading as="h2" marginTop="30px" color={accentColor}>
-        Latest articles
+        Blockchain y Web3
       </Heading>
 
       <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={8} alignItems="start">
@@ -160,23 +160,11 @@ const ArticleList = () => {
                     _hover={{ transform: "scale(1.05)" }}
                   />
               </Box>
-              <Heading fontSize="xl" marginTop="2">
-                <Text textDecoration="none" _hover={{ textDecoration: "none" }}>
-                  Some blog title
-                </Text>
-              </Heading>
-              <Text as="p" fontSize="md" marginTop="2">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry…
-              </Text>
-              <Text as="p" fontSize="lg">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit…
-              </Text>
             </Box>
         </GridItem>
 
         <GridItem spacing="2" alignItems="flex-start" maxW="60ch">
-          <Heading as="h2" color={accentColor}>What we write about</Heading>
+          <Heading as="h2" color={accentColor}>Mi primer acercamiento...</Heading>
           <Text as="p" fontSize="lg">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit…
           </Text>
