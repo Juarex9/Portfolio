@@ -50,7 +50,7 @@ export default function Home() {
           Hola, soy <span style={{ color: accentColor }}>Agustin</span>
         </h1>
         <h2 style={{ fontSize: "1.25rem", fontWeight: 400, margin: "0.5rem 0" }}>
-          Jóven apasionado por la informática, el desarrollo y la tecnología. <span style={{ color: accentColor }}>Desarrollador Full Stack</span><br />
+          Un chico apasionado por la informática, el desarrollo y la tecnología. <span style={{ color: accentColor }}>Desarrollador Full Stack</span><br />
           De Salta, Argentina.<br />
           Ingeniero Informatico en curso. 
         </h2>
