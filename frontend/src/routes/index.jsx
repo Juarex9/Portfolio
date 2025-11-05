@@ -6,6 +6,8 @@ import Proyectos from "../pages/Proyectos.jsx";
 import Educacion from "../pages/Educacion.jsx";
 import SobreMi from "../pages/SobreMi.jsx";
 import Contacto from "../pages/Contacto.jsx";
+import Web2 from "../pages/Web2.jsx";  
+import Web3 from "../pages/Web3.jsx";
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +31,14 @@ export const router = createBrowserRouter([
                 path: "/contacto",
                 element: <Contacto />
             },
+            {
+                path: "/web2",
+                element: <Web2 />
+            },
+            {
+                path: "/web3",
+                element: <Web3 />
+            }
         ],
     },
 ]);

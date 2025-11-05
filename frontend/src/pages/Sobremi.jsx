@@ -135,15 +135,12 @@ const ArticleList = () => {
             color={useColorModeValue("gray.700", "gray.200")}
             fontSize="lg"
             lineHeight="tall">
-            <Text>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque dolorum iste officia recusandae soluta consequatur sapiente perferendis nisi aperiam! Ipsa consectetur perspiciatis error. Animi magnam alias esse ullam veritatis eaque!
-            </Text>
           </VStack>
         </Box>
       </Box>
 
       <Heading as="h2" marginTop="30px" color={accentColor}>
-        Latest articles
+        Mi paso a Web3
       </Heading>
 
       <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={8} alignItems="start">
@@ -160,33 +157,28 @@ const ArticleList = () => {
                     _hover={{ transform: "scale(1.05)" }}
                   />
               </Box>
-              <Heading fontSize="xl" marginTop="2">
-                <Text textDecoration="none" _hover={{ textDecoration: "none" }}>
-                  Some blog title
-                </Text>
-              </Heading>
-              <Text as="p" fontSize="md" marginTop="2">
-                Lorem Ipsum is simply dummy text of the printing and typesetting
-                industry…
-              </Text>
-              <Text as="p" fontSize="lg">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit…
-              </Text>
             </Box>
         </GridItem>
 
-        <GridItem spacing="2" alignItems="flex-start" maxW="60ch">
-          <Heading as="h2" color={accentColor}>What we write about</Heading>
-          <Text as="p" fontSize="lg">
+        <VStack align="start"
+            spacing={4}
+            mt="2"
+            maxW="70ch"
+            color={useColorModeValue("gray.700", "gray.200")}
+            fontSize="lg"
+            lineHeight="tall">
+          <Heading as="h2" color={accentColor}>Blockchain y Web3</Heading>
+          <Text>
+            En el año 2025 comencé a interesarme por el mundo de la blockchain y las tecnologías descentralizadas.
+            Decidi adentrarme en este campo y aprender sobre contratos inteligentes, dApps y las posibilidades que ofrece la Web3.
+          </Text>
+          <Text>
+           Actualmente podria decirse que soy un programador Web2 migrando a Web3, pero sin abandonar mis conocimientos previos.
+          </Text>
+          <Text>
             Lorem ipsum dolor sit amet, consectetur adipiscing elit…
           </Text>
-          <Text as="p" fontSize="lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit…
-          </Text>
-          <Text as="p" fontSize="lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit…
-          </Text>
-        </GridItem>
+        </VStack>
       </Grid>
 
     </Container>
