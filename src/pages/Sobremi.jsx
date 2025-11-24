@@ -1,183 +1,168 @@
 import React from "react";
 import {
   Box,
-  Heading,
-  Image,
-  Text,
-  Divider,
-  HStack,
-  Tag,
-  Wrap,
-  WrapItem,
-  useColorModeValue,
   Container,
-  VStack,
+  Heading,
+  Text,
+  SimpleGrid,
   Grid,
   GridItem,
+  VStack,
+  HStack,
+  Tag,
+  Image,
+  Badge,
+  useColorModeValue,
+  Divider,
 } from "@chakra-ui/react";
 import { useAccentColors } from "../hooks/useAccentColors";
+import { motion } from "framer-motion";
 
-const BlogTags = ({ marginTop = 0, tags = [] }) => {
-  return (
-    <HStack spacing={2} marginTop={marginTop}>
-      {tags.map((tag) => (
-        <Tag size="md" variant="solid" colorScheme="orange" key={tag}>
-          {tag}
-        </Tag>
-      ))}
-    </HStack>
-  );
-};
 
-const BlogAuthor = ({ date, name }) => {
-  return (
-    <HStack marginTop="2" spacing="2" display="flex" alignItems="center">
-      <Image
-        borderRadius="full"
-        boxSize="40px"
-        src="https://100k-faces.glitch.me/random-image"
-        alt={`Avatar of ${name}`}
-      />
-      <Text fontWeight="medium">{name}</Text>
-      <Text>—</Text>
-      <Text>{new Date(date).toLocaleDateString()}</Text>
-    </HStack>
-  );
-};
+const MotionBox = motion(Box);
+const MotionVStack = motion(VStack);
 
 const ArticleList = () => {
-  const { bgColor, textColor, cardBg, accentColor } = useAccentColors();
-  return (
-    <Container maxW="100%" p="12" bg={`linear-gradient(135deg, ${bgColor} 70%, #69c58b 100%)`} color={textColor}>
-      <Heading as="h1" color={accentColor}>Un poco sobre mi</Heading>
+ const { bgColor, accentColor, cardBg } = useAccentColors();
+  const textColor = useColorModeValue("gray.800", "gray.100");
 
-      <Box
-        marginTop={{ base: "1", sm: "5" }}
-        display="flex"
-        flexDirection={{ base: "column", sm: "row" }}
-        justifyContent="space-between"
-      >
-        <Box
-          display="flex"
-          flex="1"
-          marginRight="3"
-          position="relative"
+  return (
+    <Box
+      w="100%"
+      bg={`radial-gradient(circle at top left, #111 0, ${bgColor} 45%, #020617 100%)`}
+      py={{ base: 10, md: 20 }}
+    >
+      <Container maxW="6xl" px={{ base: 4, md: 8 }}>
+        <SimpleGrid
+          columns={{ base: 1, md: 2 }}
+          gap={10}
           alignItems="center"
+          mb={16}
         >
-          <Box
-            width={{ base: "100%", sm: "85%" }}
-            zIndex="2"
-            marginLeft={{ base: "0", sm: "5%" }}
-            marginTop="5%"
+          {/* Mockup grande */}
+          <MotionBox
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
           >
-            <Box textDecoration="none" _hover={{ textDecoration: "none" }}>
+            <Box
+              bg={cardBg}
+              borderRadius="2xl"
+              p={3}
+              boxShadow="2xl"
+              overflow="hidden"
+            >
               <Image
-                borderRadius="lg"
-                src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=800&q=80"
-                alt="some good alt text"
-                objectFit="contain"
+                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80"
+                alt="Workspace mockup"
+                borderRadius="xl"
+                objectFit="cover"
+                h={{ base: "260px", md: "340px" }}
+                w="100%"
               />
             </Box>
-          </Box>
 
-          <Box zIndex="1" width="100%" position="absolute" height="100%">
-            <Box
-              bgGradient={useColorModeValue(
-                "radial(orange.600 1px, transparent 1px)",
-                "radial(orange.300 1px, transparent 1px)"
-              )}
-              backgroundSize="20px 20px"
-              opacity="0.4"
-              height="100%"
-            />
-          </Box>
-        </Box>
-
-        <Box
-          display="flex"
-          flex="1"
-          flexDirection="column"
-          justifyContent="flex-start"
-          marginTop={{ base: "3", sm: "0" }}
-        >
-          <Heading>
-            <Text textDecoration="none" _hover={{ textDecoration: "none" }} color={accentColor}>
-              ¿Quien soy?
-            </Text>
-          </Heading>
-          <VStack
-            align="start"
-            spacing={4}
-            mt="2"
-            maxW="70ch"
-            color={useColorModeValue("gray.700", "gray.200")}
-            fontSize="lg"
-            lineHeight="tall"
-          >
-            <Text>
-              Me llamo Agustín, vivo en Salta – Argentina y soy un apasionado de la informática, la tecnología y el desarrollo.
-            </Text>
-            <Text>
-              Me dedico a crear aplicaciones web modernas y accesibles, siempre buscando aprender y mejorar mis habilidades.
-              Me encanta colaborar en proyectos y compartir conocimientos con la comunidad. Siempre dispuesto a enfrentar nuevos
-              desafíos y aprender de ellos.
-            </Text>
-            <Text>
-              Actualmente estoy estudiando Ingeniería Informática y me interesa mucho el desarrollo Full Stack, aunque disfruto
-              de todos los aspectos de la informática y la programación.
-            </Text>
-          </VStack>
-          <VStack
-            align="start"
-            spacing={4}
-            mt={{ base: 2, md: 8, lg: 12 }}
-            maxW="70ch"
-            color={useColorModeValue("gray.700", "gray.200")}
-            fontSize="lg"
-            lineHeight="tall">
-            <Text>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloremque dolorum iste officia recusandae soluta consequatur sapiente perferendis nisi aperiam! Ipsa consectetur perspiciatis error. Animi magnam alias esse ullam veritatis eaque!
-            </Text>
-          </VStack>
-        </Box>
-      </Box>
-
-      <Heading as="h2" marginTop="30px" color={accentColor}>
-        Blockchain y Web3
-      </Heading>
-
-      <Grid templateColumns={{ base: "1fr", md: "1fr 1fr" }} gap={8} alignItems="start">
-        <GridItem spacing="30px" marginTop="5">
-            <Box>
-              <Box borderRadius="lg" overflow="hidden">
+            {/* mini galería */}
+            <HStack spacing={4} mt={4}>
+              {[1, 2, 3].map((n) => (
+                <Box
+                  key={n}
+                  flex="1"
+                  borderRadius="lg"
+                  overflow="hidden"
+                  boxShadow="md"
+                >
                   <Image
-                    transform="scale(1.0)"
-                    src="https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=800&q=80"
-                    alt="some text"
-                    objectFit="contain"
-                    maxW="640px"
-                    transition="0.3s ease-in-out"
-                    _hover={{ transform: "scale(1.05)" }}
+                    src={`https://images.unsplash.com/photo-15${n}9951360447-b19be8fe80f5?auto=format&fit=crop&w=600&q=80`}
+                    alt={`Mini shot ${n}`}
+                    objectFit="cover"
+                    h="90px"
+                    w="100%"
                   />
-              </Box>
-            </Box>
-        </GridItem>
+                </Box>
+              ))}
+            </HStack>
+          </MotionBox>
 
-        <GridItem spacing="2" alignItems="flex-start" maxW="60ch">
-          <Heading as="h2" color={accentColor}>Mi primer acercamiento...</Heading>
-          <Text as="p" fontSize="lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit…
-          </Text>
-          <Text as="p" fontSize="lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit…
-          </Text>
-          <Text as="p" fontSize="lg">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit…
-          </Text>
-        </GridItem>
-      </Grid>
+          {/* Texto */}
+          <MotionVStack
+            align="start"
+            spacing={5}
+            initial={{ opacity: 0, y: 25 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.15 }}
+            color={textColor}
+          >
+            <Badge
+              bg={accentColor}
+              color="white"
+              borderRadius="full"
+              px={3}
+              py={1}
+            >
+              About me
+            </Badge>
+            <Heading
+              as="h1"
+              fontSize={{ base: "2xl", md: "3xl" }}
+              color={accentColor}
+            >
+              Construyendo experiencias web desde el lado creativo y técnico
+            </Heading>
+            <Text>
+              Soy Agustín, desarrollador full stack e ingeniero en formación.
+              Me gusta trabajar en la intersección entre diseño, código y
+              experiencia de usuario.
+            </Text>
+            <Text>
+              Disfruto de armar proyectos bien pensados, desde la idea hasta el
+              despliegue, usando herramientas como React, Node.js, Express,
+              Python y bases de datos SQL/NoSQL.
+            </Text>
+            <Text>
+              En paralelo, estoy metiéndome fuerte en el mundo Web3, buscando
+              formas de integrar contratos inteligentes y blockchain a
+              productos que la gente realmente use.
+            </Text>
+          </MotionVStack>
+        </SimpleGrid>
 
-    </Container>
+        {/* Segunda sección: 3 cards resumidas */}
+        <SimpleGrid columns={{ base: 1, md: 3 }} gap={8}>
+          <Box bg={cardBg} borderRadius="2xl" p={6} boxShadow="xl">
+            <Heading size="md" mb={3} color={accentColor}>
+              Full Stack Mindset
+            </Heading>
+            <Text color={textColor} fontSize="sm">
+              Me siento cómodo trabajando tanto en frontend como en backend:
+              levantar APIs, diseñar modelos de datos y crear interfaces
+              modernas.
+            </Text>
+          </Box>
+
+          <Box bg={cardBg} borderRadius="2xl" p={6} boxShadow="xl">
+            <Heading size="md" mb={3} color={accentColor}>
+              Comunidad & Eventos
+            </Heading>
+            <Text color={textColor} fontSize="sm">
+              Participo en comunidades como SaltaDev, workshops y hackathons,
+              donde aprendo, conecto con otros devs y pruebo ideas nuevas.
+            </Text>
+          </Box>
+
+          <Box bg={cardBg} borderRadius="2xl" p={6} boxShadow="xl">
+            <Heading size="md" mb={3} color={accentColor}>
+              Web2 → Web3
+            </Heading>
+            <Text color={textColor} fontSize="sm">
+              Mi objetivo es combinar lo mejor del desarrollo tradicional con
+              la tecnología blockchain para construir soluciones reales, útiles
+              y preparadas para el futuro.
+            </Text>
+          </Box>
+        </SimpleGrid>
+      </Container>
+    </Box>
   );
 };
 
