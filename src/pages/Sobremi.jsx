@@ -5,44 +5,86 @@ import {
   Heading,
   Text,
   SimpleGrid,
-  Grid,
-  GridItem,
   VStack,
   HStack,
-  Tag,
   Image,
   Badge,
   useColorModeValue,
-  Divider,
+  Stack,
 } from "@chakra-ui/react";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { motion } from "framer-motion";
 
-
 const MotionBox = motion(Box);
 const MotionVStack = motion(VStack);
+const MotionHeading = motion(Heading);
 
-const ArticleList = () => {
- const { bgColor, accentColor, cardBg } = useAccentColors();
-  const textColor = useColorModeValue("gray.800", "gray.100");
+const AboutMe = () => {
+  const { bgColor, accentColor, cardBg, textColor } = useAccentColors();
+
+  const sectionBg = useColorModeValue(
+    `linear-gradient(135deg, ${bgColor} 55%, rgba(105,197,139,0.18) 100%)`,
+    `radial-gradient(circle at top left, #020617 0, ${bgColor} 60%, #020617 100%)`
+  );
+
+  const secondaryText = useColorModeValue("gray.600", "gray.300");
 
   return (
-    <Box
-      w="100%"
-      bg={`radial-gradient(circle at top left, #111 0, ${bgColor} 45%, #020617 100%)`}
-      py={{ base: 10, md: 20 }}
-    >
+    <Box w="100%" bg={sectionBg} py={{ base: 12, md: 20 }}>
       <Container maxW="6xl" px={{ base: 4, md: 8 }}>
+        {/* Header de sección */}
+        <Stack
+          direction={{ base: "column", md: "row" }}
+          justify="space-between"
+          align={{ base: "flex-start", md: "center" }}
+          mb={12}
+          spacing={4}
+        >
+          <Box>
+            <Badge
+              borderRadius="full"
+              px={3}
+              py={1}
+              mb={2}
+              bg={useColorModeValue("green.50", "green.900")}
+              color={useColorModeValue("green.700", "green.200")}
+              textTransform="uppercase"
+              fontSize="xs"
+              letterSpacing="wider"
+            >
+              Sobre mí
+            </Badge>
+
+            <MotionHeading
+              fontSize={{ base: "2xl", md: "3xl" }}
+              color={useColorModeValue("gray.900", "white")}
+              fontWeight="extrabold"
+              initial={{ opacity: 0, y: 10 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6 }}
+              mb={1}
+            >
+              Construyendo experiencias web desde el lado creativo y técnico
+            </MotionHeading>
+
+            <Text fontSize="sm" color={secondaryText} maxW="lg">
+              Un poco de contexto sobre quién soy, cómo pienso los proyectos
+              y hacia dónde quiero crecer como desarrollador.
+            </Text>
+          </Box>
+        </Stack>
+
+        {/* Bloque principal: imagen + texto */}
         <SimpleGrid
           columns={{ base: 1, md: 2 }}
           gap={10}
           alignItems="center"
-          mb={16}
+          mb={14}
         >
           {/* Mockup grande */}
           <MotionBox
             initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
             <Box
@@ -61,54 +103,17 @@ const ArticleList = () => {
                 w="100%"
               />
             </Box>
-
-            {/* mini galería */}
-            <HStack spacing={4} mt={4}>
-              {[1, 2, 3].map((n) => (
-                <Box
-                  key={n}
-                  flex="1"
-                  borderRadius="lg"
-                  overflow="hidden"
-                  boxShadow="md"
-                >
-                  <Image
-                    src={`https://images.unsplash.com/photo-15${n}9951360447-b19be8fe80f5?auto=format&fit=crop&w=600&q=80`}
-                    alt={`Mini shot ${n}`}
-                    objectFit="cover"
-                    h="90px"
-                    w="100%"
-                  />
-                </Box>
-              ))}
-            </HStack>
           </MotionBox>
 
           {/* Texto */}
           <MotionVStack
             align="start"
-            spacing={5}
+            spacing={4}
             initial={{ opacity: 0, y: 25 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.15 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.1 }}
             color={textColor}
           >
-            <Badge
-              bg={accentColor}
-              color="white"
-              borderRadius="full"
-              px={3}
-              py={1}
-            >
-              About me
-            </Badge>
-            <Heading
-              as="h1"
-              fontSize={{ base: "2xl", md: "3xl" }}
-              color={accentColor}
-            >
-              Construyendo experiencias web desde el lado creativo y técnico
-            </Heading>
             <Text>
               Soy Agustín, desarrollador full stack e ingeniero en formación.
               Me gusta trabajar en la intersección entre diseño, código y
@@ -129,32 +134,53 @@ const ArticleList = () => {
 
         {/* Segunda sección: 3 cards resumidas */}
         <SimpleGrid columns={{ base: 1, md: 3 }} gap={8}>
-          <Box bg={cardBg} borderRadius="2xl" p={6} boxShadow="xl">
+          <Box
+            bg={cardBg}
+            borderRadius="2xl"
+            p={6}
+            boxShadow="xl"
+            transition="all 0.25s ease"
+            _hover={{ transform: "translateY(-4px)", boxShadow: "2xl" }}
+          >
             <Heading size="md" mb={3} color={accentColor}>
               Full Stack Mindset
             </Heading>
-            <Text color={textColor} fontSize="sm">
+            <Text color={secondaryText} fontSize="sm">
               Me siento cómodo trabajando tanto en frontend como en backend:
               levantar APIs, diseñar modelos de datos y crear interfaces
               modernas.
             </Text>
           </Box>
 
-          <Box bg={cardBg} borderRadius="2xl" p={6} boxShadow="xl">
+          <Box
+            bg={cardBg}
+            borderRadius="2xl"
+            p={6}
+            boxShadow="xl"
+            transition="all 0.25s ease"
+            _hover={{ transform: "translateY(-4px)", boxShadow: "2xl" }}
+          >
             <Heading size="md" mb={3} color={accentColor}>
-              Comunidad & Eventos
+              Comunidad &amp; Eventos
             </Heading>
-            <Text color={textColor} fontSize="sm">
+            <Text color={secondaryText} fontSize="sm">
               Participo en comunidades como SaltaDev, workshops y hackathons,
               donde aprendo, conecto con otros devs y pruebo ideas nuevas.
             </Text>
           </Box>
 
-          <Box bg={cardBg} borderRadius="2xl" p={6} boxShadow="xl">
+          <Box
+            bg={cardBg}
+            borderRadius="2xl"
+            p={6}
+            boxShadow="xl"
+            transition="all 0.25s ease"
+            _hover={{ transform: "translateY(-4px)", boxShadow: "2xl" }}
+          >
             <Heading size="md" mb={3} color={accentColor}>
               Web2 → Web3
             </Heading>
-            <Text color={textColor} fontSize="sm">
+            <Text color={secondaryText} fontSize="sm">
               Mi objetivo es combinar lo mejor del desarrollo tradicional con
               la tecnología blockchain para construir soluciones reales, útiles
               y preparadas para el futuro.
@@ -166,4 +192,4 @@ const ArticleList = () => {
   );
 };
 
-export default ArticleList;
+export default AboutMe;

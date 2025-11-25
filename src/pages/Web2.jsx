@@ -49,7 +49,6 @@ export default function Web2() {
       demo: "",
     },
   ];
-
   return (
     <Box
       w="full"

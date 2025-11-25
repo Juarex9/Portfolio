@@ -1,0 +1,121 @@
+{
+  "navbar": {
+    "home": "Home",
+    "projects": "Proyectos",
+    "education": "Educación",
+    "about": "Sobre mí",
+    "contact": "Contacto"
+  },
+
+  "hero": {
+    "title_1": "Hola, soy",
+    "title_name": "Agustín",
+    "subtitle": "Construyo experiencias web modernas, funcionales y con un toque de innovación del ecosistema Web3.",
+    "btn_contact": "Contacto",
+    "btn_projects": "Ver Proyectos"
+  },
+
+  "projects": {
+    "title": "Mis Proyectos",
+    "web2": {
+      "title": "Web2",
+      "desc": "Proyectos desarrollados con tecnologías tradicionales del entorno web, como React, Node.js y bases de datos SQL o NoSQL."
+    },
+    "web3": {
+      "title": "Web3",
+      "desc": "Proyectos que integran blockchain, contratos inteligentes y herramientas descentralizadas del nuevo ecosistema web."
+    }
+  },
+
+  "education": {
+    "ucasal": {
+      "title": "Ingeniería Informática",
+      "institution": "Universidad Católica de Salta",
+      "location": "Salta, Argentina",
+      "start": "2023",
+      "end": "Actualidad",
+      "h1": "Estructuras de datos y bases de datos",
+      "h2": "Programación orientada a objetos",
+      "h3": "Trabajo en equipo con Git y metodologías ágiles"
+    },
+
+    "reparando": {
+      "title": "Diagnóstico y Reparación de Equipos de Cómputo",
+      "institution": "Reparando",
+      "location": "Online",
+      "start": "2019",
+      "end": "2020",
+      "h1": "Mantenimiento preventivo y correctivo de hardware",
+      "h2": "Instalación de sistemas operativos",
+      "h3": "Limpieza y optimización de equipos"
+    },
+
+    "coder": {
+      "title": "Carrera de Desarrollador Full Stack",
+      "institution": "Coderhouse",
+      "location": "Online",
+      "start": "2024",
+      "end": "2025",
+      "h1": "Accesibilidad web y performance",
+      "h2": "Diseño de sistemas de UI con Chakra",
+      "h3": "Proyecto final: web de e-commerce",
+      "h4": "Bases de datos con MongoDB"
+    }
+  },
+
+  "about": {
+    "badge": "Sobre mí",
+    "heading": "Construyendo experiencias web desde el lado creativo y técnico",
+
+    "p1": "Soy Agustín, desarrollador full stack e ingeniero en formación. Me gusta trabajar en la intersección entre diseño, código y experiencia de usuario.",
+    "p2": "Disfruto de armar proyectos bien pensados, desde la idea hasta el despliegue, usando herramientas como React, Node.js, Express, Python y bases de datos SQL/NoSQL.",
+    "p3": "Estoy metiéndome fuerte en el mundo Web3, buscando formas de integrar smart contracts y blockchain a productos reales.",
+
+    "card1": {
+      "title": "Full Stack Mindset",
+      "text": "Me siento cómodo en frontend y backend: APIs, modelos de datos e interfaces modernas."
+    },
+
+    "card2": {
+      "title": "Comunidad & Eventos",
+      "text": "Participo en comunidades como SaltaDev, workshops y hackathons."
+    },
+
+    "card3": {
+      "title": "Web2 → Web3",
+      "text": "Mi objetivo es unir la experiencia del desarrollo tradicional con las oportunidades del ecosistema Web3."
+    }
+  },
+
+  "contact": {
+    "section": {
+      "badge": "Contacto",
+      "title": "Hablemos",
+      "desc": "Podés contactarme directamente por estos medios o completando el formulario."
+    },
+
+    "phone": "Teléfono",
+    "email": "Correo",
+    "location": "Ubicación",
+
+    "form": {
+      "name": "Tu nombre",
+      "email": "Correo",
+      "message": "Mensaje",
+      "send": "Enviar mensaje"
+    }
+  },
+
+  "footer": {
+    "name": "Agustín Juárez",
+    "title": "Desarrollador Full-Stack · React · Node · Web3",
+    "rights": "Todos los derechos reservados.",
+    "made_with": "Hecho con React + Chakra UI.",
+    "links": {
+      "projects": "Proyectos",
+      "education": "Educación",
+      "about": "Sobre mí",
+      "contact": "Contacto"
+    }
+  }
+}

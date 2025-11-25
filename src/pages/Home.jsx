@@ -1,114 +1,90 @@
-import React from "react";
+import {
+  Box,
+  Container,
+  VStack,
+  Heading,
+  Text,
+  HStack,
+  Button,
+  useColorModeValue,
+} from "@chakra-ui/react";
+import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
+import { useTranslation } from "react-i18next";
 
+const MotionBox = motion(Box);
+const MotionHeading = motion(Heading);
 
-export default function Home() {
-  const { bgColor, textColor, cardBg, cardText, accentColor, degreeBg } = useAccentColors();
+export default function Hero() {
+  const { accentColor, bgColor } = useAccentColors();
+  const { t } = useTranslation();
+
+  const heroBg = useColorModeValue(
+    `linear-gradient(135deg, #f9fafb 0%, #e5f9f0 45%, #6ee7b7 100%)`,
+    `linear-gradient(135deg, #020617 0%, #020617 60%, #065f46 100%)`
+  );
+
   return (
-    <main
-      style={{
-        minHeight: "100vh",
-        width: "100%",
-        overflowX: "clip",
-        background: `linear-gradient(135deg, ${bgColor} 70%, #69c58b 100%)`,
-        color: textColor,
-        fontFamily: "Inter, sans-serif",
-        display: "flex",
-        flexDirection: "column",
-        alignItems: "center",
-        padding: "0",
-      }}
-    >
-      <div style={{
-        position: "absolute",
-        top: "1.5rem",
-        right: "2rem",
-        zIndex: 10,
-      }}>
-      </div>
+    <Box w="full" bg={heroBg}>
+      <Container maxW="6xl">
+        
+        {/* HERO CONTENT */}
+        <VStack
+          minH={{ base: "80vh", md: "calc(100vh - 72px)" }}
+          spacing={8}
+          align="center"
+          justify="center"
+          textAlign="center"
+          py={{ base: 10, md: 12 }}
+        >
+          {/* Avatar */}
+          <MotionBox
+            borderRadius="full"
+            boxSize={{ base: 140, md: 170 }}
+            bg={bgColor}
+            boxShadow={`0 0 50px ${accentColor}`}
+            display="flex"
+            alignItems="center"
+            justifyContent="center"
+          >
+            <Text fontWeight="bold">{t("hero.avatar")}</Text>
+          </MotionBox>
 
-      <header style={{ padding: "2rem 0", textAlign: "center" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}>
-          <img
-            src="/foto.jpg"
-            alt="Avatar"
-            style={{
-              width: "105px",
-              height: "105px",
-              borderRadius: "50%",
-              marginBottom: "1rem",
-              border: `3px solid ${accentColor}`,
-            }}
-          />
-        </div>
-        <h1 style={{ fontSize: "2.5rem", fontWeight: 700, margin: "0.5rem 0" }}>
-          Hola, soy <span style={{ color: accentColor }}>Agustin</span>
-        </h1>
-        <h2 style={{ fontSize: "1.25rem", fontWeight: 400, margin: "0.5rem 0" }}>
-          Un chico apasionado por la informática, el desarrollo y la tecnología. <span style={{ color: accentColor }}>Desarrollador Full Stack</span><br />
-          De Salta, Argentina.<br />
-          Ingeniero Informatico en curso. 
-        </h2>
-        <div style={{ margin: "1.5rem 0" }}>
-          <span style={{
-            background: accentColor,
-            color: bgColor,
-            borderRadius: "999px",
-            padding: "0.5rem 1.5rem",
-            fontWeight: 600,
-            fontSize: "1rem",
-            marginRight: "0.5rem"
-          }}>
-            Disponible para trabajar
-          </span>
-        </div>
-        <div style={{ display: "flex", justifyContent: "center", gap: "1rem", flexWrap: "wrap" }}>
-          <a href="https://www.linkedin.com/in/agustín-juárez0907" target="_blank" rel="noopener noreferrer"
-            style={{
-              background: cardBg,
-              color: accentColor,
-              borderRadius: "999px",
-              padding: "0.5rem 1.2rem",
-              textDecoration: "none",
-              fontWeight: 500,
-              border: `1px solid ${accentColor}`,
-              transition: "background 0.2s"
-            }}>
-            Linkedin
-          </a>
-          <a href="https://github.com/Juarex9" target="_blank" rel="noopener noreferrer"
-            style={{
-              background: cardBg,
-              color: accentColor,
-              borderRadius: "999px",
-              padding: "0.5rem 1.2rem",
-              textDecoration: "none",
-              fontWeight: 500,
-              border: `1px solid ${accentColor}`,
-              transition: "background 0.2s"
-            }}>
-            Github
-          </a>
-          <a href="mailto:agustinjuarez375@gmail.com"
-            style={{
-              background: cardBg,
-              color: accentColor,
-              borderRadius: "999px",
-              padding: "0.5rem 1.2rem",
-              textDecoration: "none",
-              fontWeight: 500,
-              border: `1px solid ${accentColor}`,
-              transition: "background 0.2s"
-            }}>
-            agustinjuarez375@gmail.com
-          </a>
-        </div>
-      </header>
-    </main>
+          {/* Título */}
+          <MotionHeading
+            fontSize={{ base: "3xl", md: "5xl" }}
+            fontWeight="extrabold"
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+          >
+            {t("hero.title_hello")}{" "}
+            <Box as="span" color={accentColor}>
+              {t("hero.title_name")}
+            </Box>
+          </MotionHeading>
+
+          {/* Subtítulo */}
+          <Text
+            maxW="3xl"
+            fontSize={{ base: "md", md: "lg" }}
+            opacity={0.9}
+          >
+            {t("hero.subtitle")}
+          </Text>
+
+          {/* Botones */}
+          <HStack spacing={4}>
+            <Button as="a" href="/contacto" bg={accentColor} color="white">
+              {t("hero.btn_contact")}
+            </Button>
+            <Button as="a" href="/proyectos" variant="outline">
+              {t("hero.btn_projects")}
+            </Button>
+          </HStack>
+          
+        </VStack>
+      </Container>
+    </Box>
   );
 }

@@ -1,4 +1,3 @@
-// src/routes/index.jsx
 import { createBrowserRouter } from "react-router-dom";
 import App from "../services/App.jsx";
 import Home from "../pages/Home.jsx";

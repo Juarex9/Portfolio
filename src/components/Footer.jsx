@@ -1,100 +1,163 @@
 // src/components/Footer.jsx
 import React from "react";
 import {
-    Box,
-    Container,
-    Stack,
-    HStack,
-    VStack,
-    Divider,
-    Text,
-    Link,
-    IconButton,
-    useColorModeValue,
+  Box,
+  Container,
+  Stack,
+  HStack,
+  VStack,
+  Text,
+  Link,
+  IconButton,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { BsGithub, BsLinkedin, BsEnvelope } from "react-icons/bs";
 import { useAccentColors } from "../hooks/useAccentColors";
 
 export default function Footer() {
-    const { cardBg, bgColor, accentColor } = useAccentColors();
-    const muted = useColorModeValue("gray.600", "gray.300");
+  const { cardBg, accentColor, textColor } = useAccentColors();
 
-    return (
-        <Box
-            pt={10}
-            pb={8}
-            bg={cardBg}
-            boxShadow="0 -6px 25px rgba(0,0,0,0.3)"
+  const muted = useColorModeValue("gray.600", "gray.400");
+  const linkHover = useColorModeValue("gray.900", "whiteAlpha.900");
+  const borderColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
+  const shadow = useColorModeValue(
+    "0 -4px 18px rgba(15,23,42,0.08)",
+    "0 -8px 30px rgba(15,23,42,0.8)"
+  );
+
+  return (
+    <Box
+      as="footer"
+      bg={cardBg}
+      color={textColor}
+      borderTop="1px solid"
+      borderColor={borderColor}
+      boxShadow={shadow}
+      py={6}               // menos padding vertical
+      mt={0}               // sin separación rara respecto a la sección anterior
+    >
+      <Container maxW="6xl">
+        {/* Fila superior: nombre + redes */}
+        <Stack
+          direction={{ base: "column", md: "row" }}
+          justify="space-between"
+          align={{ base: "flex-start", md: "center" }}
+          spacing={6}
         >
-            <Container maxW="6xl">
-                <Divider opacity={0.15} mb={6} />
+          <VStack align="flex-start" spacing={1}>
+            <Text fontWeight="bold" fontSize="lg">
+              Agustín{" "}
+              <Box as="span" color={accentColor}>
+                Juárez
+              </Box>
+            </Text>
+            <Text fontSize="sm" color={muted}>
+              Desarrollador Full-Stack · React · Node · Web3
+            </Text>
+          </VStack>
 
-                <Stack
-                    direction={{ base: "column", md: "row" }}
-                    justify="space-between"
-                    align={{ base: "start", md: "center" }}
-                    spacing={6}
-                >
-                    <VStack align="start" spacing={1}>
-                        <Text fontWeight="bold" fontSize="lg" color={accentColor}>
-                            Agustín Juárez
-                        </Text>
-                        <Text fontSize="sm" color={muted}>
-                            Desarrollador Full-Stack · React · Node · Web3
-                        </Text>
-                    </VStack>
+          <HStack spacing={4}>
+            <IconButton
+              as={Link}
+              href="https://github.com/Juarex9"
+              aria-label="GitHub"
+              variant="ghost"
+              size="lg"
+              icon={<BsGithub />}
+              isExternal
+              borderRadius="full"
+              _hover={{
+                bg: accentColor,
+                color: "white",
+                transform: "translateY(-2px)",
+              }}
+              transition="all 0.2s ease"
+            />
+            <IconButton
+              as={Link}
+              href="https://www.linkedin.com"
+              aria-label="LinkedIn"
+              variant="ghost"
+              size="lg"
+              icon={<BsLinkedin />}
+              isExternal
+              borderRadius="full"
+              _hover={{
+                bg: accentColor,
+                color: "white",
+                transform: "translateY(-2px)",
+              }}
+              transition="all 0.2s ease"
+            />
+            <IconButton
+              as={Link}
+              href="mailto:agustinjuarez375@gmail.com"
+              aria-label="Email"
+              variant="ghost"
+              size="lg"
+              icon={<BsEnvelope />}
+              borderRadius="full"
+              _hover={{
+                bg: accentColor,
+                color: "white",
+                transform: "translateY(-2px)",
+              }}
+              transition="all 0.2s ease"
+            />
+          </HStack>
+        </Stack>
 
-                    <HStack spacing={5}>
-                        <IconButton
-                            as={Link}
-                            href="https://github.com/Juarex9"
-                            aria-label="GitHub"
-                            variant="ghost"
-                            size="lg"
-                            icon={<BsGithub />}
-                            isExternal
-                        />
-                        <IconButton
-                            as={Link}
-                            href="https://linkedin.com/in/agustín-juárez0907"
-                            aria-label="LinkedIn"
-                            variant="ghost"
-                            size="lg"
-                            icon={<BsLinkedin />}
-                            isExternal
-                        />
-                        <IconButton
-                            as={Link}
-                            href="mailto:agustinjuarez375@gmail.com"
-                            aria-label="Email"
-                            variant="ghost"
-                            size="lg"
-                            icon={<BsEnvelope />}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                        />
-                    </HStack>
-                </Stack>
+        {/* Fila inferior: links + copyright */}
+        <Stack
+          mt={4}
+          direction={{ base: "column", md: "row" }}
+          justify="space-between"
+          align={{ base: "flex-start", md: "center" }}
+          spacing={4}
+        >
+          <HStack spacing={6} flexWrap="wrap">
+            {[
+              { href: "/proyectos", label: "Proyectos" },
+              { href: "/educacion", label: "Educación" },
+              { href: "/sobremi", label: "Sobre mí" },
+              { href: "/contacto", label: "Contacto" },
+            ].map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                position="relative"
+                fontSize="sm"
+                color={muted}
+                _hover={{ color: linkHover, textDecoration: "none" }}
+                _after={{
+                  content: '""',
+                  position: "absolute",
+                  left: 0,
+                  bottom: -2,
+                  width: "100%",
+                  height: "2px",
+                  borderRadius: "full",
+                  bg: accentColor,
+                  transform: "scaleX(0)",
+                  transformOrigin: "left",
+                  transition: "transform 0.2s ease-out",
+                }}
+                sx={{
+                  "&:hover::after": {
+                    transform: "scaleX(1)",
+                  },
+                }}
+              >
+                {item.label}
+              </Link>
+            ))}
+          </HStack>
 
-                <Stack
-                    mt={6}
-                    direction={{ base: "column", md: "row" }}
-                    justify="space-between"
-                    align={{ base: "start", md: "center" }}
-                    spacing={4}
-                >
-                    <HStack spacing={6} wrap="wrap">
-                        <Link href="/proyectos">Proyectos</Link>
-                        <Link href="/educacion">Educación</Link>
-                        <Link href="/sobremi">Sobre mí</Link>
-                        <Link href="/contacto">Contacto</Link>
-                    </HStack>
-
-                    <Text fontSize="sm" color={muted}>
-                        © {new Date().getFullYear()} Agustín Juárez. Hecho con React + Chakra UI.
-                    </Text>
-                </Stack>
-            </Container>
-        </Box>
-    );
+          <Text fontSize="xs" color={muted}>
+            © {new Date().getFullYear()} Agustín Juárez 
+          </Text>
+        </Stack>
+      </Container>
+    </Box>
+  );
 }

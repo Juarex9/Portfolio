@@ -1,0 +1,121 @@
+{
+  "navbar": {
+    "home": "Home",
+    "projects": "Projects",
+    "education": "Education",
+    "about": "About me",
+    "contact": "Contact"
+  },
+
+  "hero": {
+    "title_1": "Hi, I'm",
+    "title_name": "Agustin",
+    "subtitle": "I build modern, functional web experiences with a touch of innovation from the Web3 ecosystem.",
+    "btn_contact": "Contact",
+    "btn_projects": "View Projects"
+  },
+
+  "projects": {
+    "title": "My Projects",
+    "web2": {
+      "title": "Web2",
+      "desc": "Projects developed using traditional web technologies such as React, Node.js, and SQL/NoSQL databases."
+    },
+    "web3": {
+      "title": "Web3",
+      "desc": "Projects that integrate blockchain, smart contracts, and decentralized tools from the new web ecosystem."
+    }
+  },
+
+  "education": {
+    "ucasal": {
+      "title": "Computer Engineering",
+      "institution": "Universidad Católica de Salta",
+      "location": "Salta, Argentina",
+      "start": "2023",
+      "end": "Present",
+      "h1": "Data structures and databases",
+      "h2": "Object-oriented programming",
+      "h3": "Teamwork with Git and agile methodologies"
+    },
+
+    "reparando": {
+      "title": "Computer Equipment Diagnosis & Repair",
+      "institution": "Reparando",
+      "location": "Online",
+      "start": "2019",
+      "end": "2020",
+      "h1": "Preventive and corrective hardware maintenance",
+      "h2": "Operating system installation",
+      "h3": "Computer cleaning and performance optimization"
+    },
+
+    "coder": {
+      "title": "Full Stack Developer Career",
+      "institution": "Coderhouse",
+      "location": "Online",
+      "start": "2024",
+      "end": "2025",
+      "h1": "Web accessibility and performance",
+      "h2": "UI system design with Chakra",
+      "h3": "Final project: e-commerce website",
+      "h4": "Database foundations with MongoDB"
+    }
+  },
+
+  "about": {
+    "badge": "About me",
+    "heading": "Building web experiences from both the creative and technical side",
+
+    "p1": "I'm Agustin, a full stack developer and engineering student. I enjoy working where design, code, and user experience intersect.",
+    "p2": "I like building well-designed projects, from concept to deployment, using tools like React, Node.js, Express, Python, and SQL/NoSQL databases.",
+    "p3": "I'm diving deep into the Web3 world, exploring ways to integrate smart contracts and blockchain into real-world products.",
+
+    "card1": {
+      "title": "Full Stack Mindset",
+      "text": "Comfortable working on both frontend and backend: APIs, data models, and modern interfaces."
+    },
+
+    "card2": {
+      "title": "Community & Events",
+      "text": "Active participant in communities like SaltaDev, workshops, and hackathons."
+    },
+
+    "card3": {
+      "title": "Web2 → Web3",
+      "text": "My goal is to merge traditional development experience with the opportunities of the Web3 ecosystem."
+    }
+  },
+
+  "contact": {
+    "section": {
+      "badge": "Contact",
+      "title": "Let's talk",
+      "desc": "You can reach me directly through these channels or by filling out the form."
+    },
+
+    "phone": "Phone",
+    "email": "Email",
+    "location": "Location",
+
+    "form": {
+      "name": "Your name",
+      "email": "Email",
+      "message": "Message",
+      "send": "Send message"
+    }
+  },
+
+  "footer": {
+    "name": "Agustin Juárez",
+    "title": "Full-Stack Developer · React · Node · Web3",
+    "rights": "All rights reserved.",
+    "made_with": "Built with React + Chakra UI.",
+    "links": {
+      "projects": "Projects",
+      "education": "Education",
+      "about": "About me",
+      "contact": "Contact"
+    }
+  }
+}

@@ -1,10 +1,21 @@
 import { useColorModeValue } from "@chakra-ui/react";
 
 export function useAccentColors() {
-    const accentColor = useColorModeValue("#29411ae3", "#4ade80")
-    const bgColor = useColorModeValue("#c5ccd1ff", "#000000ff");
-    const textColor = useColorModeValue("#000000ff", "#fff");
-    const cardBg = useColorModeValue("#d9dfe4e0", "#232d25");
-    const cardText = useColorModeValue("#000000ff", "#fff");
-    return { accentColor, cardBg, cardText, bgColor, textColor };
-}
+  // Verde principal (más brillante en light, neon en dark)
+  const accentColor = useColorModeValue("#15803d", "#4ade80");
+
+  // Fondo general del sitio
+  const bgColor = useColorModeValue("#f7f9fb", "#020617");
+
+  // Texto principal
+  const textColor = useColorModeValue("#0f172a", "#e5e7eb");
+
+  // Fondo de cards / secciones
+  const cardBg = useColorModeValue("#ffffff", "#111827");
+
+  // Texto dentro de las cards
+  const cardText = useColorModeValue("#111827", "#f9fafb");
+
+  return { accentColor, cardBg, cardText, bgColor, textColor };
+}   
+    
