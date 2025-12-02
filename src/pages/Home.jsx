@@ -47,7 +47,7 @@ export default function Hero() {
             alignItems="center"
             justifyContent="center"
           >
-            <Text fontWeight="bold">{t("hero.avatar")}</Text>
+            <img src="./public/imagen_circular_recortada.png" alt="img_profile" />
           </MotionBox>
 
           {/* Título */}
@@ -58,7 +58,7 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            {t("hero.title_hello")}{" "}
+            {t("hero.title_1")}{" "}
             <Box as="span" color={accentColor}>
               {t("hero.title_name")}
             </Box>
