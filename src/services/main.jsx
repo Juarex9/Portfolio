@@ -4,6 +4,7 @@ import { ChakraProvider } from "@chakra-ui/react";
 import { RouterProvider } from "react-router-dom";
 import { router } from "../routes/index";
 import "../i18n";
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 
 
@@ -11,6 +12,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <ChakraProvider>
       <RouterProvider router={router} />
+      <SpeedInsights/>
     </ChakraProvider>
   </React.StrictMode>
 );
