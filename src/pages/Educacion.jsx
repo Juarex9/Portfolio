@@ -21,62 +21,14 @@ import {
 import { motion } from "framer-motion";
 import { CheckCircle, ExternalLink } from "lucide-react";
 import { useAccentColors } from "../hooks/useAccentColors";
-
-// ---------- Datos ----------
-export const educationItems = [
-  {
-    title: "Ingeniería Informática",
-    institution: "Universidad Católica de Salta",
-    location: "Salta, Argentina",
-    start: "2023",
-    end: "Actualidad",
-    highlights: [
-      "Estructuras de datos y bases de datos",
-      "Programación orientada a objetos",
-      "Trabajo en equipo con Git y metodologías ágiles",
-    ],
-    tags: ["Algoritmos", "DB SQL", "React", "Node"],
-    links: [{ label: "Plan de estudios", href: "#" }],
-  },
-  {
-    title: "Diagnostico y Reparación de Equipos de Cómputo",
-    institution: "Reparando",
-    location: "Online",
-    start: "2019",
-    end: "2020",
-    highlights: [
-      "Mantenimiento preventivo y correctivo de hardware",
-      "Instalación de sistemas operativos",
-      "Limpieza y optimización de equipos",
-    ],
-    tags: ["Hardware", "Equipos de PC", "Sistemas Operativos"],
-    links: [{ label: "Certificado", href: "#" }],
-  },
-  {
-    title: "Carrera de Desarrollador Full Stack",
-    institution: "Plataforma Coderhouse",
-    location: "Online",
-    start: "2024",
-    end: "2025",
-    highlights: [
-      "Accesibilidad web y performance",
-      "Diseño de sistemas de UI con Chakra",
-      "Proyecto final: web de e-commerce",
-      "Bases de datos con MongoDB",
-    ],
-    tags: ["React", "Performance", "Chakra UI", "Desarrollo Web", "MongoDB"],
-    links: [
-      { label: "Certificado", href: "#" },
-      { label: "Proyecto final", href: "#" },
-    ],
-  },
-];
+import { useTranslation } from "react-i18next";
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
 
-export default function EducationTimeline({ items = educationItems }) {
+export default function EducationTimeline() {
   const { cardBg, accentColor, bgColor, textColor } = useAccentColors();
+  const { t } = useTranslation();
 
   const sectionBg = useColorModeValue(
     `linear-gradient(135deg, ${bgColor} 55%, rgba(105,197,139,0.15) 100%)`,
@@ -89,6 +41,23 @@ export default function EducationTimeline({ items = educationItems }) {
   );
 
   const locationColor = useColorModeValue("gray.500", "gray.400");
+
+  // Igual que en Proyectos: solo keys, todo el contenido viene de i18n
+  const items = ["ucasal", "reparando", "coder"].map((key) => {
+    const base = `education.${key}`;
+
+    return {
+      key,
+      title: t(`${base}.title`),
+      institution: t(`${base}.institution`),
+      location: t(`${base}.location`),
+      start: t(`${base}.start`),
+      end: t(`${base}.end`),
+      highlights: t(`${base}.highlights`, { returnObjects: true }) || [],
+      tags: t(`${base}.tags`, { returnObjects: true }) || [],
+      links: t(`${base}.links`, { returnObjects: true }) || [],
+    };
+  });
 
   return (
     <Box w="full" bg={sectionBg} py={{ base: 12, md: 20 }}>
@@ -113,7 +82,7 @@ export default function EducationTimeline({ items = educationItems }) {
               fontSize="xs"
               letterSpacing="wider"
             >
-              Formación
+              {t("education.section.badge")}
             </Badge>
 
             <MotionHeading
@@ -125,7 +94,7 @@ export default function EducationTimeline({ items = educationItems }) {
               transition={{ duration: 0.6 }}
               mb={1}
             >
-              Educación & Certificaciones
+              {t("education.section.heading")}
             </MotionHeading>
 
             <Text
@@ -133,22 +102,9 @@ export default function EducationTimeline({ items = educationItems }) {
               color={useColorModeValue("gray.600", "gray.300")}
               maxW="lg"
             >
-              Un recorrido por mi formación académica y cursos que reforzaron
-              mi perfil como desarrollador full stack.
+              {t("education.section.desc")}
             </Text>
           </Box>
-
-          {/* Si querés después podés cambiar este href por tu CV */}
-          {/* <Button
-            as={Link}
-            href="#"
-            variant="outline"
-            borderRadius="full"
-            px={6}
-            fontSize="sm"
-          >
-            Ver CV
-          </Button> */}
         </Stack>
 
         <Grid templateColumns={{ base: "1fr", md: "260px 1fr" }} gap={10}>
@@ -168,7 +124,7 @@ export default function EducationTimeline({ items = educationItems }) {
 
               <VStack align="stretch" spacing={6}>
                 {items.map((it, idx) => (
-                  <HStack key={idx} spacing={3} align="flex-start">
+                  <HStack key={it.key} spacing={3} align="flex-start">
                     <Box pt="2px">
                       <Box
                         w="14px"
@@ -200,7 +156,7 @@ export default function EducationTimeline({ items = educationItems }) {
             <VStack align="stretch" spacing={6}>
               {items.map((it, idx) => (
                 <MotionBox
-                  key={idx}
+                  key={it.key}
                   bg={cardBg}
                   borderRadius="2xl"
                   boxShadow="xl"
@@ -238,7 +194,7 @@ export default function EducationTimeline({ items = educationItems }) {
 
                   {/* bullets */}
                   <Stack spacing={2} mb={4}>
-                    {it.highlights?.map((h, i) => (
+                    {it.highlights.map((h, i) => (
                       <HStack key={i} align="flex-start">
                         <Icon
                           as={CheckCircle}
@@ -252,10 +208,10 @@ export default function EducationTimeline({ items = educationItems }) {
                   </Stack>
 
                   {/* tags */}
-                  {it.tags?.length ? (
+                  {it.tags.length ? (
                     <Wrap mb={4}>
-                      {it.tags.map((t) => (
-                        <WrapItem key={t}>
+                      {it.tags.map((tTag) => (
+                        <WrapItem key={tTag}>
                           <Tag
                             size="sm"
                             borderRadius="full"
@@ -263,7 +219,7 @@ export default function EducationTimeline({ items = educationItems }) {
                             bg={useColorModeValue("green.50", "green.900")}
                             color={useColorModeValue("green.700", "green.200")}
                           >
-                            {t}
+                            {tTag}
                           </Tag>
                         </WrapItem>
                       ))}
@@ -272,7 +228,7 @@ export default function EducationTimeline({ items = educationItems }) {
 
                   {/* links */}
                   <HStack spacing={3} flexWrap="wrap">
-                    {it.links?.map((l) => (
+                    {it.links.map((l) => (
                       <Button
                         key={l.label}
                         as={Link}

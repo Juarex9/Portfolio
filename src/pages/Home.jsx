@@ -47,7 +47,7 @@ export default function Hero() {
             alignItems="center"
             justifyContent="center"
           >
-            <img src="./public/imagen_circular_recortada.png" alt="img_profile" />
+            <img src="./imagen_circular_recortada.png" alt="img_profile" />
           </MotionBox>
 
           {/* Título */}

@@ -15,57 +15,117 @@
     "btn_projects": "Ver Proyectos"
   },
 
-  "projects": {
-    "title": "Mis Proyectos",
+"projects": {
+  "badge": "Portfolio",
+  "title": "Proyectos Web2 & Web3",
+  "subtitle": "Una selección de proyectos donde aplico mi stack full-stack, desde aplicaciones tradicionales hasta integraciones con blockchain.",
+  "github_button": "Ver más en GitHub",
+
+  "cards": {
     "web2": {
       "title": "Web2",
-      "desc": "Proyectos desarrollados con tecnologías tradicionales del entorno web, como React, Node.js y bases de datos SQL o NoSQL."
+      "tag": "Frontend · Backend",
+      "description": "Proyectos desarrollados con tecnologías tradicionales del entorno web, como React, Node.js y bases de datos SQL o NoSQL."
     },
     "web3": {
       "title": "Web3",
-      "desc": "Proyectos que integran blockchain, contratos inteligentes y herramientas descentralizadas del nuevo ecosistema web."
+      "tag": "Blockchain · Smart Contracts",
+      "description": "Proyectos que integran blockchain, contratos inteligentes y herramientas descentralizadas del nuevo ecosistema web."
     }
   },
 
-  "education": {
-    "ucasal": {
-      "title": "Ingeniería Informática",
-      "institution": "Universidad Católica de Salta",
-      "location": "Salta, Argentina",
-      "start": "2023",
-      "end": "Actualidad",
-      "h1": "Estructuras de datos y bases de datos",
-      "h2": "Programación orientada a objetos",
-      "h3": "Trabajo en equipo con Git y metodologías ágiles"
-    },
-
-    "reparando": {
-      "title": "Diagnóstico y Reparación de Equipos de Cómputo",
-      "institution": "Reparando",
-      "location": "Online",
-      "start": "2019",
-      "end": "2020",
-      "h1": "Mantenimiento preventivo y correctivo de hardware",
-      "h2": "Instalación de sistemas operativos",
-      "h3": "Limpieza y optimización de equipos"
-    },
-
-    "coder": {
-      "title": "Carrera de Desarrollador Full Stack",
-      "institution": "Coderhouse",
-      "location": "Online",
-      "start": "2024",
-      "end": "2025",
-      "h1": "Accesibilidad web y performance",
-      "h2": "Diseño de sistemas de UI con Chakra",
-      "h3": "Proyecto final: web de e-commerce",
-      "h4": "Bases de datos con MongoDB"
+  "web2": {
+    "title": "Proyectos Web2",
+    "desc": "Proyectos construidos con tecnologías web tradicionales como React, Node.js y bases de datos SQL/NoSQL.",
+    "items": {
+      "automatic-form": {
+        "title": "Automatic Form",
+        "subtitle": "Automatizador de formularios",
+        "description": "Herramienta para digitalizar formularios usando IA, pensada para automatizar la carga de datos.",
+        "tech": ["Python", "IA", "Automatización"]
+      },
+      "express-passport-jwt-auth-template": {
+        "title": "Express Passport JWT Auth Template",
+        "subtitle": "Template reusable para Express",
+        "description": "Template reutilizable de backend con Express, Passport y JWT para autenticación y protección de rutas.",
+        "tech": ["Node.js", "Express", "MongoDB", "Passport", "JWT"]
+      },
+      "e-commerce": {
+        "title": "E-commerce",
+        "subtitle": "Frontend de un e-commerce en React",
+        "description": "Frontend de un e-commerce desarrollado en React, enfocado en la experiencia de usuario.",
+        "tech": ["React", "JavaScript", "Firebase", "API"]
+      }
     }
+  }
+},
+
+"education": {
+  "section": {
+    "badge": "Formación",
+    "heading": "Educación & Certificaciones",
+    "desc": "Un recorrido por mi formación académica y cursos que reforzaron mi perfil como desarrollador full stack."
   },
+
+  "ucasal": {
+    "title": "Ingeniería Informática",
+    "institution": "Universidad Católica de Salta",
+    "location": "Salta, Argentina",
+    "start": "2023",
+    "end": "Actualidad",
+    "highlights": [
+      "Estructuras de datos y bases de datos",
+      "Programación orientada a objetos",
+      "Trabajo en equipo con Git y metodologías ágiles"
+    ],
+    "tags": ["Algoritmos", "DB SQL", "React", "Node"],
+    "links": [
+      { "label": "Plan de estudios", "href": "#" }
+    ]
+  },
+
+  "reparando": {
+    "title": "Diagnóstico y Reparación de Equipos de Cómputo",
+    "institution": "Reparando",
+    "location": "Online",
+    "start": "2019",
+    "end": "2020",
+    "highlights": [
+      "Mantenimiento preventivo y correctivo de hardware",
+      "Instalación de sistemas operativos",
+      "Limpieza y optimización de equipos"
+    ],
+    "tags": ["Hardware", "Equipos de PC", "Sistemas operativos"],
+    "links": [
+      { "label": "Certificado", "href": "#" }
+    ]
+  },
+
+  "coder": {
+    "title": "Carrera de Desarrollador Full Stack",
+    "institution": "Coderhouse",
+    "location": "Online",
+    "start": "2024",
+    "end": "2025",
+    "highlights": [
+      "Accesibilidad web y performance",
+      "Diseño de sistemas de UI con Chakra",
+      "Proyecto final: web de e-commerce",
+      "Bases de datos con MongoDB"
+    ],
+    "tags": ["React", "Performance", "Chakra UI", "Desarrollo web", "MongoDB"],
+    "links": [
+      { "label": "Certificado", "href": "#" },
+      { "label": "Proyecto final", "href": "#" }
+    ]
+  }
+}
+,
 
   "about": {
     "badge": "Sobre mí",
     "heading": "Construyendo experiencias web desde el lado creativo y técnico",
+    "context": "Un poco de contexto sobre quién soy, cómo pienso los proyectos y hacia dónde quiero crecer como desarrollador.",
 
     "p1": "Soy Agustín, desarrollador full stack e ingeniero en formación. Me gusta trabajar en la intersección entre diseño, código y experiencia de usuario.",
     "p2": "Disfruto de armar proyectos bien pensados, desde la idea hasta el despliegue, usando herramientas como React, Node.js, Express, Python y bases de datos SQL/NoSQL.",
@@ -91,23 +151,22 @@
     "section": {
       "badge": "Contacto",
       "title": "Hablemos",
+      "subtitle": "Contactame por estos medios, estoy abierto a propuestas freelance, ofertas laborales y colaboraciones.",
       "desc": "Podés contactarme directamente por estos medios o completando el formulario."
     },
-
-    "phone": "Teléfono",
-    "email": "Correo",
-    "location": "Ubicación",
 
     "form": {
       "name": "Tu nombre",
       "email": "Correo",
       "message": "Mensaje",
-      "send": "Enviar mensaje"
+      "send": "Enviar mensaje",
+      "desc": "Contame brevemente en qué te puedo ayudar"
     }
   },
 
   "footer": {
-    "name": "Agustín Juárez",
+    "name": "Agustín",
+    "surename": "Juárez",
     "title": "Desarrollador Full-Stack · React · Node · Web3",
     "rights": "Todos los derechos reservados.",
     "made_with": "Hecho con React + Chakra UI.",

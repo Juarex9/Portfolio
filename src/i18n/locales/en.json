@@ -16,56 +16,117 @@
   },
 
   "projects": {
-    "title": "My Projects",
-    "web2": {
-      "title": "Web2",
-      "desc": "Projects developed using traditional web technologies such as React, Node.js, and SQL/NoSQL databases."
+    "badge": "Portfolio",
+    "title": "Web2 & Web3 Projects",
+    "subtitle": "A selection of projects where I apply my full-stack skills, from traditional web applications to blockchain integrations.",
+    "github_button": "See more on GitHub",
+
+    "cards": {
+      "web2": {
+        "title": "Web2",
+        "tag": "Frontend · Backend",
+        "description": "Projects built using traditional web technologies such as React, Node.js, and SQL/NoSQL databases."
+      },
+      "web3": {
+        "title": "Web3",
+        "tag": "Blockchain · Smart Contracts",
+        "description": "Projects integrating blockchain, smart contracts, and decentralized tools from the evolving Web3 ecosystem."
+      }
     },
-    "web3": {
-      "title": "Web3",
-      "desc": "Projects that integrate blockchain, smart contracts, and decentralized tools from the new web ecosystem."
+
+    "web2": {
+      "title": "Web2 Projects",
+      "desc": "Projects developed using traditional web technologies like React, Node.js, and SQL/NoSQL databases.",
+      "items": {
+        "automatic-form": {
+          "title": "Automatic Form",
+          "subtitle": "Form automation tool",
+          "description": "Tool designed to digitize and automate form processing using AI.",
+          "tech": ["Python", "AI", "Automation"]
+        },
+        "express-passport-jwt-auth-template": {
+          "title": "Express Passport JWT Auth Template",
+          "subtitle": "Reusable Express backend template",
+          "description": "Reusable backend template with Express, Passport, and JWT for authentication and protected routes.",
+          "tech": ["Node.js", "Express", "MongoDB", "Passport", "JWT"]
+        },
+        "e-commerce": {
+          "title": "E-commerce",
+          "subtitle": "E-commerce frontend built in React",
+          "description": "Frontend for an e-commerce application developed in React, focused on user experience.",
+          "tech": ["React", "JavaScript", "Firebase", "API"]
+        }
+      }
     }
   },
 
   "education": {
+    "section": {
+      "badge": "Education",
+      "heading": "Education & Certifications",
+      "desc": "A look at my academic background and courses that strengthened my profile as a full-stack developer."
+    },
+
     "ucasal": {
       "title": "Computer Engineering",
-      "institution": "Universidad Católica de Salta",
+      "institution": "Catholic University of Salta",
       "location": "Salta, Argentina",
       "start": "2023",
       "end": "Present",
-      "h1": "Data structures and databases",
-      "h2": "Object-oriented programming",
-      "h3": "Teamwork with Git and agile methodologies"
+      "highlights": [
+        "Data structures and databases",
+        "Object-oriented programming",
+        "Teamwork with Git and agile methodologies"
+      ],
+      "tags": ["Algorithms", "SQL DB", "React", "Node"],
+      "links": [{ "label": "Study Plan", "href": "#" }]
     },
 
     "reparando": {
-      "title": "Computer Equipment Diagnosis & Repair",
+      "title": "Computer Equipment Diagnostics and Repair",
       "institution": "Reparando",
       "location": "Online",
       "start": "2019",
       "end": "2020",
-      "h1": "Preventive and corrective hardware maintenance",
-      "h2": "Operating system installation",
-      "h3": "Computer cleaning and performance optimization"
+      "highlights": [
+        "Preventive and corrective hardware maintenance",
+        "Operating system installation",
+        "Cleaning and optimization of computers"
+      ],
+      "tags": ["Hardware", "PC Equipment", "Operating Systems"],
+      "links": [{ "label": "Certificate", "href": "#" }]
     },
 
     "coder": {
-      "title": "Full Stack Developer Career",
+      "title": "Full Stack Developer Program",
       "institution": "Coderhouse",
       "location": "Online",
       "start": "2024",
       "end": "2025",
-      "h1": "Web accessibility and performance",
-      "h2": "UI system design with Chakra",
-      "h3": "Final project: e-commerce website",
-      "h4": "Database foundations with MongoDB"
+      "highlights": [
+        "Web accessibility and performance",
+        "UI system design with Chakra",
+        "Final project: e-commerce website",
+        "Database fundamentals with MongoDB"
+      ],
+      "tags": [
+        "React",
+        "Performance",
+        "Chakra UI",
+        "Web development",
+        "MongoDB"
+      ],
+      "links": [
+        { "label": "Certificate", "href": "#" },
+        { "label": "Final project", "href": "#" }
+      ]
     }
   },
 
   "about": {
     "badge": "About me",
     "heading": "Building web experiences from both the creative and technical side",
+    "context": "A little background on who I am, how I approach projects, and where I want to grow as a developer.",
 
     "p1": "I'm Agustin, a full stack developer and engineering student. I enjoy working where design, code, and user experience intersect.",
     "p2": "I like building well-designed projects, from concept to deployment, using tools like React, Node.js, Express, Python, and SQL/NoSQL databases.",
@@ -91,23 +152,22 @@
     "section": {
       "badge": "Contact",
       "title": "Let's talk",
-      "desc": "You can reach me directly through these channels or by filling out the form."
+      "subtitle": "Reach out through any of these channels — I’m open to freelance projects, job opportunities, and collaborations.",
+      "desc": "You can contact me directly through these methods or by filling out the form."
     },
-
-    "phone": "Phone",
-    "email": "Email",
-    "location": "Location",
 
     "form": {
       "name": "Your name",
       "email": "Email",
       "message": "Message",
-      "send": "Send message"
+      "send": "Send message",
+      "desc": "Tell me briefly how I can help you"
     }
   },
 
   "footer": {
-    "name": "Agustin Juárez",
+    "name": "Agustin",
+    "surename": "Juárez",
     "title": "Full-Stack Developer · React · Node · Web3",
     "rights": "All rights reserved.",
     "made_with": "Built with React + Chakra UI.",

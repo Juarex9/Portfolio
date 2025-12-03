@@ -14,6 +14,7 @@ import {
 } from "@chakra-ui/react";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const MotionBox = motion(Box);
 const MotionVStack = motion(VStack);
@@ -28,6 +29,7 @@ const AboutMe = () => {
   );
 
   const secondaryText = useColorModeValue("gray.600", "gray.300");
+  const { t } = useTranslation();
 
   return (
     <Box w="100%" bg={sectionBg} py={{ base: 12, md: 20 }}>
@@ -52,7 +54,7 @@ const AboutMe = () => {
               fontSize="xs"
               letterSpacing="wider"
             >
-              Sobre mí
+              {t("about.badge")}
             </Badge>
 
             <MotionHeading
@@ -64,12 +66,11 @@ const AboutMe = () => {
               transition={{ duration: 0.6 }}
               mb={1}
             >
-              Construyendo experiencias web desde el lado creativo y técnico
+             {t("about.heading")}
             </MotionHeading>
 
             <Text fontSize="sm" color={secondaryText} maxW="lg">
-              Un poco de contexto sobre quién soy, cómo pienso los proyectos
-              y hacia dónde quiero crecer como desarrollador.
+              {t("about.context")}
             </Text>
           </Box>
         </Stack>
@@ -95,7 +96,7 @@ const AboutMe = () => {
               overflow="hidden"
             >
               <Image
-                src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=1000&q=80"
+                src="/aboutme.png"
                 alt="Workspace mockup"
                 borderRadius="xl"
                 objectFit="cover"
@@ -115,19 +116,13 @@ const AboutMe = () => {
             color={textColor}
           >
             <Text>
-              Soy Agustín, desarrollador full stack e ingeniero en formación.
-              Me gusta trabajar en la intersección entre diseño, código y
-              experiencia de usuario.
+              {t("about.p1")}
             </Text>
             <Text>
-              Disfruto de armar proyectos bien pensados, desde la idea hasta el
-              despliegue, usando herramientas como React, Node.js, Express,
-              Python y bases de datos SQL/NoSQL.
+            {t("about.p2")}
             </Text>
             <Text>
-              En paralelo, estoy metiéndome fuerte en el mundo Web3, buscando
-              formas de integrar contratos inteligentes y blockchain a
-              productos que la gente realmente use.
+            {t("about.p3")}
             </Text>
           </MotionVStack>
         </SimpleGrid>
@@ -143,12 +138,10 @@ const AboutMe = () => {
             _hover={{ transform: "translateY(-4px)", boxShadow: "2xl" }}
           >
             <Heading size="md" mb={3} color={accentColor}>
-              Full Stack Mindset
+              {t("about.card1.title")}
             </Heading>
             <Text color={secondaryText} fontSize="sm">
-              Me siento cómodo trabajando tanto en frontend como en backend:
-              levantar APIs, diseñar modelos de datos y crear interfaces
-              modernas.
+              {t("about.card1.text")}
             </Text>
           </Box>
 
@@ -161,11 +154,10 @@ const AboutMe = () => {
             _hover={{ transform: "translateY(-4px)", boxShadow: "2xl" }}
           >
             <Heading size="md" mb={3} color={accentColor}>
-              Comunidad &amp; Eventos
+              {t("about.card2.title")}
             </Heading>
             <Text color={secondaryText} fontSize="sm">
-              Participo en comunidades como SaltaDev, workshops y hackathons,
-              donde aprendo, conecto con otros devs y pruebo ideas nuevas.
+              {t("about.card2.text")}
             </Text>
           </Box>
 
@@ -178,12 +170,10 @@ const AboutMe = () => {
             _hover={{ transform: "translateY(-4px)", boxShadow: "2xl" }}
           >
             <Heading size="md" mb={3} color={accentColor}>
-              Web2 → Web3
+              {t("about.card3.title")}
             </Heading>
             <Text color={secondaryText} fontSize="sm">
-              Mi objetivo es combinar lo mejor del desarrollo tradicional con
-              la tecnología blockchain para construir soluciones reales, útiles
-              y preparadas para el futuro.
+              {t("about.card3.text")}
             </Text>
           </Box>
         </SimpleGrid>

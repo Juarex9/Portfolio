@@ -17,6 +17,7 @@ import {
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
+import { useTranslation } from "react-i18next";
 
 const MotionBox = motion(Box);
 
@@ -29,21 +30,16 @@ export default function Proyectos() {
   );
 
   const cardTextColor = useColorModeValue("gray.700", "gray.200");
+  const {t} = useTranslation()
 
   const cards = [
     {
-      title: "Web2",
-      tag: "Frontend · Backend",
-      description:
-        "Proyectos desarrollados con tecnologías tradicionales del entorno web, como React, Node.js y bases de datos SQL o NoSQL.",
-      image: "/web2.jpg",
-      link: "/web2",
+      key: "web2",
+      image:"/web2.jpg",
+      link: "/web2"
     },
     {
-      title: "Web3",
-      tag: "Blockchain · Smart Contracts",
-      description:
-        "Proyectos que integran blockchain, contratos inteligentes y herramientas descentralizadas del nuevo ecosistema web.",
+      key:"web3",
       image: "/web3.jpg",
       link: "/web3",
     },
@@ -72,7 +68,7 @@ export default function Proyectos() {
               fontSize="xs"
               letterSpacing="wider"
             >
-              Portfolio
+              {t("projects.badge")}
             </Badge>
 
             <Heading
@@ -80,7 +76,7 @@ export default function Proyectos() {
               color={useColorModeValue("gray.900", "white")}
               mb={1}
             >
-              Proyectos Web2 & Web3
+              {t("projects.title")}
             </Heading>
 
             <Text
@@ -88,9 +84,7 @@ export default function Proyectos() {
               color={useColorModeValue("gray.600", "gray.300")}
               maxW="lg"
             >
-              Una selección de proyectos donde aplico mi stack full-stack,
-              desde aplicaciones tradicionales hasta integraciones con
-              blockchain.
+              {t("projects.subtitle")}
             </Text>
           </Box>
 
@@ -103,7 +97,7 @@ export default function Proyectos() {
             px={6}
             fontSize="sm"
           >
-            Ver más en GitHub
+            {t("projects.github_button")}
           </Button>
         </Stack>
 
@@ -153,7 +147,7 @@ export default function Proyectos() {
                       color="white"
                       fontSize="xs"
                     >
-                      {card.tag}
+                      {t(`projects.cards.${card.key}.tag`)}
                     </Badge>
                   </HStack>
                 </Box>
@@ -164,7 +158,7 @@ export default function Proyectos() {
                     <LinkOverlay href={card.link}>{card.title}</LinkOverlay>
                   </Heading>
                   <Text fontSize="sm" color={cardTextColor}>
-                    {card.description}
+                    {t(`projects.cards.${card.key}.description`)}
                   </Text>
                 </Box>
               </LinkBox>

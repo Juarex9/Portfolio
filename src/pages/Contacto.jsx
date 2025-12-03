@@ -24,13 +24,18 @@ import {
   MdPhone,
   MdEmail,
   MdLocationOn,
-  MdFacebook,
   MdOutlineEmail,
 } from "react-icons/md";
-import { BsGithub, BsDiscord, BsPerson, BsLinkedin } from "react-icons/bs";
+import {
+  BsPerson,
+  BsWhatsapp,
+  BsLinkedin,
+  BsTelegram,
+} from "react-icons/bs";
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
+import { useTranslation } from "react-i18next";
 
 const MotionBox = motion(Box);
 
@@ -73,7 +78,7 @@ export default function Contact() {
         throw new Error(data.message || "Error al enviar");
       }
 
-      toast({ title: "Mensaje enviado 🎉", status: "success" });
+      toast({ title: "Mensaje enviado!", status: "success" });
       resetForm();
     } catch (err) {
       toast({
@@ -93,7 +98,7 @@ export default function Contact() {
 
   const formBg = useColorModeValue("white", "#020617");
   const inputBorder = useColorModeValue("gray.200", "gray.600");
-
+  const { t } = useTranslation();
   return (
     <Box w="100%" bg={sectionBg} py={{ base: 12, md: 20 }}>
       <Container maxW="6xl">
@@ -117,7 +122,7 @@ export default function Contact() {
               fontSize="xs"
               letterSpacing="wider"
             >
-              Contacto
+              {t("contact.section.badge")}
             </Badge>
             <Heading
               fontSize={{ base: "2xl", md: "3xl" }}
@@ -125,16 +130,14 @@ export default function Contact() {
               fontWeight="extrabold"
               mb={1}
             >
-              Hablemos
+              {t("contact.section.title")}
             </Heading>
             <Text
               fontSize="sm"
               color={useColorModeValue("gray.600", "gray.300")}
               maxW="lg"
             >
-              Podés contactarme directamente por estos medios o completando el
-              formulario. Estoy abierto a propuestas freelance, oportunidades
-              laborales y colaboraciones.
+              {t("contact.section.subtitle")}
             </Text>
           </Box>
         </HStack>
@@ -157,14 +160,13 @@ export default function Contact() {
               {/* Columna izquierda: info de contacto */}
               <Box>
                 <Heading fontSize="2xl" mb={2}>
-                  Hablemos
+                  {t("contact.section.title")}
                 </Heading>
                 <Text
                   mt={{ base: 2, md: 3 }}
                   color={useColorModeValue("gray.600", "gray.300")}
                 >
-                  Podés contactarme directamente por estos medios o
-                  completando el formulario.
+                  {t("contact.section.desc")}
                 </Text>
 
                 <Box py={{ base: 5, md: 8 }}>
@@ -217,29 +219,7 @@ export default function Contact() {
                 <HStack mt={{ base: 4, md: 2 }} spacing={4}>
                   <IconButton
                     as={Link}
-                    href="https://www.facebook.com"
-                    target="_blank"
-                    aria-label="Facebook"
-                    variant="ghost"
-                    size="lg"
-                    isRound
-                    _hover={{ bg: accentColor, color: "white" }}
-                    icon={<MdFacebook size="22px" />}
-                  />
-                  <IconButton
-                    as={Link}
-                    href="https://github.com/Juarex9"
-                    target="_blank"
-                    aria-label="GitHub"
-                    variant="ghost"
-                    size="lg"
-                    isRound
-                    _hover={{ bg: accentColor, color: "white" }}
-                    icon={<BsGithub size="22px" />}
-                  />
-                  <IconButton
-                    as={Link}
-                    href="https://www.linkedin.com"
+                    href="https://www.linkedin.com/in/agustin-juarez0907/"
                     target="_blank"
                     aria-label="LinkedIn"
                     variant="ghost"
@@ -250,13 +230,25 @@ export default function Contact() {
                   />
                   <IconButton
                     as={Link}
-                    href="#"
-                    aria-label="Discord"
+                    href="https://wa.me/5493886672774"
+                    target="_blank"
+                    aria-label="WhatsApp"
                     variant="ghost"
                     size="lg"
                     isRound
                     _hover={{ bg: accentColor, color: "white" }}
-                    icon={<BsDiscord size="22px" />}
+                    icon={<BsWhatsapp size="22px" />}
+                  />
+                  <IconButton
+                    as={Link}
+                    href="https://t.me/agustin_jzz"
+                    target="_blank"
+                    aria-label="Telegram"
+                    variant="ghost"
+                    size="lg"
+                    isRound
+                    _hover={{ bg: accentColor, color: "white" }}
+                    icon={<BsTelegram size="22px" />}
                   />
                 </HStack>
               </Box>
@@ -288,7 +280,7 @@ export default function Contact() {
                       />
 
                       <FormControl id="name" isRequired>
-                        <FormLabel>Tu nombre</FormLabel>
+                        <FormLabel>{t("contact.form.name")}</FormLabel>
                         <InputGroup borderColor={inputBorder}>
                           <InputLeftElement pointerEvents="none">
                             <BsPerson
@@ -301,7 +293,7 @@ export default function Contact() {
                             name="name"
                             value={form.name}
                             onChange={onChange}
-                            placeholder="Tu nombre"
+                            placeholder={t("contact.form.name")}
                             _focus={{
                               borderColor: accentColor,
                               boxShadow: `0 0 0 1px ${accentColor}`,
@@ -311,7 +303,7 @@ export default function Contact() {
                       </FormControl>
 
                       <FormControl id="email" isRequired>
-                        <FormLabel>Correo</FormLabel>
+                        <FormLabel>{t("contact.form.email")}</FormLabel>
                         <InputGroup borderColor={inputBorder}>
                           <InputLeftElement pointerEvents="none">
                             <MdOutlineEmail
@@ -321,7 +313,7 @@ export default function Contact() {
                           <Input
                             type="email"
                             size="md"
-                            name="email"
+                            name={t("contact.form.email")}
                             value={form.email}
                             onChange={onChange}
                             placeholder="you@mail.com"
@@ -334,13 +326,13 @@ export default function Contact() {
                       </FormControl>
 
                       <FormControl id="message" isRequired>
-                        <FormLabel>Mensaje</FormLabel>
+                        <FormLabel>{t("contact.form.message")}</FormLabel>
                         <Textarea
                           name="message"
                           value={form.message}
                           onChange={onChange}
                           borderColor={inputBorder}
-                          placeholder="Contame brevemente en qué te puedo ayudar"
+                          placeholder={t("contact.form.desc")}
                           _focus={{
                             borderColor: accentColor,
                             boxShadow: `0 0 0 1px ${accentColor}`,
@@ -360,7 +352,7 @@ export default function Contact() {
                           borderRadius="full"
                           px={6}
                         >
-                          Enviar mensaje
+                          {t("contact.form.send")}
                         </Button>
                       </HStack>
                     </VStack>
