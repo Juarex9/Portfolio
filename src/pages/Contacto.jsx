@@ -42,12 +42,13 @@ const MotionBox = motion(Box);
 export default function Contact() {
   const { accentColor, bgColor, textColor, cardBg } = useAccentColors();
   const toast = useToast();
+  const { t } = useTranslation();
 
   const [form, setForm] = useState({
     name: "",
     email: "",
     message: "",
-    hp: "",
+    hp: "", // honeypot (campo oculto)
   });
   const [loading, setLoading] = useState(false);
 
@@ -60,7 +61,9 @@ export default function Contact() {
 
   const onSubmit = async (e) => {
     e.preventDefault();
+    if (loading) return; // evita doble submit
     setLoading(true);
+
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
@@ -69,7 +72,7 @@ export default function Contact() {
           name: form.name,
           email: form.email,
           message: form.message,
-          honeypot: form.hp,
+          honeypot: form.hp, // 👈 coincide con el backend
         }),
       });
 
@@ -78,13 +81,21 @@ export default function Contact() {
         throw new Error(data.message || "Error al enviar");
       }
 
-      toast({ title: "Mensaje enviado!", status: "success" });
+      toast({
+        title: "Mensaje enviado",
+        description: "Gracias por contactarme, te responderé a la brevedad.",
+        status: "success",
+        duration: 5000,
+        isClosable: true,
+      });
       resetForm();
     } catch (err) {
       toast({
-        title: "Ups",
-        description: err?.message || "Ocurrió un error al enviar",
+        title: "Ups, algo salió mal",
+        description: err?.message || "Ocurrió un error al enviar el mensaje.",
         status: "error",
+        duration: 5000,
+        isClosable: true,
       });
     } finally {
       setLoading(false);
@@ -98,7 +109,7 @@ export default function Contact() {
 
   const formBg = useColorModeValue("white", "#020617");
   const inputBorder = useColorModeValue("gray.200", "gray.600");
-  const { t } = useTranslation();
+
   return (
     <Box w="100%" bg={sectionBg} py={{ base: 12, md: 20 }}>
       <Container maxW="6xl">
@@ -313,7 +324,7 @@ export default function Contact() {
                           <Input
                             type="email"
                             size="md"
-                            name={t("contact.form.email")}
+                            name="email"   // 👈 CORREGIDO
                             value={form.email}
                             onChange={onChange}
                             placeholder="you@mail.com"
