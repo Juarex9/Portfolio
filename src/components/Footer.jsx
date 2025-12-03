@@ -13,9 +13,18 @@ import {
 } from "@chakra-ui/react";
 import { BsGithub, BsLinkedin, BsEnvelope } from "react-icons/bs";
 import { useAccentColors } from "../hooks/useAccentColors";
+import { useTranslation } from "react-i18next";
 
 export default function Footer() {
   const { cardBg, accentColor, textColor } = useAccentColors();
+  const { t } = useTranslation();
+
+  const links = [
+    { href: "/proyectos", key:"projects"},
+    { href: "/educacion", key: "education" },
+    { href: "/sobremi", key: "about" },
+    { href: "/contacto", key: "contact" },
+  ];
 
   const muted = useColorModeValue("gray.600", "gray.400");
   const linkHover = useColorModeValue("gray.900", "whiteAlpha.900");
@@ -46,13 +55,13 @@ export default function Footer() {
         >
           <VStack align="flex-start" spacing={1}>
             <Text fontWeight="bold" fontSize="lg">
-              Agustín{" "}
+              {t("footer.name")}{" "}
               <Box as="span" color={accentColor}>
-                Juárez
+                {t("footer.surename")}
               </Box>
             </Text>
             <Text fontSize="sm" color={muted}>
-              Desarrollador Full-Stack · React · Node · Web3
+             {t("footer.title")}
             </Text>
           </VStack>
 
@@ -75,7 +84,7 @@ export default function Footer() {
             />
             <IconButton
               as={Link}
-              href="https://www.linkedin.com"
+              href="https://www.linkedin.com/in/agustin-juarez0907/"
               aria-label="LinkedIn"
               variant="ghost"
               size="lg"
@@ -116,12 +125,7 @@ export default function Footer() {
           spacing={4}
         >
           <HStack spacing={6} flexWrap="wrap">
-            {[
-              { href: "/proyectos", label: "Proyectos" },
-              { href: "/educacion", label: "Educación" },
-              { href: "/sobremi", label: "Sobre mí" },
-              { href: "/contacto", label: "Contacto" },
-            ].map((item) => (
+            {links.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -148,7 +152,7 @@ export default function Footer() {
                   },
                 }}
               >
-                {item.label}
+                {t(`footer.links.${item.key}`)}
               </Link>
             ))}
           </HStack>
