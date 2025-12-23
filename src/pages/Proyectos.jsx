@@ -46,7 +46,7 @@ export default function Proyectos() {
   ];
 
   return (
-    <Box w="full" bg={sectionBg} py={{ base: 12, md: 20 }}>
+    <Box w="full" bg={sectionBg} py={{ base: 12, md: 20 }} minH="calc(100vh - 60 px)">
       <Container maxW="6xl">
         {/* HEADER DE SECCIÓN */}
         <Stack

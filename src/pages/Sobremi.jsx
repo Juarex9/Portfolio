@@ -24,8 +24,8 @@ const AboutMe = () => {
   const { bgColor, accentColor, cardBg, textColor } = useAccentColors();
 
   const sectionBg = useColorModeValue(
-    `linear-gradient(135deg, ${bgColor} 55%, rgba(105,197,139,0.18) 100%)`,
-    `radial-gradient(circle at top left, #020617 0, ${bgColor} 60%, #020617 100%)`
+    `linear-gradient(135deg, ${bgColor} 55%, rgba(105,197,139,0.25) 100%)`,
+    `linear-gradient(135deg, ${bgColor} 70%, rgba(56,161,105,0.45) 100%)`
   );
 
   const secondaryText = useColorModeValue("gray.600", "gray.300");
