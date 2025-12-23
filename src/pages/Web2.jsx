@@ -24,8 +24,8 @@ export default function Web2() {
 
   const projects = [
     {
-      key: "automatic-form",
-      github: "https://github.com/Juarex9/automatic-form.git",
+      key: "real-time-chat",
+      github: "https://github.com/Juarex9/chat-realtime",
       demo: "",
     },
     {
