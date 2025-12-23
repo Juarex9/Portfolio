@@ -38,11 +38,11 @@
     "title": "Proyectos Web2",
     "desc": "Proyectos construidos con tecnologías web tradicionales como React, Node.js y bases de datos SQL/NoSQL.",
     "items": {
-      "automatic-form": {
-        "title": "Automatic Form",
-        "subtitle": "Automatizador de formularios",
-        "description": "Herramienta para digitalizar formularios usando IA, pensada para automatizar la carga de datos.",
-        "tech": ["Python", "IA", "Automatización"]
+      "real-time-chat": {
+        "title": "Real-time chat",
+        "subtitle": "Chat en tiempo real",
+        "description": "Chat en tiempo real creado utilizando Handlebars, Socket.io, Express y Javascript.",
+        "tech": ["JavaScript", "Express", "Tiempo real", "Node.js", "Handlebars"]
       },
       "express-passport-jwt-auth-template": {
         "title": "Express Passport JWT Auth Template",
