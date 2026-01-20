@@ -47,24 +47,7 @@ export default function Web2() {
       py={{ base: 10, md: 20 }}
     >
       <Container maxW="6xl">
-        <Heading
-          as="h1"
-          textAlign="center"
-          mb={4}
-          color={useColorModeValue("green.500", "green.300")}
-        >
-          {t("projects.web2.title")}
-        </Heading>
-
-        <Text
-          textAlign="center"
-          mb={10}
-          maxW="2xl"
-          mx="auto"
-          color={textColor}
-        >
-          {t("projects.web2.desc")}
-        </Text>
+        
 
         <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
           {projects.map((project) => {
