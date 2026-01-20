@@ -15,6 +15,17 @@
     "btn_projects": "View Projects"
   },
 
+  "presentation": {
+    "intro_title": "Full-Stack Developer Jr with focus on neat UI and clear APIs",
+    "intro_text": "I build end-to-end web apps with good practices, performance and user experience. I am looking for my first Jr/Trainee role to provide execution and improve quickly.",
+    "links": [{"label": "Download CV", "href": "./cv-juarez-english.pdf"}],
+    "intro_focus": "APPROACH",
+    "intro_b1": "Consistent UI: spacing, typography, and reusable components.",
+    "intro_b2": "Clear backend: validation, error handling, and clean APIs.",
+    "intro_b3": "Delivery: stable demo, detailed README, and organised commits."
+
+  },
+
   "projects": {
     "badge": "Portfolio",
     "title": "Web2 & Web3 Projects",
@@ -69,7 +80,7 @@
 
     "ucasal": {
       "title": "Computer Engineering",
-      "institution": "Catholic University of Salta",
+      "institution": "Universidad Católica de Salta",
       "location": "Salta, Argentina",
       "start": "2023",
       "end": "Present",
@@ -79,7 +90,7 @@
         "Teamwork with Git and agile methodologies"
       ],
       "tags": ["Algorithms", "SQL DB", "React", "Node"],
-      "links": [{ "label": "Study Plan", "href": "#" }]
+      "links": [{ "label": "Study Plan", "href": "./84-1-plan.pdf" }]
     },
 
     "reparando": {
@@ -117,7 +128,6 @@
         "MongoDB"
       ],
       "links": [
-        { "label": "Certificate", "href": "#" },
         { "label": "Final project", "href": "#" }
       ]
     }
