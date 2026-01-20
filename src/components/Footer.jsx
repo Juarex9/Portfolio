@@ -156,10 +156,6 @@ export default function Footer() {
               </Link>
             ))}
           </HStack>
-
-          <Text fontSize="xs" color={muted}>
-            © {new Date().getFullYear()} Agustín Juárez 
-          </Text>
         </Stack>
       </Container>
     </Box>
