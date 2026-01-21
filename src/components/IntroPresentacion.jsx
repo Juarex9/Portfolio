@@ -36,8 +36,8 @@ export default function IntroPresentation() {
   const images = [
     { src: "/alerta-chat.png", alt: "realtime-chat" },
     { src: "/main-chat.png", alt: "realtime-chat" },
-    { src: "/cursor-chat.png", alt: "realtime-chat" },
-    { src: "/showcase-4.jpg", alt: "Proyecto 4" },
+    { src: "/ecommerce-home.png", alt: "home-ecommerce" },
+    { src: "/ecommerce-producto.png", alt: "product-ecommerce" },
   ];
 
   const links = t("presentation.links", { returnObjects: true }) || [];
