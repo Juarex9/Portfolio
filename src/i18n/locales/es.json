@@ -91,6 +91,24 @@
             ]
           }
         }
+      },
+      "web3":{
+        "title": "Proyectos Web3",
+        "desc": "Proyectos construidos con tecnologías Blockchain y Web3",
+        "items": {
+          "sub0-front": {
+            "title": "Leivy Frontend",
+            "subtitle": "Frontend de una app para la hackathon de Sub0",
+            "description": "Sistema de automatización para DAOs, utilizando IA y la red de Arkiv para guardar los datos.",
+            "tech": [
+              "React",
+              "TailwindCSS",
+              "Web3",
+              "Integración",
+              "Arkiv"
+            ]
+          }
+        }
       }
     },
     "education": {
