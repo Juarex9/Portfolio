@@ -69,7 +69,7 @@
         },
         "portfolio": {
             "title": "Portfolio",
-            "subtitle": "My portfolio, made in React with a lot of love love",
+            "subtitle": "My portfolio, made in React with a lot of love",
             "description": "It's about my portfolio, the cover letter where I show who I am, what I do and how I work.",
             "tech": [
               "React",
