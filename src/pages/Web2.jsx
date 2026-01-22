@@ -26,18 +26,22 @@ export default function Web2() {
     {
       key: "real-time-chat",
       github: "https://github.com/Juarex9/chat-realtime",
-      demo: "",
+      demo: "https://backend1-coderhouse.onrender.com/",
     },
     {
       key: "express-passport-jwt-auth-template",
       github: "https://github.com/Juarex9/express-passport-jwt-auth-template.git",
-      demo: "",
     },
     {
       key: "e-commerce",
       github: "https://github.com/Juarex9/e-commerce.git",
-      demo: "",
+      demo: "https://e-commerce-gamma-indol.vercel.app/",
     },
+    {
+      key: "portfolio",
+      github: "https://github.com/Juarex9/Portfolio",
+      demo: "https://www.agustinjz.dev/"
+    }
   ];
 
   return (

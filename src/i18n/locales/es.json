@@ -74,8 +74,19 @@
             "description": "Frontend de un e-commerce desarrollado en React, enfocado en la experiencia de usuario.",
             "tech": [
               "React",
+              "Chakra UI",
               "JavaScript",
               "Firebase",
+              "API"
+            ]
+          },
+          "portfolio": {
+            "title": "Portfolio",
+            "subtitle": "Mi portfolio, hecho en React y con mucho amor",
+            "description": "Se trata de mi portfolio, la carta de presentación donde muestro quien soy, a que me dedico y como trabajo.",
+            "tech": [
+              "React",
+              "Chakra UI",
               "API"
             ]
           }
