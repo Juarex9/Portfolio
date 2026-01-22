@@ -17,7 +17,7 @@ import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
 
-export default function Web2() {
+export default function Web3() {
   const { cardBg, bgColor, accentColor } = useAccentColors();
   const textColor = useColorModeValue("gray.600", "gray.300");
   const { t } = useTranslation();
@@ -33,13 +33,14 @@ export default function Web2() {
   return (
     <Box
       w="full"
+      minH={{ base: "auto", md: "75vh" }}
       bg={`linear-gradient(135deg, ${bgColor} 70%, #69c58b 100%)`}
       py={{ base: 10, md: 20 }}
     >
-      <Container maxW="6xl">
+      <Container minW="6xl">
         
 
-        <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
+        <SimpleGrid spacing={8} columns={{ base: 1, md: 2 }}>
           {projects.map((project) => {
             const baseKey = `projects.web3.items.${project.key}`;
             const title = t(`${baseKey}.title`);
