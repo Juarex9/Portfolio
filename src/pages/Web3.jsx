@@ -11,7 +11,6 @@ import {
   Tag,
   Button,
   useColorModeValue,
-  Link,
 } from "@chakra-ui/react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { useAccentColors } from "../hooks/useAccentColors";
@@ -27,7 +26,7 @@ export default function Web3() {
       key: "sub0-front",
       github: "https://github.com/Juarex9/Sub0_front.git",
       demo: "",
-    }
+    },
   ];
 
   return (
@@ -37,10 +36,14 @@ export default function Web3() {
       bg={`linear-gradient(135deg, ${bgColor} 70%, #69c58b 100%)`}
       py={{ base: 10, md: 20 }}
     >
-      <Container minW="6xl">
-        
-
-        <SimpleGrid spacing={8} columns={{ base: 1, md: 2 }}>
+      <Container
+        maxW="6xl"                
+        px={{ base: 4, md: 6 }}   
+      >
+        <SimpleGrid
+          spacing={8}
+          columns={{ base: 1, md: 2 }}
+        >
           {projects.map((project) => {
             const baseKey = `projects.web3.items.${project.key}`;
             const title = t(`${baseKey}.title`);
@@ -55,7 +58,7 @@ export default function Web3() {
                 bg={cardBg}
                 borderRadius="xl"
                 boxShadow="lg"
-                p={6}
+                p={{ base: 5, md: 6 }}
                 transition="all 0.3s ease"
                 _hover={{ transform: "translateY(-5px)", boxShadow: "xl" }}
               >
@@ -87,7 +90,7 @@ export default function Web3() {
                   ))}
                 </HStack>
 
-                <HStack spacing={3}>
+                <HStack spacing={3} wrap="wrap">
                   <Button
                     as="a"
                     href={project.github}
@@ -107,7 +110,6 @@ export default function Web3() {
                       size="sm"
                       leftIcon={<FaExternalLinkAlt />}
                       colorScheme="green"
-                      variant="solid"
                     >
                       Demo
                     </Button>
