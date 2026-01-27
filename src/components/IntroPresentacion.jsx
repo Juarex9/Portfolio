@@ -7,7 +7,8 @@ import {
   Text,
   SimpleGrid,
   useColorModeValue,
-  Button
+  Button,
+  Image,
 } from "@chakra-ui/react";
 
 import { motion } from "framer-motion";
