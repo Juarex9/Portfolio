@@ -65,7 +65,10 @@ export function Seo({
       <meta property="og:locale" content={locale} />
 
       {/* Schema.org JSON-LD */}
-      <script type="application/ld+json">{JSON.stringify(jsonLd)}</script>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </Helmet>
   );
 }
