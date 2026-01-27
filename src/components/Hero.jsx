@@ -42,7 +42,7 @@ export default function Hero() {
             alignItems="center"
             justifyContent="center"
           >
-            <img src="./yo-circular.png" alt="img_profile" />
+            <img src="./yo-circular.png" alt="img-profile" />
           </MotionBox>
 
           {/* Título */}

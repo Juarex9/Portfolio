@@ -35,11 +35,12 @@ export default function Navbar() {
 
   const navBg = useColorModeValue(bgColor, bgColor);
   const borderColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
-  const currentLang = i18n.language?.startsWith("en") ? "en" : "es";
+  const currentLang = i18n.language;
 
-  const handleChangeLang = (lng) => {
-    i18n.changeLanguage(lng);
-  };
+  const handleChangeLang = (lang) => {
+    i18n.changeLanguage(lang);
+    localStorage.setItem("i18nextLng", lang); // persistencia explícita
+    };
 
   return (
     <Box
@@ -108,7 +109,7 @@ export default function Navbar() {
           <Menu placement="bottom-end">
             <MenuButton
               as={IconButton}
-              aria-label="Cambiar idioma"
+              aria-label="Change language"
               icon={<MdLanguage />}
               variant="ghost"
               size="sm"

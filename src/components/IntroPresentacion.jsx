@@ -5,14 +5,11 @@ import {
   HStack,
   Heading,
   Text,
-  Link,
-  IconButton,
-  Image,
   SimpleGrid,
   useColorModeValue,
-  Button,
-  Tooltip
+  Button
 } from "@chakra-ui/react";
+
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
@@ -59,7 +56,7 @@ export default function IntroPresentation() {
               >
                 <Image
                   src="/yo-circular.png"
-                  alt="profile"
+                  alt="profile-photo"
                   w="full"
                   h="full"
                   objectFit="cover"
