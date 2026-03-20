@@ -9,9 +9,6 @@ export default defineConfig({
       output: {
         manualChunks(id) {
           if (!id.includes('node_modules')) return
-          if (id.includes('react-dom') || id.includes('react/')) {
-            return 'vendor-react'
-          }
           if (id.includes('@chakra-ui') || id.includes('@emotion')) {
             return 'vendor-chakra'
           }
