@@ -5,7 +5,7 @@ export function Seo({
   titleKey,
   descriptionKey,
   canonicalPath = "/",
-  sameAs, // opcional: si lo pasás, pisa el default
+  sameAs,
 }) {
   const { t, i18n } = useTranslation();
 
@@ -24,7 +24,10 @@ export function Seo({
 
   const sameAsFinal = Array.isArray(sameAs) ? sameAs : sameAsDefault;
 
-  // JSON-LD (schema.org) — WebSite + Person
+  const jobTitle = i18n.language.startsWith("es")
+    ? "Desarrollador Full-Stack"
+    : "Full-Stack Developer";
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -43,10 +46,21 @@ export function Seo({
         name: "Agustín Juárez",
         url: origin,
         description: description,
-        jobTitle: i18n.language.startsWith("es")
-          ? "Desarrollador Full-Stack Junior"
-          : "Junior Full-Stack Developer",
-        knowsAbout: ["React", "Node.js", "Python", "Web3"],
+        jobTitle: jobTitle,
+        knowsAbout: [
+          "React",
+          "Node.js",
+          "Python",
+          "FastAPI",
+          "PostgreSQL",
+          "MongoDB",
+          "Express",
+          "JavaScript",
+          "TypeScript",
+          "Git",
+          "REST API",
+          "Web3"
+        ],
         sameAs: sameAsFinal,
       },
     ],
@@ -58,13 +72,11 @@ export function Seo({
       {description ? <meta name="description" content={description} /> : null}
       <link rel="canonical" href={canonical} />
 
-      {/* Open Graph básico */}
       {title ? <meta property="og:title" content={title} /> : null}
       {description ? <meta property="og:description" content={description} /> : null}
       <meta property="og:url" content={canonical} />
       <meta property="og:locale" content={locale} />
 
-      {/* Schema.org JSON-LD */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}

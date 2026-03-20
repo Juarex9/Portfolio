@@ -1,25 +1,32 @@
 {
   "seo": {
     "home": {
-      "title": "Agustín Juárez | Junior Full-Stack Developer",
-      "description": "Agustín Juárez’s portfolio — junior full-stack developer from Argentina. Real projects built with React, Node.js and Python. Open to junior opportunities (remote or on-site).",
-      "indexableIntro": "I’m Agustín Juárez, a junior full-stack developer from Argentina. I build modern, functional web applications with React, Node.js and Python. This portfolio includes real projects, GitHub code and demos."
+      "title": "Agustín Juárez | Full-Stack Developer · Python & MERN",
+      "description": "Agustín Juárez, Full-Stack Developer from Argentina. 1 year 5 months of experience. Stack: Python, FastAPI, React, Node.js, PostgreSQL. Available for remote opportunities."
     },
     "projects": {
       "title": "Projects | Agustín Juárez",
-      "description": "Real-world web development projects built with React, Node.js, Python and databases. GitHub code and live demos."
+      "description": "Real freelance projects: price scraping, appointment management, and personal finance. MERN stack, Python/FastAPI, PostgreSQL. GitHub code available."
+    },
+    "freelance": {
+      "title": "Freelance Projects | Agustín Juárez",
+      "description": "Systems developed for real clients: appointment management and more. Each project handled end-to-end."
+    },
+    "personal": {
+      "title": "Personal Projects | Agustín Juárez",
+      "description": "Personal projects to learn and solve real problems. Scrapers, finances, chat, e-commerce and more."
     },
     "education": {
       "title": "Education | Agustín Juárez",
-      "description": "Academic background and courses. Software/Computer Engineering studies, solid fundamentals and continuous learning."
+      "description": "Computer Engineering at UCASAL + Full Stack at Coderhouse. Solid foundation in algorithms, databases, and web development."
     },
     "about": {
       "title": "About | Agustín Juárez",
-      "description": "Learn more about Agustín Juárez, a junior full-stack developer focused on modern web applications, best practices and teamwork."
+      "description": "Developer with real freelance experience. I handle projects end-to-end: from concept to deploy. Focus on clear APIs, usable UI, and maintainable code."
     },
     "contact": {
       "title": "Contact | Agustín Juárez",
-      "description": "Get in touch for junior opportunities, projects or collaborations. Email, LinkedIn and GitHub."
+      "description": "Contact Agustín Juárez. Available for freelance projects, remote positions, or collaborations. Python, React, Node.js, PostgreSQL."
     }
   },
 
@@ -33,80 +40,167 @@
 
   "hero": {
     "title_1": "Hi, I'm",
-    "title_name": "Agustin",
-    "subtitle": "I build modern, functional web experiences with a touch of innovation from the Web3 ecosystem.",
+    "title_name": "Agustín",
+    "availability": "Open to opportunities",
+    "subtitle": "Full-Stack Developer. Backend with Python/FastAPI and Node.js · Frontend with React. +1 year of production experience.",
     "btn_contact": "Contact",
     "btn_projects": "View Projects"
   },
+  "stats": {
+    "experience": "Years of experience",
+    "projects": "Projects in production",
+    "technologies": "Main technologies"
+  },
+  "featured": {
+    "badge": "Featured projects",
+    "title": "What I've built",
+    "subtitle": "Projects that solve real problems and are running in production.",
+    "view_all": "View all projects",
+    "view_details": "View details",
+    "tech_label": "Stack:"
+  },
 
   "presentation": {
-    "intro_title": "Full-Stack Developer Jr with focus on neat UI and clear APIs",
-    "intro_text": "I build end-to-end web apps with good practices, performance and user experience. I am looking for my first Jr/Trainee role to provide execution and improve quickly.",
+    "intro_title": "Developer with freelance projects in production",
+    "intro_text": "I handle end-to-end projects for real clients: from database design to deployment. Experience with REST APIs, data scraping, and management dashboards. Looking to grow in a team where I can contribute and keep learning.",
     "links": [{ "label": "Download CV", "href": "./cv-juarez-english.pdf" }],
     "intro_focus": "APPROACH",
-    "intro_b1": "Consistent UI: spacing, typography, and reusable components.",
-    "intro_b2": "Clear backend: validation, error handling, and clean APIs.",
-    "intro_b3": "Delivery: stable demo, detailed README, and organised commits."
+    "intro_b1": "Backend first: clear API design, robust validation, and well-structured databases.",
+    "intro_b2": "Usable frontend: clean interfaces, responsive design, and good UX.",
+    "intro_b3": "Professional delivery: documentation, basic tests, and functional deployment."
   },
 
   "projects": {
     "badge": "Portfolio",
-    "title": "Web2 & Web3 Projects",
-    "subtitle": "A selection of projects where I apply my full-stack skills, from traditional web applications to blockchain integrations.",
+    "title": "Real Projects",
+    "subtitle": "Freelance and personal projects in production. Each one solves a concrete problem for real users.",
     "github_button": "See more on GitHub",
+    "web2": {
+      "badge": "Web 2.0",
+      "title": "Web2 Projects",
+      "subtitle": "Full-stack projects with traditional technologies. Each one built to solve real needs."
+    },
+    "web3": {
+      "badge": "Web 3.0",
+      "title": "Web3 Projects",
+      "subtitle": "Exploring the blockchain ecosystem: dApps, smart contracts, and integrations."
+    },
 
     "cards": {
-      "web2": {
-        "title": "Web2",
-        "tag": "Frontend · Backend",
-        "description": "Projects built using traditional web technologies such as React, Node.js, and SQL/NoSQL databases."
+      "freelance": {
+        "title": "Freelance",
+        "tag": "Client projects",
+        "description": "Systems developed for real clients: appointment management and more. Each project handled independently."
       },
-      "web3": {
-        "title": "Web3",
-        "tag": "Blockchain · Smart Contracts",
-        "description": "Projects integrating blockchain, smart contracts, and decentralized tools from the evolving Web3 ecosystem."
+      "personal": {
+        "title": "Personal",
+        "tag": "Side projects",
+        "description": "Personal projects where I explore technologies and solve problems I'm interested in."
       }
     },
 
-    "web2": {
-      "title": "Web2 Projects",
-      "desc": "Projects developed using traditional web technologies like React, Node.js, and SQL/NoSQL databases.",
+    "freelance": {
+      "badge": "Freelance",
+      "title": "Freelance Projects",
+      "desc": "Systems developed for real clients, from design to deployment.",
       "items": {
-        "real-time-chat": {
-          "title": "Real-time chat",
-          "subtitle": "A real-time chat",
-          "description": "A real-time chat maked using Handlebars, Socket.io, Express and Javascript",
-          "tech": ["JavaScript", "Express", "Real-time", "Node.js", "Handlebars"]
-        },
-        "express-passport-jwt-auth-template": {
-          "title": "Express Passport JWT Auth Template",
-          "subtitle": "Reusable Express backend template",
-          "description": "Reusable backend template with Express, Passport, and JWT for authentication and protected routes.",
-          "tech": ["Node.js", "Express", "MongoDB", "Passport", "JWT"]
-        },
-        "e-commerce": {
-          "title": "E-commerce",
-          "subtitle": "E-commerce frontend built in React",
-          "description": "Frontend for an e-commerce application developed in React, focused on user experience.",
-          "tech": ["React", "JavaScript", "Firebase", "API"]
-        },
-        "portfolio": {
-          "title": "Portfolio",
-          "subtitle": "My portfolio, made in React with a lot of love",
-          "description": "It's about my portfolio, the cover letter where I show who I am, what I do and how I work.",
-          "tech": ["React", "Chakra UI", "API"]
+        "gestion-turnos": {
+          "title": "Appointment Management System",
+          "subtitle": "Freelance project for a real client",
+          "description": "Complete appointment management system with calendar, reminders, and admin panel. Handled all development end-to-end: database, API, and frontend.",
+          "tech": [
+            "React",
+            "Node.js",
+            "PostgreSQL",
+            "JWT",
+            "REST API"
+          ]
         }
       }
     },
-    "web3": {
-      "title": "Web3 Projects",
-      "desc": "Projects developed with Blockchain and Web3 technology",
+    "personal": {
+      "badge": "Personal",
+      "title": "Personal Projects",
+      "desc": "Personal projects to learn and solve real problems.",
       "items": {
+        "scraper-precios": {
+          "title": "Price Scraper",
+          "subtitle": "API that compares supermarket prices",
+          "description": "API that scrapes prices from multiple supermarkets and compares them in one place. Includes web dashboard to view results and filter by product.",
+          "tech": [
+            "Python",
+            "FastAPI",
+            "PostgreSQL",
+            "BeautifulSoup",
+            "Jinja2"
+          ]
+        },
+        "gestor-finanzas": {
+          "title": "Finance Manager",
+          "subtitle": "Personal expense and income tracker",
+          "description": "App to track expenses and income with savings plans, spending limits, and alerts. Includes notifications when approaching the limit.",
+          "tech": [
+            "React",
+            "Node.js",
+            "PostgreSQL",
+            "JWT",
+            "Express"
+          ]
+        },
+        "real-time-chat": {
+          "title": "Real-time Chat",
+          "subtitle": "Chat with Socket.io",
+          "description": "Real-time chat with rooms, nicknames, and basic persistence. Learned to handle simultaneous connections and live events.",
+          "tech": [
+            "JavaScript",
+            "Express",
+            "Socket.io",
+            "Node.js",
+            "Handlebars"
+          ]
+        },
+        "portfolio": {
+          "title": "Portfolio",
+          "subtitle": "This portfolio",
+          "description": "My digital business card. Developed with React, Chakra UI, and internationalized in Spanish and English.",
+          "tech": [
+            "React",
+            "Chakra UI",
+            "i18n",
+            "Framer Motion"
+          ]
+        },
+        "express-passport-jwt-auth-template": {
+          "title": "Express Auth Template",
+          "subtitle": "JWT authentication template with Passport",
+          "description": "Reusable authentication template with Passport.js and JWT. Includes registration, login, refresh tokens, and route protection.",
+          "tech": [
+            "Express",
+            "Passport.js",
+            "JWT",
+            "Node.js"
+          ]
+        },
+        "e-commerce": {
+          "title": "E-commerce",
+          "subtitle": "Complete online store",
+          "description": "Online store with shopping cart, product management, and admin panel. Coderhouse final project.",
+          "tech": [
+            "React",
+            "Node.js",
+            "Express",
+            "MongoDB"
+          ]
+        },
         "sub0-front": {
-          "title": "Leivy Frontend",
-          "subtitle": "Frontend of an app for the Sub0 hackathon",
-          "description": "Automation system for DAO's using AI and the Arkiv network to save the data.",
-          "tech": ["React", "TailwindCSS", "Web3", "Integración", "Arkiv"]
+          "title": "Sub0 Frontend",
+          "subtitle": "Frontend for blockchain platform",
+          "description": "Frontend developed for a blockchain platform. Exploring Web3 integrations and modern interfaces.",
+          "tech": [
+            "React",
+            "Web3.js",
+            "Blockchain"
+          ]
         }
       }
     }
@@ -168,26 +262,22 @@
 
   "about": {
     "badge": "About me",
-    "heading": "Building web experiences from both the creative and technical side",
-    "context": "A little background on who I am, how I approach projects, and where I want to grow as a developer.",
-
-    "p1": "I'm Agustin, a full stack developer and engineering student. I enjoy working where design, code, and user experience intersect.",
-    "p2": "I like building well-designed projects, from concept to deployment, using tools like React, Node.js, Express, Python, and SQL/NoSQL databases.",
-    "p3": "I'm diving deep into the Web3 world, exploring ways to integrate smart contracts and blockchain into real-world products.",
-
+    "heading": "Building solutions that work",
+    "context": "Professional background, technical approach, and what I can bring to your team.",
+    "p1": "Full-Stack Developer with +1 year of experience building backend and frontend solutions for real clients. Specialized in APIs with Python/FastAPI and interactive interfaces with React.",
+    "p2": "I handle projects end-to-end: database architecture, RESTful APIs with FastAPI/Express, responsive interfaces with React, and deployments on Vercel/Render. Every system includes basic tests and technical documentation.",
+    "p3": "I collaborate effectively in teams using Git and agile methodologies. I prioritize maintainable and documented code over quick fixes. Pursuing Computer Engineering to strengthen theoretical foundations.",
     "card1": {
-      "title": "Full Stack Mindset",
-      "text": "Comfortable working on both frontend and backend: APIs, data models, and modern interfaces."
+      "title": "Solid backend",
+      "text": "I design clear RESTful APIs, efficient data structures, and robust business logic. Python/FastAPI and Node.js/Express."
     },
-
     "card2": {
-      "title": "Community & Events",
-      "text": "Active participant in communities like SaltaDev, workshops, and hackathons."
+      "title": "Production verified",
+      "text": "Systems deployed and running for real clients. I know what it takes to manage expectations, deliver on time, and provide post-launch support."
     },
-
     "card3": {
-      "title": "Web2 → Web3",
-      "text": "My goal is to merge traditional development experience with the opportunities of the Web3 ecosystem."
+      "title": "Continuous improvement",
+      "text": "Engineering while working. I understand the 'why' behind technical decisions, not just the 'how'."
     }
   },
 
@@ -195,8 +285,8 @@
     "section": {
       "badge": "Contact",
       "title": "Let's talk",
-      "subtitle": "Reach out through any of these channels — I’m open to freelance projects, job opportunities, and collaborations.",
-      "desc": "You can contact me directly through these methods or by filling out the form."
+      "subtitle": "Available for freelance projects, remote positions, and collaborations. I respond quickly.",
+      "desc": "Contact me directly through these methods or fill out the form."
     },
 
     "form": {
@@ -209,9 +299,9 @@
   },
 
   "footer": {
-    "name": "Agustin",
+    "name": "Agustín",
     "surename": "Juárez",
-    "title": "Full-Stack Developer · React · Node · Web3",
+    "title": "Full-Stack Developer · Python · React · Node.js",
     "rights": "All rights reserved.",
     "made_with": "Built with React + Chakra UI.",
     "links": {

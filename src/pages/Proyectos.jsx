@@ -23,7 +23,7 @@ import { Seo } from "../components/Seo";
 const MotionBox = motion(Box);
 
 export default function Proyectos() {
-  const { cardBg, bgColor, accentColor } = useAccentColors();
+  const { cardBg, bgColor } = useAccentColors();
 
   const sectionBg = useColorModeValue(
     `linear-gradient(135deg, ${bgColor} 55%, rgba(105,197,139,0.25) 100%)`,
@@ -35,14 +35,14 @@ export default function Proyectos() {
 
   const cards = [
     {
-      key: "web2",
-      image: "/web2.jpg",
-      link: "/web2"
+      key: "freelance",
+      image: "/freelance-projects.png",
+      link: "/freelance"
     },
     {
-      key: "web3",
-      image: "/web3.jpg",
-      link: "/web3",
+      key: "personal",
+      image: "/perrsonal-projects.png",
+      link: "/personal",
     },
   ];
 
@@ -55,7 +55,6 @@ export default function Proyectos() {
       />
       <Box w="full" bg={sectionBg} py={{ base: 12, md: 20 }} minH="calc(100vh - 60 px)">
         <Container maxW="6xl">
-          {/* HEADER DE SECCIÓN */}
           <Stack
             direction={{ base: "column", md: "row" }}
             justify="space-between"
@@ -108,11 +107,10 @@ export default function Proyectos() {
             </Button>
           </Stack>
 
-          {/* CARDS */}
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
             {cards.map((card, index) => (
               <MotionBox
-                key={card.title}
+                key={card.key}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.45, delay: index * 0.12 }}
@@ -130,11 +128,10 @@ export default function Proyectos() {
                     boxShadow: "0 18px 40px rgba(15, 23, 42, 0.25)",
                   }}
                 >
-                  {/* Imagen */}
                   <Box position="relative" h="220px" overflow="hidden">
                     <Image
                       src={card.image}
-                      alt={card.title}
+                      alt={t(`projects.cards.${card.key}.title`)}
                       objectFit="cover"
                       w="100%"
                       h="100%"
@@ -159,10 +156,9 @@ export default function Proyectos() {
                     </HStack>
                   </Box>
 
-                  {/* Contenido */}
                   <Box p={6}>
                     <Heading size="md" mb={2}>
-                      <LinkOverlay href={card.link}>{card.title}</LinkOverlay>
+                      <LinkOverlay href={card.link}>{t(`projects.cards.${card.key}.title`)}</LinkOverlay>
                     </Heading>
                     <Text fontSize="sm" color={cardTextColor}>
                       {t(`projects.cards.${card.key}.description`)}

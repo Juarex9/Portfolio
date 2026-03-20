@@ -103,11 +103,12 @@ const AboutMe = () => {
               >
                 <Image
                   src="/aboutme.png"
-                  alt="Workspace-mockup"
+                  alt="Espacio de trabajo de Agustín Juárez con laptop y código"
                   borderRadius="xl"
                   objectFit="cover"
                   h={{ base: "260px", md: "340px" }}
                   w="100%"
+                  loading="lazy"
                 />
               </Box>
             </MotionBox>

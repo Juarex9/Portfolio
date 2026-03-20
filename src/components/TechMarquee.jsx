@@ -16,7 +16,6 @@ import {
   SiMongodb,
   SiGit,
 } from "react-icons/si";
-import { MdBuild } from "react-icons/md";
 
 const MotionBox = motion(Box);
 
@@ -32,16 +31,17 @@ export default function TechMarquee({
   const items = useMemo(
     () => [
       { label: "JavaScript", Icon: SiJavascript },
+      { label: "TypeScript", Icon: SiJavascript },
       { label: "HTML", Icon: SiHtml5 },
       { label: "CSS", Icon: SiCss3 },
       { label: "Python", Icon: SiPython },
       { label: "React", Icon: SiReact },
       { label: "Node.js", Icon: SiNodedotjs },
       { label: "Express", Icon: SiExpress },
-      { label: "SQL", Icon: SiPostgresql }, // si querés MySQL: SiMysql
+      { label: "FastAPI", Icon: SiPython },
+      { label: "PostgreSQL", Icon: SiPostgresql },
       { label: "MongoDB", Icon: SiMongodb },
       { label: "Git", Icon: SiGit },
-      { label: "Repair / Tech", Icon: MdBuild }, // referencia a técnico reparación
     ],
     []
   );

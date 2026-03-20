@@ -6,6 +6,7 @@ import {
   Text,
   HStack,
   Button,
+  Badge,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
@@ -32,6 +33,28 @@ export default function Hero() {
           textAlign="center"
           py={{ base: 10, md: 12 }}
         >
+          {/* Availability Badge */}
+          <Badge
+            colorScheme="green"
+            px={4}
+            py={2}
+            borderRadius="full"
+            fontSize="sm"
+            fontWeight="medium"
+            display="flex"
+            alignItems="center"
+            gap={2}
+          >
+            <Box
+              w={2}
+              h={2}
+              borderRadius="full"
+              bg="green.400"
+              animation="pulse 2s infinite"
+            />
+            {t("hero.availability")}
+          </Badge>
+
           {/* Avatar */}
           <MotionBox
             borderRadius="full"
@@ -42,7 +65,7 @@ export default function Hero() {
             alignItems="center"
             justifyContent="center"
           >
-            <img src="./yo-circular.png" alt="img-profile" />
+            <img src="./yo-circular.png" alt="Retrato de Agustín Juárez" loading="lazy" />
           </MotionBox>
 
           {/* Título */}

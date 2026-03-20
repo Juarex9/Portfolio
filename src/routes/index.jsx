@@ -1,42 +1,58 @@
 import { createBrowserRouter } from "react-router-dom";
+import { lazy, Suspense } from "react";
 import App from "../services/App.jsx";
-import Home from "../pages/Home.jsx";
-import Proyectos from "../pages/Proyectos.jsx";
-import Educacion from "../pages/Educacion.jsx";
-import SobreMi from "../pages/Sobremi.jsx";
-import Contacto from "../pages/Contacto.jsx";
-import Web2 from "../pages/Web2.jsx";
-import Web3 from "../pages/Web3.jsx";
+
+const Home = lazy(() => import("../pages/Home.jsx"));
+const Proyectos = lazy(() => import("../pages/Proyectos.jsx"));
+const Educacion = lazy(() => import("../pages/Educacion.jsx"));
+const SobreMi = lazy(() => import("../pages/Sobremi.jsx"));
+const Contacto = lazy(() => import("../pages/Contacto.jsx"));
+const Freelance = lazy(() => import("../pages/Freelance.jsx"));
+const Personal = lazy(() => import("../pages/Personal.jsx"));
+
+function PageLoader() {
+  return (
+    <div style={{
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      minHeight: '60vh',
+      color: '#4ade80'
+    }}>
+      <span style={{ fontFamily: 'system-ui', fontSize: '0.875rem' }}>Cargando...</span>
+    </div>
+  );
+}
 
 export const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,               
         children: [
-            { index: true, element: <Home /> },
+            { index: true, element: <Suspense fallback={<PageLoader />}><Home /></Suspense> },
             {
                 path: "/proyectos",
-                element: <Proyectos />
+                element: <Suspense fallback={<PageLoader />}><Proyectos /></Suspense>
+            },
+            {
+                path: "/freelance",
+                element: <Suspense fallback={<PageLoader />}><Freelance /></Suspense>
+            },
+            {
+                path: "/personal",
+                element: <Suspense fallback={<PageLoader />}><Personal /></Suspense>
             },
             {
                 path: "/educacion",
-                element: <Educacion />
+                element: <Suspense fallback={<PageLoader />}><Educacion /></Suspense>
             },
             {
                 path: "/sobremi",
-                element: <SobreMi />
+                element: <Suspense fallback={<PageLoader />}><SobreMi /></Suspense>
             },
             {
                 path: "/contacto",
-                element: <Contacto />
-            },
-            {
-                path: "/web2",
-                element: <Web2 />
-            },
-            {
-                path: "/web3",
-                element: <Web3 />
+                element: <Suspense fallback={<PageLoader />}><Contacto /></Suspense>
             }
         ],
     },

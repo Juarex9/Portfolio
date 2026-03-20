@@ -43,6 +43,11 @@ export default function EducationTimeline() {
 
   const locationColor = useColorModeValue("gray.500", "gray.400");
 
+  const cardBorderWidth = useColorModeValue("1px", "0px");
+  const cardBorderColor = useColorModeValue("gray.100", "transparent");
+  const tagBg = useColorModeValue("green.50", "green.900");
+  const tagColor = useColorModeValue("green.700", "green.200");
+
   // Igual que en Proyectos: solo keys, todo el contenido viene de i18n
   const items = ["ucasal", "reparando", "coder"].map((key) => {
     const base = `education.${key}`;
@@ -130,7 +135,7 @@ export default function EducationTimeline() {
                 />
 
                 <VStack align="stretch" spacing={6}>
-                  {items.map((it, idx) => (
+                  {items.map((it) => (
                     <HStack key={it.key} spacing={3} align="flex-start">
                       <Box pt="2px">
                         <Box
@@ -168,8 +173,8 @@ export default function EducationTimeline() {
                     borderRadius="2xl"
                     boxShadow="xl"
                     p={{ base: 5, md: 6 }}
-                    borderWidth={useColorModeValue("1px", "0px")}
-                    borderColor={useColorModeValue("gray.100", "transparent")}
+                    borderWidth={cardBorderWidth}
+                    borderColor={cardBorderColor}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.5, delay: idx * 0.1 }}
@@ -223,8 +228,8 @@ export default function EducationTimeline() {
                               size="sm"
                               borderRadius="full"
                               variant="subtle"
-                              bg={useColorModeValue("green.50", "green.900")}
-                              color={useColorModeValue("green.700", "green.200")}
+                              bg={tagBg}
+                              color={tagColor}
                             >
                               {tTag}
                             </Tag>
