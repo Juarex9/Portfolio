@@ -4,22 +4,16 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   build: {
-    chunkSizeWarningLimit: 300,
+    chunkSizeWarningLimit: 500,
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (!id.includes('node_modules')) return
-          if (id.includes('@chakra-ui') || id.includes('@emotion')) {
-            return 'vendor-chakra'
-          }
-          if (id.includes('framer-motion')) {
-            return 'vendor-motion'
+          if (id.includes('react-icons')) {
+            return 'vendor-icons'
           }
           if (id.includes('i18next')) {
             return 'vendor-i18n'
-          }
-          if (id.includes('react-icons')) {
-            return 'vendor-icons'
           }
         }
       }
