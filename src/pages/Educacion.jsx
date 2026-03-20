@@ -23,6 +23,7 @@ import { CheckCircle, ExternalLink } from "lucide-react";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
 import { Seo } from "../components/Seo"
+import { useReducedMotion } from "../hooks/useReducedMotion";
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
@@ -30,6 +31,7 @@ const MotionHeading = motion(Heading);
 export default function EducationTimeline() {
   const { cardBg, accentColor, bgColor, textColor } = useAccentColors();
   const { t } = useTranslation();
+  const prefersReducedMotion = useReducedMotion();
 
   const sectionBg = useColorModeValue(
     `linear-gradient(135deg, ${bgColor} 55%, rgba(105,197,139,0.15) 100%)`,
@@ -101,9 +103,9 @@ export default function EducationTimeline() {
                 fontSize={{ base: "2xl", md: "3xl" }}
                 color={useColorModeValue("gray.900", "white")}
                 fontWeight="extrabold"
-                initial={{ opacity: 0, y: 10 }}
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
                 mb={1}
               >
                 {t("education.section.heading")}
@@ -175,9 +177,9 @@ export default function EducationTimeline() {
                     p={{ base: 5, md: 6 }}
                     borderWidth={cardBorderWidth}
                     borderColor={cardBorderColor}
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.5, delay: idx * 0.1 }}
+                    transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : idx * 0.1 }}
                   >
                     {/* cabecera */}
                     <HStack justify="space-between" align="flex-start" mb={3}>

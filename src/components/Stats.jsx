@@ -5,12 +5,12 @@ import {
   Text,
   VStack,
   HStack,
-  Image,
   useColorModeValue,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 
 const MotionBox = motion(Box);
 
@@ -26,6 +26,7 @@ export default function Stats() {
   const cardBg = useColorModeValue("white", "#111827");
   const borderColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
   const statTextColor = useColorModeValue("gray.600", "gray.400");
+  const prefersReducedMotion = useReducedMotion();
 
   return (
     <Box w="full" bg={bgColor} py={{ base: 10, md: 12 }}>
@@ -34,9 +35,9 @@ export default function Stats() {
           {stats.map((stat, index) => (
             <MotionBox
               key={stat.key}
-              initial={{ opacity: 0, y: 20 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }}
               viewport={{ once: true }}
             >
               <VStack
@@ -70,9 +71,9 @@ export default function Stats() {
           ))}
 
           <MotionBox
-            initial={{ opacity: 0, y: 20 }}
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.3 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : 0.3 }}
             viewport={{ once: true }}
             gridColumn={{ base: "span 1", md: "span 1" }}
           >

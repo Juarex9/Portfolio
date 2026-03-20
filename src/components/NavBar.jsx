@@ -17,6 +17,7 @@ import { SunIcon, MoonIcon, HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { MdLanguage } from "react-icons/md";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
+import { useLocation } from "react-router-dom";
 
 // claves que vamos a traducir con i18next
 const LINKS = [
@@ -32,6 +33,7 @@ export default function Navbar() {
   const { colorMode, toggleColorMode } = useColorMode();
   const { isOpen, onToggle } = useDisclosure();
   const { t, i18n } = useTranslation();
+  const location = useLocation();
 
   const navBg = useColorModeValue(bgColor, bgColor);
   const borderColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
@@ -71,37 +73,41 @@ export default function Navbar() {
           mx="auto"
           display={{ base: "none", md: "flex" }}
         >
-          {LINKS.map((link) => (
-            <Box as="li" key={link.href} listStyleType="none">
-              <CLink
-                href={link.href}
-                fontWeight={500}
-                color={textColor}
-                position="relative"
-                _hover={{ textDecoration: "none", color: accentColor }}
-                _after={{
-                  content: '""',
-                  position: "absolute",
-                  left: 0,
-                  bottom: -1,
-                  width: "100%",
-                  height: "2px",
-                  bg: accentColor,
-                  borderRadius: "full",
-                  transform: "scaleX(0)",
-                  transformOrigin: "left",
-                  transition: "transform 0.2s ease-out",
-                }}
-                sx={{
-                  "&:hover::after": {
-                    transform: "scaleX(1)",
-                  },
-                }}
-              >
-                {t(link.key)}
-              </CLink>
-            </Box>
-          ))}
+          {LINKS.map((link) => {
+            const isActive = location.pathname === link.href;
+            return (
+              <Box as="li" key={link.href} listStyleType="none">
+                <CLink
+                  href={link.href}
+                  fontWeight={500}
+                  color={textColor}
+                  aria-current={isActive ? "page" : undefined}
+                  position="relative"
+                  _hover={{ textDecoration: "none", color: accentColor }}
+                  _after={{
+                    content: '""',
+                    position: "absolute",
+                    left: 0,
+                    bottom: -1,
+                    width: "100%",
+                    height: "2px",
+                    bg: accentColor,
+                    borderRadius: "full",
+                    transform: "scaleX(0)",
+                    transformOrigin: "left",
+                    transition: "transform 0.2s ease-out",
+                  }}
+                  sx={{
+                    "&:hover::after": {
+                      transform: "scaleX(1)",
+                    },
+                  }}
+                >
+                  {t(link.key)}
+                </CLink>
+              </Box>
+            );
+          })}
         </HStack>
 
         <HStack spacing={1}>

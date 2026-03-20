@@ -61,6 +61,7 @@ export default function IntroPresentation() {
                   w="full"
                   h="full"
                   objectFit="cover"
+                  loading="lazy"
                 />
               </Box>
 
@@ -176,7 +177,7 @@ export default function IntroPresentation() {
                 whileHover={{ scale: 1.02 }}
                 transition={{ duration: 0.25 }}
               >
-                <Image src={img.src} alt={img.alt} w="full" h="full" objectFit="cover" />
+                <Image src={img.src} alt={img.alt} w="full" h="full" objectFit="cover" loading="lazy" />
               </MotionBox>
             ))}
           </HStack>

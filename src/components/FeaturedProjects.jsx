@@ -17,6 +17,7 @@ import { motion } from "framer-motion";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 
 const MotionBox = motion(Box);
 
@@ -42,6 +43,7 @@ export default function FeaturedProjects() {
   const { cardBg, accentColor, bgColor } = useAccentColors();
   const { t } = useTranslation();
   const textColor = useColorModeValue("gray.600", "gray.300");
+  const prefersReducedMotion = useReducedMotion();
   const sectionBg = useColorModeValue(
     `linear-gradient(135deg, ${bgColor} 55%, rgba(105,197,139,0.15) 100%)`,
     `linear-gradient(135deg, ${bgColor} 70%, rgba(34,197,94,0.28) 100%)`
@@ -127,9 +129,9 @@ export default function FeaturedProjects() {
             return (
               <MotionBox
                 key={project.key}
-                initial={{ opacity: 0, y: 20 }}
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.15 }}
+                transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : index * 0.15 }}
                 viewport={{ once: true }}
               >
                 <LinkBox

@@ -11,6 +11,7 @@ import {
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 
 const MotionBox = motion(Box);
 const MotionHeading = motion(Heading);
@@ -18,6 +19,7 @@ const MotionHeading = motion(Heading);
 export default function Hero() {
   const { accentColor, bgColor } = useAccentColors();
   const { t } = useTranslation();
+  const prefersReducedMotion = useReducedMotion();
 
 
   return (
@@ -50,7 +52,7 @@ export default function Hero() {
               h={2}
               borderRadius="full"
               bg="green.400"
-              animation="pulse 2s infinite"
+              animation={prefersReducedMotion ? "none" : "pulse 2s infinite"}
             />
             {t("hero.availability")}
           </Badge>
@@ -65,7 +67,7 @@ export default function Hero() {
             alignItems="center"
             justifyContent="center"
           >
-            <img src="./yo-circular.png" alt="Retrato de Agustín Juárez" loading="lazy" />
+            <img src="./yo-circular.png" alt="Retrato de Agustín Juárez" />
           </MotionBox>
 
           {/* Título */}

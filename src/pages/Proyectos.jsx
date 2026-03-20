@@ -135,6 +135,7 @@ export default function Proyectos() {
                       objectFit="cover"
                       w="100%"
                       h="100%"
+                      loading="lazy"
                       transition="transform 0.4s ease"
                     />
                     <Box

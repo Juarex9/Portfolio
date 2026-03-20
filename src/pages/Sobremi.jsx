@@ -15,6 +15,7 @@ import { useAccentColors } from "../hooks/useAccentColors";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Seo } from "../components/Seo";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 
 const MotionBox = motion(Box);
 const MotionVStack = motion(VStack);
@@ -22,6 +23,7 @@ const MotionHeading = motion(Heading);
 
 const AboutMe = () => {
   const { bgColor, accentColor, cardBg, textColor } = useAccentColors();
+  const prefersReducedMotion = useReducedMotion();
 
   const sectionBg = useColorModeValue(
     `linear-gradient(135deg, ${bgColor} 55%, rgba(105,197,139,0.25) 100%)`,
@@ -67,9 +69,9 @@ const AboutMe = () => {
                 fontSize={{ base: "2xl", md: "3xl" }}
                 color={useColorModeValue("gray.900", "white")}
                 fontWeight="extrabold"
-                initial={{ opacity: 0, y: 10 }}
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
+                transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
                 mb={1}
               >
                 {t("about.heading")}
@@ -90,9 +92,9 @@ const AboutMe = () => {
           >
             {/* Mockup grande */}
             <MotionBox
-              initial={{ opacity: 0, y: 25 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
             >
               <Box
                 bg={cardBg}
@@ -117,9 +119,9 @@ const AboutMe = () => {
             <MotionVStack
               align="start"
               spacing={4}
-              initial={{ opacity: 0, y: 25 }}
+              initial={prefersReducedMotion ? false : { opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.6, delay: prefersReducedMotion ? 0 : 0.1 }}
               color={textColor}
             >
               <Text>

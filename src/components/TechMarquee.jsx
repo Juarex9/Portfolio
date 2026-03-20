@@ -2,6 +2,7 @@ import React, { useMemo } from "react";
 import { Box, Container, HStack, Text, useColorModeValue } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 
 // Icons (react-icons)
 import {
@@ -26,6 +27,7 @@ export default function TechMarquee({
 }) {
   const { accentColor, bgColor, textColor } = useAccentColors();
   const borderColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
+  const prefersReducedMotion = useReducedMotion();
 
   // Lista “canónica”
   const items = useMemo(
@@ -103,12 +105,11 @@ export default function TechMarquee({
             <MotionBox
               display="flex"
               gap={{ base: 3, md: 4 }}
-              // clave: mover de 0% a -50% porque duplicamos el contenido
-              animate={{ x: ["0%", "-50%"] }}
+              animate={prefersReducedMotion ? { x: 0 } : { x: ["0%", "-50%"] }}
               transition={{
                 duration: speedSeconds,
                 ease: "linear",
-                repeat: Infinity,
+                repeat: prefersReducedMotion ? 0 : Infinity,
               }}
               w="max-content"
             >
