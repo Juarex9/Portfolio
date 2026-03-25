@@ -21,11 +21,7 @@ import {
 
 const MotionBox = motion(Box);
 
-export default function TechMarquee({
-  speedSeconds = 22,
-  title = "Tech stack",
-  showTitle = true,
-}) {
+export default function TechMarquee({ speedSeconds = 22, title = "Tech stack", showTitle = true }) {
   const { accentColor, bgColor } = useAccentColors();
   const prefersReducedMotion = useReducedMotion();
 
@@ -40,7 +36,6 @@ export default function TechMarquee({
       { label: "Chakra UI", Icon: SiChakraui },
       { label: "Node.js", Icon: SiNodedotjs },
       { label: "Express", Icon: SiExpress },
-      { label: "FastAPI", Icon: SiPython },
       { label: "PostgreSQL", Icon: SiPostgresql },
       { label: "MongoDB", Icon: SiMongodb },
       { label: "Git", Icon: SiGit },
@@ -51,11 +46,11 @@ export default function TechMarquee({
   const loop = [...items, ...items];
 
   return (
-    <Box w="full" py={{ base: 8, md: 10 }} bg={bgColor}>
+    <Box w="full" py={{ base: 6, md: 10 }} bg={bgColor}>
       <Container maxW="6xl">
         {showTitle && (
-          <Box display="flex" alignItems="center" gap={3} mb={4}>
-            <Box w="24px" h="2px" bg={accentColor} borderRadius="full" />
+          <Box display="flex" alignItems="center" gap={2} mb={3}>
+            <Box w="20px" h="2px" bg={accentColor} borderRadius="full" />
             <Text
               fontSize="xs"
               fontWeight="700"
@@ -72,7 +67,7 @@ export default function TechMarquee({
         <Box overflow="hidden">
           <MotionBox
             display="flex"
-            gap={{ base: 3, md: 4 }}
+            gap={{ base: 2, md: 3 }}
             animate={prefersReducedMotion ? { x: 0 } : { x: ["0%", "-50%"] }}
             transition={{
               duration: speedSeconds,
@@ -84,17 +79,17 @@ export default function TechMarquee({
             {loop.map(({ label, Icon }, idx) => (
               <HStack
                 key={`${label}-${idx}`}
-                spacing={2}
-                borderRadius="xl"
-                px={{ base: 3, md: 4 }}
-                py={{ base: 2, md: 2.5 }}
+                spacing={1.5}
+                borderRadius="lg"
+                px={{ base: 2, md: 3 }}
+                py={{ base: 1.5, md: 2 }}
                 flex="0 0 auto"
                 userSelect="none"
                 cursor="default"
               >
-                <Box as={Icon} fontSize="18px" color={accentColor} />
+                <Box as={Icon} fontSize={{ base: "14px", md: "16px" }} color={accentColor} />
                 <Text
-                  fontSize="sm"
+                  fontSize={{ base: "xs", md: "sm" }}
                   fontWeight="500"
                   whiteSpace="nowrap"
                   fontFamily="var(--font-body)"

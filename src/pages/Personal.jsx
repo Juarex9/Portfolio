@@ -41,40 +41,40 @@ export default function Personal() {
     <>
       <Seo titleKey="seo.personal.title" descriptionKey="seo.personal.description" canonicalPath="/personal" />
       <Box w="full" minH="100vh" bg={bgColor}>
-        <Container maxW="6xl" py={{ base: 12, md: 20 }}>
-          <MotionBox initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: prefersReducedMotion ? 0 : 0.6 }} viewport={{ once: true }} mb={10}>
+        <Container maxW="6xl" py={{ base: 8, md: 16 }}>
+          <MotionBox initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: prefersReducedMotion ? 0 : 0.6 }} viewport={{ once: true }} mb={8}>
             <Stack direction={{ base: "column", md: "row" }} justify="space-between" align={{ base: "flex-start", md: "flex-end" }} spacing={4}>
               <Box>
-                <HStack mb={4} gap={3}>
-                  <Box w="40px" h="2px" bg={accentColor} borderRadius="full" />
-                  <Badge borderRadius="full" px={4} py={1.5} bg={`${accentColor}15`} color={accentColor} textTransform="uppercase" fontSize="xs" fontWeight="600" letterSpacing="wider" fontFamily="var(--font-body)">{t("projects.personal.badge")}</Badge>
+                <HStack mb={3} gap={2}>
+                  <Box w="32px" h="2px" bg={accentColor} borderRadius="full" />
+                  <Badge borderRadius="full" px={3} py={1} bg={`${accentColor}15`} color={accentColor} textTransform="uppercase" fontSize="xs" fontWeight="600" letterSpacing="wider" fontFamily="var(--font-body)">{t("projects.personal.badge")}</Badge>
                 </HStack>
-                <Heading fontSize={{ base: "3xl", md: "5xl" }} fontWeight="800" fontFamily="var(--font-display)" letterSpacing="-0.02em" lineHeight="1.1" mb={3}>{t("projects.personal.title")}</Heading>
-                <Text fontSize={{ base: "md", md: "lg" }} color={secondaryText} maxW="2xl" fontFamily="var(--font-body)">{t("projects.personal.desc")}</Text>
+                <Heading fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }} fontWeight="800" fontFamily="var(--font-display)" letterSpacing="-0.02em" lineHeight="1.2" mb={2}>{t("projects.personal.title")}</Heading>
+                <Text fontSize={{ base: "sm", md: "md" }} color={secondaryText} maxW="2xl" fontFamily="var(--font-body)">{t("projects.personal.desc")}</Text>
               </Box>
-              <Button as={Link} href="https://github.com/Juarex9" target="_blank" variant="outline" borderRadius="full" px={6} h={12} fontWeight="600" fontFamily="var(--font-body)" borderColor={accentColor} color={accentColor} _hover={{ bg: accentColor, color: "white" }} transition="all 0.3s">{t("projects.github_button")}</Button>
+              <Button as={Link} href="https://github.com/Juarex9" target="_blank" variant="outline" borderRadius="full" px={5} size="sm" h={10} fontWeight="600" fontFamily="var(--font-body)" borderColor={accentColor} color={accentColor} _hover={{ bg: accentColor, color: "white" }} transition="all 0.3s">{t("projects.github_button")}</Button>
             </Stack>
           </MotionBox>
 
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 6, md: 8 }}>
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, md: 6 }}>
             {projects.map((project, index) => {
               const baseKey = `projects.personal.items.${project.key}`;
               return (
                 <MotionBox key={project.key} initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : (index % 2) * 0.1 }} viewport={{ once: true }}>
                   <LinkBox as="article">
-                    <Heading size="lg" mb={2} fontFamily="var(--font-display)" fontWeight="700">
+                    <Heading size="sm" mb={1} fontFamily="var(--font-display)" fontWeight="700">
                       <LinkOverlay href={project.github} target="_blank" _hover={{ color: accentColor }} transition="color 0.3s">{t(`${baseKey}.title`)}</LinkOverlay>
                     </Heading>
-                    <Text fontSize="sm" color={accentColor} mb={3} fontWeight="500" fontFamily="var(--font-body)">{t(`${baseKey}.subtitle`)}</Text>
-                    <Text mb={5} color={secondaryText} lineHeight="1.8" fontFamily="var(--font-body)">{t(`${baseKey}.description`)}</Text>
-                    <HStack spacing={2} wrap="wrap" mb={5}>
-                      {t(`${baseKey}.tech`, { returnObjects: true }).map((techItem, i) => (
-                        <Tag key={i} size="md" borderRadius="full" bg={`${accentColor}15`} color={accentColor} fontFamily="var(--font-body)" fontSize="xs" fontWeight="500">{techItem}</Tag>
+                    <Text fontSize="xs" color={accentColor} mb={2} fontWeight="500" fontFamily="var(--font-body)">{t(`${baseKey}.subtitle`)}</Text>
+                    <Text fontSize="xs" color={secondaryText} lineHeight="1.6" fontFamily="var(--font-body)" mb={3}>{t(`${baseKey}.description`)}</Text>
+                    <HStack spacing={1.5} wrap="wrap" mb={3}>
+                      {t(`${baseKey}.tech`, { returnObjects: true }).slice(0, 4).map((techItem, i) => (
+                        <Tag key={i} size="sm" borderRadius="full" bg={`${accentColor}15`} color={accentColor} fontFamily="var(--font-body)" fontSize="xs" fontWeight="500" px={2} py={0.5}>{techItem}</Tag>
                       ))}
                     </HStack>
-                    <HStack spacing={3}>
-                      <Button as="a" href={project.github} target="_blank" size="md" leftIcon={<FaGithub />} variant="outline" borderRadius="full" borderColor={accentColor} color={accentColor} _hover={{ bg: `${accentColor}10` }} fontFamily="var(--font-body)">Código</Button>
-                      {project.demo && <Button as="a" href={project.demo} target="_blank" size="md" leftIcon={<FaExternalLinkAlt />} bg={accentColor} color="white" borderRadius="full" _hover={{ opacity: 0.9 }} fontFamily="var(--font-body)">Demo</Button>}
+                    <HStack spacing={2}>
+                      <Button as="a" href={project.github} target="_blank" size="xs" leftIcon={<FaGithub />} variant="outline" borderRadius="full" borderColor={accentColor} color={accentColor} _hover={{ bg: `${accentColor}10` }} fontFamily="var(--font-body)">Código</Button>
+                      {project.demo && <Button as="a" href={project.demo} target="_blank" size="xs" leftIcon={<FaExternalLinkAlt />} bg={accentColor} color="white" borderRadius="full" _hover={{ opacity: 0.9 }} fontFamily="var(--font-body)">Demo</Button>}
                     </HStack>
                   </LinkBox>
                 </MotionBox>

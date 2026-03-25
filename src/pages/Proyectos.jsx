@@ -35,19 +35,15 @@ export default function Proyectos() {
 
   return (
     <>
-      <Seo
-        titleKey="seo.projects.title"
-        descriptionKey="seo.projects.description"
-        canonicalPath="/proyectos"
-      />
+      <Seo titleKey="seo.projects.title" descriptionKey="seo.projects.description" canonicalPath="/proyectos" />
       <Box w="full" minH="100vh" bg={bgColor}>
-        <Container maxW="6xl" py={{ base: 12, md: 20 }}>
+        <Container maxW="6xl" py={{ base: 8, md: 16 }}>
           <MotionBox
             initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
             viewport={{ once: true }}
-            mb={10}
+            mb={8}
           >
             <Stack
               direction={{ base: "column", md: "row" }}
@@ -56,36 +52,18 @@ export default function Proyectos() {
               spacing={4}
             >
               <Box>
-                <HStack mb={4} gap={3}>
-                  <Box w="40px" h="2px" bg={accentColor} borderRadius="full" />
-                  <Badge
-                    borderRadius="full"
-                    px={4}
-                    py={1.5}
-                    bg={`${accentColor}15`}
-                    color={accentColor}
-                    textTransform="uppercase"
-                    fontSize="xs"
-                    fontWeight="600"
-                    letterSpacing="wider"
-                    fontFamily="var(--font-body)"
-                  >
+                <HStack mb={3} gap={2}>
+                  <Box w="32px" h="2px" bg={accentColor} borderRadius="full" />
+                  <Badge borderRadius="full" px={3} py={1} bg={`${accentColor}15`} color={accentColor} textTransform="uppercase" fontSize="xs" fontWeight="600" letterSpacing="wider" fontFamily="var(--font-body)">
                     {t("projects.badge")}
                   </Badge>
                 </HStack>
 
-                <Heading
-                  fontSize={{ base: "3xl", md: "5xl" }}
-                  fontWeight="800"
-                  fontFamily="var(--font-display)"
-                  letterSpacing="-0.02em"
-                  lineHeight="1.1"
-                  mb={3}
-                >
+                <Heading fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }} fontWeight="800" fontFamily="var(--font-display)" letterSpacing="-0.02em" lineHeight="1.2" mb={2}>
                   {t("projects.title")}
                 </Heading>
 
-                <Text fontSize={{ base: "md", md: "lg" }} color={secondaryText} maxW="2xl" fontFamily="var(--font-body)">
+                <Text fontSize={{ base: "sm", md: "md" }} color={secondaryText} maxW="2xl" fontFamily="var(--font-body)">
                   {t("projects.subtitle")}
                 </Text>
               </Box>
@@ -96,8 +74,9 @@ export default function Proyectos() {
                 target="_blank"
                 variant="outline"
                 borderRadius="full"
-                px={6}
-                h={12}
+                px={5}
+                size="sm"
+                h={10}
                 fontWeight="600"
                 fontFamily="var(--font-body)"
                 borderColor={accentColor}
@@ -110,7 +89,7 @@ export default function Proyectos() {
             </Stack>
           </MotionBox>
 
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 6, md: 8 }}>
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, md: 6 }}>
             {cards.map((card, index) => (
               <MotionBox
                 key={card.key}
@@ -120,31 +99,31 @@ export default function Proyectos() {
                 viewport={{ once: true }}
               >
                 <LinkBox as="article" role="group" cursor="pointer">
-                  <Box position="relative" borderRadius="2xl" overflow="hidden">
+                  <Box position="relative" borderRadius="xl" overflow="hidden">
                     <Image
                       src={card.image}
                       alt={t(`projects.cards.${card.key}.title`)}
                       objectFit="cover"
                       w="100%"
-                      h="240px"
+                      h={{ base: "160px", sm: "200px", md: "220px" }}
                       loading="lazy"
                       transition="transform 0.5s"
                       _groupHover={{ transform: "scale(1.03)" }}
                     />
-                    <HStack position="absolute" bottom={4} left={4} spacing={2}>
-                      <Badge borderRadius="full" px={3} py={1} bg={accentColor} color="white" fontSize="xs" fontWeight="600" fontFamily="var(--font-body)">
+                    <HStack position="absolute" bottom={3} left={3} spacing={2}>
+                      <Badge borderRadius="full" px={2} py={0.5} bg={accentColor} color="white" fontSize="xs" fontWeight="600" fontFamily="var(--font-body)">
                         {t(`projects.cards.${card.key}.tag`)}
                       </Badge>
                     </HStack>
                   </Box>
 
-                  <Box py={4}>
-                    <Heading size="lg" mb={2} fontFamily="var(--font-display)" fontWeight="700">
+                  <Box py={3}>
+                    <Heading size="md" mb={1} fontFamily="var(--font-display)" fontWeight="700">
                       <LinkOverlay href={card.link} _hover={{ color: accentColor }} transition="color 0.3s">
                         {t(`projects.cards.${card.key}.title`)}
                       </LinkOverlay>
                     </Heading>
-                    <Text fontSize="md" color={secondaryText} fontFamily="var(--font-body)">
+                    <Text fontSize="sm" color={secondaryText} fontFamily="var(--font-body)">
                       {t(`projects.cards.${card.key}.description`)}
                     </Text>
                   </Box>
