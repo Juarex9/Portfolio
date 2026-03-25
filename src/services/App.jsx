@@ -6,12 +6,18 @@ import { VisuallyHidden, Box } from "@chakra-ui/react";
 import Navbar from "../components/NavBar";
 import Footer from "../components/Footer";
 
-
 export default function App() {
   const { i18n } = useTranslation();
+
   useEffect(() => {
     document.documentElement.lang = i18n.language;
+    document.body.classList.add("noise-overlay");
+    
+    return () => {
+      document.body.classList.remove("noise-overlay");
+    };
   }, [i18n.language]);
+
   return (
     <>
       <VisuallyHidden as="a" href="#main-content">

@@ -12,38 +12,25 @@ import {
   HStack,
   Stack,
   Button,
-  useColorModeValue,
   Link,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
 import { Seo } from "../components/Seo";
+import { useReducedMotion } from "../hooks/useReducedMotion";
 
 const MotionBox = motion(Box);
 
 export default function Proyectos() {
-  const { cardBg, bgColor } = useAccentColors();
-
-  const sectionBg = useColorModeValue(
-    `linear-gradient(135deg, ${bgColor} 55%, rgba(105,197,139,0.25) 100%)`,
-    `linear-gradient(135deg, ${bgColor} 70%, rgba(56,161,105,0.45) 100%)`
-  );
-
-  const cardTextColor = useColorModeValue("gray.700", "gray.200");
-  const { t } = useTranslation()
+  const { accentColor, bgColor } = useAccentColors();
+  const prefersReducedMotion = useReducedMotion();
+  const secondaryText = "gray.500";
+  const { t } = useTranslation();
 
   const cards = [
-    {
-      key: "freelance",
-      image: "/freelance-projects.png",
-      link: "/freelance"
-    },
-    {
-      key: "personal",
-      image: "/perrsonal-projects.png",
-      link: "/personal",
-    },
+    { key: "freelance", image: "/freelance-projects.png", link: "/freelance" },
+    { key: "personal", image: "/perrsonal-projects.png", link: "/personal" },
   ];
 
   return (
@@ -53,115 +40,111 @@ export default function Proyectos() {
         descriptionKey="seo.projects.description"
         canonicalPath="/proyectos"
       />
-      <Box w="full" bg={sectionBg} py={{ base: 12, md: 20 }} minH="calc(100vh - 60 px)">
-        <Container maxW="6xl">
-          <Stack
-            direction={{ base: "column", md: "row" }}
-            justify="space-between"
-            align={{ base: "flex-start", md: "center" }}
+      <Box w="full" minH="100vh" bg={bgColor}>
+        <Container maxW="6xl" py={{ base: 12, md: 20 }}>
+          <MotionBox
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
+            viewport={{ once: true }}
             mb={10}
-            spacing={4}
           >
-            <Box>
-              <Badge
-                borderRadius="full"
-                px={3}
-                py={1}
-                mb={2}
-                bg={useColorModeValue("green.50", "green.900")}
-                color={useColorModeValue("green.700", "green.200")}
-                textTransform="uppercase"
-                fontSize="xs"
-                letterSpacing="wider"
-              >
-                {t("projects.badge")}
-              </Badge>
-
-              <Heading
-                fontSize={{ base: "2xl", md: "3xl" }}
-                color={useColorModeValue("gray.900", "white")}
-                mb={1}
-              >
-                {t("projects.title")}
-              </Heading>
-
-              <Text
-                fontSize="sm"
-                color={useColorModeValue("gray.600", "gray.300")}
-                maxW="lg"
-              >
-                {t("projects.subtitle")}
-              </Text>
-            </Box>
-
-            <Button
-              as={Link}
-              href="https://github.com/Juarex9"
-              target="_blank"
-              variant="outline"
-              borderRadius="full"
-              px={6}
-              fontSize="sm"
+            <Stack
+              direction={{ base: "column", md: "row" }}
+              justify="space-between"
+              align={{ base: "flex-start", md: "flex-end" }}
+              spacing={4}
             >
-              {t("projects.github_button")}
-            </Button>
-          </Stack>
+              <Box>
+                <HStack mb={4} gap={3}>
+                  <Box w="40px" h="2px" bg={accentColor} borderRadius="full" />
+                  <Badge
+                    borderRadius="full"
+                    px={4}
+                    py={1.5}
+                    bg={`${accentColor}15`}
+                    color={accentColor}
+                    textTransform="uppercase"
+                    fontSize="xs"
+                    fontWeight="600"
+                    letterSpacing="wider"
+                    fontFamily="var(--font-body)"
+                  >
+                    {t("projects.badge")}
+                  </Badge>
+                </HStack>
 
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
+                <Heading
+                  fontSize={{ base: "3xl", md: "5xl" }}
+                  fontWeight="800"
+                  fontFamily="var(--font-display)"
+                  letterSpacing="-0.02em"
+                  lineHeight="1.1"
+                  mb={3}
+                >
+                  {t("projects.title")}
+                </Heading>
+
+                <Text fontSize={{ base: "md", md: "lg" }} color={secondaryText} maxW="2xl" fontFamily="var(--font-body)">
+                  {t("projects.subtitle")}
+                </Text>
+              </Box>
+
+              <Button
+                as={Link}
+                href="https://github.com/Juarex9"
+                target="_blank"
+                variant="outline"
+                borderRadius="full"
+                px={6}
+                h={12}
+                fontWeight="600"
+                fontFamily="var(--font-body)"
+                borderColor={accentColor}
+                color={accentColor}
+                _hover={{ bg: accentColor, color: "white" }}
+                transition="all 0.3s"
+              >
+                {t("projects.github_button")}
+              </Button>
+            </Stack>
+          </MotionBox>
+
+          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 6, md: 8 }}>
             {cards.map((card, index) => (
               <MotionBox
                 key={card.key}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.45, delay: index * 0.12 }}
-                whileHover={{ y: -6 }}
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }}
+                viewport={{ once: true }}
               >
-                <LinkBox
-                  as="article"
-                  bg={cardBg}
-                  borderRadius="2xl"
-                  boxShadow="xl"
-                  overflow="hidden"
-                  cursor="pointer"
-                  transition="all 0.25s ease"
-                  _hover={{
-                    boxShadow: "0 18px 40px rgba(15, 23, 42, 0.25)",
-                  }}
-                >
-                  <Box position="relative" h="220px" overflow="hidden">
+                <LinkBox as="article" role="group" cursor="pointer">
+                  <Box position="relative" borderRadius="2xl" overflow="hidden">
                     <Image
                       src={card.image}
                       alt={t(`projects.cards.${card.key}.title`)}
                       objectFit="cover"
                       w="100%"
-                      h="100%"
+                      h="240px"
                       loading="lazy"
-                      transition="transform 0.4s ease"
+                      transition="transform 0.5s"
+                      _groupHover={{ transform: "scale(1.03)" }}
                     />
-                    <Box
-                      position="absolute"
-                      inset="0"
-                      bgGradient="linear(to-t, rgba(0,0,0,0.45), transparent)"
-                    />
-                    <HStack position="absolute" bottom={3} left={4} spacing={2}>
-                      <Badge
-                        borderRadius="full"
-                        px={3}
-                        py={1}
-                        bg="rgba(15,118,110,0.9)"
-                        color="white"
-                        fontSize="xs"
-                      >
+                    <HStack position="absolute" bottom={4} left={4} spacing={2}>
+                      <Badge borderRadius="full" px={3} py={1} bg={accentColor} color="white" fontSize="xs" fontWeight="600" fontFamily="var(--font-body)">
                         {t(`projects.cards.${card.key}.tag`)}
                       </Badge>
                     </HStack>
                   </Box>
 
-                  <Box p={6}>
-                    <Heading size="md" mb={2}>
-                      <LinkOverlay href={card.link}>{t(`projects.cards.${card.key}.title`)}</LinkOverlay>
+                  <Box py={4}>
+                    <Heading size="lg" mb={2} fontFamily="var(--font-display)" fontWeight="700">
+                      <LinkOverlay href={card.link} _hover={{ color: accentColor }} transition="color 0.3s">
+                        {t(`projects.cards.${card.key}.title`)}
+                      </LinkOverlay>
                     </Heading>
-                    <Text fontSize="sm" color={cardTextColor}>
+                    <Text fontSize="md" color={secondaryText} fontFamily="var(--font-body)">
                       {t(`projects.cards.${card.key}.description`)}
                     </Text>
                   </Box>

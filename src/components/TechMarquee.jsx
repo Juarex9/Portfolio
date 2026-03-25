@@ -1,10 +1,9 @@
 import React, { useMemo } from "react";
-import { Box, Container, HStack, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Container, HStack, Text } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 
-// Icons (react-icons)
 import {
   SiJavascript,
   SiHtml5,
@@ -16,6 +15,8 @@ import {
   SiPostgresql,
   SiMongodb,
   SiGit,
+  SiTypescript,
+  SiChakraui,
 } from "react-icons/si";
 
 const MotionBox = motion(Box);
@@ -25,19 +26,18 @@ export default function TechMarquee({
   title = "Tech stack",
   showTitle = true,
 }) {
-  const { accentColor, bgColor, textColor } = useAccentColors();
-  const borderColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
+  const { accentColor, bgColor } = useAccentColors();
   const prefersReducedMotion = useReducedMotion();
 
-  // Lista “canónica”
   const items = useMemo(
     () => [
       { label: "JavaScript", Icon: SiJavascript },
-      { label: "TypeScript", Icon: SiJavascript },
-      { label: "HTML", Icon: SiHtml5 },
-      { label: "CSS", Icon: SiCss3 },
+      { label: "TypeScript", Icon: SiTypescript },
+      { label: "HTML5", Icon: SiHtml5 },
+      { label: "CSS3", Icon: SiCss3 },
       { label: "Python", Icon: SiPython },
       { label: "React", Icon: SiReact },
+      { label: "Chakra UI", Icon: SiChakraui },
       { label: "Node.js", Icon: SiNodedotjs },
       { label: "Express", Icon: SiExpress },
       { label: "FastAPI", Icon: SiPython },
@@ -48,107 +48,65 @@ export default function TechMarquee({
     []
   );
 
-  // Duplicamos para loop infinito
   const loop = [...items, ...items];
 
   return (
-    <Box w="full" bg={bgColor} py={{ base: 6, md: 7 }}>
+    <Box w="full" py={{ base: 8, md: 10 }} bg={bgColor}>
       <Container maxW="6xl">
-        <Box
-          borderWidth="1px"
-          borderColor={borderColor}
-          borderRadius="2xl"
-          bg={bgColor}
-          overflow="hidden"
-          position="relative"
-          px={{ base: 4, md: 6 }}
-          py={{ base: 4, md: 5 }}
-        >
-          {showTitle && (
+        {showTitle && (
+          <Box display="flex" alignItems="center" gap={3} mb={4}>
+            <Box w="24px" h="2px" bg={accentColor} borderRadius="full" />
             <Text
               fontSize="xs"
-              fontWeight="bold"
-              letterSpacing="0.14em"
-              color={textColor}
-              mb={3}
+              fontWeight="700"
+              letterSpacing="wider"
+              textTransform="uppercase"
+              color={accentColor}
+              fontFamily="var(--font-body)"
             >
-              {title.toUpperCase()}
+              {title}
             </Text>
-          )}
-
-          {/* Fade edges (estructura, no color fuerte) */}
-          <Box
-            pointerEvents="none"
-            position="absolute"
-            insetY="0"
-            left="0"
-            w="56px"
-            bgGradient={useColorModeValue(
-              "linear(to-r, white, transparent)",
-              "linear(to-r, #0B1220, transparent)"
-            )}
-          />
-          <Box
-            pointerEvents="none"
-            position="absolute"
-            insetY="0"
-            right="0"
-            w="56px"
-            bgGradient={useColorModeValue(
-              "linear(to-l, white, transparent)",
-              "linear(to-l, #0B1220, transparent)"
-            )}
-          />
-
-          {/* Marquee track */}
-          <Box overflow="hidden">
-            <MotionBox
-              display="flex"
-              gap={{ base: 3, md: 4 }}
-              animate={prefersReducedMotion ? { x: 0 } : { x: ["0%", "-50%"] }}
-              transition={{
-                duration: speedSeconds,
-                ease: "linear",
-                repeat: prefersReducedMotion ? 0 : Infinity,
-              }}
-              w="max-content"
-            >
-              {loop.map(({ label, Icon }, idx) => (
-                <TechPill
-                  key={`${label}-${idx}`}
-                  label={label}
-                  Icon={Icon}
-                  accentColor={accentColor}
-                  borderColor={borderColor}
-                  textColor={textColor}
-                />
-              ))}
-            </MotionBox>
           </Box>
+        )}
+
+        <Box overflow="hidden">
+          <MotionBox
+            display="flex"
+            gap={{ base: 3, md: 4 }}
+            animate={prefersReducedMotion ? { x: 0 } : { x: ["0%", "-50%"] }}
+            transition={{
+              duration: speedSeconds,
+              ease: "linear",
+              repeat: prefersReducedMotion ? 0 : Infinity,
+            }}
+            w="max-content"
+          >
+            {loop.map(({ label, Icon }, idx) => (
+              <HStack
+                key={`${label}-${idx}`}
+                spacing={2}
+                borderRadius="xl"
+                px={{ base: 3, md: 4 }}
+                py={{ base: 2, md: 2.5 }}
+                flex="0 0 auto"
+                userSelect="none"
+                cursor="default"
+              >
+                <Box as={Icon} fontSize="18px" color={accentColor} />
+                <Text
+                  fontSize="sm"
+                  fontWeight="500"
+                  whiteSpace="nowrap"
+                  fontFamily="var(--font-body)"
+                  color="gray.500"
+                >
+                  {label}
+                </Text>
+              </HStack>
+            ))}
+          </MotionBox>
         </Box>
       </Container>
     </Box>
-  );
-}
-
-function TechPill({ label, Icon, accentColor, borderColor, textColor }) {
-  return (
-    <HStack
-      spacing={2}
-      borderWidth="1px"
-      borderColor={borderColor}
-      borderRadius="xl"
-      px={{ base: 3, md: 4 }}
-      py={{ base: 2, md: 2.5 }}
-      flex="0 0 auto"
-      userSelect="none"
-      _hover={{ transform: "translateY(-1px)" }}
-      transition="transform 0.15s ease"
-    >
-      <Box as={Icon} fontSize="18px" color={accentColor} />
-      <Text fontSize="sm" color={textColor} whiteSpace="nowrap">
-        {label}
-      </Text>
-    </HStack>
   );
 }

@@ -147,18 +147,6 @@
             "Express"
           ]
         },
-        "real-time-chat": {
-          "title": "Real-time Chat",
-          "subtitle": "Chat with Socket.io",
-          "description": "Real-time chat with rooms, nicknames, and basic persistence. Learned to handle simultaneous connections and live events.",
-          "tech": [
-            "JavaScript",
-            "Express",
-            "Socket.io",
-            "Node.js",
-            "Handlebars"
-          ]
-        },
         "portfolio": {
           "title": "Portfolio",
           "subtitle": "This portfolio",
@@ -170,15 +158,29 @@
             "Framer Motion"
           ]
         },
-        "express-passport-jwt-auth-template": {
-          "title": "Express Auth Template",
-          "subtitle": "JWT authentication template with Passport",
-          "description": "Reusable authentication template with Passport.js and JWT. Includes registration, login, refresh tokens, and route protection.",
+        "real-time-chat": {
+          "title": "Real-Time Chat",
+          "subtitle": "Real-time messaging application",
+          "description": "Real-time chat with Socket.io, chat rooms, and user authentication. Project to practice real-time development.",
           "tech": [
+            "React",
+            "Socket.io",
+            "Node.js",
             "Express",
-            "Passport.js",
-            "JWT",
-            "Node.js"
+            "MongoDB"
+          ]
+        },
+        "ink-ai-risk-detector": {
+          "title": "Ink | AI Risk Detector",
+          "subtitle": "Smart Contract Risk Detector",
+          "description": "Analyzes smart contract addresses and returns a score based on an AI analysis covering 10+ risk criteria.",
+          "tech": [
+            "Javascript",
+            "Node.js",
+            "API",
+            "IPFS",
+            "Pinata",
+            "MongoDB"
           ]
         },
         "e-commerce": {
@@ -190,16 +192,6 @@
             "Node.js",
             "Express",
             "MongoDB"
-          ]
-        },
-        "sub0-front": {
-          "title": "Sub0 Frontend",
-          "subtitle": "Frontend for blockchain platform",
-          "description": "Frontend developed for a blockchain platform. Exploring Web3 integrations and modern interfaces.",
-          "tech": [
-            "React",
-            "Web3.js",
-            "Blockchain"
           ]
         }
       }
