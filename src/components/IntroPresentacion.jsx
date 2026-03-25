@@ -18,7 +18,7 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 const MotionBox = motion(Box);
 
 export default function IntroPresentation() {
-  const { accentColor, bgColor } = useAccentColors();
+  const { accentColor, contentBgColor } = useAccentColors();
   const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotion();
   const mutedText = "gray.500";
@@ -33,7 +33,7 @@ export default function IntroPresentation() {
   const links = t("presentation.links", { returnObjects: true }) || [];
 
   return (
-    <Box w="full" py={{ base: 12, md: 24 }} bg={bgColor}>
+    <Box w="full" py={{ base: 12, md: 24 }} bg={contentBgColor}>
       <Container maxW="6xl">
         <SimpleGrid columns={{ base: 1, lg: 12 }} spacing={{ base: 8, lg: 12 }} alignItems="start">
           <MotionBox 

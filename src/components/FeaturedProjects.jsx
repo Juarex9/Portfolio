@@ -26,13 +26,13 @@ const featuredProjects = [
 ];
 
 export default function FeaturedProjects() {
-  const { accentColor, bgColor } = useAccentColors();
+  const { accentColor, contentBgColor, borderColor } = useAccentColors();
   const { t } = useTranslation();
   const textColor = "gray.500";
   const prefersReducedMotion = useReducedMotion();
   
   return (
-    <Box w="full" py={{ base: 16, md: 24 }} bg={bgColor}>
+    <Box w="full" py={{ base: 16, md: 24 }} bg={contentBgColor}>
       <Container maxW="6xl">
         <MotionBox
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
@@ -72,11 +72,11 @@ export default function FeaturedProjects() {
             return (
               <MotionBox key={project.key} initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }} viewport={{ once: true }}>
                 <LinkBox as="article" role="group">
-                  <Box borderRadius="xl" overflow="hidden">
+                  <Box borderRadius="xl" overflow="hidden" border="1px solid" borderColor={borderColor} boxShadow="sm" _hover={{ transform: "translateY(-2px)", boxShadow: "md" }} transition="all 0.2s">
                     <Box h="140px" bgGradient={`linear(135deg, ${accentColor}, ${accentColor}cc)`} display="flex" alignItems="center" justifyContent="center">
                       <Text fontSize="5xl" fontWeight="900" fontFamily="var(--font-display)" color="white" opacity={0.3}>{title.charAt(0)}</Text>
                     </Box>
-                    <Box py={4}>
+                    <Box p={{ base: 3, md: 4 }}>
                       <HStack mb={2}><Badge borderRadius="full" px={2} py={0.5} bg={`${accentColor}15`} color={accentColor} fontSize="xs">{project.category}</Badge></HStack>
                       <Heading as="h3" size="md" fontWeight="700" fontFamily="var(--font-display)" mb={2}>
                         <LinkOverlay href={project.href} _hover={{ color: accentColor }} transition="color 0.3s">{title}</LinkOverlay>

@@ -24,7 +24,7 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 const MotionBox = motion(Box);
 
 export default function Personal() {
-  const { accentColor, bgColor } = useAccentColors();
+  const { accentColor, contentBgColor, borderColor } = useAccentColors();
   const prefersReducedMotion = useReducedMotion();
   const secondaryText = "gray.500";
   const { t } = useTranslation();
@@ -40,7 +40,7 @@ export default function Personal() {
   return (
     <>
       <Seo titleKey="seo.personal.title" descriptionKey="seo.personal.description" canonicalPath="/personal" />
-      <Box w="full" minH="100vh" bg={bgColor}>
+      <Box w="full" minH="100vh" bg={contentBgColor}>
         <Container maxW="6xl" py={{ base: 8, md: 16 }}>
           <MotionBox initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: prefersReducedMotion ? 0 : 0.6 }} viewport={{ once: true }} mb={8}>
             <Stack direction={{ base: "column", md: "row" }} justify="space-between" align={{ base: "flex-start", md: "flex-end" }} spacing={4}>
@@ -61,7 +61,7 @@ export default function Personal() {
               const baseKey = `projects.personal.items.${project.key}`;
               return (
                 <MotionBox key={project.key} initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : (index % 2) * 0.1 }} viewport={{ once: true }}>
-                  <LinkBox as="article">
+                  <LinkBox as="article" border="1px solid" borderColor={borderColor} borderRadius="xl" p={4} boxShadow="sm" _hover={{ transform: "translateY(-2px)", boxShadow: "md" }} transition="all 0.2s" cursor="pointer">
                     <Heading size="sm" mb={1} fontFamily="var(--font-display)" fontWeight="700">
                       <LinkOverlay href={project.github} target="_blank" _hover={{ color: accentColor }} transition="color 0.3s">{t(`${baseKey}.title`)}</LinkOverlay>
                     </Heading>

@@ -21,7 +21,7 @@ const floatingOrbs = [
 ];
 
 export default function Hero() {
-  const { accentColor, bgColor } = useAccentColors();
+  const { accentColor, contentBgColor } = useAccentColors();
   const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotion();
 
@@ -50,7 +50,7 @@ export default function Hero() {
       overflow="hidden"
       py={{ base: 12, md: 0 }}
     >
-      <Box position="absolute" top={0} left={0} right={0} bottom={0} bg={bgColor} zIndex={1} />
+      <Box position="absolute" top={0} left={0} right={0} bottom={0} bg={contentBgColor} zIndex={1} />
 
       {floatingOrbs.map((orb, i) => (
         <MotionBox
@@ -214,7 +214,7 @@ export default function Hero() {
                   borderRadius="full"
                   w="full"
                   h="full"
-                  bg={bgColor}
+                  bg={contentBgColor}
                   boxShadow={`0 0 80px ${accentColor}50, 0 0 120px ${accentColor}20`}
                   display="flex"
                   alignItems="center"

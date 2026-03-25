@@ -19,7 +19,7 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 const MotionBox = motion(Box);
 
 const AboutMe = () => {
-  const { accentColor, bgColor } = useAccentColors();
+  const { accentColor, contentBgColor, borderColor } = useAccentColors();
   const prefersReducedMotion = useReducedMotion();
   const secondaryText = "gray.500";
   const { t } = useTranslation();
@@ -27,7 +27,7 @@ const AboutMe = () => {
   return (
     <>
       <Seo titleKey="seo.about.title" descriptionKey="seo.about.description" canonicalPath="/sobremi" />
-      <Box w="100%" minH="100vh" bg={bgColor}>
+      <Box w="100%" minH="100vh" bg={contentBgColor}>
         <Container maxW="6xl" px={{ base: 4, md: 8 }} py={{ base: 8, md: 16 }}>
           <MotionBox initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: prefersReducedMotion ? 0 : 0.6 }} viewport={{ once: true }} mb={8}>
             <Stack direction="row" align="center" gap={2} mb={3}>
@@ -67,12 +67,14 @@ const AboutMe = () => {
           <SimpleGrid columns={{ base: 1, sm: 3 }} gap={{ base: 4, md: 6 }}>
             {["card1", "card2", "card3"].map((key, index) => (
               <MotionBox key={key} initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }} viewport={{ once: true }}>
-                <Heading size="sm" mb={2} fontFamily="var(--font-display)" fontWeight="700" color={accentColor}>
-                  {t(`about.${key}.title`)}
-                </Heading>
-                <Text color={secondaryText} fontSize="xs" lineHeight="1.6" fontFamily="var(--font-body)">
-                  {t(`about.${key}.text`)}
-                </Text>
+                <Box border="1px solid" borderColor={borderColor} borderRadius="xl" p={4} boxShadow="sm" _hover={{ transform: "translateY(-2px)", boxShadow: "md" }} transition="all 0.2s">
+                  <Heading size="sm" mb={2} fontFamily="var(--font-display)" fontWeight="700" color={accentColor}>
+                    {t(`about.${key}.title`)}
+                  </Heading>
+                  <Text color={secondaryText} fontSize="xs" lineHeight="1.6" fontFamily="var(--font-body)">
+                    {t(`about.${key}.text`)}
+                  </Text>
+                </Box>
               </MotionBox>
             ))}
           </SimpleGrid>

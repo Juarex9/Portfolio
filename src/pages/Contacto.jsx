@@ -30,7 +30,7 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 const MotionBox = motion(Box);
 
 export default function Contact() {
-  const { accentColor, bgColor } = useAccentColors();
+  const { accentColor, contentBgColor } = useAccentColors();
   const prefersReducedMotion = useReducedMotion();
   const toast = useToast();
   const { t } = useTranslation();
@@ -66,7 +66,7 @@ export default function Contact() {
   return (
     <>
       <Seo titleKey="seo.contact.title" descriptionKey="seo.contact.description" canonicalPath="/contacto" />
-      <Box w="100%" minH="100vh" bg={bgColor}>
+      <Box w="100%" minH="100vh" bg={contentBgColor}>
         <Container maxW="6xl" py={{ base: 8, md: 16 }}>
           <MotionBox initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: prefersReducedMotion ? 0 : 0.6 }} viewport={{ once: true }} mb={8}>
             <HStack mb={3} gap={2}>

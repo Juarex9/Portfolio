@@ -19,18 +19,16 @@ const stats = [
 ];
 
 export default function Stats() {
-  const { accentColor, bgColor } = useAccentColors();
+  const { accentColor, contentBgColor, borderColor } = useAccentColors();
   const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <Box w="full" py={{ base: 12, md: 16 }} bg={bgColor}>
+    <Box w="full" py={{ base: 12, md: 16 }} bg={contentBgColor}>
       <Container maxW="6xl">
         <SimpleGrid
           columns={{ base: 1, sm: 3 }}
           spacing={{ base: 4, md: 6 }}
-          maxW="700px"
-          mx="auto"
         >
           {stats.map((stat, index) => (
             <MotionBox
@@ -43,33 +41,41 @@ export default function Stats() {
               }}
               viewport={{ once: true }}
             >
-              <VStack
+              <Box
+                border="1px solid"
+                borderColor={borderColor}
+                borderRadius="xl"
                 py={{ base: 6, md: 8 }}
-                spacing={2}
+                textAlign="center"
+                boxShadow="sm"
+                _hover={{ transform: "translateY(-2px)", boxShadow: "md" }}
+                transition="all 0.2s"
               >
-                <Text
-                  fontSize={{ base: "3xl", md: "4xl" }}
-                  fontWeight="800"
-                  fontFamily="var(--font-display)"
-                  color={accentColor}
-                  lineHeight="1"
-                  letterSpacing="-0.02em"
-                >
-                  {stat.value}
-                </Text>
+                <VStack spacing={2}>
+                  <Text
+                    fontSize={{ base: "3xl", md: "4xl" }}
+                    fontWeight="800"
+                    fontFamily="var(--font-display)"
+                    color={accentColor}
+                    lineHeight="1"
+                    letterSpacing="-0.02em"
+                  >
+                    {stat.value}
+                  </Text>
 
-                <Text
-                  fontSize={{ base: "xs", md: "sm" }}
-                  color="gray.500"
-                  textAlign="center"
-                  fontFamily="var(--font-body)"
-                  fontWeight="500"
-                  textTransform="uppercase"
-                  letterSpacing="wider"
-                >
-                  {t(`stats.${stat.key}`)}
-                </Text>
-              </VStack>
+                  <Text
+                    fontSize={{ base: "xs", md: "sm" }}
+                    color="gray.500"
+                    textAlign="center"
+                    fontFamily="var(--font-body)"
+                    fontWeight="500"
+                    textTransform="uppercase"
+                    letterSpacing="wider"
+                  >
+                    {t(`stats.${stat.key}`)}
+                  </Text>
+                </VStack>
+              </Box>
             </MotionBox>
           ))}
         </SimpleGrid>

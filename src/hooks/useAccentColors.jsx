@@ -4,17 +4,15 @@ export function useAccentColors() {
   // Celeste para dark, azul para light
   const accentColor = useColorModeValue("#0066FF", "#67E8F9");
 
-  // Fondo - mismo color para unify todo
-  const bgColor = useColorModeValue("#ffffff", "#000000");
+  // Fondo - navbar y footer en color base, contenido principal diferenciado
+  const bgColor = useColorModeValue("#fafafa", "#080808");
+  const contentBgColor = useColorModeValue("#f4f5f7", "#0d0d0d");
 
   // Texto principal
   const textColor = useColorModeValue("#0f172a", "#f1f5f9");
 
-  // Cards sin borde - mismo bg
-  const cardBg = useColorModeValue("#ffffff", "#000000");
+  // Borde sutil para cards
+  const borderColor = useColorModeValue("gray.200", "gray.800");
 
-  // Texto dentro de las cards
-  const cardText = useColorModeValue("#0f172a", "#f1f5f9");
-
-  return { accentColor, cardBg, cardText, bgColor, textColor };
+  return { accentColor, bgColor, contentBgColor, textColor, borderColor };
 }

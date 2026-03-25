@@ -24,7 +24,7 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 const MotionBox = motion(Box);
 
 export default function Freelance() {
-  const { accentColor, bgColor } = useAccentColors();
+  const { accentColor, contentBgColor } = useAccentColors();
   const prefersReducedMotion = useReducedMotion();
   const secondaryText = "gray.500";
   const { t } = useTranslation();
@@ -38,7 +38,7 @@ export default function Freelance() {
         descriptionKey="seo.freelance.description"
         canonicalPath="/freelance"
       />
-      <Box w="full" minH="100vh" bg={bgColor}>
+      <Box w="full" minH="100vh" bg={contentBgColor}>
         <Container maxW="6xl" py={{ base: 12, md: 20 }}>
           <MotionBox
             initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
