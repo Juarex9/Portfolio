@@ -11,11 +11,6 @@ export default function App() {
 
   useEffect(() => {
     document.documentElement.lang = i18n.language;
-    document.body.classList.add("noise-overlay");
-    
-    return () => {
-      document.body.classList.remove("noise-overlay");
-    };
   }, [i18n.language]);
 
   return (

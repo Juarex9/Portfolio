@@ -37,10 +37,10 @@
     "contact": "Contacto"
   },
   "hero": {
-    "title_1": "Hola, soy",
-    "title_name": "Agustín",
+    "title_1": "Agustín",
+    "title_name": "Juárez",
     "availability": "Disponible para oportunidades",
-    "subtitle": "Desarrollador Full-Stack. Backend con Python/FastAPI y Node.js · Frontend con React. +1 año de experiencia en producción.",
+    "subtitle": "Backend Developer & Estudiante de Ingeniería. Especializado en construir APIs robustas con Python/FastAPI y Node.js. Más de un año entregando soluciones reales en producción y colaborando activamente en la comunidad tech local.",
     "btn_contact": "Contacto",
     "btn_projects": "Ver Proyectos"
   },
@@ -58,8 +58,8 @@
     "tech_label": "Stack:"
   },
   "presentation": {
-    "intro_title": "Desarrollador con proyectos freelance en producción",
-    "intro_text": "Manejo proyectos end-to-end para clientes reales: desde el diseño de la base de datos hasta el deploy. Tengo experiencia con APIs REST, scraping de datos y dashboards de gestión. Busco crecimiento en un equipo donde pueda aportar y seguir aprendiendo.",
+    "intro_title": "Desarrollo de Soluciones Digitales",
+    "intro_text": "Especializado en el diseño y despliegue de arquitecturas end-to-end para el sector privado. Mi enfoque combina la rigurosidad de la Ingeniería Informática con la agilidad técnica necesaria para implementar APIs REST, sistemas de automatización (scraping) y paneles de gestión de alta disponibilidad. Mi prioridad es la entrega de software robusto, documentado y escalable.",
     "links": [
       {
         "label": "Descargar CV",
@@ -74,19 +74,19 @@
   "projects": {
     "badge": "Portfolio",
     "title": "Proyectos Reales",
-    "subtitle": "Proyectos freelance y personales en producción. Cada uno resuelve un problema concreto para usuarios reales.",
+    "subtitle": "Soluciones digitales end-to-end diseñadas para clientes reales y herramientas personales para optimizar procesos. Cada proyecto es un caso de estudio en arquitectura y resolución de problemas.",
     "github_button": "Ver más en GitHub",
 
     "cards": {
       "freelance": {
         "title": "Freelance",
         "tag": "Proyectos para clientes",
-        "description": "Sistemas desarrollados para clientes reales: gestión de turnos y más. Cada proyecto manejado de forma independiente."
+        "description": "Plataformas a medida para clientes: desde el modelado de bases de datos hasta el deploy automatizado. Enfocado en resolver problemas de negocio tangibles."
       },
       "personal": {
         "title": "Personales",
         "tag": "Proyectos propios",
-        "description": "Proyectos personales donde exploro tecnologías y resuelvo problemas que me interesan."
+        "description": "Herramientas de automatización y análisis donde aplico principios de ingeniería y exploro nuevas tecnologías. Enfocado en la optimización de procesos técnicos."
       }
     },
     "freelance": {
@@ -116,7 +116,7 @@
         "scraper-precios": {
           "title": "Scraper de Precios",
           "subtitle": "API que compara precios de supermercados",
-          "description": "API que scraping precios de varios supermercados y los compara en un solo lugar. Incluye dashboard web para visualizar resultados y filtros por producto.",
+          "description": "Sistema automatizado de extracción de datos para monitorear fluctuaciones de precios en tiempo real. Diseñado para optimizar procesos de búsqueda y análisis de grandes volúmenes de datos.",
           "tech": [
             "Python",
             "FastAPI",
@@ -128,7 +128,7 @@
         "gestor-finanzas": {
           "title": "Gestor de Finanzas",
           "subtitle": "Control de gastos e ingresos personales",
-          "description": "App para llevar registro de gastos e ingresos con planes de ahorro, límites de gasto y alertas. Incluye notificaciones cuando te acercás al límite.",
+          "description": "Plataforma de control financiero personal con análisis de tendencias y alertas automatizadas. Enfocado en la gestión eficiente de recursos y la toma de decisiones basada en datos.",
           "tech": [
             "React",
             "Node.js",
@@ -140,7 +140,7 @@
         "portfolio": {
           "title": "Portfolio",
           "subtitle": "Este portfolio",
-          "description": "Mi carta de presentación digital. Desarrollado con React, Chakra UI e internacionalizado en español e inglés.",
+          "description": "Esta plataforma: mi carta de presentación profesional. Diseñada con React y Chakra UI, implementando internacionalización (i18n) y animaciones fluidas para una UX superior.",
           "tech": [
             "React",
             "Chakra UI",
@@ -151,7 +151,7 @@
         "real-time-chat": {
           "title": "Chat en Tiempo Real",
           "subtitle": "Aplicación de mensajería en tiempo real",
-          "description": "Chat en tiempo real con Socket.io, salas de chat, y autenticación de usuarios. Proyecto para practicar desarrollo en tiempo real.",
+          "description": "Aplicación de mensajería instantánea escalable con soporte para múltiples salas y autenticación segura. Un caso de estudio en comunicación full-duplex y gestión de estado en tiempo real.",
           "tech": [
             "React",
             "Socket.io",
@@ -269,22 +269,21 @@
   },
   "about": {
     "badge": "Sobre mí",
-    "heading": "Construyendo soluciones que funcionan",
+    "heading": "Construyendo soluciones eficientes y escalables.",
     "context": "Background profesional, enfoque técnico y lo que puedo aportar a tu equipo.",
-    "p1": "Desarrollador Full-Stack con +1 año de experiencia construyendo soluciones backend y frontend para clientes reales. Especializado en APIs con Python/FastAPI y interfaces interactivas con React.",
-    "p2": "Manejo proyectos end-to-end: arquitectura de bases de datos, APIs RESTful con FastAPI/Express, interfaces responsivas con React, y deployments en Vercel/Render. Cada sistema incluye tests básicos y documentación técnica.",
-    "p3": "Colaboro de forma efectiva en equipos usando Git y metodologías ágiles. Priorizo código mantenible y documentado sobre soluciones rápidas. Cursando Ingeniería Informática para fortalecer fundamentos teóricos.",
+    "p1": "Soy un desarrollador Full-Stack con un fuerte enfoque en el Backend. Mi objetivo no es solo escribir código, sino diseñar sistemas eficientes, escalables y fáciles de mantener. Actualmente curso la carrera de Ingeniería Informática, lo que me permite combinar la agilidad del desarrollo moderno con una base sólida en algoritmos, estructuras de datos y principios de ingeniería de software.",
+    "p2": "Creo firmemente en el crecimiento colectivo y la transferencia de conocimiento. Por eso, soy un miembro activo y organizador en SaltaDev, colaborando en la planificación de eventos tech y compartiendo experiencias para fortalecer el ecosistema tecnológico de Salta.",
     "card1": {
-      "title": "Backend sólido",
-      "text": "Diseño APIs RESTful claras, estructuras de datos eficientes y lógica de negocio robusta. Python/FastAPI y Node.js/Express."
+      "title": "Arquitectura Backend",
+      "text": "Diseño de APIs RESTful bajo estándares de escalabilidad, utilizando estructuras de datos optimizadas y lógica de negocio robusta. Especializado en ecosistemas de alto rendimiento con Python (FastAPI) y Node.js (Express)."
     },
     "card2": {
-      "title": "Producción verificada",
-      "text": "Sistemas desplegados y funcionando para clientes reales. Sé lo que es manejar expectativas, entregar a tiempo y dar soporte post-lanzamiento."
+      "title": "Implementación Profesional",
+      "text": "Ciclo de vida completo en entornos productivos para clientes reales. Experiencia en la gestión de requerimientos técnicos, cumplimiento de plazos críticos y soporte post-lanzamiento para garantizar la estabilidad operativa."
     },
     "card3": {
-      "title": "Mejora continua",
-      "text": "Ingeniería mientras trabajo. Entiendo el 'por qué' de las decisiones técnicas, no solo el 'cómo'."
+      "title": "Criterio de Ingeniería",
+      "text": "Formación académica constante aplicada al desarrollo. Mi enfoque se centra en comprender los fundamentos técnicos y el 'porqué' detrás de cada decisión arquitectónica, priorizando la calidad del software sobre la inmediatez.."
     }
   },
   "contact": {

@@ -52,7 +52,7 @@ export default function Hero() {
     >
       <Box position="absolute" top={0} left={0} right={0} bottom={0} bg={contentBgColor} zIndex={1} />
 
-      {floatingOrbs.map((orb, i) => (
+      {!prefersReducedMotion && floatingOrbs.map((orb, i) => (
         <MotionBox
           key={i}
           position="absolute"
@@ -63,18 +63,9 @@ export default function Hero() {
           filter="blur(60px)"
           left={orb.x}
           top={orb.y}
-          initial={{ opacity: 0, scale: 0.8 }}
-          animate={
-            prefersReducedMotion
-              ? { opacity: 0.6, scale: 1 }
-              : { opacity: [0.4, 0.7, 0.4], scale: [1, 1.1, 1], y: [0, -20, 0] }
-          }
-          transition={{
-            opacity: { duration: orb.duration, repeat: Infinity, ease: "easeInOut" },
-            scale: { duration: orb.duration, repeat: Infinity, ease: "easeInOut" },
-            y: { duration: orb.duration, repeat: Infinity, ease: "easeInOut" },
-            delay: orb.delay,
-          }}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 0.4 }}
+          transition={{ duration: 1 }}
           zIndex={0}
         />
       ))}

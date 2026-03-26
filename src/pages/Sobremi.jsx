@@ -58,9 +58,6 @@ const AboutMe = () => {
               <Text fontSize={{ base: "sm", md: "md" }} color={secondaryText} lineHeight="1.7" fontFamily="var(--font-body)">
                 {t("about.p2")}
               </Text>
-              <Text fontSize={{ base: "sm", md: "md" }} color={secondaryText} lineHeight="1.7" fontFamily="var(--font-body)">
-                {t("about.p3")}
-              </Text>
             </VStack>
           </SimpleGrid>
 

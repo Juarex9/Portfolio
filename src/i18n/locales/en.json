@@ -6,99 +6,88 @@
     },
     "projects": {
       "title": "Projects | Agustín Juárez",
-      "description": "Real freelance projects: price scraping, appointment management, and personal finance. MERN stack, Python/FastAPI, PostgreSQL. GitHub code available."
+      "description": "Real-world freelance projects: price scraping, appointment management, and finance apps. MERN Stack, Python/FastAPI, PostgreSQL. Code available on GitHub."
     },
     "freelance": {
       "title": "Freelance Projects | Agustín Juárez",
-      "description": "Systems developed for real clients: appointment management and more. Each project handled end-to-end."
+      "description": "Systems developed for real clients: appointment management and more. Every project solved end-to-end."
     },
     "personal": {
       "title": "Personal Projects | Agustín Juárez",
-      "description": "Personal projects to learn and solve real problems. Scrapers, finances, chat, e-commerce and more."
+      "description": "Personal projects focused on learning and solving real problems. Scrapers, finance, chat, e-commerce, and more."
     },
     "education": {
       "title": "Education | Agustín Juárez",
-      "description": "Computer Engineering at UCASAL + Full Stack at Coderhouse. Solid foundation in algorithms, databases, and web development."
+      "description": "Computer Engineering at UCASAL + Full Stack at Coderhouse. Solid background in algorithms, databases, and web development."
     },
     "about": {
-      "title": "About | Agustín Juárez",
-      "description": "Developer with real freelance experience. I handle projects end-to-end: from concept to deploy. Focus on clear APIs, usable UI, and maintainable code."
+      "title": "About Me | Agustín Juárez",
+      "description": "Developer with real freelance experience. Managing end-to-end projects: from ideation to deployment. Focused on clear APIs, usable UI, and maintainable code."
     },
     "contact": {
       "title": "Contact | Agustín Juárez",
-      "description": "Contact Agustín Juárez. Available for freelance projects, remote positions, or collaborations. Python, React, Node.js, PostgreSQL."
+      "description": "Contact Agustín Juárez. Available for freelance projects, remote roles, or collaborations. Python, React, Node.js, PostgreSQL."
     }
   },
-
   "navbar": {
     "home": "Home",
     "projects": "Projects",
     "education": "Education",
-    "about": "About me",
+    "about": "About",
     "contact": "Contact"
   },
-
   "hero": {
-    "title_1": "Hi, I'm",
-    "title_name": "Agustín",
-    "availability": "Open to opportunities",
-    "subtitle": "Full-Stack Developer. Backend with Python/FastAPI and Node.js · Frontend with React. +1 year of production experience.",
-    "btn_contact": "Contact",
+    "title_1": "Agustín",
+    "title_name": "Juárez",
+    "availability": "Available for opportunities",
+    "subtitle": "Backend Developer & Engineering Student. Specialized in building robust APIs with Python/FastAPI and Node.js. Over a year delivering real-world solutions in production and actively collaborating in the local tech community.",
+    "btn_contact": "Contact Me",
     "btn_projects": "View Projects"
   },
   "stats": {
     "experience": "Years of experience",
     "projects": "Projects in production",
-    "technologies": "Main technologies"
+    "technologies": "Core technologies"
   },
   "featured": {
-    "badge": "Featured projects",
-    "title": "What I've built",
-    "subtitle": "Projects that solve real problems and are running in production.",
+    "badge": "Featured Projects",
+    "title": "What I've Built",
+    "subtitle": "Projects that solve real problems and are currently running in production.",
     "view_all": "View all projects",
     "view_details": "View details",
     "tech_label": "Stack:"
   },
-
   "presentation": {
-    "intro_title": "Developer with freelance projects in production",
-    "intro_text": "I handle end-to-end projects for real clients: from database design to deployment. Experience with REST APIs, data scraping, and management dashboards. Looking to grow in a team where I can contribute and keep learning.",
-    "links": [{ "label": "Download CV", "href": "./cv-juarez-english.pdf" }],
-    "intro_focus": "APPROACH",
+    "intro_title": "Digital Solutions Development",
+    "intro_text": "Specialized in the design and deployment of end-to-end architectures for the private sector. My approach combines the rigor of Computer Engineering with the technical agility required to implement REST APIs, automation systems (scraping), and high-availability management panels. My priority is delivering robust, documented, and scalable software.",
+    "links": [
+      {
+        "label": "Download CV",
+        "href": "./cv-juarez-english.pdf"
+      }
+    ],
+    "intro_focus": "FOCUS",
     "intro_b1": "Backend first: clear API design, robust validation, and well-structured databases.",
-    "intro_b2": "Usable frontend: clean interfaces, responsive design, and good UX.",
-    "intro_b3": "Professional delivery: documentation, basic tests, and functional deployment."
+    "intro_b2": "Usable Frontend: clean, responsive interfaces with a great user experience.",
+    "intro_b3": "Professional delivery: documentation, basic testing, and functional deployment."
   },
-
   "projects": {
     "badge": "Portfolio",
-    "title": "Real Projects",
-    "subtitle": "Freelance and personal projects in production. Each one solves a concrete problem for real users.",
+    "title": "Real-World Projects",
+    "subtitle": "End-to-end digital solutions designed for real clients and personal tools to optimize processes. Each project is a case study in architecture and problem-solving.",
     "github_button": "See more on GitHub",
-    "web2": {
-      "badge": "Web 2.0",
-      "title": "Web2 Projects",
-      "subtitle": "Full-stack projects with traditional technologies. Each one built to solve real needs."
-    },
-    "web3": {
-      "badge": "Web 3.0",
-      "title": "Web3 Projects",
-      "subtitle": "Exploring the blockchain ecosystem: dApps, smart contracts, and integrations."
-    },
-
     "cards": {
       "freelance": {
         "title": "Freelance",
-        "tag": "Client projects",
-        "description": "Systems developed for real clients: appointment management and more. Each project handled independently."
+        "tag": "Client Projects",
+        "description": "Custom platforms for clients: from database modeling to automated deployment. Focused on solving tangible business problems."
       },
       "personal": {
         "title": "Personal",
-        "tag": "Side projects",
-        "description": "Personal projects where I explore technologies and solve problems I'm interested in."
+        "tag": "Side Projects",
+        "description": "Automation and analysis tools where I apply engineering principles and explore new technologies. Focused on optimizing technical processes."
       }
     },
-
     "freelance": {
       "badge": "Freelance",
       "title": "Freelance Projects",
@@ -107,7 +96,7 @@
         "gestion-turnos": {
           "title": "Appointment Management System",
           "subtitle": "Freelance project for a real client",
-          "description": "Complete appointment management system with calendar, reminders, and admin panel. Handled all development end-to-end: database, API, and frontend.",
+          "description": "Comprehensive appointment management system featuring a calendar, reminders, and admin panel. Managed end-to-end development: database, API, and frontend.",
           "tech": [
             "React",
             "Node.js",
@@ -121,12 +110,12 @@
     "personal": {
       "badge": "Personal",
       "title": "Personal Projects",
-      "desc": "Personal projects to learn and solve real problems.",
+      "desc": "Side projects built to learn and solve real problems.",
       "items": {
         "scraper-precios": {
           "title": "Price Scraper",
           "subtitle": "API that compares supermarket prices",
-          "description": "API that scrapes prices from multiple supermarkets and compares them in one place. Includes web dashboard to view results and filter by product.",
+          "description": "Automated data extraction system to monitor price fluctuations in real-time. Designed to optimize search processes and large-scale data analysis.",
           "tech": [
             "Python",
             "FastAPI",
@@ -138,7 +127,7 @@
         "gestor-finanzas": {
           "title": "Finance Manager",
           "subtitle": "Personal expense and income tracker",
-          "description": "App to track expenses and income with savings plans, spending limits, and alerts. Includes notifications when approaching the limit.",
+          "description": "Personal financial control platform with trend analysis and automated alerts. Focused on efficient resource management and data-driven decision making.",
           "tech": [
             "React",
             "Node.js",
@@ -150,7 +139,7 @@
         "portfolio": {
           "title": "Portfolio",
           "subtitle": "This portfolio",
-          "description": "My digital business card. Developed with React, Chakra UI, and internationalized in Spanish and English.",
+          "description": "This platform: my professional introduction. Built with React and Chakra UI, implementing internationalization (i18n) and smooth animations for superior UX.",
           "tech": [
             "React",
             "Chakra UI",
@@ -161,7 +150,7 @@
         "real-time-chat": {
           "title": "Real-Time Chat",
           "subtitle": "Real-time messaging application",
-          "description": "Real-time chat with Socket.io, chat rooms, and user authentication. Project to practice real-time development.",
+          "description": "Scalable instant messaging app with multi-room support and secure authentication. A case study in full-duplex communication and real-time state management.",
           "tech": [
             "React",
             "Socket.io",
@@ -172,8 +161,8 @@
         },
         "ink-ai-risk-detector": {
           "title": "Ink | AI Risk Detector",
-          "subtitle": "Smart Contract Risk Detector",
-          "description": "Analyzes smart contract addresses and returns a score based on an AI analysis covering 10+ risk criteria.",
+          "subtitle": "Smart Contract risk detector",
+          "description": "Analyzes smart contract addresses and returns a score based on an AI analysis that evaluates over 10 risk criteria.",
           "tech": [
             "Javascript",
             "Node.js",
@@ -185,8 +174,8 @@
         },
         "e-commerce": {
           "title": "E-commerce",
-          "subtitle": "Complete online store",
-          "description": "Online store with shopping cart, product management, and admin panel. Coderhouse final project.",
+          "subtitle": "Full online store",
+          "description": "Online store featuring a shopping cart, product management, and admin panel. Coderhouse final project.",
           "tech": [
             "React",
             "Node.js",
@@ -197,31 +186,38 @@
       }
     }
   },
-
   "education": {
     "section": {
-      "badge": "Education",
+      "badge": "Training",
       "heading": "Education & Certifications",
-      "desc": "A look at my academic background and courses that strengthened my profile as a full-stack developer."
+      "desc": "A journey through my academic background and courses that strengthened my profile as a full-stack developer."
     },
-
     "ucasal": {
       "title": "Computer Engineering",
       "institution": "Universidad Católica de Salta",
       "location": "Salta, Argentina",
       "start": "2023",
-      "end": "Present",
+      "end": "In Progress",
       "highlights": [
-        "Data structures and databases",
-        "Object-oriented programming",
-        "Teamwork with Git and agile methodologies"
+        "Data structures and database design",
+        "Object-oriented programming and patterns",
+        "Team development with Git and agile methodologies"
       ],
-      "tags": ["Algorithms", "SQL DB", "React", "Node"],
-      "links": [{ "label": "Study Plan", "href": "./84-1-plan.pdf" }]
+      "tags": [
+        "Algorithms",
+        "PostgreSQL",
+        "React",
+        "Python"
+      ],
+      "links": [
+        {
+          "label": "Curriculum",
+          "href": "./84-1-plan.pdf"
+        }
+      ]
     },
-
     "reparando": {
-      "title": "Computer Equipment Diagnostics and Repair",
+      "title": "Computer Equipment Diagnosis and Repair",
       "institution": "Reparando",
       "location": "Online",
       "start": "2019",
@@ -229,14 +225,22 @@
       "highlights": [
         "Preventive and corrective hardware maintenance",
         "Operating system installation",
-        "Cleaning and optimization of computers"
+        "Equipment cleaning and optimization"
       ],
-      "tags": ["Hardware", "PC Equipment", "Operating Systems"],
-      "links": [{ "label": "Certificate", "href": "#" }]
+      "tags": [
+        "Hardware",
+        "PC Systems",
+        "Operating Systems"
+      ],
+      "links": [
+        {
+          "label": "Certificate",
+          "href": "#"
+        }
+      ]
     },
-
     "coder": {
-      "title": "Full Stack Developer Program",
+      "title": "Full Stack Developer Career",
       "institution": "Coderhouse",
       "location": "Online",
       "start": "2024",
@@ -244,43 +248,50 @@
       "highlights": [
         "Web accessibility and performance",
         "UI system design with Chakra",
-        "Final project: e-commerce website",
-        "Database fundamentals with MongoDB"
+        "Final project: E-commerce web app",
+        "Databases with MongoDB"
       ],
-      "tags": ["React", "Performance", "Chakra UI", "Web development", "MongoDB"],
-      "links": [{ "label": "Final project", "href": "#" }]
+      "tags": [
+        "React",
+        "Performance",
+        "Chakra UI",
+        "Web Development",
+        "MongoDB"
+      ],
+      "links": [
+        {
+          "label": "Final Project",
+          "href": "#"
+        }
+      ]
     }
   },
-
   "about": {
-    "badge": "About me",
-    "heading": "Building solutions that work",
-    "context": "Professional background, technical approach, and what I can bring to your team.",
-    "p1": "Full-Stack Developer with +1 year of experience building backend and frontend solutions for real clients. Specialized in APIs with Python/FastAPI and interactive interfaces with React.",
-    "p2": "I handle projects end-to-end: database architecture, RESTful APIs with FastAPI/Express, responsive interfaces with React, and deployments on Vercel/Render. Every system includes basic tests and technical documentation.",
-    "p3": "I collaborate effectively in teams using Git and agile methodologies. I prioritize maintainable and documented code over quick fixes. Pursuing Computer Engineering to strengthen theoretical foundations.",
+    "badge": "About Me",
+    "heading": "Building efficient and scalable solutions.",
+    "context": "Professional background, technical focus, and what I can bring to your team.",
+    "p1": "I am a Full-Stack developer with a strong focus on Backend. My goal is not just to write code, but to design efficient, scalable, and easy-to-maintain systems. I am currently pursuing a degree in Computer Engineering, which allows me to combine the agility of modern development with a solid foundation in algorithms, data structures, and software engineering principles.",
+    "p2": "I firmly believe in collective growth and knowledge sharing. That is why I am an active member and organizer at SaltaDev, collaborating in tech event planning and sharing experiences to strengthen Salta's technological ecosystem.",
     "card1": {
-      "title": "Solid backend",
-      "text": "I design clear RESTful APIs, efficient data structures, and robust business logic. Python/FastAPI and Node.js/Express."
+      "title": "Backend Architecture",
+      "text": "Designing RESTful APIs under scalability standards, utilizing optimized data structures and robust business logic. Specialized in high-performance ecosystems with Python (FastAPI) and Node.js (Express)."
     },
     "card2": {
-      "title": "Production verified",
-      "text": "Systems deployed and running for real clients. I know what it takes to manage expectations, deliver on time, and provide post-launch support."
+      "title": "Professional Implementation",
+      "text": "Full lifecycle in production environments for real clients. Experience in managing technical requirements, meeting critical deadlines, and post-launch support to ensure operational stability."
     },
     "card3": {
-      "title": "Continuous improvement",
-      "text": "Engineering while working. I understand the 'why' behind technical decisions, not just the 'how'."
+      "title": "Engineering Judgment",
+      "text": "Constant academic training applied to development. My focus is on understanding technical fundamentals and the 'why' behind every architectural decision, prioritizing software quality over speed."
     }
   },
-
   "contact": {
     "section": {
       "badge": "Contact",
-      "title": "Let's talk",
-      "subtitle": "Available for freelance projects, remote positions, and collaborations. I respond quickly.",
-      "desc": "Contact me directly through these methods or fill out the form."
+      "title": "Let's Talk",
+      "subtitle": "I am available for freelance projects, remote opportunities, and collaborations. I respond quickly.",
+      "desc": "Contact me directly through these channels or fill out the form."
     },
-
     "form": {
       "name": "Your name",
       "email": "Email",
@@ -289,7 +300,6 @@
       "desc": "Tell me briefly how I can help you"
     }
   },
-
   "footer": {
     "name": "Agustín",
     "surename": "Juárez",
@@ -299,7 +309,7 @@
     "links": {
       "projects": "Projects",
       "education": "Education",
-      "about": "About me",
+      "about": "About",
       "contact": "Contact"
     }
   }
