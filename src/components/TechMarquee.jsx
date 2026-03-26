@@ -22,7 +22,7 @@ import {
 const MotionBox = motion(Box);
 
 export default function TechMarquee({ speedSeconds = 22, title = "Tech stack", showTitle = true }) {
-  const { accentColor, contentBgColor } = useAccentColors();
+  const { accentColor } = useAccentColors();
   const prefersReducedMotion = useReducedMotion();
 
   const items = useMemo(
@@ -46,7 +46,7 @@ export default function TechMarquee({ speedSeconds = 22, title = "Tech stack", s
   const loop = [...items, ...items];
 
   return (
-    <Box w="full" py={{ base: 6, md: 10 }} bg={contentBgColor}>
+    <Box w="full" py={{ base: 6, md: 10 }} bg="transparent">
       <Container maxW="6xl">
         {showTitle && (
           <Box display="flex" alignItems="center" gap={2} mb={3}>

@@ -24,7 +24,7 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 const MotionBox = motion(Box);
 
 export default function Personal() {
-  const { accentColor, contentBgColor, borderColor } = useAccentColors();
+  const { accentColor, borderColor } = useAccentColors();
   const prefersReducedMotion = useReducedMotion();
   const secondaryText = "gray.500";
   const { t } = useTranslation();
@@ -40,7 +40,7 @@ export default function Personal() {
   return (
     <>
       <Seo titleKey="seo.personal.title" descriptionKey="seo.personal.description" canonicalPath="/personal" />
-      <Box w="full" minH="100vh" bg={contentBgColor}>
+      <Box w="full" minH="100vh" bg="transparent">
         <Container maxW="6xl" py={{ base: 8, md: 16 }}>
           <MotionBox initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: prefersReducedMotion ? 0 : 0.6 }} viewport={{ once: true }} mb={8}>
             <Stack direction={{ base: "column", md: "row" }} justify="space-between" align={{ base: "flex-start", md: "flex-end" }} spacing={4}>

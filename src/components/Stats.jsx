@@ -19,12 +19,12 @@ const stats = [
 ];
 
 export default function Stats() {
-  const { accentColor, contentBgColor, borderColor } = useAccentColors();
+  const { accentColor, borderColor } = useAccentColors();
   const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotion();
 
   return (
-    <Box w="full" py={{ base: 12, md: 16 }} bg={contentBgColor}>
+    <Box w="full" py={{ base: 12, md: 16 }} bg="transparent">
       <Container maxW="6xl">
         <SimpleGrid
           columns={{ base: 1, sm: 3 }}

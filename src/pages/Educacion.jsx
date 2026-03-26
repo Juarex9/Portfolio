@@ -48,7 +48,7 @@ export default function EducationTimeline() {
   return (
     <>
       <Seo titleKey="seo.education.title" descriptionKey="seo.education.description" canonicalPath="/educacion" />
-      <Box w="full" minH="100vh" bg={contentBgColor}>
+      <Box w="full" minH="100vh" bg="transparent">
         <Container maxW="6xl" py={{ base: 8, md: 16 }}>
           <MotionBox initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: prefersReducedMotion ? 0 : 0.6 }} viewport={{ once: true }} mb={8}>
             <HStack mb={3} gap={2}>

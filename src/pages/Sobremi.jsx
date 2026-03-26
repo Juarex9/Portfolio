@@ -19,7 +19,7 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 const MotionBox = motion(Box);
 
 const AboutMe = () => {
-  const { accentColor, contentBgColor, borderColor } = useAccentColors();
+  const { accentColor, borderColor } = useAccentColors();
   const prefersReducedMotion = useReducedMotion();
   const secondaryText = "gray.500";
   const { t } = useTranslation();
@@ -27,7 +27,7 @@ const AboutMe = () => {
   return (
     <>
       <Seo titleKey="seo.about.title" descriptionKey="seo.about.description" canonicalPath="/sobremi" />
-      <Box w="100%" minH="100vh" bg={contentBgColor}>
+      <Box w="100%" minH="100vh" bg="transparent">
         <Container maxW="6xl" px={{ base: 4, md: 8 }} py={{ base: 8, md: 16 }}>
           <MotionBox initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: prefersReducedMotion ? 0 : 0.6 }} viewport={{ once: true }} mb={8}>
             <Stack direction="row" align="center" gap={2} mb={3}>

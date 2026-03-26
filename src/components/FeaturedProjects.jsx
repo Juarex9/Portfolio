@@ -26,13 +26,13 @@ const featuredProjects = [
 ];
 
 export default function FeaturedProjects() {
-  const { accentColor, contentBgColor, borderColor } = useAccentColors();
+  const { accentColor, borderColor } = useAccentColors();
   const { t } = useTranslation();
   const textColor = "gray.500";
   const prefersReducedMotion = useReducedMotion();
   
   return (
-    <Box w="full" py={{ base: 16, md: 24 }} bg={contentBgColor}>
+    <Box w="full" py={{ base: 16, md: 24 }} bg="transparent">
       <Container maxW="6xl">
         <MotionBox
           initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
