@@ -98,7 +98,7 @@ export default function Proyectos() {
                 transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <LinkBox as="article" role="group" cursor="pointer" border="1px solid" borderColor={borderColor} borderRadius="xl" boxShadow="sm" _hover={{ transform: "translateY(-2px)", boxShadow: "md" }} transition="all 0.2s">
+                <LinkBox as="article" role="group" cursor="pointer" border="1px solid" borderColor={borderColor} borderRadius="xl" boxShadow="sm" _hover={{ transform: "translateY(-2px)", boxShadow: "md" }} transition="all 0.2s" p={{ base: 2, md: 3 }}>
                   <Box position="relative">
                     <Image
                       src={card.image}
