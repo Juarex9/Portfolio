@@ -11,8 +11,8 @@ export function useAccentColors() {
   // Texto principal
   const textColor = useColorModeValue("#0f172a", "#f1f5f9");
 
-  // Borde sutil para cards
-  const borderColor = useColorModeValue("gray.300", "gray.800");
+  // Borde sutil para cards - más notorio en dark
+  const borderColor = useColorModeValue("gray.300", "gray.600");
 
   return { accentColor, bgColor, contentBgColor, textColor, borderColor };
 }
