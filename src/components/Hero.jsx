@@ -190,69 +190,48 @@ export default function Hero() {
               h={{ base: "200px", md: "280px", lg: "320px" }}
               mx="auto"
             >
-              <MotionBox
-                position="absolute"
-                inset={{ base: -2, md: -4 }}
-                borderRadius="full"
-                bg={`linear-gradient(135deg, ${accentColor}30, transparent, ${accentColor}15)`}
-                animate={prefersReducedMotion ? {} : { 
-                  rotate: 360,
-                  scale: [1, 1.05, 1]
-                }}
-                transition={prefersReducedMotion ? {} : { 
-                  duration: 12, 
-                  repeat: Infinity, 
-                  ease: "linear"
-                }}
-              />
-              <MotionBox
-                position="absolute"
-                inset={{ base: -4, md: -8 }}
-                borderRadius="full"
-                border="1px dashed"
-                borderColor={`${accentColor}40`}
-                animate={prefersReducedMotion ? {} : { rotate: -360 }}
-                transition={prefersReducedMotion ? {} : { duration: 25, repeat: Infinity, ease: "linear" }}
-              />
-              <MotionBox
-                position="absolute"
-                inset={{ base: -8, md: -12 }}
-                borderRadius="full"
-                border="1px solid"
-                borderColor={`${accentColor}20`}
-                animate={prefersReducedMotion ? {} : { rotate: 360 }}
-                transition={prefersReducedMotion ? {} : { duration: 40, repeat: Infinity, ease: "linear" }}
-              />
-              <MotionBox
-                borderRadius="full"
-                w="full"
-                h="full"
-                bg="transparent"
-                display="flex"
-                alignItems="center"
-                justifyContent="center"
-                overflow="hidden"
-                animate={prefersReducedMotion ? {} : {
-                  y: [0, -8, 0]
-                }}
-                transition={prefersReducedMotion ? {} : {
-                  duration: 4,
-                  repeat: Infinity,
-                  ease: "easeInOut"
-                }}
-              >
-                <Box 
-                  w={{ base: "160px", md: "220px", lg: "260px" }} 
-                  h={{ base: "160px", md: "220px", lg: "260px" }} 
-                  borderRadius="full" 
-                  overflow="hidden" 
-                  border="3px solid" 
-                  borderColor={`${accentColor}40`}
-                  boxShadow={`0 0 30px ${accentColor}30, 0 0 60px ${accentColor}15`}
+              <Box position="relative" w="full" h="full">
+                <MotionBox
+                  position="absolute"
+                  inset={{ base: -2, md: -4 }}
+                  borderRadius="full"
+                  bg={`linear-gradient(135deg, ${accentColor}40, transparent, ${accentColor}20)`}
+                  animate={prefersReducedMotion ? {} : { rotate: 360 }}
+                  transition={prefersReducedMotion ? {} : { duration: 20, repeat: Infinity, ease: "linear" }}
+                />
+                <MotionBox
+                  position="absolute"
+                  inset={{ base: -4, md: -8 }}
+                  borderRadius="full"
+                  border="1px solid"
+                  borderColor={`${accentColor}30`}
+                  animate={prefersReducedMotion ? {} : { rotate: -360 }}
+                  transition={prefersReducedMotion ? {} : { duration: 30, repeat: Infinity, ease: "linear" }}
+                />
+                <MotionBox
+                  borderRadius="full"
+                  w="full"
+                  h="full"
+                  bg={useColorModeValue("#f4f5f7", "#111111")}
+                  boxShadow={`0 0 80px ${accentColor}50, 0 0 120px ${accentColor}20`}
+                  display="flex"
+                  alignItems="center"
+                  justifyContent="center"
+                  overflow="hidden"
+                  animate={prefersReducedMotion ? {} : {
+                    y: [0, -8, 0]
+                  }}
+                  transition={prefersReducedMotion ? {} : {
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "easeInOut"
+                  }}
                 >
-                  <img src="./yo-circular.png" alt="Agustín Juárez" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                </Box>
-              </MotionBox>
+                  <Box w={{ base: "160px", md: "220px", lg: "260px" }} h={{ base: "160px", md: "220px", lg: "260px" }} borderRadius="full" overflow="hidden" border="4px solid" borderColor={`${accentColor}30`}>
+                    <img src="./yo-circular.png" alt="Agustín Juárez" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                  </Box>
+                </MotionBox>
+              </Box>
             </MotionBox>
           </Box>
         </MotionBox>
