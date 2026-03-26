@@ -25,7 +25,7 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 const MotionBox = motion(Box);
 
 export default function EducationTimeline() {
-  const { accentColor, contentBgColor, borderColor } = useAccentColors();
+  const { accentColor, borderColor, bgColor } = useAccentColors();
   const prefersReducedMotion = useReducedMotion();
   const secondaryText = "gray.500";
   const { t } = useTranslation();
@@ -80,10 +80,10 @@ export default function EducationTimeline() {
                     w={{ base: "12px", md: "16px" }}
                     h={{ base: "12px", md: "16px" }}
                     borderRadius="full"
-                    bg={contentBgColor}
+                    bg={bgColor}
                     border="2px solid"
                     borderColor={accentColor}
-                    boxShadow={`0 0 0 4px ${contentBgColor}`}
+                    boxShadow={`0 0 0 4px ${bgColor}`}
                     zIndex={1}
                   />
 

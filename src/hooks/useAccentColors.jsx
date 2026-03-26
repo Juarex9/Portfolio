@@ -12,7 +12,7 @@ export function useAccentColors() {
   const textColor = useColorModeValue("#0f172a", "#f1f5f9");
 
   // Borde sutil para cards
-  const borderColor = useColorModeValue("gray.200", "gray.800");
+  const borderColor = useColorModeValue("gray.300", "gray.800");
 
   return { accentColor, bgColor, contentBgColor, textColor, borderColor };
 }

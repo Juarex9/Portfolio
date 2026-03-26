@@ -14,7 +14,7 @@ export default function App() {
   }, [i18n.language]);
 
   const dotColor = useColorModeValue(
-    "rgba(0, 0, 0, 0.03)",
+    "rgba(0, 0, 0, 0.08)",
     "rgba(255, 255, 255, 0.03)"
   );
 
