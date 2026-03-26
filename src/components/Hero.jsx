@@ -85,11 +85,16 @@ export default function Hero() {
           <Box
             display="grid"
             gridTemplateColumns={{ base: "1fr", lg: "1fr 380px" }}
+            gridTemplateRows={{ base: "auto auto", lg: "1fr" }}
             gap={{ base: 8, md: 12 }}
             alignItems="center"
             w="full"
           >
-            <MotionBox variants={itemVariants}>
+            <MotionBox 
+              variants={itemVariants} 
+              gridColumn={{ base: "1", lg: "2" }}
+              gridRow={{ base: "2", lg: "1" }}
+            >
               <HStack mb={4} gap={2} flexWrap="wrap">
                 <Box w="6px" h="6px" borderRadius="full" bg={accentColor} />
                 <Badge
@@ -189,6 +194,8 @@ export default function Hero() {
               w={{ base: "200px", md: "280px", lg: "320px" }}
               h={{ base: "200px", md: "280px", lg: "320px" }}
               mx="auto"
+              gridColumn={{ base: "1", lg: "2" }}
+              gridRow={{ base: "1", lg: "1" }}
             >
               <Box position="relative" w="full" h="full">
                 <MotionBox
