@@ -23,7 +23,7 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 const MotionBox = motion(Box);
 
 export default function Proyectos() {
-  const { accentColor, contentBgColor } = useAccentColors();
+  const { accentColor, contentBgColor, borderColor } = useAccentColors();
   const prefersReducedMotion = useReducedMotion();
   const secondaryText = "gray.500";
   const { t } = useTranslation();
@@ -98,8 +98,8 @@ export default function Proyectos() {
                 transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <LinkBox as="article" role="group" cursor="pointer">
-                  <Box position="relative" borderRadius="xl" overflow="hidden">
+                <LinkBox as="article" role="group" cursor="pointer" border="1px solid" borderColor={borderColor} borderRadius="xl" boxShadow="sm" _hover={{ transform: "translateY(-2px)", boxShadow: "md" }} transition="all 0.2s">
+                  <Box position="relative">
                     <Image
                       src={card.image}
                       alt={t(`projects.cards.${card.key}.title`)}
