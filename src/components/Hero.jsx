@@ -52,7 +52,7 @@ export default function Hero() {
       overflow="hidden"
       py={{ base: 12, md: 0 }}
     >
-      <Box position="absolute" top={0} left={0} right={0} bottom={0} bg={contentBgColor} zIndex={1} />
+      <Box position="absolute" top={0} left={0} right={0} bottom={0} bg="transparent" zIndex={1} />
 
       {!prefersReducedMotion && floatingOrbs.map((orb, i) => (
         <MotionBox
