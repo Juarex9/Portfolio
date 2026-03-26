@@ -24,10 +24,10 @@ export default function IntroPresentation() {
   const mutedText = "gray.500";
 
   const images = [
-    { src: "/alerta-chat.png", alt: "realtime-chat" },
-    { src: "/main-chat.png", alt: "realtime-chat" },
-    { src: "/ecommerce-home.png", alt: "home-ecommerce" },
-    { src: "/ecommerce-producto.png", alt: "product-ecommerce" },
+    { src: "/price-scraper-full.png", alt: "price-scraper" },
+    { src: "/ink-risk.png", alt: "ink-ai-risk-detector" },
+    { src: "/ink-full.png", alt: "ink" },
+    { src: "/fintrack-full.png", alt: "fintrack" },
   ];
 
   const links = t("presentation.links", { returnObjects: true }) || [];

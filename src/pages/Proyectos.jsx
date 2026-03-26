@@ -29,8 +29,8 @@ export default function Proyectos() {
   const { t } = useTranslation();
 
   const cards = [
-    { key: "freelance", image: "/freelance-projects.png", link: "/freelance" },
-    { key: "personal", image: "/perrsonal-projects.png", link: "/personal" },
+    { key: "freelance", image: "/hello-world.jpg", link: "/freelance" },
+    { key: "personal", image: "/question.jpg", link: "/personal" },
   ];
 
   return (

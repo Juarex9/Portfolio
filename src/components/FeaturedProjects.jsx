@@ -21,8 +21,8 @@ const MotionBox = motion(Box);
 
 const featuredProjects = [
   { key: "gestion-turnos", category: "Freelance", href: "/freelance" },
-  { key: "scraper-precios", category: "Personal", href: "/personal" },
-  { key: "e-commerce", category: "Personal", href: "/personal" },
+  { key: "scraper-precios", category: "Personal", href: "/personal", image: "/price-scraper.png" },
+  { key: "ink-ai-risk-detector", category: "Personal", href: "/personal", image: "/ink-risk.png" },
 ];
 
 export default function FeaturedProjects() {
@@ -73,8 +73,31 @@ export default function FeaturedProjects() {
               <MotionBox key={project.key} initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }} viewport={{ once: true }}>
                 <LinkBox as="article" role="group">
                   <Box borderRadius="xl" overflow="hidden" border="1px solid" borderColor={borderColor} boxShadow="sm" _hover={{ transform: "translateY(-2px)", boxShadow: "md" }} transition="all 0.2s">
-                    <Box h="140px" bgGradient={`linear(135deg, ${accentColor}, ${accentColor}cc)`} display="flex" alignItems="center" justifyContent="center">
-                      <Text fontSize="5xl" fontWeight="900" fontFamily="var(--font-display)" color="white" opacity={0.3}>{title.charAt(0)}</Text>
+                    <Box h="140px" position="relative" overflow="hidden">
+                      {project.image ? (
+                        <Box
+                          as="img"
+                          src={project.image}
+                          alt={title}
+                          position="absolute"
+                          inset={0}
+                          w="full"
+                          h="full"
+                          objectFit="cover"
+                          _groupHover={{ transform: "scale(1.05)" }}
+                          transition="transform 0.3s"
+                        />
+                      ) : (
+                        <Box
+                          h="full"
+                          bgGradient={`linear(135deg, ${accentColor}, ${accentColor}cc)`}
+                          display="flex"
+                          alignItems="center"
+                          justifyContent="center"
+                        >
+                          <Text fontSize="5xl" fontWeight="900" fontFamily="var(--font-display)" color="white" opacity={0.3}>{title.charAt(0)}</Text>
+                        </Box>
+                      )}
                     </Box>
                     <Box p={{ base: 3, md: 4 }}>
                       <HStack mb={2}><Badge borderRadius="full" px={2} py={0.5} bg={`${accentColor}15`} color={accentColor} fontSize="xs">{project.category}</Badge></HStack>

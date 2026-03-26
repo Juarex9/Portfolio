@@ -6,6 +6,7 @@ import {
   Button,
   Badge,
   HStack,
+  useColorModeValue,
 } from "@chakra-ui/react";
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
@@ -24,6 +25,7 @@ export default function Hero() {
   const { accentColor, contentBgColor } = useAccentColors();
   const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotion();
+  const nameColor = useColorModeValue("black", "white");
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -112,18 +114,20 @@ export default function Hero() {
                 fontFamily="var(--font-display)"
                 lineHeight="1.1"
                 mb={4}
-                sx={{
-                  "& span": {
-                    display: "block",
-                    background: `linear-gradient(135deg, ${accentColor}, ${accentColor}cc)`,
-                    WebkitBackgroundClip: "text",
-                    WebkitTextFillColor: "transparent",
-                    backgroundClip: "text",
-                  },
-                }}
               >
-                <span>{t("hero.title_1")}</span>
-                <span>{t("hero.title_name")}</span>
+                <Box as="span" display="block" color={nameColor}>
+                  {t("hero.title_1")}
+                </Box>
+                <Box
+                  as="span"
+                  display="block"
+                  background={`linear-gradient(135deg, ${accentColor}, ${accentColor}cc)`}
+                  WebkitBackgroundClip="text"
+                  WebkitTextFillColor="transparent"
+                  backgroundClip="text"
+                >
+                  {t("hero.title_name")}
+                </Box>
               </Heading>
 
               <Text
