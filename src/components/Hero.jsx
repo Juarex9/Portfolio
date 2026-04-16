@@ -229,7 +229,7 @@ export default function Hero() {
                   }}
                 >
                   <Box w={{ base: "160px", md: "220px", lg: "260px" }} h={{ base: "160px", md: "220px", lg: "260px" }} borderRadius="full" overflow="hidden" border="4px solid" borderColor={`${accentColor}30`}>
-                    <img src="./yo-circular.png" alt="Agustín Juárez" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
+                    <img src="./mirando-al-horizonte-modified.png" alt="Agustín Juárez" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
                   </Box>
                 </MotionBox>
               </Box>
