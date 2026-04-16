@@ -45,7 +45,7 @@ export default function IntroPresentation() {
           >
             <HStack spacing={3} mb={4}>
               <Box w="40px" h="40px" borderRadius="lg" overflow="hidden" flexShrink={0}>
-                <Image src="/yo-circular.png" alt="profile" w="full" h="full" objectFit="cover" loading="lazy" />
+                <Image src="/mirando-al-horizonte-modified.png" alt="profile" w="full" h="full" objectFit="cover" loading="lazy" />
               </Box>
               <Box fontSize="xs" color={mutedText}>
                 <Text fontWeight="700" fontFamily="var(--font-display)" fontSize="sm">Agustín Juárez</Text>
