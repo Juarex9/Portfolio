@@ -81,12 +81,12 @@ export default function Contact() {
             <Box>
               <Text mt={2} color={secondaryText} fontFamily="var(--font-body)" lineHeight="1.7" fontSize="sm" mb={5}>{t("contact.section.desc")}</Text>
               <VStack spacing={2} align="stretch">
-                {[{ icon: MdPhone, href: "tel:+5493886672774", label: "+54 9 388 667 2774" }, { icon: MdEmail, href: "mailto:agustinjuarez375@gmail.com", label: "agustinjuarez375@gmail.com" }, { icon: MdLocationOn, href: null, label: "Salta, Argentina" }].map((item) => (
+                {[{ icon: MdPhone, href: "tel:+5493886709087", label: "+54 9 3886709087" }, { icon: MdEmail, href: "mailto:agustinjuarez375@gmail.com", label: "agustinjuarez375@gmail.com" }, { icon: MdLocationOn, href: null, label: "Salta, Argentina" }].map((item) => (
                   <Button key={item.label} as={item.href ? Link : "button"} href={item.href} size="sm" h="44px" justifyContent="flex-start" variant="ghost" color={secondaryText} fontWeight="500" fontFamily="var(--font-body)" _hover={{ color: accentColor }} leftIcon={<item.icon color={accentColor} size="16px" />} transition="all 0.3s">{item.label}</Button>
                 ))}
               </VStack>
               <HStack spacing={2} mt={4}>
-                {[{ icon: BsLinkedin, href: "https://www.linkedin.com/in/agustin-juarez0907/", label: "LinkedIn" }, { icon: BsWhatsapp, href: "https://wa.me/5493886672774", label: "WhatsApp" }, { icon: BsTelegram, href: "https://t.me/agustin_jzz", label: "Telegram" }].map((social) => (
+                {[{ icon: BsLinkedin, href: "https://www.linkedin.com/in/agustin-juarez0907/", label: "LinkedIn" }, { icon: BsWhatsapp, href: "https://wa.me/5493886709087", label: "WhatsApp" }, { icon: BsTelegram, href: "https://t.me/agustin_jzz", label: "Telegram" }].map((social) => (
                   <MotionBox key={social.label} whileHover={{ y: -2 }} transition={{ duration: prefersReducedMotion ? 0 : 0.2 }}>
                     <IconButton as={Link} href={social.href} target="_blank" aria-label={social.label} variant="ghost" size="md" isRound color={secondaryText} _hover={{ color: accentColor }} icon={<social.icon size={18} />} transition="all 0.3s" />
                   </MotionBox>

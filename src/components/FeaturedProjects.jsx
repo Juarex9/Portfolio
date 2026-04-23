@@ -20,7 +20,7 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 const MotionBox = motion(Box);
 
 const featuredProjects = [
-  { key: "gestion-turnos", category: "Freelance", href: "/freelance" },
+  { key: "gestion-turnos", category: "Freelance", href: "/freelance", image: "/gestor-turnos.png" },
   { key: "scraper-precios", category: "Personal", href: "/personal", image: "/price-scraper.png" },
   { key: "ink-ai-risk-detector", category: "Personal", href: "/personal", image: "/ink-risk.png" },
 ];

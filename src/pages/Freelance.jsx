@@ -29,7 +29,7 @@ export default function Freelance() {
   const secondaryText = "gray.500";
   const { t } = useTranslation();
 
-  const projects = [{ key: "gestion-turnos", github: "", demo: "" }];
+  const projects = [{ key: "gestion-turnos", github: "https://github.com/Juarex9/gestor-turnos.git", demo: "" }];
 
   return (
     <>

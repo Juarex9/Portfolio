@@ -100,7 +100,7 @@
           "tech": [
             "React",
             "Node.js",
-            "PostgreSQL",
+            "MongoDB",
             "JWT",
             "REST API"
           ]
