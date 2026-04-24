@@ -7,7 +7,7 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 import {
   SiJavascript,
   SiHtml5,
-  SiCss3,
+  SiCss,
   SiPython,
   SiReact,
   SiExpress,
@@ -30,7 +30,7 @@ export default function TechMarquee({ speedSeconds = 22, title = "Tech stack", s
       { label: "JavaScript", Icon: SiJavascript },
       { label: "TypeScript", Icon: SiTypescript },
       { label: "HTML5", Icon: SiHtml5 },
-      { label: "CSS3", Icon: SiCss3 },
+      { label: "CSS3", Icon: SiCss },
       { label: "Python", Icon: SiPython },
       { label: "React", Icon: SiReact },
       { label: "Chakra UI", Icon: SiChakraui },
