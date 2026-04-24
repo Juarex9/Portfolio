@@ -182,6 +182,18 @@
             "Express",
             "MongoDB"
           ]
+        },
+        "fintrack": {
+          "title": "FinTrack",
+          "subtitle": "Personal finance manager",
+          "description": "A manager that simplifies the tracking and handling of personal finances. It allows for the creation of savings plans and strategies.",
+          "tech": [
+            "Next.js",
+            "Typescript",
+            "TailwindCSS",
+            "Prisma",
+            "Vercel"
+          ]
         }
       }
     }

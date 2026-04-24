@@ -183,6 +183,17 @@
             "Express",
             "MongoDB"
           ]
+        },
+        "fintrack": {
+          "title": "FinTrack",
+          "subtitle": "Gestor de finanzas personales",
+          "description": "Gestor que facilita el conteo y manejo de finanzas personales. Permite armar planes y estrategias de ahorro.",
+          "tech": [
+            "Next.js",
+            "Typescript",
+            "TailwindCSS",
+            "Prisma",
+            "Vercel"
         }
       }
     }

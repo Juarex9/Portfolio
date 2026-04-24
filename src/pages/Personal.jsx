@@ -35,6 +35,7 @@ export default function Personal() {
     { key: "real-time-chat", github: "https://github.com/Juarex9/chat-realtime.git", demo: "https://backend1-coderhouse.onrender.com/" },
     { key: "portfolio", github: "https://github.com/Juarex9/Portfolio.git", demo: "https://www.agustinjz.dev/" },
     { key: "ink-ai-risk-detector", github: "https://github.com/Juarex9/aleph-backend.git", demo: "https://ink-three-iota.vercel.app/" },
+    { key: "fintrack", github: "https://github.com/Juarex9/fintrack.git", demo: ""},
   ];
 
   return (
