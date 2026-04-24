@@ -125,18 +125,6 @@
             "Jinja2"
           ]
         },
-        "gestor-finanzas": {
-          "title": "Gestor de Finanzas",
-          "subtitle": "Control de gastos e ingresos personales",
-          "description": "Plataforma de control financiero personal con análisis de tendencias y alertas automatizadas. Enfocado en la gestión eficiente de recursos y la toma de decisiones basada en datos.",
-          "tech": [
-            "React",
-            "Node.js",
-            "PostgreSQL",
-            "JWT",
-            "Express"
-          ]
-        },
         "portfolio": {
           "title": "Portfolio",
           "subtitle": "Este portfolio",
@@ -194,6 +182,7 @@
             "TailwindCSS",
             "Prisma",
             "Vercel"
+          ]
         }
       }
     }

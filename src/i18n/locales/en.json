@@ -124,18 +124,6 @@
             "Jinja2"
           ]
         },
-        "gestor-finanzas": {
-          "title": "Finance Manager",
-          "subtitle": "Personal expense and income tracker",
-          "description": "Personal financial control platform with trend analysis and automated alerts. Focused on efficient resource management and data-driven decision making.",
-          "tech": [
-            "React",
-            "Node.js",
-            "PostgreSQL",
-            "JWT",
-            "Express"
-          ]
-        },
         "portfolio": {
           "title": "Portfolio",
           "subtitle": "This portfolio",
