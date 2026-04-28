@@ -40,7 +40,7 @@
     "title_1": "Agustín",
     "title_name": "Juárez",
     "availability": "Disponible para oportunidades",
-    "subtitle": "Backend Developer & Estudiante de Ingeniería. Especializado en construir APIs robustas con Python/FastAPI y Node.js. Más de un año entregando soluciones reales en producción y colaborando activamente en la comunidad tech local.",
+    "subtitle": "Desarrollador de Software & Estudiante de Ingeniería Informática.",
     "btn_contact": "Contacto",
     "btn_projects": "Ver Proyectos"
   },
@@ -57,26 +57,58 @@
     "view_details": "Ver detalles",
     "tech_label": "Stack:"
   },
+  "experiences": {
+    "title": "Experiencias",
+    "items": [
+      {
+        "title": "Ganador Emprendeamos 2022",
+        "subtitle": "Premio",
+        "date": "Abril - Noviembre 2022",
+        "description": "Ganador de la ideathon Emprendamos, cuyo fin era realizar un emprendimiento real. El programa fue impulsado por la Escuela Técnica Ing. Herminio Arrieta, la empresa Ledesma, Endeavor y Naves",
+        "imageSrc": "/emprendamos.jpg"
+      },
+      {
+        "title": "Participante en Sub0 Polkadot 2025",
+        "subtitle": "Hackathon",
+        "date": "Noviembre 2025",
+        "description": "Participé en la hackathon de Sub0 junto a otros chicos de SaltaDev.",
+        "imageSrc": "/sub-cero.jpg"
+      },
+      {
+        "title": "2do Lugar VendimiaTech 2026",
+        "subtitle": "Hackathon",
+        "date": "Marzo 2026",
+        "description": "Segundo lugar en VendimiaTech 2026, realizado en Mendoza, del cual Salta fue punto satélite. Proyecto de análisis y certifiación de viñedos tokenizados.",
+        "imageSrc": "/vendimiatech.png"
+      },
+      {
+        "title": "Staff SaltaDev",
+        "subtitle": "Comunidad",
+        "date": "Actual",
+        "description": "Miembro del staff de SaltaDev, la comunidad de desarrolladores más grande del norte argentino. Coordinador de eventos, meetups técnicos, hackathones y divulgación en medios locales.",
+        "imageSrc": "/saltadev.png"
+      }
+    ]
+  },
   "presentation": {
-    "intro_title": "Desarrollo de Soluciones Digitales",
-    "intro_text": "Especializado en el diseño y despliegue de arquitecturas end-to-end para el sector privado. Mi enfoque combina la rigurosidad de la Ingeniería Informática con la agilidad técnica necesaria para implementar APIs REST, sistemas de automatización (scraping) y paneles de gestión de alta disponibilidad. Mi prioridad es la entrega de software robusto, documentado y escalable.",
+    "intro_title": "Software Engineering & Backend Systems",
+    "intro_text": "Especializado en el diseño y despliegue de arquitecturas end-to-end para startups y entornos corporativos. Mi enfoque combina la rigurosidad de la Ingeniería Informática con la capacidad técnica para implementar APIs de alto rendimiento, sistemas de procesamiento de datos y arquitecturas de alta disponibilidad.",
     "links": [
       {
         "label": "Descargar CV",
         "href": "./cv-juarez-spanish.pdf"
       }
     ],
-    "intro_focus": "ENFOQUE",
-    "intro_b1": "Backend primero: diseño de APIs claras, validación robusta y bases de datos bien estructuradas.",
-    "intro_b2": "Frontend usable: interfaces limpias, responsive y con buena experiencia de usuario.",
-    "intro_b3": "Entrega profesional: documentación, tests básicos y deploy funcional."
+    "intro_focus": "PILARES",
+    "intro_b1": "Backend & Arquitectura: Diseño de APIs resilientes, validación estricta y modelos de datos optimizados.",
+    "intro_b2": "Interfaces Funcionales: Desarrollo de frontends modernos centrados en la eficiencia y la experiencia del usuario.",
+    "intro_b3": "Calidad de Ingeniería: Código limpio, documentación técnica exhaustiva y despliegue automatizado."
   },
   "projects": {
     "badge": "Portfolio",
     "title": "Proyectos Reales",
     "subtitle": "Soluciones digitales end-to-end diseñadas para clientes reales y herramientas personales para optimizar procesos. Cada proyecto es un caso de estudio en arquitectura y resolución de problemas.",
     "github_button": "Ver más en GitHub",
-
     "cards": {
       "freelance": {
         "title": "Freelance",
@@ -271,19 +303,19 @@
     "badge": "Sobre mí",
     "heading": "Construyendo soluciones eficientes y escalables.",
     "context": "Background profesional, enfoque técnico y lo que puedo aportar a tu equipo.",
-    "p1": "Soy un desarrollador Full-Stack con un fuerte enfoque en el Backend. Mi objetivo no es solo escribir código, sino diseñar sistemas eficientes, escalables y fáciles de mantener. Actualmente curso la carrera de Ingeniería Informática, lo que me permite combinar la agilidad del desarrollo moderno con una base sólida en algoritmos, estructuras de datos y principios de ingeniería de software.",
-    "p2": "Creo firmemente en el crecimiento colectivo y la transferencia de conocimiento. Por eso, soy un miembro activo y organizador en SaltaDev, colaborando en la planificación de eventos tech y compartiendo experiencias para fortalecer el ecosistema tecnológico de Salta.",
+    "p1": "Soy un Software Developer con una base sólida en Ingeniería Informática y un enfoque integral en el Backend. Mi objetivo no es solo escribir código, sino diseñar sistemas eficientes y escalables, combinando la agilidad del desarrollo moderno con principios rigurosos de ingeniería de software.",
+    "p2": "Siempre en constante aprendizaje, mi visión se centra en comprender los fundamentos técnicos y el 'porqué' detrás de cada decisión arquitectónica, priorizando la calidad del software sobre la inmediatez.",
     "card1": {
-      "title": "Arquitectura Backend",
-      "text": "Diseño de APIs RESTful bajo estándares de escalabilidad, utilizando estructuras de datos optimizadas y lógica de negocio robusta. Especializado en ecosistemas de alto rendimiento con Python (FastAPI) y Node.js (Express)."
+      "title": "Ecosistema Blockchain & Web3",
+      "text": "Conocimiento en arquitectura blockchain y aplicaciones descentralizadas. Experiencia en lenguajes para el desarrollo de aplicaciones web3 como Solidity y Rust. Apasionado por este ecosistema, me mantengo en constante movimiento y aprendizaje."
     },
     "card2": {
-      "title": "Implementación Profesional",
-      "text": "Ciclo de vida completo en entornos productivos para clientes reales. Experiencia en la gestión de requerimientos técnicos, cumplimiento de plazos críticos y soporte post-lanzamiento para garantizar la estabilidad operativa."
+      "title": "Comunidad",
+      "text": "Miembro staff de SaltaDev. Trabajo constante en la comunidad local de desarrolladores con el fin de impulsar el talento y el conocimiento en la provincia. Fiel creyente del networking, coworking y trabajo en comunidad."
     },
     "card3": {
-      "title": "Criterio de Ingeniería",
-      "text": "Formación académica constante aplicada al desarrollo. Mi enfoque se centra en comprender los fundamentos técnicos y el 'porqué' detrás de cada decisión arquitectónica, priorizando la calidad del software sobre la inmediatez.."
+      "title": "Soluciones IA",
+      "text": "Desarrollo e implementación de agentes de IA y arquitecturas orientadas a la automatización de procesos, buscando optimizar la eficiencia operativa a través de soluciones inteligentes."
     }
   },
   "contact": {

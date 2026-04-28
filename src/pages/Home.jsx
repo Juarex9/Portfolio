@@ -1,7 +1,6 @@
 import Hero from "../components/Hero";
 import IntroPresentation from "../components/IntroPresentacion";
 import TechMarquee from "../components/TechMarquee";
-import Stats from "../components/Stats";
 import FeaturedProjects from "../components/FeaturedProjects";
 import { Seo } from "../components/Seo";
 import { VisuallyHidden } from "@chakra-ui/react";
@@ -25,7 +24,6 @@ export default function Home() {
 
       <Hero />
       <TechMarquee speedSeconds={22} title="Stack" />
-      <Stats />
       <FeaturedProjects />
       <IntroPresentation />
     </>

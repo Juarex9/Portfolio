@@ -40,7 +40,7 @@
     "title_1": "Agustín",
     "title_name": "Juárez",
     "availability": "Available for opportunities",
-    "subtitle": "Backend Developer & Engineering Student. Specialized in building robust APIs with Python/FastAPI and Node.js. Over a year delivering real-world solutions in production and actively collaborating in the local tech community.",
+    "subtitle": "Software Developer & Engineering Student.",
     "btn_contact": "Contact Me",
     "btn_projects": "View Projects"
   },
@@ -57,19 +57,52 @@
     "view_details": "View details",
     "tech_label": "Stack:"
   },
-  "presentation": {
-    "intro_title": "Digital Solutions Development",
-    "intro_text": "Specialized in the design and deployment of end-to-end architectures for the private sector. My approach combines the rigor of Computer Engineering with the technical agility required to implement REST APIs, automation systems (scraping), and high-availability management panels. My priority is delivering robust, documented, and scalable software.",
+"experiences": {
+    "title": "Experience",
+    "items": [
+      {
+        "title": "Emprendeamos 2022 Winner",
+        "subtitle": "Award",
+        "date": "April - November 2022",
+        "description": "Winner of the 'Emprendamos' ideathon, focused on launching a real-world startup. The program was promoted by the Ing. Herminio Arrieta Technical School, Ledesma, Endeavor, and Naves.",
+        "imageSrc": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "title": "Sub0 Polkadot 2025 Participant",
+        "subtitle": "Hackathon",
+        "date": "November 2025",
+        "description": "Participated in the Sub0 hackathon in collaboration with other members of the SaltaDev community.",
+        "imageSrc": "https://images.unsplash.com/photo-1517245386807-bb43f82c655c?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "title": "2nd Place VendimiaTech 2026",
+        "subtitle": "Hackathon",
+        "date": "March 2026",
+        "description": "Awarded second place at VendimiaTech 2026, held in Mendoza with Salta as a satellite hub. Developed a project for the analysis and certification of tokenized vineyards.",
+        "imageSrc": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80"
+      },
+      {
+        "title": "SaltaDev Staff",
+        "subtitle": "Community",
+        "date": "Present",
+        "description": "Staff member at SaltaDev, the largest developer community in Northern Argentina. Coordinator of technical meetups, hackathons, and local media outreach.",
+        "imageSrc": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80"
+      }
+    ]
+  },
+ "presentation": {
+    "intro_title": "Software Engineering & Backend Systems",
+    "intro_text": "Specialized in designing and deploying end-to-end architectures for startups and corporate environments. My approach combines the rigor of Computer Engineering with the technical ability to implement high-performance APIs, data processing systems, and high-availability architectures.",
     "links": [
       {
         "label": "Download CV",
         "href": "./cv-juarez-english.pdf"
       }
     ],
-    "intro_focus": "FOCUS",
-    "intro_b1": "Backend first: clear API design, robust validation, and well-structured databases.",
-    "intro_b2": "Usable Frontend: clean, responsive interfaces with a great user experience.",
-    "intro_b3": "Professional delivery: documentation, basic testing, and functional deployment."
+    "intro_focus": "CORE FOCUS",
+    "intro_b1": "Backend & Architecture: Resilient API design, strict validation, and optimized data models.",
+    "intro_b2": "Functional Interfaces: Modern frontend development focused on efficiency and user experience.",
+    "intro_b3": "Engineering Quality: Clean code, exhaustive technical documentation, and automated deployment."
   },
   "projects": {
     "badge": "Portfolio",
@@ -267,22 +300,22 @@
     }
   },
   "about": {
-    "badge": "About Me",
+    "badge": "About me",
     "heading": "Building efficient and scalable solutions.",
     "context": "Professional background, technical focus, and what I can bring to your team.",
-    "p1": "I am a Full-Stack developer with a strong focus on Backend. My goal is not just to write code, but to design efficient, scalable, and easy-to-maintain systems. I am currently pursuing a degree in Computer Engineering, which allows me to combine the agility of modern development with a solid foundation in algorithms, data structures, and software engineering principles.",
-    "p2": "I firmly believe in collective growth and knowledge sharing. That is why I am an active member and organizer at SaltaDev, collaborating in tech event planning and sharing experiences to strengthen Salta's technological ecosystem.",
+    "p1": "I am a Software Developer with a solid foundation in Computer Engineering and a comprehensive focus on Backend development. My goal is not just to write code, but to design efficient, scalable, and maintainable systems, combining the agility of modern development with rigorous software engineering principles.",
+    "p2": "Committed to continuous learning, my vision focuses on understanding the technical fundamentals and the 'why' behind every architectural decision, prioritizing software quality over immediacy.",
     "card1": {
-      "title": "Backend Architecture",
-      "text": "Designing RESTful APIs under scalability standards, utilizing optimized data structures and robust business logic. Specialized in high-performance ecosystems with Python (FastAPI) and Node.js (Express)."
+      "title": "Blockchain & Web3 Ecosystem",
+      "text": "Knowledge in blockchain architecture and decentralized applications. Experience with Web3 development languages such as Solidity and Rust. Passionate about this ecosystem, I stay in constant motion and continuous learning."
     },
     "card2": {
-      "title": "Professional Implementation",
-      "text": "Full lifecycle in production environments for real clients. Experience in managing technical requirements, meeting critical deadlines, and post-launch support to ensure operational stability."
+      "title": "Community",
+      "text": "Staff member at SaltaDev. Constantly working with the local developer community to foster talent and knowledge within the province. A firm believer in networking, coworking, and community-driven growth."
     },
     "card3": {
-      "title": "Engineering Judgment",
-      "text": "Constant academic training applied to development. My focus is on understanding technical fundamentals and the 'why' behind every architectural decision, prioritizing software quality over speed."
+      "title": "AI Solutions",
+      "text": "Development and implementation of AI agents and architectures focused on process automation, seeking to optimize operational efficiency through intelligent solutions."
     }
   },
   "contact": {

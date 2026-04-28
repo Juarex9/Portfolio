@@ -15,6 +15,7 @@ import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Seo } from "../components/Seo";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import ExperiencesCarousel from "../components/ExperiencesCarousel";
 
 const MotionBox = motion(Box);
 
@@ -27,7 +28,7 @@ const AboutMe = () => {
   return (
     <>
       <Seo titleKey="seo.about.title" descriptionKey="seo.about.description" canonicalPath="/sobremi" />
-      <Box w="100%" minH="100vh" bg="transparent">
+      <Box w="100%" minH="100vh" bg="transparent" overflowX="hidden">
         <Container maxW="6xl" px={{ base: 4, md: 8 }} py={{ base: 8, md: 16 }}>
           <MotionBox initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: prefersReducedMotion ? 0 : 0.6 }} viewport={{ once: true }} mb={8}>
             <Stack direction="row" align="center" gap={2} mb={3}>
@@ -46,11 +47,7 @@ const AboutMe = () => {
             </Text>
           </MotionBox>
 
-          <SimpleGrid columns={{ base: 1, md: 2 }} gap={{ base: 6, md: 10 }} alignItems="center" mb={{ base: 8, md: 12 }}>
-            <MotionBox initial={prefersReducedMotion ? false : { opacity: 0, x: -20 }} whileInView={{ opacity: 1, x: 0 }} transition={{ duration: prefersReducedMotion ? 0 : 0.6 }} viewport={{ once: true }}>
-              <Image src="/aboutme.png" alt="Espacio de trabajo" borderRadius="xl" objectFit="cover" h={{ base: "200px", sm: "260px", md: "300px" }} w="100%" loading="lazy" />
-            </MotionBox>
-
+          <SimpleGrid alignItems="center" mb={{ base: 8, md: 12 }}>
             <VStack align="start" spacing={4}>
               <Text fontSize={{ base: "sm", md: "md" }} color={secondaryText} lineHeight="1.7" fontFamily="var(--font-body)">
                 {t("about.p1")}
@@ -75,6 +72,10 @@ const AboutMe = () => {
               </MotionBox>
             ))}
           </SimpleGrid>
+
+          <Box mt={{ base: 8, md: 12 }}>
+            <ExperiencesCarousel />
+          </Box>
         </Container>
       </Box>
     </>
