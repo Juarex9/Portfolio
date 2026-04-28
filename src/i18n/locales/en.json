@@ -64,29 +64,29 @@
         "title": "Emprendeamos 2022 Winner",
         "subtitle": "Award",
         "date": "April - November 2022",
-        "description": "Winner of the 'Emprendamos' ideathon, focused on launching a real-world startup. The program was promoted by the Ing. Herminio Arrieta Technical School, Ledesma, Endeavor, and Naves.",
-        "imageSrc": "https://images.unsplash.com/photo-1552664730-d307ca884978?auto=format&fit=crop&w=800&q=80"
+        "description": "Winner of the 'Emprendamos' ideathon, focused on launching a real-world startup. The program was promoted by the Ing. Herminio Arrieta Technical School, Ledesma, Endeavor, and Logos.",
+        "imageSrc": "/emprendamos.jpg"
       },
       {
         "title": "Sub0 Polkadot 2025 Participant",
         "subtitle": "Hackathon",
         "date": "November 2025",
         "description": "Participated in the Sub0 hackathon in collaboration with other members of the SaltaDev community.",
-        "imageSrc": "https://images.unsplash.com/photo-1517245386807-bb43f82c655c?auto=format&fit=crop&w=800&q=80"
+        "imageSrc": "/sub-cero.png"
       },
       {
         "title": "2nd Place VendimiaTech 2026",
         "subtitle": "Hackathon",
         "date": "March 2026",
         "description": "Awarded second place at VendimiaTech 2026, held in Mendoza with Salta as a satellite hub. Developed a project for the analysis and certification of tokenized vineyards.",
-        "imageSrc": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80"
+        "imageSrc": "vendimiatech.png"
       },
       {
         "title": "SaltaDev Staff",
         "subtitle": "Community",
         "date": "Present",
         "description": "Staff member at SaltaDev, the largest developer community in Northern Argentina. Coordinator of technical meetups, hackathons, and local media outreach.",
-        "imageSrc": "https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80"
+        "imageSrc": "/saltadev.png"
       }
     ]
   },
