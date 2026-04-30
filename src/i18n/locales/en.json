@@ -1,12 +1,12 @@
 {
   "seo": {
     "home": {
-      "title": "Agustín Juárez | Full-Stack Developer · Python & MERN",
-      "description": "Agustín Juárez, Full-Stack Developer from Argentina. 1 year 5 months of experience. Stack: Python, FastAPI, React, Node.js, PostgreSQL. Available for remote opportunities."
+      "title": "Agustín Juárez | Software Developer",
+      "description": "Agustín Juárez, Software Developer from Argentina. Available for remote opportunities."
     },
     "projects": {
       "title": "Projects | Agustín Juárez",
-      "description": "Real-world freelance projects: price scraping, appointment management, and finance apps. MERN Stack, Python/FastAPI, PostgreSQL. Code available on GitHub."
+      "description": "Real-world freelance projects: price scraping, appointment management, and finance apps. Code available on GitHub."
     },
     "freelance": {
       "title": "Freelance Projects | Agustín Juárez",
@@ -14,7 +14,7 @@
     },
     "personal": {
       "title": "Personal Projects | Agustín Juárez",
-      "description": "Personal projects focused on learning and solving real problems. Scrapers, finance, chat, e-commerce, and more."
+      "description": "Personal projects and hackathon projects focused on learning and solving real problems."
     },
     "education": {
       "title": "Education | Agustín Juárez",
@@ -26,7 +26,7 @@
     },
     "contact": {
       "title": "Contact | Agustín Juárez",
-      "description": "Contact Agustín Juárez. Available for freelance projects, remote roles, or collaborations. Python, React, Node.js, PostgreSQL."
+      "description": "Contact Agustín Juárez. Available for freelance projects, remote roles, or collaborations."
     }
   },
   "navbar": {
@@ -349,9 +349,7 @@
   "footer": {
     "name": "Agustín",
     "surename": "Juárez",
-    "title": "Full-Stack Developer · Python · React · Node.js",
-    "rights": "All rights reserved.",
-    "made_with": "Built with React + Chakra UI.",
+    "title": "Software Developer",
     "links": {
       "projects": "Projects",
       "education": "Education",

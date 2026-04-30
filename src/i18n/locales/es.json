@@ -1,12 +1,12 @@
 {
   "seo": {
     "home": {
-      "title": "Agustín Juárez | Full-Stack Developer · Python & MERN",
-      "description": "Agustín Juárez, Full-Stack Developer de Argentina. 1 año 5 meses de experiencia. Stack: Python, FastAPI, React, Node.js, PostgreSQL. Disponible para oportunidades remotas."
+      "title": "Agustín Juárez | Software Developer",
+      "description": "Agustín Juárez, Software Developer de Argentina. Disponible para oportunidades remotas."
     },
     "projects": {
       "title": "Proyectos | Agustín Juárez",
-      "description": "Proyectos freelance reales: scraping de precios, gestión de turnos y finanzas. Stack MERN, Python/FastAPI, PostgreSQL. Código en GitHub."
+      "description": "Proyectos freelance reales: scraping de precios, gestión de turnos y finanzas. Código en GitHub."
     },
     "freelance": {
       "title": "Proyectos Freelance | Agustín Juárez",
@@ -14,7 +14,7 @@
     },
     "personal": {
       "title": "Proyectos Personales | Agustín Juárez",
-      "description": "Proyectos personales para aprender y resolver problemas reales. Scrapers, finanzas, chat, e-commerce y más."
+      "description": "Proyectos personales para aprender y proyectos de hackathones para resolver problemas reales."
     },
     "education": {
       "title": "Educación | Agustín Juárez",
@@ -26,7 +26,7 @@
     },
     "contact": {
       "title": "Contacto | Agustín Juárez",
-      "description": "Contactá a Agustín Juárez. Disponible para proyectos freelance, búsquedas remotas o colaboraciones. Python, React, Node.js, PostgreSQL."
+      "description": "Contactá a Agustín Juárez. Disponible para proyectos freelance, búsquedas remotas o colaboraciones."
     }
   },
   "navbar": {
@@ -336,7 +336,7 @@
     "section": {
       "badge": "Contacto",
       "title": "Hablemos",
-      "subtitle": "Estoy disponible para proyectos freelance, búsquedas remotas y colaboraciones. Respondé rápido.",
+      "subtitle": "Estoy disponible para proyectos freelance, búsquedas remotas y colaboraciones. Respondo rápido.",
       "desc": "Contactame directamente por estos medios o completá el formulario."
     },
     "form": {
@@ -350,9 +350,7 @@
   "footer": {
     "name": "Agustín",
     "surename": "Juárez",
-    "title": "Full-Stack Developer · Python · React · Node.js",
-    "rights": "Todos los derechos reservados.",
-    "made_with": "Hecho con React + Chakra UI.",
+    "title": "Software Developer",
     "links": {
       "projects": "Proyectos",
       "education": "Educación",
