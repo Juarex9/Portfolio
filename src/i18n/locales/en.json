@@ -57,7 +57,7 @@
     "view_details": "View details",
     "tech_label": "Stack:"
   },
-"experiences": {
+  "experiences": {
     "title": "Experience",
     "items": [
       {
@@ -90,7 +90,7 @@
       }
     ]
   },
- "presentation": {
+  "presentation": {
     "intro_title": "Software Engineering & Backend Systems",
     "intro_text": "Specialized in designing and deploying end-to-end architectures for startups and corporate environments. My approach combines the rigor of Computer Engineering with the technical ability to implement high-performance APIs, data processing systems, and high-availability architectures.",
     "links": [
@@ -214,6 +214,19 @@
             "TailwindCSS",
             "Prisma",
             "Vercel"
+          ]
+        },
+        "vitistrust": {
+          "title": "VitisTrust",
+          "subtitle": "Certification oracle for tokenized vineyards",
+          "description": "Monitors vineyards via satellite to validate their existence and current health. It offers a certification to guarantee the validity of a tokenized vineyard.",
+          "tech": [
+            "React",
+            "Python",
+            "Groq",
+            "Hedera",
+            "Stellar",
+            "Blockchain & Web3"
           ]
         }
       }

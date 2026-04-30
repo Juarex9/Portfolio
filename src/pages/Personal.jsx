@@ -35,6 +35,7 @@ export default function Personal() {
     { key: "portfolio", github: "https://github.com/Juarex9/Portfolio.git", demo: "https://www.agustinjz.dev/" },
     { key: "ink-ai-risk-detector", github: "https://github.com/Juarex9/aleph-backend.git", demo: "https://ink-three-iota.vercel.app/" },
     { key: "fintrack", github: "https://github.com/Juarex9/fintrack.git", demo: ""},
+    { key: "vitistrust", github: "htps://github.com/Juarex9/vitistrust.git", demo: "vitistrust.app.vercel"}
   ];
 
   return (

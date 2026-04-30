@@ -190,7 +190,8 @@
             "API",
             "IPFS",
             "Pinata",
-            "MongoDB"
+            "MongoDB",
+            "Blockchain & Web3"
           ]
         },
         "e-commerce": {
@@ -214,6 +215,19 @@
             "TailwindCSS",
             "Prisma",
             "Vercel"
+          ]
+        },
+        "vitistrust": {
+          "title": "VitisTrust",
+          "subtitle": "Oraculo certificador de viñedos tokenizados",
+          "description": "Monitorea viñedos via satelite para validar su existencia y su salud actual. Ofrece una certificación para garantizar la validez de un viñedo tokenizado.",
+          "tech": [
+            "React",
+            "Python",
+            "Groq",
+            "Hedera",
+            "Stellar",
+            "Blockchain & Web3"
           ]
         }
       }
