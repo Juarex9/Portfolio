@@ -4,21 +4,23 @@ import {
   SimpleGrid,
   Heading,
   Text,
-  Image,
   LinkBox,
   LinkOverlay,
   Container,
-  Badge,
   HStack,
-  Stack,
+  Tag,
   Button,
+  Badge,
+  Stack,
   Link,
 } from "@chakra-ui/react";
+import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
 import { Seo } from "../components/Seo";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import { projects } from "../data/projects.js";
 
 const MotionBox = motion(Box);
 
@@ -27,11 +29,6 @@ export default function Proyectos() {
   const prefersReducedMotion = useReducedMotion();
   const secondaryText = "gray.500";
   const { t } = useTranslation();
-
-  const cards = [
-    { key: "freelance", image: "/hello-world.jpg", link: "/freelance" },
-    { key: "personal", image: "/question.jpg", link: "/personal" },
-  ];
 
   return (
     <>
@@ -54,12 +51,30 @@ export default function Proyectos() {
               <Box>
                 <HStack mb={3} gap={2}>
                   <Box w="32px" h="2px" bg={accentColor} borderRadius="full" />
-                  <Badge borderRadius="full" px={3} py={1} bg={`${accentColor}15`} color={accentColor} textTransform="uppercase" fontSize="xs" fontWeight="600" letterSpacing="wider" fontFamily="var(--font-body)">
+                  <Badge
+                    borderRadius="full"
+                    px={3}
+                    py={1}
+                    bg={`${accentColor}15`}
+                    color={accentColor}
+                    textTransform="uppercase"
+                    fontSize="xs"
+                    fontWeight="600"
+                    letterSpacing="wider"
+                    fontFamily="var(--font-body)"
+                  >
                     {t("projects.badge")}
                   </Badge>
                 </HStack>
 
-                <Heading fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }} fontWeight="800" fontFamily="var(--font-display)" letterSpacing="-0.02em" lineHeight="1.2" mb={2}>
+                <Heading
+                  fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
+                  fontWeight="800"
+                  fontFamily="var(--font-display)"
+                  letterSpacing="-0.02em"
+                  lineHeight="1.2"
+                  mb={2}
+                >
                   {t("projects.title")}
                 </Heading>
 
@@ -90,46 +105,116 @@ export default function Proyectos() {
           </MotionBox>
 
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, md: 6 }}>
-            {cards.map((card, index) => (
-              <MotionBox
-                key={card.key}
-                initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }}
-                viewport={{ once: true }}
-              >
-                <LinkBox as="article" role="group" cursor="pointer" border="1px solid" borderColor={borderColor} borderRadius="xl" boxShadow="sm" _hover={{ transform: "translateY(-2px)", boxShadow: "md" }} transition="all 0.2s" p={{ base: 2, md: 3 }}>
-                  <Box position="relative">
-                    <Image
-                      src={card.image}
-                      alt={t(`projects.cards.${card.key}.title`)}
-                      objectFit="cover"
-                      w="100%"
-                      h={{ base: "160px", sm: "200px", md: "220px" }}
-                      loading="lazy"
-                      transition="transform 0.5s"
-                      _groupHover={{ transform: "scale(1.03)" }}
-                    />
-                    <HStack position="absolute" bottom={3} left={3} spacing={2}>
-                      <Badge borderRadius="full" px={2} py={0.5} bg={accentColor} color="white" fontSize="xs" fontWeight="600" fontFamily="var(--font-body)">
-                        {t(`projects.cards.${card.key}.tag`)}
-                      </Badge>
-                    </HStack>
-                  </Box>
+            {projects.map((project, index) => {
+              const baseKey = `projects.items.${project.key}`;
+              const primaryLink = project.demo || project.github;
 
-                  <Box py={3}>
-                    <Heading size="md" mb={1} fontFamily="var(--font-display)" fontWeight="700">
-                      <LinkOverlay href={card.link} _hover={{ color: accentColor }} transition="color 0.3s">
-                        {t(`projects.cards.${card.key}.title`)}
-                      </LinkOverlay>
-                    </Heading>
-                    <Text fontSize="sm" color={secondaryText} fontFamily="var(--font-body)">
-                      {t(`projects.cards.${card.key}.description`)}
-                    </Text>
-                  </Box>
-                </LinkBox>
-              </MotionBox>
-            ))}
+              return (
+                <MotionBox
+                  key={project.key}
+                  initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : (index % 2) * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  <LinkBox
+                    as="article"
+                    border="1px solid"
+                    borderColor={borderColor}
+                    borderRadius="xl"
+                    overflow="hidden"
+                    boxShadow="sm"
+                    _hover={{ transform: "translateY(-2px)", boxShadow: "md" }}
+                    transition="all 0.2s"
+                    cursor="pointer"
+                  >
+                    {project.image && (
+                      <Box h={{ base: "160px", md: "180px" }} position="relative" overflow="hidden">
+                        <Box
+                          as="img"
+                          src={project.image}
+                          alt={t(`${baseKey}.title`)}
+                          position="absolute"
+                          inset={0}
+                          w="full"
+                          h="full"
+                          objectFit="cover"
+                          loading="lazy"
+                        />
+                      </Box>
+                    )}
+
+                    <Box p={4}>
+                      <HStack mb={2} spacing={2} flexWrap="wrap">
+                        <Badge borderRadius="full" px={2} py={0.5} bg={`${accentColor}15`} color={accentColor} fontSize="xs">
+                          {t(`projects.types.${project.type}`)}
+                        </Badge>
+                      </HStack>
+
+                      <Heading size="sm" mb={1} fontFamily="var(--font-display)" fontWeight="700">
+                        <LinkOverlay href={primaryLink} target="_blank" rel="noopener noreferrer" _hover={{ color: accentColor }} transition="color 0.3s">
+                          {t(`${baseKey}.title`)}
+                        </LinkOverlay>
+                      </Heading>
+
+                      <Text fontSize="xs" color={accentColor} mb={2} fontWeight="500" fontFamily="var(--font-body">
+                        {t(`${baseKey}.subtitle`)}
+                      </Text>
+
+                      <Text fontSize="xs" color={secondaryText} lineHeight="1.6" fontFamily="var(--font-body)" mb={3}>
+                        {t(`${baseKey}.description`)}
+                      </Text>
+
+                      <HStack spacing={1.5} wrap="wrap" mb={3}>
+                        {t(`${baseKey}.tech`, { returnObjects: true }).slice(0, 4).map((techItem, i) => (
+                          <Tag key={i} size="sm" borderRadius="full" bg={`${accentColor}15`} color={accentColor} fontFamily="var(--font-body)" fontSize="xs" fontWeight="500" px={2} py={0.5}>
+                            {techItem}
+                          </Tag>
+                        ))}
+                      </HStack>
+
+                      <HStack spacing={2}>
+                        <Button
+                          as="a"
+                          href={project.github}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          size="xs"
+                          leftIcon={<FaGithub />}
+                          variant="outline"
+                          borderRadius="full"
+                          borderColor={accentColor}
+                          color={accentColor}
+                          _hover={{ bg: `${accentColor}10` }}
+                          fontFamily="var(--font-body)"
+                          onClick={(e) => e.stopPropagation()}
+                        >
+                          {t("projects.code_button")}
+                        </Button>
+                        {project.demo && (
+                          <Button
+                            as="a"
+                            href={project.demo}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            size="xs"
+                            leftIcon={<FaExternalLinkAlt />}
+                            bg={accentColor}
+                            color="white"
+                            borderRadius="full"
+                            _hover={{ opacity: 0.9 }}
+                            fontFamily="var(--font-body)"
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            {t("projects.demo_button")}
+                          </Button>
+                        )}
+                      </HStack>
+                    </Box>
+                  </LinkBox>
+                </MotionBox>
+              );
+            })}
           </SimpleGrid>
         </Container>
       </Box>

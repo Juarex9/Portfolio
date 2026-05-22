@@ -9,6 +9,7 @@ import {
   Link,
   IconButton,
 } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 import { BsGithub, BsLinkedin, BsEnvelope } from "react-icons/bs";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
@@ -110,7 +111,8 @@ export default function Footer() {
             {links.map((item) => (
               <Link
                 key={item.href}
-                href={item.href}
+                as={RouterLink}
+                to={item.href}
                 fontSize="sm"
                 fontFamily="var(--font-body)"
                 fontWeight="500"

@@ -6,15 +6,7 @@
     },
     "projects": {
       "title": "Projects | Agustín Juárez",
-      "description": "Real-world freelance projects: price scraping, appointment management, and finance apps. Code available on GitHub."
-    },
-    "freelance": {
-      "title": "Freelance Projects | Agustín Juárez",
-      "description": "Systems developed for real clients: appointment management and more. Every project solved end-to-end."
-    },
-    "personal": {
-      "title": "Personal Projects | Agustín Juárez",
-      "description": "Personal projects and hackathon projects focused on learning and solving real problems."
+      "description": "Real-world projects: client systems, side projects, and hackathons. Code and demos on GitHub."
     },
     "education": {
       "title": "Education | Agustín Juárez",
@@ -27,6 +19,10 @@
     "contact": {
       "title": "Contact | Agustín Juárez",
       "description": "Contact Agustín Juárez. Available for freelance projects, remote roles, or collaborations."
+    },
+    "notFound": {
+      "title": "Page not found | Agustín Juárez",
+      "description": "The page you're looking for doesn't exist or was moved."
     }
   },
   "navbar": {
@@ -55,40 +51,132 @@
     "subtitle": "Projects that solve real problems and are currently running in production.",
     "view_all": "View all projects",
     "view_details": "View details",
+    "stream_hint": "Drag or scroll — the beam reveals each project's code",
     "tech_label": "Stack:"
   },
   "experiences": {
     "title": "Experience",
-    "items": [
-      {
+    "back": "Back to About",
+    "view_project": "View project",
+    "read_more": "Read story",
+    "roles": {
+      "developer": "Developer",
+      "organizer": "Organizer / Staff"
+    },
+    "sections": {
+      "context": "Context",
+      "outcome": "Outcome"
+    },
+    "items": {
+      "emprendeamos-2022": {
         "title": "Emprendeamos 2022 Winner",
         "subtitle": "Award",
         "date": "April - November 2022",
-        "description": "Winner of the 'Emprendamos' ideathon, focused on launching a real-world startup. The program was promoted by the Ing. Herminio Arrieta Technical School, Ledesma, Endeavor, and Logos.",
-        "imageSrc": "/emprendamos.jpg"
+        "summary": "Winner of the Emprendamos program, focused on launching a real venture.",
+        "context": "Emprendeamos was an ideathon promoted by Ing. Herminio Arrieta Technical School, Ledesma SAAI, Endeavor, and Logos. The goal was not just slides: teams had to move toward a real venture with validation and execution.",
+        "developer": {
+          "title": "My role as developer",
+          "bullets": [
+            "Designed and built the technical solution with the team.",
+            "Defined the initial architecture, prototypes, and functional deliverables for the final demo.",
+            "Worked in short iterations focused on feasibility and jury presentation."
+          ]
+        },
+        "outcome": "We won the 2022 edition. It was one of my first experiences shipping something real under deadline, pitch, and concrete user pressure.",
+        "seo": {
+          "title": "Emprendeamos 2022 | Agustín Juárez",
+          "description": "Emprendeamos 2022 winner: real ideathon with product development, pitch, and startup execution."
+        }
       },
-      {
+      "sub0-2025": {
         "title": "Sub0 Polkadot 2025 Participant",
         "subtitle": "Hackathon",
         "date": "November 2025",
-        "description": "Participated in the Sub0 hackathon in collaboration with other members of the SaltaDev community.",
-        "imageSrc": "/sub-cero.png"
+        "summary": "Participated in the Sub0 hackathon with other SaltaDev members.",
+        "context": "Sub0 is a Polkadot ecosystem hackathon. We joined from SaltaDev with little time to research, prototype, and present a Web3-oriented solution.",
+        "developer": {
+          "title": "My role as developer",
+          "bullets": [
+            "Contributed to the project's backend and grant analysis logic.",
+            "Collaborated on the project's frontend development.",
+            "Worked in an in-person team with clear task divisions and frequent merges."
+          ]
+        },
+        "outcome": "We delivered Leivy, a system for analyzing project grants and subsidies on Polkadot.",
+        "seo": {
+          "title": "Sub0 Polkadot 2025 | Agustín Juárez",
+          "description": "Sub0 Polkadot 2025 with SaltaDev. Development of Leivy, a grant and subsidy analysis system for Polkadot."
+        }
       },
-      {
+      "aleph-2026": {
+        "title": "Aleph Hackathon Participant",
+        "subtitle": "Hackathon",
+        "date": "March 2026",
+        "summary": "Participated in the Aleph hackathon building Ink with a teammate.",
+        "context": "Aleph was a Web3 and smart contract hackathon. The challenge was to build a functional solution in little time, from idea to a deployed, presentable demo.",
+        "developer": {
+          "title": "My role as developer",
+          "bullets": [
+            "Built the logic behind Ink: smart contract analysis, risk scoring, and IPFS integration.",
+            "Worked in a pair with a teammate: they handled the frontend while I owned the backend and analysis engine.",
+            "Implemented the API and evaluation criteria that feed each contract's risk score."
+          ]
+        },
+        "outcome": "We delivered Ink, a smart contract risk detector with AI-assisted analysis. It was deployed as a public demo and connects to my Web3 project portfolio.",
+        "seo": {
+          "title": "Aleph Hackathon | Agustín Juárez",
+          "description": "Aleph hackathon participation. Development of Ink: AI-powered smart contract risk detector. Backend, analysis logic, and IPFS integration."
+        }
+      },
+      "vendimiatech-2026": {
         "title": "2nd Place VendimiaTech 2026",
         "subtitle": "Hackathon",
         "date": "March 2026",
-        "description": "Awarded second place at VendimiaTech 2026, held in Mendoza with Salta as a satellite hub. Developed a project for the analysis and certification of tokenized vineyards.",
-        "imageSrc": "vendimiatech.png"
+        "summary": "Second place at VendimiaTech 2026 with a tokenized vineyard certification project.",
+        "context": "VendimiaTech took place in Mendoza with Salta as a satellite hub. The challenge was a 48-hour hackathon using blockchain and Web3 technologies.",
+        "developer": {
+          "title": "My role as developer",
+          "bullets": [
+            "Built VitisTrust: an oracle that monitors vineyards via satellite and issues certification.",
+            "Integrated React, Python, Groq, and blockchain layers (Hedera / Rootstock).",
+            "Implemented an end-to-end flow from data ingestion to verifiable demo response."
+          ]
+        },
+        "organizer": {
+          "title": "My role as organizer",
+          "bullets": [
+            "Coordinated Salta's satellite node participation with SaltaDev.",
+            "Helped align teams, schedules, and local logistics for the hackathon.",
+            "Facilitated communication between participants and mentors during the event."
+          ]
+        },
+        "outcome": "I placed second. VitisTrust was deployed as a public demo and connects directly to my Web3/agtech project portfolio.",
+        "seo": {
+          "title": "VendimiaTech 2026 | Agustín Juárez",
+          "description": "2nd place at VendimiaTech 2026. VitisTrust: tokenized vineyard certification. Developer and organizer roles at Salta hub."
+        }
       },
-      {
+      "saltadev-staff": {
         "title": "SaltaDev Staff",
         "subtitle": "Community",
         "date": "Present",
-        "description": "Staff member at SaltaDev, the largest developer community in Northern Argentina. Coordinator of technical meetups, hackathons, and local media outreach.",
-        "imageSrc": "/saltadev.png"
+        "summary": "Staff member at SaltaDev, the largest developer community in northern Argentina.",
+        "context": "SaltaDev brings together developers in Salta through meetups, hackathons, and technical outreach. As staff I help run events and keep the community active beyond individual meetups.",
+        "organizer": {
+          "title": "My role as organizer / staff",
+          "bullets": [
+            "Coordinate technical meetups, hackathons, and outreach activities.",
+            "Support teams during events: logistics, mentoring, and post-event follow-up.",
+            "Represent the community in local media and regional/national events."
+          ]
+        },
+        "outcome": "SaltaDev is the thread connecting several of my projects and hackathons. It's also where I connect opportunities, teams, and continuous learning.",
+        "seo": {
+          "title": "SaltaDev Staff | Agustín Juárez",
+          "description": "SaltaDev staff: organizing meetups, hackathons, and the tech community in northern Argentina."
+        }
       }
-    ]
+    }
   },
   "presentation": {
     "intro_title": "Software Engineering & Backend Systems",
@@ -102,133 +190,71 @@
     "intro_focus": "CORE FOCUS",
     "intro_b1": "Backend & Architecture: Resilient API design, strict validation, and optimized data models.",
     "intro_b2": "Functional Interfaces: Modern frontend development focused on efficiency and user experience.",
-    "intro_b3": "Engineering Quality: Clean code, exhaustive technical documentation, and automated deployment."
+    "intro_b3": "Engineering Quality: Clean code, exhaustive technical documentation, and automated deployment.",
+    "carousel_hint": "Drag or use the mouse wheel",
+    "carousel_prev": "Previous project",
+    "carousel_next": "Next project"
   },
   "projects": {
     "badge": "Portfolio",
-    "title": "Real-World Projects",
-    "subtitle": "End-to-end digital solutions designed for real clients and personal tools to optimize processes. Each project is a case study in architecture and problem-solving.",
+    "title": "Projects",
+    "subtitle": "From client systems to side projects and hackathons. Each one solves a concrete problem.",
     "github_button": "See more on GitHub",
-    "cards": {
-      "freelance": {
-        "title": "Freelance",
-        "tag": "Client Projects",
-        "description": "Custom platforms for clients: from database modeling to automated deployment. Focused on solving tangible business problems."
+    "code_button": "Code",
+    "demo_button": "Demo",
+    "types": {
+      "client": "Real client",
+      "sideProject": "Side project",
+      "hackathon": "Hackathon"
+    },
+    "items": {
+      "gestion-turnos": {
+        "title": "Appointment Management System",
+        "subtitle": "Platform for a real client",
+        "description": "Comprehensive appointment management system featuring a calendar, reminders, and admin panel. Managed end-to-end development: database, API, and frontend.",
+        "tech": ["React", "Node.js", "MongoDB", "JWT", "REST API"]
       },
-      "personal": {
-        "title": "Personal",
-        "tag": "Side Projects",
-        "description": "Automation and analysis tools where I apply engineering principles and explore new technologies. Focused on optimizing technical processes."
-      }
-    },
-    "freelance": {
-      "badge": "Freelance",
-      "title": "Freelance Projects",
-      "desc": "Systems developed for real clients, from design to deployment.",
-      "items": {
-        "gestion-turnos": {
-          "title": "Appointment Management System",
-          "subtitle": "Freelance project for a real client",
-          "description": "Comprehensive appointment management system featuring a calendar, reminders, and admin panel. Managed end-to-end development: database, API, and frontend.",
-          "tech": [
-            "React",
-            "Node.js",
-            "MongoDB",
-            "JWT",
-            "REST API"
-          ]
-        }
-      }
-    },
-    "personal": {
-      "badge": "Personal",
-      "title": "Personal Projects",
-      "desc": "Side projects built to learn and solve real problems.",
-      "items": {
-        "scraper-precios": {
-          "title": "Price Scraper",
-          "subtitle": "API that compares supermarket prices",
-          "description": "Automated data extraction system to monitor price fluctuations in real-time. Designed to optimize search processes and large-scale data analysis.",
-          "tech": [
-            "Python",
-            "FastAPI",
-            "PostgreSQL",
-            "BeautifulSoup",
-            "Jinja2"
-          ]
-        },
-        "portfolio": {
-          "title": "Portfolio",
-          "subtitle": "This portfolio",
-          "description": "This platform: my professional introduction. Built with React and Chakra UI, implementing internationalization (i18n) and smooth animations for superior UX.",
-          "tech": [
-            "React",
-            "Chakra UI",
-            "i18n",
-            "Framer Motion"
-          ]
-        },
-        "real-time-chat": {
-          "title": "Real-Time Chat",
-          "subtitle": "Real-time messaging application",
-          "description": "Scalable instant messaging app with multi-room support and secure authentication. A case study in full-duplex communication and real-time state management.",
-          "tech": [
-            "React",
-            "Socket.io",
-            "Node.js",
-            "Express",
-            "MongoDB"
-          ]
-        },
-        "ink-ai-risk-detector": {
-          "title": "Ink | AI Risk Detector",
-          "subtitle": "Smart Contract risk detector",
-          "description": "Analyzes smart contract addresses and returns a score based on an AI analysis that evaluates over 10 risk criteria.",
-          "tech": [
-            "Javascript",
-            "Node.js",
-            "API",
-            "IPFS",
-            "Pinata",
-            "MongoDB"
-          ]
-        },
-        "e-commerce": {
-          "title": "E-commerce",
-          "subtitle": "Full online store",
-          "description": "Online store featuring a shopping cart, product management, and admin panel. Coderhouse final project.",
-          "tech": [
-            "React",
-            "Node.js",
-            "Express",
-            "MongoDB"
-          ]
-        },
-        "fintrack": {
-          "title": "FinTrack",
-          "subtitle": "Personal finance manager",
-          "description": "A manager that simplifies the tracking and handling of personal finances. It allows for the creation of savings plans and strategies.",
-          "tech": [
-            "Next.js",
-            "Typescript",
-            "TailwindCSS",
-            "Prisma",
-            "Vercel"
-          ]
-        },
-        "vitistrust": {
-          "title": "VitisTrust",
-          "subtitle": "Certification oracle for tokenized vineyards",
-          "description": "Monitors vineyards via satellite to validate their existence and current health. It offers a certification to guarantee the validity of a tokenized vineyard.",
-          "tech": [
-            "React",
-            "Python",
-            "Groq",
-            "Hedera",
-            "Stellar",
-            "Blockchain & Web3"
-          ]
-        }
+      "scraper-precios": {
+        "title": "Price Scraper",
+        "subtitle": "API that compares supermarket prices",
+        "description": "Automated data extraction system to monitor price fluctuations in real-time. Designed to optimize search processes and large-scale data analysis.",
+        "tech": ["Python", "FastAPI", "PostgreSQL", "BeautifulSoup", "Jinja2"]
+      },
+      "portfolio": {
+        "title": "Portfolio",
+        "subtitle": "This portfolio",
+        "description": "This platform: my professional introduction. Built with React and Chakra UI, implementing internationalization (i18n) and smooth animations for superior UX.",
+        "tech": ["React", "Chakra UI", "i18n", "Framer Motion"]
+      },
+      "real-time-chat": {
+        "title": "Real-Time Chat",
+        "subtitle": "Real-time messaging application",
+        "description": "Scalable instant messaging app with multi-room support and secure authentication. A case study in full-duplex communication and real-time state management.",
+        "tech": ["React", "Socket.io", "Node.js", "Express", "MongoDB"]
+      },
+      "leivy": {
+        "title": "Leivy",
+        "subtitle": "Sub0 Polkadot · Grant analysis",
+        "description": "System for analyzing grants and subsidies for projects in the Polkadot ecosystem. Built at the Sub0 hackathon with SaltaDev.",
+        "tech": ["React", "Node.js", "Polkadot", "API", "Blockchain & Web3"]
+      },
+      "ink-ai-risk-detector": {
+        "title": "Ink | AI Risk Detector",
+        "subtitle": "Aleph Hackathon · Smart Contract risk detector",
+        "description": "Built at the Aleph hackathon. Analyzes smart contract addresses and returns a score based on an AI analysis that evaluates over 10 risk criteria.",
+        "tech": ["Javascript", "Node.js", "API", "IPFS", "Pinata", "MongoDB", "Blockchain & Web3"]
+      },
+      "fintrack": {
+        "title": "FinTrack",
+        "subtitle": "Personal finance manager",
+        "description": "A manager that simplifies the tracking and handling of personal finances. It allows for the creation of savings plans and strategies.",
+        "tech": ["Next.js", "Typescript", "TailwindCSS", "Prisma", "Vercel"]
+      },
+      "vitistrust": {
+        "title": "VitisTrust",
+        "subtitle": "Certification oracle for tokenized vineyards",
+        "description": "Monitors vineyards via satellite to validate their existence and current health. It offers a certification to guarantee the validity of a tokenized vineyard.",
+        "tech": ["React", "Python", "Groq", "Hedera", "Stellar", "Blockchain & Web3"]
       }
     }
   },
@@ -344,7 +370,18 @@
       "message": "Message",
       "send": "Send message",
       "desc": "Tell me briefly how I can help you"
+    },
+    "toast": {
+      "successTitle": "Message sent",
+      "successDescription": "Thanks for reaching out — I'll get back to you soon.",
+      "errorTitle": "Something went wrong",
+      "errorDefault": "An error occurred while sending your message."
     }
+  },
+  "notFound": {
+    "title": "Page not found",
+    "description": "The URL you entered doesn't exist or was moved. You can go back home or explore my projects.",
+    "backHome": "Back to home"
   },
   "footer": {
     "name": "Agustín",

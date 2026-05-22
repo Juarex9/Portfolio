@@ -8,6 +8,7 @@ import {
   HStack,
   useColorModeValue,
 } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
@@ -145,8 +146,8 @@ export default function Hero() {
 
               <HStack spacing={2} flexWrap="wrap">
                 <Button
-                  as="a"
-                  href="/contacto"
+                  as={RouterLink}
+                  to="/contacto"
                   size="sm"
                   px={5}
                   h={10}
@@ -161,8 +162,8 @@ export default function Hero() {
                   {t("hero.btn_contact")}
                 </Button>
                 <Button
-                  as="a"
-                  href="/proyectos"
+                  as={RouterLink}
+                  to="/proyectos"
                   size="sm"
                   px={5}
                   h={10}

@@ -39,6 +39,15 @@
 </head>
 
 <body>
+  <script>
+    (function () {
+      var mode = localStorage.getItem('chakra-ui-color-mode');
+      if (!mode && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        mode = 'dark';
+      }
+      document.documentElement.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light');
+    })();
+  </script>
   <div id="root"></div>
   <script type="module" src="/src/services/main.jsx"></script>
 </body>

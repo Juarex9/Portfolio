@@ -53,11 +53,11 @@ export default function Contact() {
         body: JSON.stringify({ name: form.name, email: form.email, message: form.message, honeypot: form.hp }),
       });
       const data = await res.json();
-      if (!res.ok || !data.ok) throw new Error(data.message || "Error al enviar");
-      toast({ title: "Mensaje enviado", description: "Gracias por contactarme, te responderé a la brevedad.", status: "success", duration: 5000, isClosable: true });
+      if (!res.ok || !data.ok) throw new Error(data.message || t("contact.toast.errorDefault"));
+      toast({ title: t("contact.toast.successTitle"), description: t("contact.toast.successDescription"), status: "success", duration: 5000, isClosable: true });
       resetForm();
     } catch (err) {
-      toast({ title: "Ups, algo salió mal", description: err?.message || "Ocurrió un error al enviar el mensaje.", status: "error", duration: 5000, isClosable: true });
+      toast({ title: t("contact.toast.errorTitle"), description: err?.message || t("contact.toast.errorDefault"), status: "error", duration: 5000, isClosable: true });
     } finally {
       setLoading(false);
     }

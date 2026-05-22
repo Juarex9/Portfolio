@@ -17,7 +17,8 @@ import { SunIcon, MoonIcon, HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
 import { MdLanguage } from "react-icons/md";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
-import { useLocation } from "react-router-dom";
+import { Link as RouterLink, useLocation } from "react-router-dom";
+import { prefetchRoute } from "../routes/pageImports.js";
 
 const LINKS = [
   { href: "/", key: "navbar.home" },
@@ -61,11 +62,14 @@ export default function Navbar() {
         color={textColor}
       >
         <CLink
-          href="/"
+          as={RouterLink}
+          to="/"
           fontWeight="800"
           fontSize="xl"
           fontFamily="var(--font-display)"
           letterSpacing="-0.02em"
+          onMouseEnter={() => prefetchRoute("/")}
+          onFocus={() => prefetchRoute("/")}
           _hover={{ textDecoration: "none" }}
         >
           <Text as="span" color={accentColor}>A</Text>
@@ -79,7 +83,8 @@ export default function Navbar() {
           display={{ base: "none", lg: "flex" }}
         >
           {LINKS.map((link) => {
-            const isActive = location.pathname === link.href;
+            const isActive = location.pathname === link.href
+              || (link.href === "/sobremi" && location.pathname.startsWith("/experiencias/"));
             return (
               <Box
                 as="li"
@@ -87,7 +92,8 @@ export default function Navbar() {
                 listStyleType="none"
               >
                 <CLink
-                  href={link.href}
+                  as={RouterLink}
+                  to={link.href}
                   px={4}
                   py={2}
                   borderRadius="full"
@@ -96,6 +102,8 @@ export default function Navbar() {
                   fontFamily="var(--font-body)"
                   color={isActive ? accentColor : textColor}
                   aria-current={isActive ? "page" : undefined}
+                  onMouseEnter={() => prefetchRoute(link.href)}
+                  onFocus={() => prefetchRoute(link.href)}
                   _hover={{
                     textDecoration: "none",
                     color: accentColor,
@@ -184,11 +192,13 @@ export default function Navbar() {
         >
           <HStack spacing={2} flexDirection="column" align="stretch">
             {LINKS.map((link) => {
-              const isActive = location.pathname === link.href;
+              const isActive = location.pathname === link.href
+              || (link.href === "/sobremi" && location.pathname.startsWith("/experiencias/"));
               return (
                 <CLink
                   key={link.href}
-                  href={link.href}
+                  as={RouterLink}
+                  to={link.href}
                   w="100%"
                   display="block"
                   px={4}
@@ -203,6 +213,8 @@ export default function Navbar() {
                     textDecoration: "none",
                   }}
                   transition="all 0.3s"
+                  onMouseEnter={() => prefetchRoute(link.href)}
+                  onFocus={() => prefetchRoute(link.href)}
                   onClick={onToggle}
                 >
                   {t(link.key)}

@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { ChakraProvider } from "@chakra-ui/react";
+import { ChakraProvider, ColorModeScript } from "@chakra-ui/react";
 import { RouterProvider } from "react-router-dom";
 import { router } from "../routes/index";
 import "../i18n";
@@ -10,6 +10,7 @@ import { HelmetProvider } from "react-helmet-async";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
+    <ColorModeScript initialColorMode="system" />
     <ChakraProvider>
       <HelmetProvider>
         <RouterProvider router={router} />

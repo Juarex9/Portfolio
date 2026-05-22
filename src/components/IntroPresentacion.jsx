@@ -14,6 +14,7 @@ import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
 import { DownloadIcon } from "@chakra-ui/icons";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import ProjectMagazineCarousel from "./ProjectMagazineCarousel.jsx";
 
 const MotionBox = motion(Box);
 
@@ -24,11 +25,14 @@ export default function IntroPresentation() {
   const mutedText = "gray.500";
 
   const images = [
-    { src: "/price-scraper-full.png", alt: "price-scraper" },
-    { src: "/ink-risk.png", alt: "ink-ai-risk-detector" },
-    { src: "/ink-full.png", alt: "ink" },
-    { src: "/fintrack-full.png", alt: "fintrack" },
-  ];
+    { src: "/price-scraper-full.png", key: "scraper-precios" },
+    { src: "/ink-risk.png", key: "ink-ai-risk-detector" },
+    { src: "/ink-full.png", key: "ink-ai-risk-detector" },
+    { src: "/fintrack-full.png", key: "fintrack" },
+  ].map((item) => ({
+    src: item.src,
+    label: t(`projects.items.${item.key}.title`),
+  }));
 
   const links = t("presentation.links", { returnObjects: true }) || [];
 
@@ -135,28 +139,8 @@ export default function IntroPresentation() {
           </MotionBox>
         </SimpleGrid>
 
-        <Box mt={{ base: 8, md: 12 }}>
-          <HStack 
-            spacing={4} 
-            overflowX="auto" 
-            pb={3} 
-            mx={{ base: -4, md: 0 }}
-            px={{ base: 4, md: 0 }}
-            sx={{ scrollbarWidth: "none", "&::-webkit-scrollbar": { display: "none" } }}
-          >
-            {images.map((img, idx) => (
-              <Box 
-                key={idx} 
-                flex="0 0 auto" 
-                w={{ base: "200px", sm: "240px", md: "320px" }} 
-                h={{ base: "130px", sm: "160px", md: "200px" }} 
-                borderRadius="lg" 
-                overflow="hidden"
-              >
-                <Image src={img.src} alt={img.alt} w="full" h="full" objectFit="cover" loading="lazy" />
-              </Box>
-            ))}
-          </HStack>
+        <Box mt={{ base: 8, md: 12 }} w="full" maxW="100%" overflow="hidden">
+          <ProjectMagazineCarousel images={images} accentColor={accentColor} />
         </Box>
       </Container>
     </Box>
