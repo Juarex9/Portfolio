@@ -58,16 +58,67 @@
     "title": "Experiencias",
     "back": "Volver a Sobre mí",
     "view_project": "Ver proyecto",
+    "view_event": "Ver evento en punatech.ar",
+    "gallery_prev": "Foto anterior",
+    "gallery_next": "Foto siguiente",
     "read_more": "Leer vivencia",
     "roles": {
       "developer": "Developer",
-      "organizer": "Organizador / Staff"
+      "organizer": "Organizador / Staff",
+      "speaker": "Speaker",
+      "mentor": "Mentor",
+      "staff": "Staff"
     },
     "sections": {
       "context": "Contexto",
-      "outcome": "Resultado"
+      "outcome": "Resultado",
+      "gallery": "Galería del evento"
     },
     "items": {
+      "punatech-2026": {
+        "title": "Puna Tech 2026",
+        "subtitle": "Congreso de IA",
+        "date": "28 – 30 de mayo de 2026",
+        "summary": "Speaker, mentor y staff en Puna Tech 2026. Charla sobre IA aplicada al agro, agentes de IA y blockchain con casos reales del NOA.",
+        "context": "Puna Tech 2026 reunió a la comunidad tech de Salta y el norte argentino en tres jornadas dedicadas a la IA. Los días 28 y 29 se desarrollaron el Ideathon y Hackathon en la Escuela de Emprendedores y el Centro Cultural Dino Saluzzi; el sábado 30 hubo charlas, feria y salas en simultáneo. Fue una convocatoria histórica para democratizar el acceso a herramientas de inteligencia artificial en la provincia.",
+        "gallery": {
+          "alt": {
+            "yospeaker": "Charla sobre IA aplicada al agro y blockchain en Puna Tech 2026",
+            "fotogrupal": "Foto grupal del equipo y la comunidad en Puna Tech 2026",
+            "lospibes": "Equipo de SaltaDev en Puna Tech 2026",
+            "premiospuna": "Premiación y cierre de Puna Tech 2026"
+          }
+        },
+        "speaker": {
+          "title": "Mi rol como speaker",
+          "bullets": [
+            "Di una charla sobre inteligencia artificial orientada y aplicada al agro, con foco en el contexto productivo del NOA.",
+            "Definí qué son los agentes de IA y presenté casos de uso reales que ya se pueden implementar en la región.",
+            "Expliqué cómo las propiedades de blockchain — trazabilidad, inmutabilidad y confianza distribuida — pueden aportar en aspectos clave del sector agropecuario."
+          ]
+        },
+        "mentor": {
+          "title": "Mi rol como mentor",
+          "bullets": [
+            "Acompañé equipos durante el Ideathon y Hackathon en la definición del problema y el alcance del MVP.",
+            "Ayudé a priorizar entregables, dividir tareas y preparar el pitch final ante jurado.",
+            "Brindé feedback técnico sobre stack, viabilidad y presentación de la solución."
+          ]
+        },
+        "staff": {
+          "title": "Mi rol como staff",
+          "bullets": [
+            "Colaboré en la operación del evento junto a SaltaDev para que las jornadas transcurrieran de forma fluida.",
+            "Apoyé en logística, coordinación entre salas y atención a participantes durante las tres jornadas.",
+            "Participé en la organización previa y en el cierre del congreso como parte del equipo de staff."
+          ]
+        },
+        "outcome": "Puna Tech consolidó un espacio regional para IA con más de 1500 asistentes. Fue una experiencia integral — divulgación, mentoring y operación — que conecta directamente con mi trabajo en SaltaDev y en soluciones con IA.",
+        "seo": {
+          "title": "Puna Tech 2026 | Agustín Juárez",
+          "description": "Speaker en Puna Tech 2026: charla de IA aplicada al agro, agentes de IA y blockchain en el NOA. Mentor, staff, Ideathon y Hackathon en Salta."
+        }
+      },
       "emprendeamos-2022": {
         "title": "Ganador Emprendeamos 2022",
         "subtitle": "Premio",
@@ -200,8 +251,22 @@
     "title": "Proyectos",
     "subtitle": "Desde sistemas para clientes reales hasta herramientas propias y hackathons. Cada uno resuelve un problema concreto.",
     "github_button": "Ver más en GitHub",
+    "back": "Volver a Proyectos",
+    "read_more": "Leer más",
     "code_button": "Código",
     "demo_button": "Demo",
+    "card": {
+      "problem_label": "Problema:",
+      "role_label": "Rol:"
+    },
+    "sections": {
+      "problem": "Problema",
+      "context": "Contexto",
+      "role": "Mi aporte",
+      "highlights": "Funcionalidades clave",
+      "outcome": "Resultado",
+      "stack": "Stack"
+    },
     "types": {
       "client": "Cliente real",
       "sideProject": "Proyecto propio",
@@ -211,50 +276,79 @@
       "gestion-turnos": {
         "title": "Sistema de Gestión de Turnos",
         "subtitle": "Plataforma para cliente real",
-        "description": "Sistema completo de gestión de turnos con calendario, recordatorios y panel admin. Manejo todo el desarrollo end-to-end: base de datos, API y frontend.",
+        "problem": "Los negocios necesitan coordinar turnos sin fricción entre personal y clientes.",
+        "role": "Desarrollo end-to-end: base de datos, API REST con JWT y frontend en React.",
+        "description": "Sistema completo de gestión de turnos con calendario, recordatorios y panel admin.",
         "tech": ["React", "Node.js", "MongoDB", "JWT", "API REST"]
       },
       "scraper-precios": {
         "title": "Scraper de Precios",
         "subtitle": "API que compara precios de supermercados",
-        "description": "Sistema automatizado de extracción de datos para monitorear fluctuaciones de precios en tiempo real. Diseñado para optimizar procesos de búsqueda y análisis de grandes volúmenes de datos.",
+        "problem": "Comparar precios entre supermercados manualmente consume tiempo y no escala.",
+        "role": "Diseñé y desarrollé el pipeline de scraping, API FastAPI y persistencia en PostgreSQL.",
+        "description": "Sistema automatizado de extracción de datos para monitorear fluctuaciones de precios en tiempo real.",
         "tech": ["Python", "FastAPI", "PostgreSQL", "BeautifulSoup", "Jinja2"]
-      },
-      "portfolio": {
-        "title": "Portfolio",
-        "subtitle": "Este portfolio",
-        "description": "Esta plataforma: mi carta de presentación profesional. Diseñada con React y Chakra UI, implementando internacionalización (i18n) y animaciones fluidas para una UX superior.",
-        "tech": ["React", "Chakra UI", "i18n", "Framer Motion"]
       },
       "real-time-chat": {
         "title": "Chat en Tiempo Real",
         "subtitle": "Aplicación de mensajería en tiempo real",
-        "description": "Aplicación de mensajería instantánea escalable con soporte para múltiples salas y autenticación segura. Un caso de estudio en comunicación full-duplex y gestión de estado en tiempo real.",
+        "problem": "La mensajería en tiempo real requiere estado sincronizado y baja latencia entre usuarios.",
+        "role": "Implementé salas, autenticación y comunicación full-duplex con Socket.io y Express.",
+        "description": "Aplicación de mensajería instantánea escalable con soporte para múltiples salas.",
         "tech": ["React", "Socket.io", "Node.js", "Express", "MongoDB"]
       },
       "leivy": {
         "title": "Leivy",
         "subtitle": "Sub0 Polkadot · Análisis de subvenciones",
-        "description": "Sistema para analizar subvenciones y grants de proyectos en el ecosistema Polkadot. Desarrollado en la hackathon Sub0 con SaltaDev.",
+        "problem": "Evaluar subvenciones y grants en Polkadot es complejo sin herramientas que centralicen el análisis.",
+        "role": "Contribuí al backend, frontend y lógica de análisis en la hackathon Sub0 con SaltaDev.",
+        "description": "Sistema para analizar subvenciones y grants de proyectos en el ecosistema Polkadot.",
         "tech": ["React", "Node.js", "Polkadot", "API", "Blockchain & Web3"]
       },
       "ink-ai-risk-detector": {
         "title": "Ink | IA Risk Detector",
         "subtitle": "Hackathon Aleph · Detector de riesgos en Smart Contracts",
-        "description": "Desarrollado en la hackathon Aleph. Analiza direcciones de smart contracts y devuelve un score basado en un análisis de IA que evalúa +10 criterios de riesgo.",
+        "problem": "Invertir o interactuar con smart contracts sin evaluar riesgos expone a pérdidas evitables.",
+        "role": "Desarrollé el backend, motor de análisis con IA, scoring de riesgo e integración IPFS.",
+        "description": "Analiza direcciones de smart contracts y devuelve un score basado en +10 criterios de riesgo.",
         "tech": ["Javascript", "Node.js", "API", "IPFS", "Pinata", "MongoDB", "Blockchain & Web3"]
       },
       "fintrack": {
         "title": "FinTrack",
         "subtitle": "Gestor de finanzas personales",
-        "description": "Gestor que facilita el conteo y manejo de finanzas personales. Permite armar planes y estrategias de ahorro.",
+        "problem": "Llevar finanzas personales en hojas de cálculo dificulta ver patrones y cumplir metas de ahorro.",
+        "role": "Desarrollé la aplicación con Next.js, modelado con Prisma y UI con Tailwind.",
+        "description": "Gestor que facilita el conteo y manejo de finanzas personales con planes de ahorro.",
         "tech": ["Next.js", "Typescript", "TailwindCSS", "Prisma", "Vercel"]
       },
       "vitistrust": {
         "title": "VitisTrust",
         "subtitle": "Oraculo certificador de viñedos tokenizados",
-        "description": "Monitorea viñedos via satelite para validar su existencia y su salud actual. Ofrece una certificación para garantizar la validez de un viñedo tokenizado.",
+        "problem": "Los viñedos tokenizados necesitan certificación verificable de existencia y estado sanitario.",
+        "role": "Desarrollé el oráculo con monitoreo satelital, backend en Python y capas blockchain (Hedera/Stellar).",
+        "description": "Monitorea viñedos vía satélite y emite certificación para viñedos tokenizados.",
         "tech": ["React", "Python", "Groq", "Hedera", "Stellar", "Blockchain & Web3"]
+      },
+      "zafra": {
+        "title": "Zafra",
+        "subtitle": "IA agéntica para gestión y optimización del agro",
+        "problem": "Productores del NOA necesitan decisiones ágiles con datos dispersos entre ganadería, agricultura y clima.",
+        "role": "Diseño e implementación del sistema agéntico: orquestación de subagentes, integración satelital y canal Telegram.",
+        "description": "Sistema de IA agéntica para gestión y optimización del agro con alertas y chat por Telegram.",
+        "context": "Zafra nace para acercar inteligencia artificial aplicada al campo en el norte argentino. En lugar de dashboards rígidos, propone un ecosistema de agentes que interpretan datos territoriales, coordinan tareas entre subagentes especializados y devuelven respuestas accionables a productores y equipos técnicos.",
+        "highlights": [
+          "Arquitectura agéntica con subagentes para agricultura y ganadería en un mismo flujo.",
+          "Integración de datos satelitales para monitoreo y detección temprana de eventos críticos.",
+          "Alertas configurables según umbrales de negocio y condiciones del territorio.",
+          "Asistencia conversacional por Telegram para consultas y seguimiento sin fricción.",
+          "Diseño orientado a casos de uso reales del NOA, no solo prototipos de laboratorio."
+        ],
+        "outcome": "Zafra consolida mi línea de trabajo en AgTech e IA aplicada: un producto pensado para operar en el territorio, conectar satélite con decisiones diarias y democratizar el acceso a herramientas inteligentes para el agro.",
+        "tech": ["Python", "IA agéntica", "Subagentes", "Datos satelitales", "Telegram", "Ganadería", "Agricultura", "AgTech"],
+        "seo": {
+          "title": "Zafra | Agustín Juárez",
+          "description": "Zafra: sistema de IA agéntica para el agro en el NOA. Subagentes, datos satelitales, alertas y chat por Telegram."
+        }
       }
     }
   },

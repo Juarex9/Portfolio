@@ -35,6 +35,16 @@ export const projects = [
     type: "hackathon",
     github: "https://github.com/Juarex9/vitistrust.git",
     demo: "https://vitistrust.vercel.app",
+    image: "/vitistrust.png",
+  },
+  {
+    key: "zafra",
+    type: "sideProject",
+    github: "",
+    demo: "",
+    image: "/zafra.png",
+    featured: true,
+    hasDetailPage: true,
   },
   {
     key: "fintrack",
@@ -48,12 +58,15 @@ export const projects = [
     github: "https://github.com/Juarex9/chat-realtime.git",
     demo: "https://backend1-coderhouse.onrender.com/",
   },
-  {
-    key: "portfolio",
-    type: "sideProject",
-    github: "https://github.com/Juarex9/Portfolio.git",
-    demo: "https://www.agustinjz.dev/",
-  },
 ];
 
 export const featuredProjects = projects.filter((project) => project.featured);
+
+export function getProjectBySlug(slug) {
+  return projects.find((item) => item.key === slug);
+}
+
+export function getProjectDetailPath(project) {
+  if (!project?.hasDetailPage) return null;
+  return `/proyectos/${project.key}`;
+}

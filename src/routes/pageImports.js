@@ -1,6 +1,7 @@
 const routeLoaders = {
   "/": () => import("../pages/Home.jsx"),
   "/proyectos": () => import("../pages/Proyectos.jsx"),
+  "/proyecto": () => import("../pages/Proyecto.jsx"),
   "/educacion": () => import("../pages/Educacion.jsx"),
   "/sobremi": () => import("../pages/Sobremi.jsx"),
   "/contacto": () => import("../pages/Contacto.jsx"),
@@ -12,6 +13,7 @@ const prefetched = new Set();
 
 function resolveRouteKey(path) {
   if (path.startsWith("/experiencias/")) return "/experiencias";
+  if (path.startsWith("/proyectos/")) return "/proyecto";
   if (path === "/freelance" || path === "/personal") return "/proyectos";
   return routeLoaders[path] ? path : null;
 }
@@ -29,6 +31,7 @@ export function prefetchAllRoutes() {
 
 export const importHome = routeLoaders["/"];
 export const importProyectos = routeLoaders["/proyectos"];
+export const importProyecto = routeLoaders["/proyecto"];
 export const importEducacion = routeLoaders["/educacion"];
 export const importSobreMi = routeLoaders["/sobremi"];
 export const importContacto = routeLoaders["/contacto"];

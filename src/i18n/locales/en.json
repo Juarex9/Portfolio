@@ -58,16 +58,67 @@
     "title": "Experience",
     "back": "Back to About",
     "view_project": "View project",
+    "view_event": "View event at punatech.ar",
+    "gallery_prev": "Previous photo",
+    "gallery_next": "Next photo",
     "read_more": "Read story",
     "roles": {
       "developer": "Developer",
-      "organizer": "Organizer / Staff"
+      "organizer": "Organizer / Staff",
+      "speaker": "Speaker",
+      "mentor": "Mentor",
+      "staff": "Staff"
     },
     "sections": {
       "context": "Context",
-      "outcome": "Outcome"
+      "outcome": "Outcome",
+      "gallery": "Event gallery"
     },
     "items": {
+      "punatech-2026": {
+        "title": "Puna Tech 2026",
+        "subtitle": "AI Congress",
+        "date": "May 28 – 30, 2026",
+        "summary": "Speaker, mentor, and staff at Puna Tech 2026. Talk on AI applied to agriculture, AI agents, and blockchain with real use cases from Northwest Argentina.",
+        "context": "Puna Tech 2026 brought Salta and northern Argentina's tech community together for three days focused on AI. On the 28th and 29th, the Ideathon and Hackathon ran at the Escuela de Emprendedores and Centro Cultural Dino Saluzzi; on Saturday the 30th there were talks, an expo, and parallel rooms. It was a landmark gathering to broaden access to artificial intelligence tools in the province.",
+        "gallery": {
+          "alt": {
+            "yospeaker": "Talk on AI applied to agriculture and blockchain at Puna Tech 2026",
+            "fotogrupal": "Group photo of the team and community at Puna Tech 2026",
+            "lospibes": "SaltaDev crew at Puna Tech 2026",
+            "premiospuna": "Awards and closing ceremony at Puna Tech 2026"
+          }
+        },
+        "speaker": {
+          "title": "My role as speaker",
+          "bullets": [
+            "Delivered a talk on AI designed for and applied to agriculture, focused on the productive context of Northwest Argentina.",
+            "Defined what AI agents are and presented real-world use cases that can already be implemented in the region.",
+            "Explained how blockchain properties — traceability, immutability, and distributed trust — can support key aspects of the agricultural sector."
+          ]
+        },
+        "mentor": {
+          "title": "My role as mentor",
+          "bullets": [
+            "Supported teams during the Ideathon and Hackathon in problem framing and MVP scope.",
+            "Helped prioritize deliverables, split tasks, and prepare the final jury pitch.",
+            "Provided technical feedback on stack choices, feasibility, and how to present the solution."
+          ]
+        },
+        "staff": {
+          "title": "My role as staff",
+          "bullets": [
+            "Helped run the event with SaltaDev so all three days ran smoothly.",
+            "Supported logistics, coordination between rooms, and participant assistance.",
+            "Took part in pre-event planning and wrap-up as part of the staff team."
+          ]
+        },
+        "outcome": "Puna Tech established a regional hub for AI with over 1,500 attendees. It was a full-circle experience — outreach, mentoring, and operations — that ties directly into my work at SaltaDev and on AI-powered solutions.",
+        "seo": {
+          "title": "Puna Tech 2026 | Agustín Juárez",
+          "description": "Speaker at Puna Tech 2026: talk on AI applied to agriculture, AI agents, and blockchain in Northwest Argentina. Mentor, staff, Ideathon, and Hackathon in Salta."
+        }
+      },
       "emprendeamos-2022": {
         "title": "Emprendeamos 2022 Winner",
         "subtitle": "Award",
@@ -200,8 +251,22 @@
     "title": "Projects",
     "subtitle": "From client systems to side projects and hackathons. Each one solves a concrete problem.",
     "github_button": "See more on GitHub",
+    "back": "Back to Projects",
+    "read_more": "Read more",
     "code_button": "Code",
     "demo_button": "Demo",
+    "card": {
+      "problem_label": "Problem:",
+      "role_label": "Role:"
+    },
+    "sections": {
+      "problem": "Problem",
+      "context": "Context",
+      "role": "My contribution",
+      "highlights": "Key features",
+      "outcome": "Outcome",
+      "stack": "Stack"
+    },
     "types": {
       "client": "Real client",
       "sideProject": "Side project",
@@ -211,50 +276,79 @@
       "gestion-turnos": {
         "title": "Appointment Management System",
         "subtitle": "Platform for a real client",
-        "description": "Comprehensive appointment management system featuring a calendar, reminders, and admin panel. Managed end-to-end development: database, API, and frontend.",
+        "problem": "Businesses need to coordinate appointments without friction between staff and customers.",
+        "role": "End-to-end development: database, JWT REST API, and React frontend.",
+        "description": "Appointment management system with calendar, reminders, and admin panel.",
         "tech": ["React", "Node.js", "MongoDB", "JWT", "REST API"]
       },
       "scraper-precios": {
         "title": "Price Scraper",
         "subtitle": "API that compares supermarket prices",
-        "description": "Automated data extraction system to monitor price fluctuations in real-time. Designed to optimize search processes and large-scale data analysis.",
+        "problem": "Manually comparing supermarket prices is slow and does not scale.",
+        "role": "Designed and built the scraping pipeline, FastAPI service, and PostgreSQL storage.",
+        "description": "Automated data extraction to monitor price fluctuations in real time.",
         "tech": ["Python", "FastAPI", "PostgreSQL", "BeautifulSoup", "Jinja2"]
-      },
-      "portfolio": {
-        "title": "Portfolio",
-        "subtitle": "This portfolio",
-        "description": "This platform: my professional introduction. Built with React and Chakra UI, implementing internationalization (i18n) and smooth animations for superior UX.",
-        "tech": ["React", "Chakra UI", "i18n", "Framer Motion"]
       },
       "real-time-chat": {
         "title": "Real-Time Chat",
         "subtitle": "Real-time messaging application",
-        "description": "Scalable instant messaging app with multi-room support and secure authentication. A case study in full-duplex communication and real-time state management.",
+        "problem": "Real-time messaging requires synchronized state and low latency across users.",
+        "role": "Implemented rooms, authentication, and full-duplex communication with Socket.io and Express.",
+        "description": "Scalable instant messaging app with multi-room support.",
         "tech": ["React", "Socket.io", "Node.js", "Express", "MongoDB"]
       },
       "leivy": {
         "title": "Leivy",
         "subtitle": "Sub0 Polkadot · Grant analysis",
-        "description": "System for analyzing grants and subsidies for projects in the Polkadot ecosystem. Built at the Sub0 hackathon with SaltaDev.",
+        "problem": "Evaluating grants and subsidies on Polkadot is hard without tools that centralize analysis.",
+        "role": "Contributed to backend, frontend, and analysis logic at the Sub0 hackathon with SaltaDev.",
+        "description": "System for analyzing grants and subsidies in the Polkadot ecosystem.",
         "tech": ["React", "Node.js", "Polkadot", "API", "Blockchain & Web3"]
       },
       "ink-ai-risk-detector": {
         "title": "Ink | AI Risk Detector",
         "subtitle": "Aleph Hackathon · Smart Contract risk detector",
-        "description": "Built at the Aleph hackathon. Analyzes smart contract addresses and returns a score based on an AI analysis that evaluates over 10 risk criteria.",
+        "problem": "Interacting with smart contracts without risk assessment exposes users to avoidable losses.",
+        "role": "Built the backend, AI analysis engine, risk scoring, and IPFS integration.",
+        "description": "Analyzes smart contract addresses and returns a score based on 10+ risk criteria.",
         "tech": ["Javascript", "Node.js", "API", "IPFS", "Pinata", "MongoDB", "Blockchain & Web3"]
       },
       "fintrack": {
         "title": "FinTrack",
         "subtitle": "Personal finance manager",
-        "description": "A manager that simplifies the tracking and handling of personal finances. It allows for the creation of savings plans and strategies.",
+        "problem": "Tracking personal finances in spreadsheets makes it hard to spot patterns and hit savings goals.",
+        "role": "Built the app with Next.js, Prisma data modeling, and Tailwind UI.",
+        "description": "Personal finance manager with savings plans and spending strategies.",
         "tech": ["Next.js", "Typescript", "TailwindCSS", "Prisma", "Vercel"]
       },
       "vitistrust": {
         "title": "VitisTrust",
         "subtitle": "Certification oracle for tokenized vineyards",
-        "description": "Monitors vineyards via satellite to validate their existence and current health. It offers a certification to guarantee the validity of a tokenized vineyard.",
+        "problem": "Tokenized vineyards need verifiable proof of existence and sanitary condition.",
+        "role": "Built the oracle with satellite monitoring, Python backend, and blockchain layers (Hedera/Stellar).",
+        "description": "Monitors vineyards via satellite and issues certification for tokenized vineyards.",
         "tech": ["React", "Python", "Groq", "Hedera", "Stellar", "Blockchain & Web3"]
+      },
+      "zafra": {
+        "title": "Zafra",
+        "subtitle": "Agentic AI for agricultural management and optimization",
+        "problem": "Producers in Northwest Argentina need faster decisions with data scattered across livestock, crops, and weather.",
+        "role": "Designed and implemented the agentic system: sub-agent orchestration, satellite integration, and Telegram channel.",
+        "description": "Agentic AI system for farm management with alerts and Telegram chat.",
+        "context": "Zafra was created to bring applied AI to the field in northern Argentina. Instead of rigid dashboards, it offers an ecosystem of agents that interpret territorial data, coordinate specialized sub-agents, and return actionable answers to producers and technical teams.",
+        "highlights": [
+          "Agentic architecture with sub-agents for agriculture and livestock in one flow.",
+          "Satellite data integration for monitoring and early detection of critical events.",
+          "Configurable alerts based on business thresholds and field conditions.",
+          "Conversational assistance via Telegram for low-friction queries and follow-up.",
+          "Designed around real use cases in Northwest Argentina, not lab-only prototypes."
+        ],
+        "outcome": "Zafra strengthens my AgTech and applied AI work: a product built for the territory, connecting satellite insight with daily decisions and broader access to intelligent tools for agriculture.",
+        "tech": ["Python", "Agentic AI", "Sub-agents", "Satellite data", "Telegram", "Livestock", "Agriculture", "AgTech"],
+        "seo": {
+          "title": "Zafra | Agustín Juárez",
+          "description": "Zafra: agentic AI system for agriculture in Northwest Argentina. Sub-agents, satellite data, alerts, and Telegram chat."
+        }
       }
     }
   },

@@ -1,5 +1,12 @@
 export const experiences = [
   {
+    slug: "punatech-2026",
+    image: "/yospeaker.jpg",
+    gallery: ["/yospeaker.jpg", "/fotogrupal.JPG", "/lospibes.jpg", "/premiospuna.JPG"],
+    roles: ["speaker", "mentor", "staff"],
+    eventUrl: "https://punatech.ar",
+  },
+  {
     slug: "emprendeamos-2022",
     image: "/emprendamos.jpg",
     roles: ["developer"],

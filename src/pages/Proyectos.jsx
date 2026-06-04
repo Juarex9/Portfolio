@@ -4,8 +4,6 @@ import {
   SimpleGrid,
   Heading,
   Text,
-  LinkBox,
-  LinkOverlay,
   Container,
   HStack,
   Tag,
@@ -14,13 +12,14 @@ import {
   Stack,
   Link,
 } from "@chakra-ui/react";
+import { Link as RouterLink } from "react-router-dom";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
 import { Seo } from "../components/Seo";
 import { useReducedMotion } from "../hooks/useReducedMotion";
-import { projects } from "../data/projects.js";
+import { projects, getProjectDetailPath } from "../data/projects.js";
 
 const MotionBox = motion(Box);
 
@@ -107,7 +106,8 @@ export default function Proyectos() {
           <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, md: 6 }}>
             {projects.map((project, index) => {
               const baseKey = `projects.items.${project.key}`;
-              const primaryLink = project.demo || project.github;
+              const detailPath = getProjectDetailPath(project);
+              const techList = t(`${baseKey}.tech`, { returnObjects: true });
 
               return (
                 <MotionBox
@@ -117,7 +117,7 @@ export default function Proyectos() {
                   transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : (index % 2) * 0.1 }}
                   viewport={{ once: true }}
                 >
-                  <LinkBox
+                  <Box
                     as="article"
                     border="1px solid"
                     borderColor={borderColor}
@@ -126,10 +126,12 @@ export default function Proyectos() {
                     boxShadow="sm"
                     _hover={{ transform: "translateY(-2px)", boxShadow: "md" }}
                     transition="all 0.2s"
-                    cursor="pointer"
+                    h="full"
+                    display="flex"
+                    flexDirection="column"
                   >
                     {project.image && (
-                      <Box h={{ base: "160px", md: "180px" }} position="relative" overflow="hidden">
+                      <Box h={{ base: "160px", md: "180px" }} position="relative" overflow="hidden" flexShrink={0}>
                         <Box
                           as="img"
                           src={project.image}
@@ -144,7 +146,7 @@ export default function Proyectos() {
                       </Box>
                     )}
 
-                    <Box p={4}>
+                    <Box p={4} flex={1} display="flex" flexDirection="column">
                       <HStack mb={2} spacing={2} flexWrap="wrap">
                         <Badge borderRadius="full" px={2} py={0.5} bg={`${accentColor}15`} color={accentColor} fontSize="xs">
                           {t(`projects.types.${project.type}`)}
@@ -152,45 +154,80 @@ export default function Proyectos() {
                       </HStack>
 
                       <Heading size="sm" mb={1} fontFamily="var(--font-display)" fontWeight="700">
-                        <LinkOverlay href={primaryLink} target="_blank" rel="noopener noreferrer" _hover={{ color: accentColor }} transition="color 0.3s">
-                          {t(`${baseKey}.title`)}
-                        </LinkOverlay>
+                        {t(`${baseKey}.title`)}
                       </Heading>
 
-                      <Text fontSize="xs" color={accentColor} mb={2} fontWeight="500" fontFamily="var(--font-body">
+                      <Text fontSize="xs" color={accentColor} mb={2} fontWeight="500" fontFamily="var(--font-body)">
                         {t(`${baseKey}.subtitle`)}
                       </Text>
 
-                      <Text fontSize="xs" color={secondaryText} lineHeight="1.6" fontFamily="var(--font-body)" mb={3}>
-                        {t(`${baseKey}.description`)}
+                      <Text fontSize="xs" color={secondaryText} lineHeight="1.6" fontFamily="var(--font-body)" mb={1}>
+                        <Text as="span" fontWeight="600" color="gray.600" _dark={{ color: "gray.400" }}>
+                          {t("projects.card.problem_label")}{" "}
+                        </Text>
+                        {t(`${baseKey}.problem`)}
                       </Text>
 
-                      <HStack spacing={1.5} wrap="wrap" mb={3}>
-                        {t(`${baseKey}.tech`, { returnObjects: true }).slice(0, 4).map((techItem, i) => (
-                          <Tag key={i} size="sm" borderRadius="full" bg={`${accentColor}15`} color={accentColor} fontFamily="var(--font-body)" fontSize="xs" fontWeight="500" px={2} py={0.5}>
-                            {techItem}
-                          </Tag>
-                        ))}
+                      <Text fontSize="xs" color={secondaryText} lineHeight="1.6" fontFamily="var(--font-body)" mb={3}>
+                        <Text as="span" fontWeight="600" color="gray.600" _dark={{ color: "gray.400" }}>
+                          {t("projects.card.role_label")}{" "}
+                        </Text>
+                        {t(`${baseKey}.role`)}
+                      </Text>
+
+                      <HStack spacing={1.5} wrap="wrap" mb={3} flex={1} alignContent="flex-start">
+                        {Array.isArray(techList) &&
+                          techList.map((techItem) => (
+                            <Tag
+                              key={techItem}
+                              size="sm"
+                              borderRadius="full"
+                              bg={`${accentColor}15`}
+                              color={accentColor}
+                              fontFamily="var(--font-body)"
+                              fontSize="xs"
+                              fontWeight="500"
+                              px={2}
+                              py={0.5}
+                            >
+                              {techItem}
+                            </Tag>
+                          ))}
                       </HStack>
 
-                      <HStack spacing={2}>
-                        <Button
-                          as="a"
-                          href={project.github}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          size="xs"
-                          leftIcon={<FaGithub />}
-                          variant="outline"
-                          borderRadius="full"
-                          borderColor={accentColor}
-                          color={accentColor}
-                          _hover={{ bg: `${accentColor}10` }}
-                          fontFamily="var(--font-body)"
-                          onClick={(e) => e.stopPropagation()}
-                        >
-                          {t("projects.code_button")}
-                        </Button>
+                      <HStack spacing={2} flexWrap="wrap" mt="auto">
+                        {detailPath && (
+                          <Button
+                            as={RouterLink}
+                            to={detailPath}
+                            size="xs"
+                            bg={accentColor}
+                            color="white"
+                            borderRadius="full"
+                            _hover={{ opacity: 0.9 }}
+                            fontFamily="var(--font-body)"
+                          >
+                            {t("projects.read_more")}
+                          </Button>
+                        )}
+                        {project.github && (
+                          <Button
+                            as="a"
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            size="xs"
+                            leftIcon={<FaGithub />}
+                            variant="outline"
+                            borderRadius="full"
+                            borderColor={accentColor}
+                            color={accentColor}
+                            _hover={{ bg: `${accentColor}10` }}
+                            fontFamily="var(--font-body)"
+                          >
+                            {t("projects.code_button")}
+                          </Button>
+                        )}
                         {project.demo && (
                           <Button
                             as="a"
@@ -199,19 +236,19 @@ export default function Proyectos() {
                             rel="noopener noreferrer"
                             size="xs"
                             leftIcon={<FaExternalLinkAlt />}
-                            bg={accentColor}
-                            color="white"
+                            variant="outline"
                             borderRadius="full"
-                            _hover={{ opacity: 0.9 }}
+                            borderColor={accentColor}
+                            color={accentColor}
+                            _hover={{ bg: `${accentColor}10` }}
                             fontFamily="var(--font-body)"
-                            onClick={(e) => e.stopPropagation()}
                           >
                             {t("projects.demo_button")}
                           </Button>
                         )}
                       </HStack>
                     </Box>
-                  </LinkBox>
+                  </Box>
                 </MotionBox>
               );
             })}

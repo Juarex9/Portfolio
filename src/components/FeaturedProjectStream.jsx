@@ -5,6 +5,7 @@ import { useTranslation } from "react-i18next";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useStreamLayout } from "../hooks/useStreamLayout.js";
 import { computeScannerClip, getProjectCodeOverlay } from "./featuredStreamUtils.js";
+import { getProjectDetailPath } from "../data/projects.js";
 
 function FeaturedStreamCard({
   cardRef,
@@ -23,7 +24,8 @@ function FeaturedStreamCard({
   const description = t(`${baseKey}.description`);
   const tech = t(`${baseKey}.tech`, { returnObjects: true });
   const code = getProjectCodeOverlay(project.key, title, tech);
-  const primaryLink = project.demo || project.github || "/proyectos";
+  const detailPath = getProjectDetailPath(project);
+  const primaryLink = detailPath || project.demo || project.github || "/proyectos";
 
   return (
     <Box

@@ -8,11 +8,13 @@ import {
   importHome,
   importNotFound,
   importProyectos,
+  importProyecto,
   importSobreMi,
 } from "./pageImports.js";
 
 const Home = lazy(importHome);
 const Proyectos = lazy(importProyectos);
+const Proyecto = lazy(importProyecto);
 const Educacion = lazy(importEducacion);
 const SobreMi = lazy(importSobreMi);
 const Contacto = lazy(importContacto);
@@ -26,6 +28,7 @@ export const router = createBrowserRouter([
     children: [
       { index: true, element: <Home /> },
       { path: "/proyectos", element: <Proyectos /> },
+      { path: "/proyectos/:slug", element: <Proyecto /> },
       { path: "/freelance", element: <Navigate to="/proyectos" replace /> },
       { path: "/personal", element: <Navigate to="/proyectos" replace /> },
       { path: "/educacion", element: <Educacion /> },
