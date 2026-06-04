@@ -4,9 +4,7 @@ import {
   Container,
   Heading,
   Text,
-  SimpleGrid,
   VStack,
-  Image,
   Badge,
   Stack,
 } from "@chakra-ui/react";
@@ -20,7 +18,7 @@ import ExperiencesCarousel from "../components/ExperiencesCarousel";
 const MotionBox = motion(Box);
 
 const AboutMe = () => {
-  const { accentColor, borderColor } = useAccentColors();
+  const { accentColor } = useAccentColors();
   const prefersReducedMotion = useReducedMotion();
   const secondaryText = "gray.500";
   const { t } = useTranslation();
@@ -47,31 +45,48 @@ const AboutMe = () => {
             </Text>
           </MotionBox>
 
-          <SimpleGrid alignItems="center" mb={{ base: 8, md: 12 }}>
-            <VStack align="start" spacing={4}>
-              <Text fontSize={{ base: "sm", md: "md" }} color={secondaryText} lineHeight="1.7" fontFamily="var(--font-body)">
-                {t("about.p1")}
-              </Text>
-              <Text fontSize={{ base: "sm", md: "md" }} color={secondaryText} lineHeight="1.7" fontFamily="var(--font-body)">
-                {t("about.p2")}
-              </Text>
-            </VStack>
-          </SimpleGrid>
+          <VStack align="start" spacing={{ base: 6, md: 8 }} mb={{ base: 8, md: 12 }} maxW="3xl">
+            <Text fontSize={{ base: "sm", md: "md" }} color={secondaryText} lineHeight="1.8" fontFamily="var(--font-body)">
+              {t("about.p1")}
+            </Text>
+            <Text fontSize={{ base: "sm", md: "md" }} color={secondaryText} lineHeight="1.8" fontFamily="var(--font-body)">
+              {t("about.p2")}
+            </Text>
 
-          <SimpleGrid columns={{ base: 1, sm: 3 }} gap={{ base: 4, md: 6 }}>
-            {["card1", "card2", "card3"].map((key, index) => (
-              <MotionBox key={key} initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : index * 0.1 }} viewport={{ once: true }}>
-                <Box border="1px solid" borderColor={borderColor} borderRadius="xl" p={4} boxShadow="sm" _hover={{ transform: "translateY(-2px)", boxShadow: "md" }} transition="all 0.2s">
-                  <Heading size="sm" mb={2} fontFamily="var(--font-display)" fontWeight="700" color={accentColor}>
+            {["card2", "card3", "card1"].map((key, index) => (
+              <MotionBox
+                key={key}
+                as="section"
+                w="full"
+                initial={prefersReducedMotion ? false : { opacity: 0, y: 16 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : index * 0.08 }}
+                viewport={{ once: true }}
+              >
+                <Box borderLeft="3px solid" borderColor={accentColor} pl={{ base: 4, md: 5 }}>
+                  <Heading
+                    as="h2"
+                    fontSize={{ base: "lg", md: "xl" }}
+                    fontWeight="700"
+                    fontFamily="var(--font-display)"
+                    color={accentColor}
+                    letterSpacing="-0.02em"
+                    mb={2}
+                  >
                     {t(`about.${key}.title`)}
                   </Heading>
-                  <Text color={secondaryText} fontSize="xs" lineHeight="1.6" fontFamily="var(--font-body)">
+                  <Text
+                    fontSize={{ base: "sm", md: "md" }}
+                    color={secondaryText}
+                    lineHeight="1.8"
+                    fontFamily="var(--font-body)"
+                  >
                     {t(`about.${key}.text`)}
                   </Text>
                 </Box>
               </MotionBox>
             ))}
-          </SimpleGrid>
+          </VStack>
 
           <Box mt={{ base: 8, md: 12 }}>
             <ExperiencesCarousel />
