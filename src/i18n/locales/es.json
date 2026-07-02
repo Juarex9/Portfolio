@@ -51,7 +51,7 @@
     "subtitle": "Proyectos que resuelven problemas reales y están funcionando en producción.",
     "view_all": "Ver todos los proyectos",
     "view_details": "Ver detalles",
-    "stream_hint": "Arrastrá o usá la rueda — el haz revela el código de cada proyecto",
+    "gallery_hint": "Arrastrá o deslizá para explorar los proyectos",
     "tech_label": "Stack:"
   },
   "experiences": {

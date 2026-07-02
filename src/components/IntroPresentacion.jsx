@@ -3,7 +3,6 @@ import { Download } from "lucide-react";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
 import { useReducedMotion } from "../hooks/useReducedMotion";
-import ProjectMagazineCarousel from "./ProjectMagazineCarousel.jsx";
 
 const MotionDiv = motion.div;
 
@@ -11,16 +10,6 @@ export default function IntroPresentation() {
   const { accentColor } = useAccentColors();
   const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotion();
-
-  const images = [
-    { src: "/price-scraper-full.png", key: "scraper-precios" },
-    { src: "/ink-risk.png", key: "ink-ai-risk-detector" },
-    { src: "/ink-full.png", key: "ink-ai-risk-detector" },
-    { src: "/fintrack-full.png", key: "fintrack" },
-  ].map((item) => ({
-    src: item.src,
-    label: t(`projects.items.${item.key}.title`),
-  }));
 
   const links = t("presentation.links", { returnObjects: true }) || [];
 
@@ -108,10 +97,6 @@ export default function IntroPresentation() {
               ))}
             </div>
           </MotionDiv>
-        </div>
-
-        <div className="mt-8 w-full max-w-full overflow-hidden md:mt-12">
-          <ProjectMagazineCarousel images={images} accentColor={accentColor} />
         </div>
       </div>
     </section>

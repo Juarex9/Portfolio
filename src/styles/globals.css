@@ -1,6 +1,5 @@
 @import "tailwindcss";
 @import "tw-animate-css";
-@import "shadcn/tailwind.css";
 @import "@fontsource-variable/geist";
 
 @custom-variant dark (&:is(.dark *));
@@ -197,88 +196,6 @@ body {
   padding: 0.75rem 1rem;
   text-decoration: none;
   transition: top 0.2s ease;
-}
-
-.featured-card-normal {
-  clip-path: inset(0 0 0 var(--clip-right, 0%));
-}
-
-.featured-card-overlay {
-  clip-path: inset(0 calc(100% - var(--clip-left, 0%)) 0 0);
-  background: #050505;
-}
-
-.featured-code-glitch {
-  animation: featured-glitch 0.12s infinite linear alternate-reverse;
-}
-
-@keyframes featured-glitch {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.86; }
-}
-
-.featured-scanner-beam {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -58%);
-  width: 3px;
-  height: 240px;
-  border-radius: 999px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    color-mix(in srgb, var(--scanner-color) 70%, transparent),
-    var(--scanner-color),
-    color-mix(in srgb, var(--scanner-color) 70%, transparent),
-    transparent
-  );
-  box-shadow:
-    0 0 18px color-mix(in srgb, var(--scanner-color) 80%, transparent),
-    0 0 36px color-mix(in srgb, var(--scanner-color) 35%, transparent);
-  animation: featured-scan-pulse 2.2s ease-in-out infinite alternate;
-  z-index: 5;
-  pointer-events: none;
-}
-
-.featured-scanner-label {
-  position: absolute;
-  bottom: -28px;
-  left: 50%;
-  transform: translateX(-50%);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  font-weight: 700;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  white-space: nowrap;
-  opacity: 0.85;
-}
-
-@keyframes featured-scan-pulse {
-  0% { opacity: 0.75; transform: translate(-50%, -58%) scaleY(1); }
-  100% { opacity: 1; transform: translate(-50%, -58%) scaleY(1.08); }
-}
-
-@media (max-width: 768px) {
-  .featured-scanner-beam {
-    height: 190px;
-    transform: translate(-50%, -54%);
-  }
-
-  @keyframes featured-scan-pulse {
-    0% { opacity: 0.75; transform: translate(-50%, -54%) scaleY(1); }
-    100% { opacity: 1; transform: translate(-50%, -54%) scaleY(1.06); }
-  }
-
-  .featured-scanner-label {
-    bottom: -22px;
-    font-size: 9px;
-  }
-}
-
-.featured-card-track {
-  will-change: transform;
 }
 
 .skip-link:focus {

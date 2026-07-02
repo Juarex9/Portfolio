@@ -20,7 +20,6 @@ export default function Hero() {
   const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotion();
   const nameColor = useColorModeValue("#000000", "#ffffff");
-  const avatarBg = useColorModeValue("#f4f5f7", "#111111");
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -82,14 +81,24 @@ export default function Hero() {
                 <span className="block" style={{ color: nameColor }}>
                   {t("hero.title_1")}
                 </span>
-                <span
-                  className="block bg-clip-text text-transparent"
-                  style={{ backgroundImage: `linear-gradient(135deg, ${accentColor}, ${accentColor}cc)` }}
-                >
+                <span className="block">
                   {prefersReducedMotion ? (
-                    t("hero.title_name")
+                    <span
+                      className="bg-clip-text text-transparent"
+                      style={{ backgroundImage: `linear-gradient(135deg, ${accentColor}, ${accentColor}cc)` }}
+                    >
+                      {t("hero.title_name")}
+                    </span>
                   ) : (
-                    <BlurText text={t("hero.title_name")} delay={80} className="font-extrabold" />
+                    <BlurText
+                      text={t("hero.title_name")}
+                      delay={80}
+                      className="font-extrabold"
+                      segmentClassName="bg-clip-text text-transparent"
+                      segmentStyle={{
+                        backgroundImage: `linear-gradient(135deg, ${accentColor}, ${accentColor}cc)`,
+                      }}
+                    />
                   )}
                 </span>
               </h1>
@@ -125,41 +134,16 @@ export default function Hero() {
 
             <MotionDiv
               variants={itemVariants}
-              className="relative flex h-[200px] w-[200px] shrink-0 items-center justify-center md:h-[280px] md:w-[280px] lg:h-[320px] lg:w-[320px]"
+              className="relative flex shrink-0 items-center justify-center overflow-visible"
+              animate={prefersReducedMotion ? {} : { y: [0, -10, 0] }}
+              transition={prefersReducedMotion ? {} : { duration: 4, repeat: Infinity, ease: "easeInOut" }}
             >
-              <div className="relative h-full w-full">
-                <MotionDiv
-                  className="absolute -inset-2 rounded-full md:-inset-4"
-                  style={{ background: `linear-gradient(135deg, ${accentColor}40, transparent, ${accentColor}20)` }}
-                  animate={prefersReducedMotion ? {} : { rotate: 360 }}
-                  transition={prefersReducedMotion ? {} : { duration: 20, repeat: Infinity, ease: "linear" }}
+              <div className="h-[160px] w-[160px] overflow-hidden rounded-full md:h-[220px] md:w-[220px] lg:h-[260px] lg:w-[260px]">
+                <img
+                  src="./mirando-al-horizonte-modified.png"
+                  alt="Agustín Juárez"
+                  className="h-full w-full object-cover"
                 />
-                <MotionDiv
-                  className="absolute -inset-4 rounded-full border md:-inset-8"
-                  style={{ borderColor: `${accentColor}30` }}
-                  animate={prefersReducedMotion ? {} : { rotate: -360 }}
-                  transition={prefersReducedMotion ? {} : { duration: 30, repeat: Infinity, ease: "linear" }}
-                />
-                <MotionDiv
-                  className="flex h-full w-full items-center justify-center overflow-hidden rounded-full"
-                  style={{
-                    backgroundColor: avatarBg,
-                    boxShadow: `0 0 80px ${accentColor}50, 0 0 120px ${accentColor}20`,
-                  }}
-                  animate={prefersReducedMotion ? {} : { y: [0, -8, 0] }}
-                  transition={prefersReducedMotion ? {} : { duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                >
-                  <div
-                    className="h-[160px] w-[160px] overflow-hidden rounded-full border-4 md:h-[220px] md:w-[220px] lg:h-[260px] lg:w-[260px]"
-                    style={{ borderColor: `${accentColor}30` }}
-                  >
-                    <img
-                      src="./mirando-al-horizonte-modified.png"
-                      alt="Agustín Juárez"
-                      className="h-full w-full object-cover"
-                    />
-                  </div>
-                </MotionDiv>
               </div>
             </MotionDiv>
           </div>

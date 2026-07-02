@@ -4,7 +4,7 @@ import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { featuredProjects } from "../data/projects.js";
-import FeaturedProjectStream from "./FeaturedProjectStream.jsx";
+import FeaturedCircularGallery from "./FeaturedCircularGallery.jsx";
 import { Badge } from "./ui/badge.jsx";
 
 const MotionDiv = motion.div;
@@ -56,7 +56,7 @@ export default function FeaturedProjects() {
           </div>
         </MotionDiv>
 
-        <FeaturedProjectStream projects={featuredProjects} accentColor={accentColor} borderColor={borderColor} />
+        <FeaturedCircularGallery projects={featuredProjects} accentColor={accentColor} borderColor={borderColor} />
       </div>
     </section>
   );

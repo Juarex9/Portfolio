@@ -51,7 +51,7 @@
     "subtitle": "Projects that solve real problems and are currently running in production.",
     "view_all": "View all projects",
     "view_details": "View details",
-    "stream_hint": "Drag or scroll — the beam reveals each project's code",
+    "gallery_hint": "Drag or scroll to explore the projects",
     "tech_label": "Stack:"
   },
   "experiences": {

@@ -17,6 +17,8 @@ export default function BlurText({
   text = "",
   delay = 200,
   className = "",
+  segmentClassName = "",
+  segmentStyle,
   animateBy = "words",
   direction = "top",
   threshold = 0.1,
@@ -85,7 +87,11 @@ export default function BlurText({
 
         return (
           <MotionSpan
-            className="inline-block will-change-[transform,filter,opacity]"
+            className={cn(
+              "inline-block will-change-[transform,filter,opacity]",
+              segmentClassName,
+            )}
+            style={segmentStyle}
             key={`${segment}-${index}`}
             initial={fromSnapshot}
             animate={inView ? animateKeyframes : fromSnapshot}
