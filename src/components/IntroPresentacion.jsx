@@ -1,28 +1,16 @@
-import {
-  Box,
-  Container,
-  VStack,
-  HStack,
-  Heading,
-  Text,
-  SimpleGrid,
-  Button,
-  Image,
-} from "@chakra-ui/react";
 import { motion } from "framer-motion";
+import { Download } from "lucide-react";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
-import { DownloadIcon } from "@chakra-ui/icons";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import ProjectMagazineCarousel from "./ProjectMagazineCarousel.jsx";
 
-const MotionBox = motion(Box);
+const MotionDiv = motion.div;
 
 export default function IntroPresentation() {
   const { accentColor } = useAccentColors();
   const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotion();
-  const mutedText = "gray.500";
 
   const images = [
     { src: "/price-scraper-full.png", key: "scraper-precios" },
@@ -37,112 +25,95 @@ export default function IntroPresentation() {
   const links = t("presentation.links", { returnObjects: true }) || [];
 
   return (
-    <Box w="full" py={{ base: 12, md: 24 }} bg="transparent">
-      <Container maxW="6xl">
-        <SimpleGrid columns={{ base: 1, lg: 12 }} spacing={{ base: 8, lg: 12 }} alignItems="start">
-          <MotionBox 
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} 
-            whileInView={{ opacity: 1, y: 0 }} 
-            transition={{ duration: prefersReducedMotion ? 0 : 0.6 }} 
-            viewport={{ once: true }} 
-            gridColumn={{ lg: "span 7" }}
+    <section className="w-full bg-transparent py-12 md:py-24">
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <div className="grid grid-cols-1 items-start gap-8 lg:grid-cols-12 lg:gap-12">
+          <MotionDiv
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
+            viewport={{ once: true }}
+            className="lg:col-span-7"
           >
-            <HStack spacing={3} mb={4}>
-              <Box w="40px" h="40px" borderRadius="lg" overflow="hidden" flexShrink={0}>
-                <Image src="/mirando-al-horizonte-modified.png" alt="profile" w="full" h="full" objectFit="cover" loading="lazy" />
-              </Box>
-              <Box fontSize="xs" color={mutedText}>
-                <Text fontWeight="700" fontFamily="var(--font-display)" fontSize="sm">Agustín Juárez</Text>
-                <Text fontFamily="var(--font-body)">Argentina (UTC-3)</Text>
-              </Box>
-            </HStack>
+            <div className="mb-4 flex items-center gap-3">
+              <div className="h-10 w-10 shrink-0 overflow-hidden rounded-lg">
+                <img
+                  src="/mirando-al-horizonte-modified.png"
+                  alt="profile"
+                  className="h-full w-full object-cover"
+                  loading="lazy"
+                />
+              </div>
+              <div className="text-xs text-gray-500">
+                <p className="text-sm font-bold" style={{ fontFamily: "var(--font-display)" }}>Agustín Juárez</p>
+                <p style={{ fontFamily: "var(--font-body)" }}>Argentina (UTC-3)</p>
+              </div>
+            </div>
 
-            <Heading 
-              as="h2" 
-              fontSize={{ base: "xl", sm: "2xl", md: "3xl", lg: "4xl" }} 
-              fontWeight="800" 
-              fontFamily="var(--font-display)" 
-              letterSpacing="-0.02em" 
-              lineHeight="1.2" 
-              mb={4}
+            <h2
+              className="mb-4 text-xl font-extrabold leading-tight tracking-tight sm:text-2xl md:text-3xl lg:text-4xl"
+              style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em" }}
             >
               {t("presentation.intro_title")}
-            </Heading>
+            </h2>
 
-            <Text 
-              fontSize={{ base: "sm", md: "md" }} 
-              color={mutedText} 
-              maxW="2xl" 
-              lineHeight="1.7" 
-              fontFamily="var(--font-body)"
-              mb={5}
+            <p
+              className="mb-5 max-w-2xl text-sm leading-[1.7] text-gray-500 md:text-base"
+              style={{ fontFamily: "var(--font-body)" }}
             >
               {t("presentation.intro_text")}
-            </Text>
+            </p>
 
-            <HStack spacing={2} flexWrap="wrap">
+            <div className="flex flex-wrap gap-2">
               {links.map((l) => (
-                <Button 
-                  key={l.label} 
-                  as="a" 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
-                  textDecorationLine="none" 
-                  href={l.href.startsWith("/") ? l.href : `/${l.href.replace("./", "")}`} 
-                  isExternal 
-                  size="sm"
-                  h={10}
-                  px={4}
-                  leftIcon={<DownloadIcon />} 
-                  variant="solid" 
-                  bg={accentColor} 
-                  color="white" 
-                  fontWeight="600" 
-                  fontFamily="var(--font-body)" 
-                  borderRadius="full" 
-                  _hover={{ opacity: 0.9 }} 
-                  transition="all 0.3s"
+                <a
+                  key={l.label}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  href={l.href.startsWith("/") ? l.href : `/${l.href.replace("./", "")}`}
+                  className="inline-flex h-10 items-center gap-2 rounded-full px-4 text-sm font-semibold text-white no-underline transition-opacity hover:opacity-90"
+                  style={{ backgroundColor: accentColor, fontFamily: "var(--font-body)" }}
                 >
+                  <Download size={16} />
                   {l.label}
-                </Button>
+                </a>
               ))}
-            </HStack>
-          </MotionBox>
+            </div>
+          </MotionDiv>
 
-          <MotionBox 
-            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} 
-            whileInView={{ opacity: 1, y: 0 }} 
-            transition={{ duration: prefersReducedMotion ? 0 : 0.6, delay: prefersReducedMotion ? 0 : 0.1 }} 
-            viewport={{ once: true }} 
-            gridColumn={{ lg: "span 5" }}
-            mt={{ base: 6, lg: 0 }}
+          <MotionDiv
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.6, delay: prefersReducedMotion ? 0 : 0.1 }}
+            viewport={{ once: true }}
+            className="mt-6 lg:col-span-5 lg:mt-0"
           >
-            <Text 
-              fontSize="xs" 
-              fontWeight="700" 
-              letterSpacing="wider" 
-              textTransform="uppercase" 
-              color={accentColor} 
-              mb={3} 
-              fontFamily="var(--font-body)"
+            <p
+              className="mb-3 text-xs font-bold uppercase tracking-wider"
+              style={{ color: accentColor, fontFamily: "var(--font-body)" }}
             >
               {t("presentation.intro_focus")}
-            </Text>
-            <VStack spacing={3} align="stretch" fontSize="sm" color={mutedText}>
+            </p>
+            <div className="flex flex-col gap-3 text-sm text-gray-500">
               {[1, 2, 3].map((i) => (
-                <HStack key={i} align="flex-start" spacing={2}>
-                  <Box mt="2px" w="6px" h="6px" borderRadius="full" bg={accentColor} flexShrink={0} />
-                  <Text lineHeight="1.6" fontFamily="var(--font-body)" fontSize="xs">{t(`presentation.intro_b${i}`)}</Text>
-                </HStack>
+                <div key={i} className="flex items-start gap-2">
+                  <span
+                    className="mt-0.5 h-1.5 w-1.5 shrink-0 rounded-full"
+                    style={{ backgroundColor: accentColor }}
+                  />
+                  <p className="text-xs leading-relaxed" style={{ fontFamily: "var(--font-body)" }}>
+                    {t(`presentation.intro_b${i}`)}
+                  </p>
+                </div>
               ))}
-            </VStack>
-          </MotionBox>
-        </SimpleGrid>
+            </div>
+          </MotionDiv>
+        </div>
 
-        <Box mt={{ base: 8, md: 12 }} w="full" maxW="100%" overflow="hidden">
+        <div className="mt-8 w-full max-w-full overflow-hidden md:mt-12">
           <ProjectMagazineCarousel images={images} accentColor={accentColor} />
-        </Box>
-      </Container>
-    </Box>
+        </div>
+      </div>
+    </section>
   );
 }

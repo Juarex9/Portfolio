@@ -3,7 +3,6 @@ import IntroPresentation from "../components/IntroPresentacion";
 import TechMarquee from "../components/TechMarquee";
 import FeaturedProjects from "../components/FeaturedProjects";
 import { Seo } from "../components/Seo";
-import { VisuallyHidden } from "@chakra-ui/react";
 import { useTranslation } from "react-i18next";
 
 export default function Home() {
@@ -17,10 +16,7 @@ export default function Home() {
         canonicalPath="/"
       />
 
-      {/* Texto indexable extra sin afectar diseño */}
-      <VisuallyHidden as="p">
-        {t("seo.home.indexableIntro")}
-      </VisuallyHidden>
+      <span className="sr-only">{t("seo.home.indexableIntro")}</span>
 
       <Hero />
       <TechMarquee speedSeconds={22} title="Stack" />

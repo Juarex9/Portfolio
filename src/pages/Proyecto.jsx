@@ -1,26 +1,5 @@
 import { Navigate, Link as RouterLink, useParams } from "react-router-dom";
-import {
-  Box,
-  Container,
-  Heading,
-  Text,
-  Badge,
-  HStack,
-  VStack,
-  Button,
-  Image,
-  Stack,
-  List,
-  ListItem,
-  ListIcon,
-  Link,
-  Icon,
-  Wrap,
-  WrapItem,
-  Tag,
-} from "@chakra-ui/react";
-import { ExternalLink } from "lucide-react";
-import { ArrowBackIcon, CheckCircleIcon } from "@chakra-ui/icons";
+import { ArrowLeft, CheckCircle } from "lucide-react";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
@@ -28,8 +7,9 @@ import { Seo } from "../components/Seo";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { getProjectBySlug } from "../data/projects.js";
+import { Badge } from "@/components/ui/badge";
 
-const MotionBox = motion(Box);
+const MotionDiv = motion.div;
 
 export default function Proyecto() {
   const { slug } = useParams();
@@ -37,7 +17,6 @@ export default function Proyecto() {
   const { t } = useTranslation();
   const { accentColor, borderColor } = useAccentColors();
   const prefersReducedMotion = useReducedMotion();
-  const secondaryText = "gray.500";
 
   if (!project?.hasDetailPage) {
     return <Navigate to="/proyectos" replace />;
@@ -55,160 +34,162 @@ export default function Proyecto() {
         descriptionKey={`${baseKey}.seo.description`}
         canonicalPath={`/proyectos/${project.key}`}
       />
-      <Box w="full" minH="100vh" bg="transparent" overflowX="hidden">
-        <Container maxW="3xl" py={{ base: 8, md: 16 }} px={{ base: 4, md: 6 }}>
-          <Button
-            as={RouterLink}
+      <div className="min-h-screen w-full overflow-x-hidden bg-transparent">
+        <div className="mx-auto max-w-3xl px-4 py-8 md:px-6 md:py-16">
+          <RouterLink
             to="/proyectos"
-            variant="ghost"
-            size="sm"
-            leftIcon={<ArrowBackIcon />}
-            mb={6}
-            color={secondaryText}
-            fontFamily="var(--font-body)"
-            _hover={{ color: accentColor }}
+            className="mb-6 inline-flex h-9 items-center gap-2 rounded-full px-3 text-sm text-gray-500 transition-colors hover:opacity-80"
+            style={{ fontFamily: "var(--font-body)" }}
+            onMouseEnter={(e) => { e.currentTarget.style.color = accentColor; }}
+            onMouseLeave={(e) => { e.currentTarget.style.color = ""; }}
           >
+            <ArrowLeft className="h-4 w-4" />
             {t("projects.back")}
-          </Button>
+          </RouterLink>
 
-          <MotionBox
+          <MotionDiv
             initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: prefersReducedMotion ? 0 : 0.5 }}
           >
-            <Badge borderRadius="full" px={3} py={1} bg={`${accentColor}15`} color={accentColor} fontSize="xs" fontWeight="600" mb={3}>
+            <Badge
+              className="mb-3 normal-case"
+              style={{ backgroundColor: `${accentColor}15`, color: accentColor }}
+            >
               {t(`projects.types.${project.type}`)}
             </Badge>
 
-            <Heading
-              as="h1"
-              fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
-              fontWeight="800"
-              fontFamily="var(--font-display)"
-              letterSpacing="-0.02em"
-              lineHeight="1.2"
-              mb={2}
+            <h1
+              className="mb-2 text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl md:text-4xl"
+              style={{ fontFamily: "var(--font-display)" }}
             >
               {title}
-            </Heading>
+            </h1>
 
-            <Text fontSize="md" color={accentColor} mb={6} fontWeight="500" fontFamily="var(--font-body)">
+            <p className="mb-6 text-base font-medium" style={{ color: accentColor, fontFamily: "var(--font-body)" }}>
               {t(`${baseKey}.subtitle`)}
-            </Text>
+            </p>
 
             {project.image && (
-              <Box borderRadius="xl" overflow="hidden" mb={8} border="1px solid" borderColor={borderColor}>
-                <Image src={project.image} alt={title} w="full" maxH={{ base: "280px", md: "400px" }} objectFit="contain" bg="blackAlpha.50" />
-              </Box>
+              <div className="mb-8 overflow-hidden rounded-xl border" style={{ borderColor }}>
+                <img
+                  src={project.image}
+                  alt={title}
+                  className="max-h-[280px] w-full bg-black/5 object-contain md:max-h-[400px]"
+                />
+              </div>
             )}
 
-            <VStack align="stretch" spacing={8}>
-              <Box>
-                <Heading as="h2" size="sm" mb={3} fontFamily="var(--font-display)" color={accentColor}>
+            <div className="flex flex-col gap-8">
+              <section>
+                <h2 className="mb-3 text-sm font-bold" style={{ fontFamily: "var(--font-display)", color: accentColor }}>
                   {t("projects.sections.problem")}
-                </Heading>
-                <Text color={secondaryText} lineHeight="1.8" fontFamily="var(--font-body)" fontSize={{ base: "sm", md: "md" }}>
+                </h2>
+                <p className="text-sm leading-relaxed text-gray-500 md:text-base" style={{ fontFamily: "var(--font-body)" }}>
                   {t(`${baseKey}.problem`)}
-                </Text>
-              </Box>
+                </p>
+              </section>
 
-              <Box>
-                <Heading as="h2" size="sm" mb={3} fontFamily="var(--font-display)" color={accentColor}>
+              <section>
+                <h2 className="mb-3 text-sm font-bold" style={{ fontFamily: "var(--font-display)", color: accentColor }}>
                   {t("projects.sections.context")}
-                </Heading>
-                <Text color={secondaryText} lineHeight="1.8" fontFamily="var(--font-body)" fontSize={{ base: "sm", md: "md" }}>
+                </h2>
+                <p className="text-sm leading-relaxed text-gray-500 md:text-base" style={{ fontFamily: "var(--font-body)" }}>
                   {t(`${baseKey}.context`)}
-                </Text>
-              </Box>
+                </p>
+              </section>
 
               {Array.isArray(highlights) && highlights.length > 0 && (
-                <Box border="1px solid" borderColor={borderColor} borderRadius="xl" p={{ base: 4, md: 5 }}>
-                  <Heading as="h2" size="sm" mb={3} fontFamily="var(--font-display)">
+                <section className="rounded-xl border p-4 md:p-5" style={{ borderColor }}>
+                  <h2 className="mb-3 text-sm font-bold" style={{ fontFamily: "var(--font-display)" }}>
                     {t("projects.sections.highlights")}
-                  </Heading>
-                  <List spacing={2}>
+                  </h2>
+                  <ul className="flex flex-col gap-2">
                     {highlights.map((item) => (
-                      <ListItem key={item} fontSize="sm" color={secondaryText} fontFamily="var(--font-body)" lineHeight="1.7">
-                        <ListIcon as={CheckCircleIcon} color={accentColor} />
+                      <li
+                        key={item}
+                        className="flex items-start gap-2 text-sm leading-relaxed text-gray-500"
+                        style={{ fontFamily: "var(--font-body)" }}
+                      >
+                        <CheckCircle className="mt-0.5 h-4 w-4 shrink-0" style={{ color: accentColor }} />
                         {item}
-                      </ListItem>
+                      </li>
                     ))}
-                  </List>
-                </Box>
+                  </ul>
+                </section>
               )}
 
-              <Box>
-                <Heading as="h2" size="sm" mb={3} fontFamily="var(--font-display)" color={accentColor}>
+              <section>
+                <h2 className="mb-3 text-sm font-bold" style={{ fontFamily: "var(--font-display)", color: accentColor }}>
                   {t("projects.sections.role")}
-                </Heading>
-                <Text color={secondaryText} lineHeight="1.8" fontFamily="var(--font-body)" fontSize={{ base: "sm", md: "md" }}>
+                </h2>
+                <p className="text-sm leading-relaxed text-gray-500 md:text-base" style={{ fontFamily: "var(--font-body)" }}>
                   {t(`${baseKey}.role`)}
-                </Text>
-              </Box>
+                </p>
+              </section>
 
-              <Box>
-                <Heading as="h2" size="sm" mb={3} fontFamily="var(--font-display)" color={accentColor}>
+              <section>
+                <h2 className="mb-3 text-sm font-bold" style={{ fontFamily: "var(--font-display)", color: accentColor }}>
                   {t("projects.sections.outcome")}
-                </Heading>
-                <Text color={secondaryText} lineHeight="1.8" fontFamily="var(--font-body)" fontSize={{ base: "sm", md: "md" }}>
+                </h2>
+                <p className="text-sm leading-relaxed text-gray-500 md:text-base" style={{ fontFamily: "var(--font-body)" }}>
                   {t(`${baseKey}.outcome`)}
-                </Text>
-              </Box>
+                </p>
+              </section>
 
               {Array.isArray(tech) && tech.length > 0 && (
-                <Box>
-                  <Heading as="h2" size="sm" mb={3} fontFamily="var(--font-display)" color={accentColor}>
+                <section>
+                  <h2 className="mb-3 text-sm font-bold" style={{ fontFamily: "var(--font-display)", color: accentColor }}>
                     {t("projects.sections.stack")}
-                  </Heading>
-                  <Wrap spacing={2}>
+                  </h2>
+                  <div className="flex flex-wrap gap-2">
                     {tech.map((item) => (
-                      <WrapItem key={item}>
-                        <Tag borderRadius="full" bg={`${accentColor}15`} color={accentColor} fontSize="xs" fontWeight="500">
-                          {item}
-                        </Tag>
-                      </WrapItem>
+                      <span
+                        key={item}
+                        className="rounded-full px-3 py-1 text-xs font-medium"
+                        style={{ backgroundColor: `${accentColor}15`, color: accentColor }}
+                      >
+                        {item}
+                      </span>
                     ))}
-                  </Wrap>
-                </Box>
+                  </div>
+                </section>
               )}
 
               {(project.github || project.demo) && (
-                <Stack direction={{ base: "column", sm: "row" }} spacing={3} flexWrap="wrap">
+                <div className="flex flex-col flex-wrap gap-3 sm:flex-row">
                   {project.github && (
-                    <Button
-                      as={Link}
+                    <a
                       href={project.github}
-                      isExternal
-                      variant="outline"
-                      borderRadius="full"
-                      borderColor={accentColor}
-                      color={accentColor}
-                      leftIcon={<FaGithub />}
-                      _hover={{ bg: `${accentColor}10` }}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex h-10 items-center gap-2 rounded-full border bg-transparent px-5 text-sm font-semibold transition-all duration-300"
+                      style={{ borderColor: accentColor, color: accentColor }}
+                      onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = `${accentColor}10`; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; }}
                     >
+                      <FaGithub />
                       {t("projects.code_button")}
-                    </Button>
+                    </a>
                   )}
                   {project.demo && (
-                    <Button
-                      as={Link}
+                    <a
                       href={project.demo}
-                      isExternal
-                      borderRadius="full"
-                      bg={accentColor}
-                      color="white"
-                      leftIcon={<FaExternalLinkAlt />}
-                      _hover={{ opacity: 0.9 }}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex h-10 items-center gap-2 rounded-full px-5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                      style={{ backgroundColor: accentColor }}
                     >
+                      <FaExternalLinkAlt />
                       {t("projects.demo_button")}
-                    </Button>
+                    </a>
                   )}
-                </Stack>
+                </div>
               )}
-            </VStack>
-          </MotionBox>
-        </Container>
-      </Box>
+            </div>
+          </MotionDiv>
+        </div>
+      </div>
     </>
   );
 }

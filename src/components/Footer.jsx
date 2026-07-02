@@ -1,14 +1,3 @@
-import React from "react";
-import {
-  Box,
-  Container,
-  Stack,
-  HStack,
-  VStack,
-  Text,
-  Link,
-  IconButton,
-} from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { BsGithub, BsLinkedin, BsEnvelope } from "react-icons/bs";
 import { useAccentColors } from "../hooks/useAccentColors";
@@ -16,7 +5,7 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 
-const MotionBox = motion(Box);
+const MotionDiv = motion.div;
 
 const socialLinks = [
   { Icon: BsGithub, href: "https://github.com/Juarex9", label: "GitHub" },
@@ -36,99 +25,66 @@ export default function Footer() {
     { href: "/contacto", key: "contact" },
   ];
 
-  const muted = "gray.500";
-
   return (
-    <Box
-      as="footer"
-      bg={bgColor}
-      py={{ base: 8, md: 10 }}
-    >
-      <Container maxW="6xl">
-        <Stack
-          direction={{ base: "column", md: "row" }}
-          justify="space-between"
-          align={{ base: "flex-start", md: "center" }}
-          spacing={{ base: 6, md: 8 }}
-        >
-          <VStack align={{ base: "flex-start", md: "flex-start" }} spacing={1}>
-            <HStack spacing={2}>
-              <Text
-                fontWeight="800"
-                fontSize="xl"
-                fontFamily="var(--font-display)"
-                letterSpacing="-0.02em"
-              >
-                <Text as="span" color={accentColor}>A</Text>
-                <Text as="span">JZ</Text>
-              </Text>
-            </HStack>
-            <Text fontSize="sm" color={muted} fontFamily="var(--font-body)">
+    <footer className="py-8 md:py-10" style={{ backgroundColor: bgColor }}>
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
+        <div className="flex flex-col items-start justify-between gap-6 md:flex-row md:items-center md:gap-8">
+          <div className="flex flex-col gap-1">
+            <p
+              className="text-xl font-extrabold tracking-tight"
+              style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em" }}
+            >
+              <span style={{ color: accentColor }}>A</span>
+              <span>JZ</span>
+            </p>
+            <p className="text-sm text-gray-500" style={{ fontFamily: "var(--font-body)" }}>
               {t("footer.title")}
-            </Text>
-          </VStack>
+            </p>
+          </div>
 
-          <HStack spacing={3}>
+          <div className="flex gap-3">
             {socialLinks.map((social) => (
-              <MotionBox
+              <MotionDiv
                 key={social.label}
                 whileHover={{ y: -2 }}
                 transition={{ duration: prefersReducedMotion ? 0 : 0.2 }}
               >
-                <IconButton
-                  as={Link}
+                <a
                   href={social.href}
                   aria-label={social.label}
-                  variant="ghost"
-                  size="lg"
-                  icon={<social.Icon size={20} />}
-                  isExternal={social.label !== "Email"}
-                  borderRadius="full"
-                  color={muted}
-                  _hover={{
-                    color: accentColor,
-                  }}
-                  transition="all 0.3s"
-                />
-              </MotionBox>
+                  target={social.label === "Email" ? undefined : "_blank"}
+                  rel={social.label === "Email" ? undefined : "noopener noreferrer"}
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full text-gray-500 transition-colors duration-300 hover:text-[var(--accent-brand)]"
+                  style={{ ["--accent-brand"]: accentColor }}
+                >
+                  <social.Icon size={20} />
+                </a>
+              </MotionDiv>
             ))}
-          </HStack>
-        </Stack>
+          </div>
+        </div>
 
-        <Stack
-          mt={6}
-          pt={6}
-          direction={{ base: "column-reverse", md: "row" }}
-          justify="space-between"
-          align={{ base: "flex-start", md: "center" }}
-          spacing={4}
-        >
-          <Text fontSize="xs" color={muted} fontFamily="var(--font-body)">
+        <div className="mt-6 flex flex-col-reverse items-start justify-between gap-4 border-t border-black/5 pt-6 dark:border-white/10 md:flex-row md:items-center">
+          <p className="text-xs text-gray-500" style={{ fontFamily: "var(--font-body)" }}>
             © {new Date().getFullYear()} Agustín Juárez
-          </Text>
+          </p>
 
-          <HStack spacing={6} flexWrap="wrap">
+          <nav className="flex flex-wrap gap-6">
             {links.map((item) => (
-              <Link
+              <RouterLink
                 key={item.href}
-                as={RouterLink}
                 to={item.href}
-                fontSize="sm"
-                fontFamily="var(--font-body)"
-                fontWeight="500"
-                color={muted}
-                _hover={{
-                  color: accentColor,
-                  textDecoration: "none",
-                }}
-                transition="color 0.3s"
+                className="text-sm font-medium text-gray-500 no-underline transition-colors duration-300 hover:no-underline"
+                style={{ fontFamily: "var(--font-body)" }}
+                onMouseEnter={(e) => { e.currentTarget.style.color = accentColor; }}
+                onMouseLeave={(e) => { e.currentTarget.style.color = ""; }}
               >
                 {t(`footer.links.${item.key}`)}
-              </Link>
+              </RouterLink>
             ))}
-          </HStack>
-        </Stack>
-      </Container>
-    </Box>
+          </nav>
+        </div>
+      </div>
+    </footer>
   );
 }

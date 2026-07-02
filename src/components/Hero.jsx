@@ -1,32 +1,26 @@
-import {
-  Box,
-  Container,
-  Heading,
-  Text,
-  Button,
-  Badge,
-  HStack,
-} from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useColorModeValue } from "../hooks/useColorModeValue.js";
+import BlurText from "./react-bits/BlurText.jsx";
+import { Badge } from "./ui/badge.jsx";
 
-const MotionBox = motion(Box);
+const MotionDiv = motion.div;
 
 const floatingOrbs = [
-  { size: { base: 150, md: 300 }, x: { base: "70%", md: "80%" }, y: { base: "5%", md: "10%" }, delay: 0, duration: 6 },
-  { size: { base: 120, md: 200 }, x: { base: "-20%", md: "10%" }, y: { base: "50%", md: "60%" }, delay: 1, duration: 8 },
-  { size: { base: 100, md: 150 }, x: { base: "50%", md: "70%" }, y: { base: "60%", md: "70%" }, delay: 2, duration: 7 },
+  { size: { base: 150, md: 300 }, x: { base: "70%", md: "80%" }, y: { base: "5%", md: "10%" } },
+  { size: { base: 120, md: 200 }, x: { base: "-20%", md: "10%" }, y: { base: "50%", md: "60%" } },
+  { size: { base: 100, md: 150 }, x: { base: "50%", md: "70%" }, y: { base: "60%", md: "70%" } },
 ];
 
 export default function Hero() {
   const { accentColor } = useAccentColors();
   const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotion();
-  const nameColor = useColorModeValue("black", "white");
+  const nameColor = useColorModeValue("#000000", "#ffffff");
+  const avatarBg = useColorModeValue("#f4f5f7", "#111111");
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -46,198 +40,131 @@ export default function Hero() {
   };
 
   return (
-    <Box
-      w="full"
-      minH={{ base: "auto", md: "calc(100vh - 72px)" }}
-      position="relative"
-      overflow="hidden"
-      py={{ base: 12, md: 0 }}
-    >
-      <Box position="absolute" top={0} left={0} right={0} bottom={0} bg="transparent" zIndex={1} />
-
+    <section className="relative w-full overflow-hidden py-12 md:min-h-[calc(100vh-72px)] md:py-0">
       {!prefersReducedMotion && floatingOrbs.map((orb, i) => (
-        <MotionBox
+        <MotionDiv
           key={i}
-          position="absolute"
-          w={{ base: `${orb.size.base}px`, md: `${orb.size.md}px` }}
-          h={{ base: `${orb.size.base}px`, md: `${orb.size.md}px` }}
-          borderRadius="full"
-          bg={`linear-gradient(135deg, ${accentColor}30, ${accentColor}10)`}
-          filter="blur(60px)"
-          left={orb.x}
-          top={orb.y}
+          className="absolute rounded-full blur-[60px]"
+          style={{
+            width: orb.size.base,
+            height: orb.size.base,
+            background: `linear-gradient(135deg, ${accentColor}30, ${accentColor}10)`,
+            left: orb.x.base,
+            top: orb.y.base,
+            zIndex: 0,
+          }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 0.4 }}
           transition={{ duration: 1 }}
-          zIndex={0}
         />
       ))}
 
-      <Container maxW="6xl" position="relative" zIndex={2}>
-        <MotionBox
+      <div className="relative z-[2] mx-auto max-w-6xl px-4 md:px-6">
+        <MotionDiv
           variants={containerVariants}
           initial="hidden"
           animate="visible"
-          minH={{ base: "auto", md: "calc(100vh - 72px)" }}
-          display="flex"
-          alignItems="center"
-          py={{ base: 8, md: 12 }}
+          className="flex min-h-0 items-center py-8 md:min-h-[calc(100vh-72px)] md:py-12"
         >
-          <Box
-            display="flex"
-            flexDirection={{ base: "column-reverse", lg: "row" }}
-            alignItems="center"
-            justifyContent="space-between"
-            gap={{ base: 8, md: 12 }}
-            w="full"
-          >
-            <MotionBox variants={itemVariants} flex="1" textAlign={{ base: "center", lg: "left" }}>
-              <HStack mb={4} gap={2} flexWrap="wrap">
-                <Box w="6px" h="6px" borderRadius="full" bg={accentColor} />
-                <Badge
-                  px={2.5}
-                  py={0.5}
-                  borderRadius="full"
-                  fontSize="10px"
-                  fontWeight="600"
-                  textTransform="uppercase"
-                  letterSpacing="wider"
-                  bg={`${accentColor}15`}
-                  color={accentColor}
-                >
+          <div className="flex w-full flex-col-reverse items-center justify-between gap-8 lg:flex-row lg:gap-12">
+            <MotionDiv variants={itemVariants} className="flex-1 text-center lg:text-left">
+              <div className="mb-4 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
+                <span className="h-1.5 w-1.5 rounded-full" style={{ backgroundColor: accentColor }} />
+                <Badge className="normal-case" style={{ backgroundColor: `${accentColor}15`, color: accentColor }}>
                   {t("hero.availability")}
                 </Badge>
-              </HStack>
+              </div>
 
-              <Heading
-                as="h1"
-                fontSize={{ base: "2.5rem", sm: "3xl", md: "5xl", lg: "6xl" }}
-                fontWeight="800"
-                fontFamily="var(--font-display)"
-                lineHeight="1.1"
-                mb={4}
+              <h1
+                className="mb-4 text-[2.5rem] font-extrabold leading-[1.1] sm:text-3xl md:text-5xl lg:text-6xl"
+                style={{ fontFamily: "var(--font-display)" }}
               >
-                <Box as="span" display="block" color={nameColor}>
+                <span className="block" style={{ color: nameColor }}>
                   {t("hero.title_1")}
-                </Box>
-                <Box
-                  as="span"
-                  display="block"
-                  background={`linear-gradient(135deg, ${accentColor}, ${accentColor}cc)`}
-                  WebkitBackgroundClip="text"
-                  WebkitTextFillColor="transparent"
-                  backgroundClip="text"
+                </span>
+                <span
+                  className="block bg-clip-text text-transparent"
+                  style={{ backgroundImage: `linear-gradient(135deg, ${accentColor}, ${accentColor}cc)` }}
                 >
-                  {t("hero.title_name")}
-                </Box>
-              </Heading>
+                  {prefersReducedMotion ? (
+                    t("hero.title_name")
+                  ) : (
+                    <BlurText text={t("hero.title_name")} delay={80} className="font-extrabold" />
+                  )}
+                </span>
+              </h1>
 
-              <Text
-                fontSize={{ base: "sm", sm: "md", md: "lg" }}
-                fontWeight="400"
-                color="gray.500"
-                maxW={{ base: "100%", md: "xl" }}
-                mb={6}
-                lineHeight="1.7"
-                fontFamily="var(--font-body)"
+              <p
+                className="mb-6 max-w-xl text-sm leading-[1.7] text-gray-500 sm:text-base md:text-lg"
+                style={{ fontFamily: "var(--font-body)" }}
               >
                 {t("hero.subtitle")}
-              </Text>
+              </p>
 
-              <HStack spacing={2} flexWrap="wrap">
-                <Button
-                  as={RouterLink}
+              <div className="flex flex-wrap justify-center gap-2 lg:justify-start">
+                <RouterLink
                   to="/contacto"
-                  size="sm"
-                  px={5}
-                  h={10}
-                  bg={accentColor}
-                  color="white"
-                  fontWeight="600"
-                  fontFamily="var(--font-body)"
-                  borderRadius="full"
-                  _hover={{ opacity: 0.9 }}
-                  transition="all 0.2s"
+                  className="inline-flex h-10 items-center rounded-full px-5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                  style={{ backgroundColor: accentColor, fontFamily: "var(--font-body)" }}
                 >
                   {t("hero.btn_contact")}
-                </Button>
-                <Button
-                  as={RouterLink}
+                </RouterLink>
+                <RouterLink
                   to="/proyectos"
-                  size="sm"
-                  px={5}
-                  h={10}
-                  fontWeight="600"
-                  fontFamily="var(--font-body)"
-                  borderRadius="full"
-                  bg="transparent"
-                  color={accentColor}
-                  border="1px solid"
-                  borderColor={`${accentColor}50`}
-                  _hover={{ borderColor: accentColor, bg: `${accentColor}08` }}
-                  transition="all 0.2s"
+                  className="inline-flex h-10 items-center rounded-full border bg-transparent px-5 text-sm font-semibold transition-all hover:opacity-90"
+                  style={{
+                    color: accentColor,
+                    borderColor: `${accentColor}50`,
+                    fontFamily: "var(--font-body)",
+                  }}
                 >
                   {t("hero.btn_projects")}
-                </Button>
-              </HStack>
-            </MotionBox>
+                </RouterLink>
+              </div>
+            </MotionDiv>
 
-            <MotionBox
+            <MotionDiv
               variants={itemVariants}
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              position="relative"
-              w={{ base: "200px", md: "280px", lg: "320px" }}
-              h={{ base: "200px", md: "280px", lg: "320px" }}
-              flexShrink={0}
+              className="relative flex h-[200px] w-[200px] shrink-0 items-center justify-center md:h-[280px] md:w-[280px] lg:h-[320px] lg:w-[320px]"
             >
-              <Box position="relative" w="full" h="full">
-                <MotionBox
-                  position="absolute"
-                  inset={{ base: -2, md: -4 }}
-                  borderRadius="full"
-                  bg={`linear-gradient(135deg, ${accentColor}40, transparent, ${accentColor}20)`}
+              <div className="relative h-full w-full">
+                <MotionDiv
+                  className="absolute -inset-2 rounded-full md:-inset-4"
+                  style={{ background: `linear-gradient(135deg, ${accentColor}40, transparent, ${accentColor}20)` }}
                   animate={prefersReducedMotion ? {} : { rotate: 360 }}
                   transition={prefersReducedMotion ? {} : { duration: 20, repeat: Infinity, ease: "linear" }}
                 />
-                <MotionBox
-                  position="absolute"
-                  inset={{ base: -4, md: -8 }}
-                  borderRadius="full"
-                  border="1px solid"
-                  borderColor={`${accentColor}30`}
+                <MotionDiv
+                  className="absolute -inset-4 rounded-full border md:-inset-8"
+                  style={{ borderColor: `${accentColor}30` }}
                   animate={prefersReducedMotion ? {} : { rotate: -360 }}
                   transition={prefersReducedMotion ? {} : { duration: 30, repeat: Infinity, ease: "linear" }}
                 />
-                <MotionBox
-                  borderRadius="full"
-                  w="full"
-                  h="full"
-                  bg={useColorModeValue("#f4f5f7", "#111111")}
-                  boxShadow={`0 0 80px ${accentColor}50, 0 0 120px ${accentColor}20`}
-                  display="flex"
-                  alignItems="center"
-                  justifyContent="center"
-                  overflow="hidden"
-                  animate={prefersReducedMotion ? {} : {
-                    y: [0, -8, 0]
+                <MotionDiv
+                  className="flex h-full w-full items-center justify-center overflow-hidden rounded-full"
+                  style={{
+                    backgroundColor: avatarBg,
+                    boxShadow: `0 0 80px ${accentColor}50, 0 0 120px ${accentColor}20`,
                   }}
-                  transition={prefersReducedMotion ? {} : {
-                    duration: 4,
-                    repeat: Infinity,
-                    ease: "easeInOut"
-                  }}
+                  animate={prefersReducedMotion ? {} : { y: [0, -8, 0] }}
+                  transition={prefersReducedMotion ? {} : { duration: 4, repeat: Infinity, ease: "easeInOut" }}
                 >
-                  <Box w={{ base: "160px", md: "220px", lg: "260px" }} h={{ base: "160px", md: "220px", lg: "260px" }} borderRadius="full" overflow="hidden" border="4px solid" borderColor={`${accentColor}30`}>
-                    <img src="./mirando-al-horizonte-modified.png" alt="Agustín Juárez" style={{ width: "100%", height: "100%", objectFit: "cover" }} />
-                  </Box>
-                </MotionBox>
-              </Box>
-            </MotionBox>
-          </Box>
-        </MotionBox>
-      </Container>
-    </Box>
+                  <div
+                    className="h-[160px] w-[160px] overflow-hidden rounded-full border-4 md:h-[220px] md:w-[220px] lg:h-[260px] lg:w-[260px]"
+                    style={{ borderColor: `${accentColor}30` }}
+                  >
+                    <img
+                      src="./mirando-al-horizonte-modified.png"
+                      alt="Agustín Juárez"
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
+                </MotionDiv>
+              </div>
+            </MotionDiv>
+          </div>
+        </MotionDiv>
+      </div>
+    </section>
   );
 }

@@ -1,14 +1,4 @@
 import React, { useState, useEffect } from "react";
-import {
-  Box,
-  Heading,
-  Text,
-  Image,
-  VStack,
-  HStack,
-  LinkBox,
-  LinkOverlay,
-} from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useReducedMotion } from "../hooks/useReducedMotion";
@@ -16,69 +6,78 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { experiences } from "../data/experiences.js";
 import { useColorModeValue } from "../hooks/useColorModeValue.js";
+import { cn } from "@/lib/utils";
 
-const MotionBox = motion(Box);
+const MotionDiv = motion.div;
 
 function ExperienceCard({ slug, title, subtitle, date, summary, imageSrc, opacity = 1, readMoreLabel }) {
   const { accentColor } = useAccentColors();
   const cardBg = useColorModeValue("#ffffff", "#111827");
-  const borderColor = useColorModeValue("#e5e7eb", "#374151");
-  const secondaryText = "gray.500";
+  const cardBorderColor = useColorModeValue("#e5e7eb", "#374151");
 
   return (
-    <LinkBox
-      as="article"
-      bg={cardBg}
-      border="1px solid"
-      borderColor={borderColor}
-      borderRadius="xl"
-      overflow="hidden"
-      minW={{ base: "260px", md: "300px" }}
-      maxW="360px"
-      opacity={opacity}
-      transition="all 0.3s ease"
-      transform={opacity === 1 ? "scale(1.02)" : "scale(0.95)"}
-      _hover={{
-        transform: "scale(1.02) translateY(-4px)",
-        boxShadow: "lg",
-        borderColor: accentColor,
+    <article
+      className="group relative max-w-[360px] min-w-[260px] overflow-hidden rounded-xl border transition-all duration-300 ease-in-out hover:-translate-y-1 hover:shadow-lg md:min-w-[300px]"
+      style={{
+        backgroundColor: cardBg,
+        borderColor: cardBorderColor,
+        opacity,
+        transform: opacity === 1 ? "scale(1.02)" : "scale(0.95)",
+      }}
+      onMouseEnter={(event) => {
+        event.currentTarget.style.borderColor = accentColor;
+        event.currentTarget.style.transform = "scale(1.02) translateY(-4px)";
+      }}
+      onMouseLeave={(event) => {
+        event.currentTarget.style.borderColor = cardBorderColor;
+        event.currentTarget.style.transform = opacity === 1 ? "scale(1.02)" : "scale(0.95)";
       }}
     >
-      <Box h="160px" overflow="hidden">
-        <Image
+      <div className="h-40 overflow-hidden">
+        <img
           src={imageSrc}
           alt={title}
-          w="100%"
-          h="100%"
-          objectFit="cover"
-          opacity={opacity}
+          className="h-full w-full object-cover"
+          style={{ opacity }}
         />
-      </Box>
+      </div>
 
-      <VStack align="start" spacing={2} p={4}>
-        <Heading as="h3" fontSize="md" fontWeight="700" fontFamily="var(--font-display)" noOfLines={2}>
-          <LinkOverlay as={RouterLink} to={`/experiencias/${slug}`} _hover={{ color: accentColor }}>
+      <div className="flex flex-col items-start gap-2 p-4">
+        <h3
+          className="line-clamp-2 text-base font-bold"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
+          <RouterLink
+            to={`/experiencias/${slug}`}
+            className="static no-underline after:absolute after:inset-0 hover:no-underline"
+            style={{ color: "inherit" }}
+            onMouseEnter={(event) => {
+              event.currentTarget.style.color = accentColor;
+            }}
+            onMouseLeave={(event) => {
+              event.currentTarget.style.color = "inherit";
+            }}
+          >
             {title}
-          </LinkOverlay>
-        </Heading>
+          </RouterLink>
+        </h3>
 
-        <Text fontSize="xs" color={accentColor} fontWeight="600">
+        <p className="text-xs font-semibold" style={{ color: accentColor }}>
           {subtitle}
-        </Text>
+        </p>
 
-        <Text fontSize="xs" color={secondaryText}>
-          {date}
-        </Text>
+        <p className="text-xs text-gray-500">{date}</p>
 
-        <Text fontSize="sm" color={secondaryText} lineHeight="1.6" noOfLines={3}>
-          {summary}
-        </Text>
+        <p className="line-clamp-3 text-sm leading-relaxed text-gray-500">{summary}</p>
 
-        <Text fontSize="xs" color={accentColor} fontWeight="600" fontFamily="var(--font-body)">
+        <p
+          className="text-xs font-semibold"
+          style={{ color: accentColor, fontFamily: "var(--font-body)" }}
+        >
           {readMoreLabel} →
-        </Text>
-      </VStack>
-    </LinkBox>
+        </p>
+      </div>
+    </article>
   );
 }
 
@@ -122,41 +121,41 @@ export default function ExperiencesCarousel() {
   const readMoreLabel = t("experiences.read_more");
 
   return (
-    <MotionBox
+    <MotionDiv
       initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
       viewport={{ once: true }}
-      w="full"
-      overflowX="hidden"
+      className="w-full overflow-x-hidden"
     >
-      <Box mb={6}>
-        <Heading fontSize={{ base: "xl", md: "2xl" }} fontWeight="800" fontFamily="var(--font-display)" letterSpacing="-0.02em">
+      <div className="mb-6">
+        <h2
+          className="text-xl font-extrabold tracking-tight md:text-2xl"
+          style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em" }}
+        >
           {t("experiences.title")}
-        </Heading>
-      </Box>
+        </h2>
+      </div>
 
-      <HStack
-        justify={{ base: "flex-start", md: "center" }}
-        spacing={4}
-        w="full"
-        overflowX={{ base: "auto", md: "visible" }}
-        pb={{ base: 2, md: 0 }}
-        px={{ base: 1, md: 0 }}
-        sx={{ scrollbarWidth: "thin", WebkitOverflowScrolling: "touch" }}
+      <div
+        className={cn(
+          "flex w-full gap-4 pb-2 md:justify-center md:overflow-visible md:px-0 md:pb-0",
+          "justify-start overflow-x-auto px-1",
+        )}
+        style={{ scrollbarWidth: "thin", WebkitOverflowScrolling: "touch" }}
       >
         {visibleCards.map((exp) => (
-          <MotionBox
+          <MotionDiv
             key={exp.slug}
-            flexShrink={0}
+            className="shrink-0"
             initial={prefersReducedMotion ? false : { opacity: 0, y: 12 }}
             animate={{ opacity: exp.opacity, y: 0 }}
             transition={{ duration: 0.35 }}
           >
             <ExperienceCard {...exp} readMoreLabel={readMoreLabel} />
-          </MotionBox>
+          </MotionDiv>
         ))}
-      </HStack>
-    </MotionBox>
+      </div>
+    </MotionDiv>
   );
 }

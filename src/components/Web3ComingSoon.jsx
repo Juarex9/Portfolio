@@ -1,21 +1,19 @@
-import React, { useEffect, useMemo, useState } from "react";
-import { Box, Container, VStack, Heading, Text } from "@chakra-ui/react";
+import { useEffect, useMemo, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useColorModeValue } from "../hooks/useColorModeValue.js";
-import styles from "../styles/waterfall.module.css"; // <-- (ajustá la ruta si tu estructura difiere)
+import styles from "../styles/waterfall.module.css";
 
-const MotionBox = motion(Box);
+const MotionSpan = motion.span;
 
 export default function Web3ComingSoonFlipWords() {
   const { accentColor, bgColor, cardBg } = useAccentColors();
-
   const muted = useColorModeValue("rgba(0, 0, 0, 0.64)", "rgba(255, 255, 255, 0.64)");
   const borderColor = useColorModeValue("rgba(0, 0, 0, 0.08)", "rgba(255, 255, 255, 0.08)");
 
   const words = useMemo(
     () => ["dApps", "Smart contracts", "Indexación", "Integraciones", "Casos de estudio"],
-    []
+    [],
   );
   const [idx, setIdx] = useState(0);
 
@@ -25,71 +23,51 @@ export default function Web3ComingSoonFlipWords() {
   }, [words.length]);
 
   return (
-    <Box py={{ base: 14, md: 58 }} bg={bgColor}>
-      <Container maxW="3x1" minH="60vh" >
-        <VStack spacing={5} align="center" textAlign="center">
-          <Box
-            borderWidth="1px"
-            borderColor={borderColor}
-            bg={cardBg}
-            borderRadius="2xl"
-            px={{ base: 6, md: 8 }}
-            py={{ base: 6, md: 7 }}
-            w="full"
-            maxW="2xl"
+    <section className="py-14 md:py-[58px]" style={{ backgroundColor: bgColor }}>
+      <div className="mx-auto min-h-[60vh] max-w-3xl px-4 md:px-6">
+        <div className="flex flex-col items-center gap-5 text-center">
+          <div
+            className="w-full max-w-2xl rounded-2xl border px-6 py-6 md:px-8 md:py-7"
+            style={{ borderColor, backgroundColor: cardBg }}
           >
-            <Heading fontSize={{ base: "2xl", md: "4xl" }} letterSpacing="-0.02em">
+            <h2 className="text-2xl font-bold tracking-tight md:text-4xl" style={{ letterSpacing: "-0.02em" }}>
               En desarrollo
-            </Heading>
+            </h2>
 
-            {/* Waterfall loader */}
-            <Box
-              mt={5}
-              display="flex"
-              justifyContent="center"
-              // seteamos la variable CSS que usa tu animación
-              style={{ "--primary": accentColor }}
-            >
-              <Box as="div" className={styles.waterfall} aria-hidden="true">
+            <div className="mt-5 flex justify-center" style={{ "--primary": accentColor }}>
+              <div className={styles.waterfall} aria-hidden="true">
                 <div />
                 <div />
                 <div />
                 <div />
                 <div />
-              </Box>
-            </Box>
+              </div>
+            </div>
 
-            <Text mt={5} color={muted} fontSize={{ base: "md", md: "lg" }}>
+            <p className="mt-5 text-base md:text-lg" style={{ color: muted }}>
               Estoy preparando:{" "}
-              <Box
-                as="span"
-                color={accentColor}
-                fontWeight="semibold"
-                display="inline-block"
-                position="relative"
-              >
+              <span className="relative inline-block font-semibold" style={{ color: accentColor }}>
                 <AnimatePresence mode="wait">
-                  <MotionBox
+                  <MotionSpan
                     key={words[idx]}
-                    as="span"
-                    display="inline-block"
+                    className="inline-block"
                     initial={{ y: 10, opacity: 0 }}
                     animate={{ y: 0, opacity: 1 }}
                     exit={{ y: -10, opacity: 0 }}
                     transition={{ duration: 0.25 }}
                   >
                     {words[idx]}
-                  </MotionBox>
+                  </MotionSpan>
                 </AnimatePresence>
-              </Box>
-            </Text>
+              </span>
+            </p>
 
-            <Text mt={5} color={muted} fontSize="sm">
+            <p className="mt-5 text-sm" style={{ color: muted }}>
               Proximamente estarán listos los primeros proyectos
-            </Text>
-          </Box>
-        </VStack>
-      </Container>
-    </Box>
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }

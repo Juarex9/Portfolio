@@ -1,9 +1,7 @@
-import React, { useMemo } from "react";
-import { Box, Container, HStack, Text } from "@chakra-ui/react";
+import { useMemo } from "react";
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useReducedMotion } from "../hooks/useReducedMotion";
-
 import {
   SiJavascript,
   SiHtml5,
@@ -16,10 +14,10 @@ import {
   SiMongodb,
   SiGit,
   SiTypescript,
-  SiChakraui,
+  SiTailwindcss,
 } from "react-icons/si";
 
-const MotionBox = motion(Box);
+const MotionDiv = motion.div;
 
 export default function TechMarquee({ speedSeconds = 22, title = "Tech stack", showTitle = true }) {
   const { accentColor } = useAccentColors();
@@ -33,75 +31,60 @@ export default function TechMarquee({ speedSeconds = 22, title = "Tech stack", s
       { label: "CSS3", Icon: SiCss },
       { label: "Python", Icon: SiPython },
       { label: "React", Icon: SiReact },
-      { label: "Chakra UI", Icon: SiChakraui },
+      { label: "Tailwind CSS", Icon: SiTailwindcss },
       { label: "Node.js", Icon: SiNodedotjs },
       { label: "Express", Icon: SiExpress },
       { label: "PostgreSQL", Icon: SiPostgresql },
       { label: "MongoDB", Icon: SiMongodb },
       { label: "Git", Icon: SiGit },
     ],
-    []
+    [],
   );
 
   const loop = [...items, ...items];
 
   return (
-    <Box w="full" py={{ base: 6, md: 10 }} bg="transparent">
-      <Container maxW="6xl">
+    <section className="w-full bg-transparent py-6 md:py-10">
+      <div className="mx-auto max-w-6xl px-4 md:px-6">
         {showTitle && (
-          <Box display="flex" alignItems="center" gap={2} mb={3}>
-            <Box w="20px" h="2px" bg={accentColor} borderRadius="full" />
-            <Text
-              fontSize="xs"
-              fontWeight="700"
-              letterSpacing="wider"
-              textTransform="uppercase"
-              color={accentColor}
-              fontFamily="var(--font-body)"
+          <div className="mb-3 flex items-center gap-2">
+            <span className="h-0.5 w-5 rounded-full" style={{ backgroundColor: accentColor }} />
+            <span
+              className="text-xs font-bold uppercase tracking-wider"
+              style={{ color: accentColor, fontFamily: "var(--font-body)" }}
             >
               {title}
-            </Text>
-          </Box>
+            </span>
+          </div>
         )}
 
-        <Box overflow="hidden">
-          <MotionBox
-            display="flex"
-            gap={{ base: 2, md: 3 }}
+        <div className="overflow-hidden">
+          <MotionDiv
+            className="flex w-max gap-2 md:gap-3"
             animate={prefersReducedMotion ? { x: 0 } : { x: ["0%", "-50%"] }}
             transition={{
               duration: speedSeconds,
               ease: "linear",
               repeat: prefersReducedMotion ? 0 : Infinity,
             }}
-            w="max-content"
           >
-            {loop.map(({ label, Icon }, idx) => (
-              <HStack
-                key={`${label}-${idx}`}
-                spacing={1.5}
-                borderRadius="lg"
-                px={{ base: 2, md: 3 }}
-                py={{ base: 1.5, md: 2 }}
-                flex="0 0 auto"
-                userSelect="none"
-                cursor="default"
+            {loop.map((item, idx) => (
+              <div
+                key={`${item.label}-${idx}`}
+                className="flex shrink-0 cursor-default select-none items-center gap-1.5 rounded-lg px-2 py-1.5 md:px-3 md:py-2"
               >
-                <Box as={Icon} fontSize={{ base: "14px", md: "16px" }} color={accentColor} />
-                <Text
-                  fontSize={{ base: "xs", md: "sm" }}
-                  fontWeight="500"
-                  whiteSpace="nowrap"
-                  fontFamily="var(--font-body)"
-                  color="gray.500"
+                <item.Icon className="text-sm md:text-base" style={{ color: accentColor }} />
+                <span
+                  className="whitespace-nowrap text-xs font-medium text-gray-500 md:text-sm"
+                  style={{ fontFamily: "var(--font-body)" }}
                 >
-                  {label}
-                </Text>
-              </HStack>
+                  {item.label}
+                </span>
+              </div>
             ))}
-          </MotionBox>
-        </Box>
-      </Container>
-    </Box>
+          </MotionDiv>
+        </div>
+      </div>
+    </section>
   );
 }

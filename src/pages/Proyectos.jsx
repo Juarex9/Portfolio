@@ -1,17 +1,3 @@
-import React from "react";
-import {
-  Box,
-  SimpleGrid,
-  Heading,
-  Text,
-  Container,
-  HStack,
-  Tag,
-  Button,
-  Badge,
-  Stack,
-  Link,
-} from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { FaGithub, FaExternalLinkAlt } from "react-icons/fa";
 import { motion } from "framer-motion";
@@ -20,241 +6,205 @@ import { useTranslation } from "react-i18next";
 import { Seo } from "../components/Seo";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { projects, getProjectDetailPath } from "../data/projects.js";
+import { Badge } from "@/components/ui/badge";
 
-const MotionBox = motion(Box);
+const MotionDiv = motion.div;
 
 export default function Proyectos() {
   const { accentColor, borderColor } = useAccentColors();
   const prefersReducedMotion = useReducedMotion();
-  const secondaryText = "gray.500";
   const { t } = useTranslation();
 
   return (
     <>
       <Seo titleKey="seo.projects.title" descriptionKey="seo.projects.description" canonicalPath="/proyectos" />
-      <Box w="full" minH="100vh" bg="transparent">
-        <Container maxW="6xl" py={{ base: 8, md: 16 }}>
-          <MotionBox
+      <div className="min-h-screen w-full bg-transparent">
+        <div className="mx-auto max-w-6xl px-4 py-8 md:px-6 md:py-16">
+          <MotionDiv
             initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
             viewport={{ once: true }}
-            mb={8}
+            className="mb-8"
           >
-            <Stack
-              direction={{ base: "column", md: "row" }}
-              justify="space-between"
-              align={{ base: "flex-start", md: "flex-end" }}
-              spacing={4}
-            >
-              <Box>
-                <HStack mb={3} gap={2}>
-                  <Box w="32px" h="2px" bg={accentColor} borderRadius="full" />
+            <div className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+              <div>
+                <div className="mb-3 flex items-center gap-2">
+                  <span className="h-0.5 w-8 rounded-full" style={{ backgroundColor: accentColor }} />
                   <Badge
-                    borderRadius="full"
-                    px={3}
-                    py={1}
-                    bg={`${accentColor}15`}
-                    color={accentColor}
-                    textTransform="uppercase"
-                    fontSize="xs"
-                    fontWeight="600"
-                    letterSpacing="wider"
-                    fontFamily="var(--font-body)"
+                    className="normal-case"
+                    style={{ backgroundColor: `${accentColor}15`, color: accentColor, fontFamily: "var(--font-body)" }}
                   >
                     {t("projects.badge")}
                   </Badge>
-                </HStack>
+                </div>
 
-                <Heading
-                  fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }}
-                  fontWeight="800"
-                  fontFamily="var(--font-display)"
-                  letterSpacing="-0.02em"
-                  lineHeight="1.2"
-                  mb={2}
+                <h1
+                  className="mb-2 text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl md:text-4xl"
+                  style={{ fontFamily: "var(--font-display)" }}
                 >
                   {t("projects.title")}
-                </Heading>
+                </h1>
 
-                <Text fontSize={{ base: "sm", md: "md" }} color={secondaryText} maxW="2xl" fontFamily="var(--font-body)">
+                <p className="max-w-2xl text-sm text-gray-500 md:text-base" style={{ fontFamily: "var(--font-body)" }}>
                   {t("projects.subtitle")}
-                </Text>
-              </Box>
+                </p>
+              </div>
 
-              <Button
-                as={Link}
+              <a
                 href="https://github.com/Juarex9"
                 target="_blank"
-                variant="outline"
-                borderRadius="full"
-                px={5}
-                size="sm"
-                h={10}
-                fontWeight="600"
-                fontFamily="var(--font-body)"
-                borderColor={accentColor}
-                color={accentColor}
-                _hover={{ bg: accentColor, color: "white" }}
-                transition="all 0.3s"
+                rel="noopener noreferrer"
+                className="inline-flex h-10 shrink-0 items-center rounded-full border bg-transparent px-5 text-sm font-semibold transition-all duration-300 hover:text-white"
+                style={{
+                  borderColor: accentColor,
+                  color: accentColor,
+                  fontFamily: "var(--font-body)",
+                }}
+                onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = accentColor; e.currentTarget.style.color = "white"; }}
+                onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; e.currentTarget.style.color = accentColor; }}
               >
                 {t("projects.github_button")}
-              </Button>
-            </Stack>
-          </MotionBox>
+              </a>
+            </div>
+          </MotionDiv>
 
-          <SimpleGrid columns={{ base: 1, md: 2 }} spacing={{ base: 4, md: 6 }}>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
             {projects.map((project, index) => {
               const baseKey = `projects.items.${project.key}`;
               const detailPath = getProjectDetailPath(project);
               const techList = t(`${baseKey}.tech`, { returnObjects: true });
 
               return (
-                <MotionBox
+                <MotionDiv
                   key={project.key}
                   initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: prefersReducedMotion ? 0 : 0.5, delay: prefersReducedMotion ? 0 : (index % 2) * 0.1 }}
+                  transition={{
+                    duration: prefersReducedMotion ? 0 : 0.5,
+                    delay: prefersReducedMotion ? 0 : (index % 2) * 0.1,
+                  }}
                   viewport={{ once: true }}
                 >
-                  <Box
-                    as="article"
-                    border="1px solid"
-                    borderColor={borderColor}
-                    borderRadius="xl"
-                    overflow="hidden"
-                    boxShadow="sm"
-                    _hover={{ transform: "translateY(-2px)", boxShadow: "md" }}
-                    transition="all 0.2s"
-                    h="full"
-                    display="flex"
-                    flexDirection="column"
+                  <article
+                    className="flex h-full flex-col overflow-hidden rounded-xl border shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                    style={{ borderColor }}
                   >
                     {project.image && (
-                      <Box h={{ base: "160px", md: "180px" }} position="relative" overflow="hidden" flexShrink={0}>
-                        <Box
-                          as="img"
+                      <div className="relative h-40 shrink-0 overflow-hidden md:h-[180px]">
+                        <img
                           src={project.image}
                           alt={t(`${baseKey}.title`)}
-                          position="absolute"
-                          inset={0}
-                          w="full"
-                          h="full"
-                          objectFit="cover"
+                          className="absolute inset-0 h-full w-full object-cover"
                           loading="lazy"
                         />
-                      </Box>
+                      </div>
                     )}
 
-                    <Box p={4} flex={1} display="flex" flexDirection="column">
-                      <HStack mb={2} spacing={2} flexWrap="wrap">
-                        <Badge borderRadius="full" px={2} py={0.5} bg={`${accentColor}15`} color={accentColor} fontSize="xs">
+                    <div className="flex flex-1 flex-col p-4">
+                      <div className="mb-2 flex flex-wrap gap-2">
+                        <Badge
+                          className="normal-case px-2 py-0.5 text-xs"
+                          style={{ backgroundColor: `${accentColor}15`, color: accentColor }}
+                        >
                           {t(`projects.types.${project.type}`)}
                         </Badge>
-                      </HStack>
+                      </div>
 
-                      <Heading size="sm" mb={1} fontFamily="var(--font-display)" fontWeight="700">
+                      <h2 className="mb-1 text-sm font-bold" style={{ fontFamily: "var(--font-display)" }}>
                         {t(`${baseKey}.title`)}
-                      </Heading>
+                      </h2>
 
-                      <Text fontSize="xs" color={accentColor} mb={2} fontWeight="500" fontFamily="var(--font-body)">
+                      <p className="mb-2 text-xs font-medium" style={{ color: accentColor, fontFamily: "var(--font-body)" }}>
                         {t(`${baseKey}.subtitle`)}
-                      </Text>
+                      </p>
 
-                      <Text fontSize="xs" color={secondaryText} lineHeight="1.6" fontFamily="var(--font-body)" mb={1}>
-                        <Text as="span" fontWeight="600" color="gray.600" _dark={{ color: "gray.400" }}>
+                      <p className="mb-1 text-xs leading-relaxed text-gray-500" style={{ fontFamily: "var(--font-body)" }}>
+                        <span className="font-semibold text-gray-600 dark:text-gray-400">
                           {t("projects.card.problem_label")}{" "}
-                        </Text>
+                        </span>
                         {t(`${baseKey}.problem`)}
-                      </Text>
+                      </p>
 
-                      <Text fontSize="xs" color={secondaryText} lineHeight="1.6" fontFamily="var(--font-body)" mb={3}>
-                        <Text as="span" fontWeight="600" color="gray.600" _dark={{ color: "gray.400" }}>
+                      <p className="mb-3 text-xs leading-relaxed text-gray-500" style={{ fontFamily: "var(--font-body)" }}>
+                        <span className="font-semibold text-gray-600 dark:text-gray-400">
                           {t("projects.card.role_label")}{" "}
-                        </Text>
+                        </span>
                         {t(`${baseKey}.role`)}
-                      </Text>
+                      </p>
 
-                      <HStack spacing={1.5} wrap="wrap" mb={3} flex={1} alignContent="flex-start">
+                      <div className="mb-3 flex flex-1 flex-wrap content-start gap-1.5">
                         {Array.isArray(techList) &&
                           techList.map((techItem) => (
-                            <Tag
+                            <span
                               key={techItem}
-                              size="sm"
-                              borderRadius="full"
-                              bg={`${accentColor}15`}
-                              color={accentColor}
-                              fontFamily="var(--font-body)"
-                              fontSize="xs"
-                              fontWeight="500"
-                              px={2}
-                              py={0.5}
+                              className="rounded-full px-2 py-0.5 text-xs font-medium"
+                              style={{
+                                backgroundColor: `${accentColor}15`,
+                                color: accentColor,
+                                fontFamily: "var(--font-body)",
+                              }}
                             >
                               {techItem}
-                            </Tag>
+                            </span>
                           ))}
-                      </HStack>
+                      </div>
 
-                      <HStack spacing={2} flexWrap="wrap" mt="auto">
+                      <div className="mt-auto flex flex-wrap gap-2">
                         {detailPath && (
-                          <Button
-                            as={RouterLink}
+                          <RouterLink
                             to={detailPath}
-                            size="xs"
-                            bg={accentColor}
-                            color="white"
-                            borderRadius="full"
-                            _hover={{ opacity: 0.9 }}
-                            fontFamily="var(--font-body)"
+                            className="inline-flex h-8 items-center rounded-full px-3 text-xs font-semibold text-white transition-opacity hover:opacity-90"
+                            style={{ backgroundColor: accentColor, fontFamily: "var(--font-body)" }}
                           >
                             {t("projects.read_more")}
-                          </Button>
+                          </RouterLink>
                         )}
                         {project.github && (
-                          <Button
-                            as="a"
+                          <a
                             href={project.github}
                             target="_blank"
                             rel="noopener noreferrer"
-                            size="xs"
-                            leftIcon={<FaGithub />}
-                            variant="outline"
-                            borderRadius="full"
-                            borderColor={accentColor}
-                            color={accentColor}
-                            _hover={{ bg: `${accentColor}10` }}
-                            fontFamily="var(--font-body)"
+                            className="inline-flex h-8 items-center gap-1.5 rounded-full border bg-transparent px-3 text-xs font-semibold transition-all duration-300"
+                            style={{
+                              borderColor: accentColor,
+                              color: accentColor,
+                              fontFamily: "var(--font-body)",
+                            }}
+                            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = `${accentColor}10`; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; }}
                           >
+                            <FaGithub />
                             {t("projects.code_button")}
-                          </Button>
+                          </a>
                         )}
                         {project.demo && (
-                          <Button
-                            as="a"
+                          <a
                             href={project.demo}
                             target="_blank"
                             rel="noopener noreferrer"
-                            size="xs"
-                            leftIcon={<FaExternalLinkAlt />}
-                            variant="outline"
-                            borderRadius="full"
-                            borderColor={accentColor}
-                            color={accentColor}
-                            _hover={{ bg: `${accentColor}10` }}
-                            fontFamily="var(--font-body)"
+                            className="inline-flex h-8 items-center gap-1.5 rounded-full border bg-transparent px-3 text-xs font-semibold transition-all duration-300"
+                            style={{
+                              borderColor: accentColor,
+                              color: accentColor,
+                              fontFamily: "var(--font-body)",
+                            }}
+                            onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = `${accentColor}10`; }}
+                            onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = "transparent"; }}
                           >
+                            <FaExternalLinkAlt />
                             {t("projects.demo_button")}
-                          </Button>
+                          </a>
                         )}
-                      </HStack>
-                    </Box>
-                  </Box>
-                </MotionBox>
+                      </div>
+                    </div>
+                  </article>
+                </MotionDiv>
               );
             })}
-          </SimpleGrid>
-        </Container>
-      </Box>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

@@ -1,22 +1,13 @@
 import React, { useCallback, useRef, useState } from "react";
-import {
-  Box,
-  Heading,
-  HStack,
-  IconButton,
-  Image,
-  Text,
-  VStack,
-  VisuallyHidden,
-} from "@chakra-ui/react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useColorModeValue } from "../hooks/useColorModeValue.js";
+import { cn } from "@/lib/utils";
 
-const MotionBox = motion(Box);
+const MotionDiv = motion.div;
 
 function galleryAltKey(src) {
   const filename = src.split("/").pop() || "";
@@ -48,7 +39,7 @@ export default function ExperienceGallery({ images, title, getAlt, borderColor }
       }
       setActiveIndex(next);
     },
-    [count]
+    [count],
   );
 
   const activeSrc = images[activeIndex];
@@ -56,54 +47,55 @@ export default function ExperienceGallery({ images, title, getAlt, borderColor }
 
   if (prefersReducedMotion) {
     return (
-      <VStack align="stretch" spacing={4} mb={8} w="full">
+      <div className="mb-8 flex w-full flex-col gap-4">
         {title && (
-          <Heading as="h2" size="sm" fontFamily="var(--font-display)" color="gray.500">
+          <h2
+            className="text-sm text-gray-500"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
             {title}
-          </Heading>
+          </h2>
         )}
-        <HStack
-          gap={4}
-          overflowX="auto"
-          pb={3}
-          w="full"
-          sx={{ scrollbarWidth: "thin", WebkitOverflowScrolling: "touch" }}
+        <div
+          className="flex w-full gap-4 overflow-x-auto pb-3"
+          style={{ scrollbarWidth: "thin", WebkitOverflowScrolling: "touch" }}
         >
           {images.map((src) => (
-            <Box
+            <div
               key={src}
-              flex="0 0 auto"
-              w={{ base: "min(300px, 88vw)", md: "420px" }}
-              borderRadius="xl"
-              overflow="hidden"
-              border="1px solid"
-              borderColor={borderColor}
-              bg={imageBg}
+              className="w-[min(300px,88vw)] shrink-0 overflow-hidden rounded-xl border md:w-[420px]"
+              style={{ borderColor, backgroundColor: imageBg }}
             >
-              <Image src={src} alt={getAlt(galleryAltKey(src))} w="100%" h="auto" objectFit="contain" loading="lazy" />
-            </Box>
+              <img
+                src={src}
+                alt={getAlt(galleryAltKey(src))}
+                className="h-auto w-full object-contain"
+                loading="lazy"
+              />
+            </div>
           ))}
-        </HStack>
-      </VStack>
+        </div>
+      </div>
     );
   }
 
   return (
-    <VStack align="stretch" spacing={4} mb={8} w="full">
+    <div className="mb-8 flex w-full flex-col gap-4">
       {title && (
-        <Heading as="h2" size="sm" fontFamily="var(--font-display)" color="gray.500">
+        <h2
+          className="text-sm text-gray-500"
+          style={{ fontFamily: "var(--font-display)" }}
+        >
           {title}
-        </Heading>
+        </h2>
       )}
 
-      <Box
-        position="relative"
-        borderRadius="xl"
-        overflow="hidden"
-        border="1px solid"
-        borderColor={borderColor}
-        bg={imageBg}
-        w="full"
+      <div
+        className={cn(
+          "relative w-full overflow-hidden rounded-xl border",
+          isDragging ? "cursor-grabbing" : "cursor-grab",
+        )}
+        style={{ borderColor, backgroundColor: imageBg, touchAction: "pan-y" }}
         role="region"
         aria-roledescription="carousel"
         aria-label={title}
@@ -126,100 +118,94 @@ export default function ExperienceGallery({ images, title, getAlt, borderColor }
         }}
         onPointerUp={() => setIsDragging(false)}
         onPointerLeave={() => setIsDragging(false)}
-        cursor={isDragging ? "grabbing" : "grab"}
-        touchAction="pan-y"
       >
-        <Box position="relative" minH={{ base: "240px", sm: "320px", md: "420px" }} display="flex" alignItems="center" justifyContent="center" px={{ base: 10, md: 12 }} py={4}>
+        <div className="relative flex min-h-[240px] items-center justify-center px-10 py-4 sm:min-h-[320px] md:min-h-[420px] md:px-12">
           <AnimatePresence mode="wait" initial={false}>
-            <MotionBox
+            <MotionDiv
               key={activeSrc}
               initial={{ opacity: 0, x: 24 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -24 }}
               transition={{ duration: 0.3 }}
-              w="full"
-              display="flex"
-              justifyContent="center"
+              className="flex w-full justify-center"
             >
-              <Image
+              <img
                 src={activeSrc}
                 alt={activeAlt}
-                maxH={{ base: "360px", md: "520px" }}
-                maxW="100%"
-                w="auto"
-                h="auto"
-                objectFit="contain"
+                className="h-auto max-h-[360px] w-auto max-w-full object-contain md:max-h-[520px]"
                 loading="eager"
               />
-            </MotionBox>
+            </MotionDiv>
           </AnimatePresence>
-        </Box>
+        </div>
 
-        <IconButton
+        <button
+          type="button"
           aria-label={t("experiences.gallery_prev")}
-          icon={<ChevronLeftIcon boxSize={6} />}
-          position="absolute"
-          left={{ base: 1, md: 2 }}
-          top="50%"
-          transform="translateY(-50%)"
-          size="sm"
-          variant="ghost"
-          borderRadius="full"
-          color={accentColor}
-          bg={navBtnBg}
-          _hover={{ bg: navBtnHoverBg }}
           onClick={() => goTo(activeIndex - 1)}
-          zIndex={2}
-        />
-        <IconButton
+          className="absolute left-1 top-1/2 z-[2] inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border-none p-0 transition-colors md:left-2"
+          style={{ color: accentColor, backgroundColor: navBtnBg }}
+          onMouseEnter={(event) => {
+            event.currentTarget.style.backgroundColor = navBtnHoverBg;
+          }}
+          onMouseLeave={(event) => {
+            event.currentTarget.style.backgroundColor = navBtnBg;
+          }}
+        >
+          <ChevronLeft className="h-6 w-6" aria-hidden />
+        </button>
+        <button
+          type="button"
           aria-label={t("experiences.gallery_next")}
-          icon={<ChevronRightIcon boxSize={6} />}
-          position="absolute"
-          right={{ base: 1, md: 2 }}
-          top="50%"
-          transform="translateY(-50%)"
-          size="sm"
-          variant="ghost"
-          borderRadius="full"
-          color={accentColor}
-          bg={navBtnBg}
-          _hover={{ bg: navBtnHoverBg }}
           onClick={() => goTo(activeIndex + 1)}
-          zIndex={2}
-        />
-      </Box>
+          className="absolute right-1 top-1/2 z-[2] inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-full border-none p-0 transition-colors md:right-2"
+          style={{ color: accentColor, backgroundColor: navBtnBg }}
+          onMouseEnter={(event) => {
+            event.currentTarget.style.backgroundColor = navBtnHoverBg;
+          }}
+          onMouseLeave={(event) => {
+            event.currentTarget.style.backgroundColor = navBtnBg;
+          }}
+        >
+          <ChevronRight className="h-6 w-6" aria-hidden />
+        </button>
+      </div>
 
-      <HStack justify="space-between" align="center" flexWrap="wrap" gap={2}>
-        <Text fontSize="sm" color="gray.500" fontFamily="var(--font-body)" noOfLines={2} flex={1}>
+      <div className="flex flex-wrap items-center justify-between gap-2">
+        <p
+          className="line-clamp-2 flex-1 text-sm text-gray-500"
+          style={{ fontFamily: "var(--font-body)" }}
+        >
           {activeAlt}
-        </Text>
-        <Text fontSize="xs" color="gray.500" fontFamily="var(--font-mono)" letterSpacing="wider" flexShrink={0}>
+        </p>
+        <p
+          className="shrink-0 text-xs tracking-wider text-gray-500"
+          style={{ fontFamily: "var(--font-mono)" }}
+        >
           {String(activeIndex + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
-        </Text>
-      </HStack>
+        </p>
+      </div>
 
-      <HStack justify="center" spacing={2}>
+      <div className="flex justify-center gap-2">
         {images.map((src, index) => (
-          <Box
+          <button
             key={src}
-            as="button"
             type="button"
             aria-label={getAlt(galleryAltKey(src))}
             aria-current={index === activeIndex ? "true" : undefined}
             onClick={() => setActiveIndex(index)}
-            w={index === activeIndex ? "20px" : "8px"}
-            h="8px"
-            borderRadius="full"
-            bg={index === activeIndex ? accentColor : dotInactiveBg}
-            transition="all 0.25s ease"
-            border="none"
-            p={0}
-            cursor="pointer"
+            className="h-2 cursor-pointer rounded-full border-none p-0 transition-all duration-[250ms] ease-in-out"
+            style={{
+              width: index === activeIndex ? "20px" : "8px",
+              backgroundColor: index === activeIndex ? accentColor : dotInactiveBg,
+            }}
           />
         ))}
-      </HStack>
+      </div>
 
-      <VisuallyHidden aria-live="polite">{activeAlt}</VisuallyHidden>
-    </VStack>
+      <span className="sr-only" aria-live="polite">
+        {activeAlt}
+      </span>
+    </div>
   );
 }

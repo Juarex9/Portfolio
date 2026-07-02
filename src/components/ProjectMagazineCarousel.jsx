@@ -1,12 +1,13 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Box, HStack, IconButton, Text, VisuallyHidden } from "@chakra-ui/react";
-import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { motion, useReducedMotion as useFramerReducedMotion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useBreakpointValue } from "../hooks/useBreakpointValue.js";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import { useColorModeValue } from "../hooks/useColorModeValue.js";
+import { cn } from "@/lib/utils";
 
-const MotionBox = motion(Box);
+const MotionDiv = motion.div;
 
 const SPRING = { type: "spring", stiffness: 280, damping: 32, mass: 0.8 };
 
@@ -30,6 +31,9 @@ export default function ProjectMagazineCarousel({ images, accentColor }) {
   const prefersReducedMotion = useReducedMotion();
   const framerReducedMotion = useFramerReducedMotion();
   const reducedMotion = prefersReducedMotion || framerReducedMotion;
+  const inactiveBorderColor = useColorModeValue("rgba(0, 0, 0, 0.08)", "rgba(255, 255, 255, 0.08)");
+  const inactiveActiveBorderColor = useColorModeValue(`${accentColor}55`, `${accentColor}66`);
+  const dotInactiveBg = useColorModeValue("#d1d5db", "rgba(255, 255, 255, 0.3)");
 
   const metrics = useBreakpointValue({
     base: { xStep: 64, zStep: 40, rotateStep: 20, cardW: 168, cardH: 112, offsetX: 84, offsetY: 56 },
@@ -57,7 +61,7 @@ export default function ProjectMagazineCarousel({ images, accentColor }) {
       }
       setActiveIndex(next);
     },
-    [count]
+    [count],
   );
 
   useEffect(() => {
@@ -99,42 +103,35 @@ export default function ProjectMagazineCarousel({ images, accentColor }) {
 
   if (reducedMotion) {
     return (
-      <Box
-        display="flex"
-        gap={4}
-        overflowX="auto"
-        pb={3}
-        w="full"
-        maxW="100%"
-        sx={{ scrollbarWidth: "thin", WebkitOverflowScrolling: "touch" }}
+      <div
+        className="flex w-full max-w-full gap-4 overflow-x-auto pb-3"
+        style={{ scrollbarWidth: "thin", WebkitOverflowScrolling: "touch" }}
       >
         {images.map((img) => (
-          <Box
+          <div
             key={img.src}
-            flex="0 0 auto"
-            w={{ base: "min(220px, 78vw)", md: "280px" }}
-            borderRadius="lg"
-            overflow="hidden"
-            border="1px solid"
-            borderColor="blackAlpha.200"
-            _dark={{ borderColor: "whiteAlpha.200" }}
+            className="w-[min(220px,78vw)] shrink-0 overflow-hidden rounded-lg border md:w-[280px]"
+            style={{ borderColor: inactiveBorderColor }}
           >
-            <Box as="img" src={img.src} alt={img.label} w="full" h="auto" loading="lazy" />
-          </Box>
+            <img src={img.src} alt={img.label} className="h-auto w-full" loading="lazy" />
+          </div>
         ))}
-      </Box>
+      </div>
     );
   }
 
   return (
-    <Box ref={containerRef} position="relative" userSelect="none" touchAction="pan-y" w="full" maxW="100%" overflow="hidden">
-      <Box
-        position="relative"
-        h={{ base: "200px", sm: "240px", md: "300px", lg: "340px" }}
-        mx="auto"
-        maxW={{ base: "100%", md: "640px" }}
-        px={{ base: 2, md: 0 }}
-        sx={{ perspective: "1400px", perspectiveOrigin: "50% 42%" }}
+    <div
+      ref={containerRef}
+      className="relative w-full max-w-full select-none overflow-hidden"
+      style={{ touchAction: "pan-y" }}
+    >
+      <div
+        className={cn(
+          "relative mx-auto h-[200px] max-w-full px-2 sm:h-[240px] md:h-[300px] md:max-w-[640px] md:px-0 lg:h-[340px]",
+          isDragging ? "cursor-grabbing" : "cursor-grab",
+        )}
+        style={{ perspective: "1400px", perspectiveOrigin: "50% 42%" }}
         tabIndex={0}
         role="region"
         aria-label={t("presentation.carousel_hint")}
@@ -146,25 +143,23 @@ export default function ProjectMagazineCarousel({ images, accentColor }) {
         onPointerMove={onPointerMove}
         onPointerUp={onPointerUp}
         onPointerLeave={onPointerUp}
-        cursor={isDragging ? "grabbing" : "grab"}
       >
-        <Box position="relative" w="full" h="full" sx={{ transformStyle: "preserve-3d" }}>
+        <div className="relative h-full w-full" style={{ transformStyle: "preserve-3d" }}>
           {images.map((img, index) => {
             const transform = getCardTransform(index, activeIndex, introProgress, metrics);
             const isActive = index === activeIndex;
 
             return (
-              <MotionBox
+              <MotionDiv
                 key={img.src}
-                position="absolute"
-                top="50%"
-                left="50%"
-                w={`${metrics.cardW}px`}
-                ml={`-${metrics.offsetX}px`}
-                mt={`-${metrics.offsetY}px`}
-                borderRadius="md"
-                overflow="hidden"
-                zIndex={transform.zIndex}
+                className="absolute top-1/2 left-1/2 overflow-hidden rounded-md"
+                style={{
+                  width: `${metrics.cardW}px`,
+                  marginLeft: `-${metrics.offsetX}px`,
+                  marginTop: `-${metrics.offsetY}px`,
+                  transformStyle: "preserve-3d",
+                  zIndex: transform.zIndex,
+                }}
                 animate={{
                   x: transform.x,
                   z: transform.z,
@@ -173,125 +168,106 @@ export default function ProjectMagazineCarousel({ images, accentColor }) {
                   opacity: transform.opacity,
                 }}
                 transition={SPRING}
-                sx={{ transformStyle: "preserve-3d" }}
               >
-                <Box
-                  position="relative"
-                  borderRadius="md"
-                  overflow="hidden"
-                  boxShadow={
-                    isActive
+                <div
+                  className="relative overflow-hidden rounded-md border"
+                  style={{
+                    borderColor: isActive ? inactiveActiveBorderColor : inactiveBorderColor,
+                    boxShadow: isActive
                       ? `0 28px 60px -16px ${accentColor}55, 0 16px 40px rgba(0,0,0,0.28)`
-                      : "0 12px 32px rgba(0,0,0,0.18)"
-                  }
-                  border="1px solid"
-                  borderColor={isActive ? `${accentColor}55` : "blackAlpha.200"}
-                  _dark={{ borderColor: isActive ? `${accentColor}66` : "whiteAlpha.200" }}
-                  _before={{
-                    content: '""',
-                    position: "absolute",
-                    inset: 0,
-                    bgGradient: "linear(to-r, blackAlpha.400, transparent 18%)",
-                    zIndex: 1,
-                    pointerEvents: "none",
-                    opacity: isActive ? 0.35 : 0.55,
+                      : "0 12px 32px rgba(0,0,0,0.18)",
                   }}
                 >
-                  <Box
-                    as="img"
+                  <div
+                    className="pointer-events-none absolute inset-0 z-[1]"
+                    style={{
+                      background: "linear-gradient(to right, rgba(0,0,0,0.4), transparent 18%)",
+                      opacity: isActive ? 0.35 : 0.55,
+                    }}
+                  />
+                  <img
                     src={img.src}
                     alt={img.label}
-                    w="full"
-                    h={`${metrics.cardH}px`}
-                    objectFit="cover"
-                    display="block"
+                    className="block w-full object-cover"
+                    style={{ height: `${metrics.cardH}px` }}
                     loading={index <= 1 ? "eager" : "lazy"}
                     draggable={false}
                   />
-                  <Box
-                    position="absolute"
-                    bottom={0}
-                    left={0}
-                    right={0}
-                    px={3}
-                    py={2}
-                    bgGradient="linear(to-t, blackAlpha.800, transparent)"
-                    zIndex={2}
+                  <div
+                    className="absolute right-0 bottom-0 left-0 z-[2] px-3 py-2"
+                    style={{ background: "linear-gradient(to top, rgba(0,0,0,0.8), transparent)" }}
                   >
-                    <Text
-                      fontSize="xs"
-                      fontWeight="700"
-                      color="white"
-                      fontFamily="var(--font-display)"
-                      letterSpacing="-0.01em"
-                      noOfLines={1}
+                    <p
+                      className="line-clamp-1 text-xs font-bold tracking-tight text-white"
+                      style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.01em" }}
                     >
                       {img.label}
-                    </Text>
-                  </Box>
-                </Box>
-              </MotionBox>
+                    </p>
+                  </div>
+                </div>
+              </MotionDiv>
             );
           })}
-        </Box>
-      </Box>
+        </div>
+      </div>
 
-      <HStack justify="space-between" align="center" mt={6} gap={2} flexWrap="wrap">
-        <HStack spacing={2}>
-          <IconButton
+      <div className="mt-6 flex flex-wrap items-center justify-between gap-2">
+        <div className="flex gap-2">
+          <button
+            type="button"
             aria-label={t("presentation.carousel_prev")}
-            icon={<ChevronLeftIcon boxSize={5} />}
-            size="sm"
-            variant="ghost"
-            borderRadius="full"
-            color={accentColor}
             onClick={() => goTo(activeIndex - 1)}
-          />
-          <IconButton
+            className="inline-flex h-8 w-8 items-center justify-center rounded-full border-none bg-transparent p-0 transition-colors hover:bg-black/5 dark:hover:bg-white/10"
+            style={{ color: accentColor }}
+          >
+            <ChevronLeft className="h-5 w-5" aria-hidden />
+          </button>
+          <button
+            type="button"
             aria-label={t("presentation.carousel_next")}
-            icon={<ChevronRightIcon boxSize={5} />}
-            size="sm"
-            variant="ghost"
-            borderRadius="full"
-            color={accentColor}
             onClick={() => goTo(activeIndex + 1)}
-          />
-        </HStack>
+            className="inline-flex h-8 w-8 items-center justify-center rounded-full border-none bg-transparent p-0 transition-colors hover:bg-black/5 dark:hover:bg-white/10"
+            style={{ color: accentColor }}
+          >
+            <ChevronRight className="h-5 w-5" aria-hidden />
+          </button>
+        </div>
 
-        <Text fontSize="xs" color="gray.500" fontFamily="var(--font-mono)" letterSpacing="wider">
+        <p
+          className="text-xs tracking-wider text-gray-500"
+          style={{ fontFamily: "var(--font-mono)" }}
+        >
           {String(activeIndex + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}
-        </Text>
+        </p>
 
-        <Text fontSize="xs" color="gray.500" fontFamily="var(--font-body)" display={{ base: "none", md: "block" }}>
+        <p
+          className="hidden text-xs text-gray-500 md:block"
+          style={{ fontFamily: "var(--font-body)" }}
+        >
           {t("presentation.carousel_hint")}
-        </Text>
-      </HStack>
+        </p>
+      </div>
 
-      <HStack justify="center" spacing={2} mt={3}>
+      <div className="mt-3 flex justify-center gap-2">
         {images.map((img, index) => (
-          <Box
+          <button
             key={img.src}
-            as="button"
             type="button"
             aria-label={img.label}
             aria-current={index === activeIndex ? "true" : undefined}
             onClick={() => setActiveIndex(index)}
-            w={index === activeIndex ? "20px" : "8px"}
-            h="8px"
-            borderRadius="full"
-            bg={index === activeIndex ? accentColor : "gray.300"}
-            _dark={{ bg: index === activeIndex ? accentColor : "whiteAlpha.300" }}
-            transition="all 0.25s ease"
-            border="none"
-            p={0}
-            cursor="pointer"
+            className="h-2 cursor-pointer rounded-full border-none p-0 transition-all duration-[250ms] ease-in-out"
+            style={{
+              width: index === activeIndex ? "20px" : "8px",
+              backgroundColor: index === activeIndex ? accentColor : dotInactiveBg,
+            }}
           />
         ))}
-      </HStack>
+      </div>
 
-      <VisuallyHidden aria-live="polite">
+      <span className="sr-only" aria-live="polite">
         {images[activeIndex]?.label}
-      </VisuallyHidden>
-    </Box>
+      </span>
+    </div>
   );
 }

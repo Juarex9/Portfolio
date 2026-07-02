@@ -1,12 +1,13 @@
-import { Box, Container, Heading, Text, Button, VStack } from "@chakra-ui/react";
-import { Link as RouterLink } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { Seo } from "../components/Seo";
+import { Button } from "@/components/ui/button";
 
 export default function NotFound() {
   const { accentColor } = useAccentColors();
   const { t } = useTranslation();
+  const navigate = useNavigate();
 
   return (
     <>
@@ -15,46 +16,34 @@ export default function NotFound() {
         descriptionKey="seo.notFound.description"
         canonicalPath="/404"
       />
-      <Box w="full" minH="60vh" display="flex" alignItems="center">
-        <Container maxW="6xl" py={{ base: 16, md: 24 }}>
-          <VStack spacing={6} align="flex-start" maxW="lg">
-            <Text
-              fontSize="6xl"
-              fontWeight="800"
-              fontFamily="var(--font-display)"
-              color={accentColor}
-              lineHeight="1"
+      <div className="flex min-h-[60vh] w-full items-center">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:px-6 md:py-24">
+          <div className="flex max-w-lg flex-col items-start gap-6">
+            <p
+              className="text-6xl font-extrabold leading-none"
+              style={{ fontFamily: "var(--font-display)", color: accentColor }}
             >
               404
-            </Text>
-            <Heading
-              as="h1"
-              fontSize={{ base: "2xl", md: "3xl" }}
-              fontWeight="800"
-              fontFamily="var(--font-display)"
-              letterSpacing="-0.02em"
+            </p>
+            <h1
+              className="text-2xl font-extrabold tracking-tight md:text-3xl"
+              style={{ fontFamily: "var(--font-display)" }}
             >
               {t("notFound.title")}
-            </Heading>
-            <Text color="gray.500" fontFamily="var(--font-body)" lineHeight="1.7">
+            </h1>
+            <p className="leading-relaxed text-gray-500" style={{ fontFamily: "var(--font-body)" }}>
               {t("notFound.description")}
-            </Text>
+            </p>
             <Button
-              as={RouterLink}
-              to="/"
-              size="md"
-              bg={accentColor}
-              color="white"
-              borderRadius="full"
-              fontWeight="600"
-              fontFamily="var(--font-body)"
-              _hover={{ opacity: 0.9 }}
+              onClick={() => navigate("/")}
+              className="text-white hover:opacity-90"
+              style={{ backgroundColor: accentColor, fontFamily: "var(--font-body)" }}
             >
               {t("notFound.backHome")}
             </Button>
-          </VStack>
-        </Container>
-      </Box>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

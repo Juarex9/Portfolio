@@ -1,46 +1,39 @@
-import {
-  Container,
-  Box,
-  Heading,
-  Text,
-  IconButton,
-  Button,
-  VStack,
-  HStack,
-  FormControl,
-  FormLabel,
-  Input,
-  InputGroup,
-  InputLeftElement,
-  Textarea,
-  useToast,
-  Badge,
-  Link,
-  SimpleGrid,
-} from "@chakra-ui/react";
-import { MdPhone, MdEmail, MdLocationOn, MdOutlineEmail } from "react-icons/md";
-import { BsPerson, BsWhatsapp, BsLinkedin, BsTelegram } from "react-icons/bs";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
+import { Phone, Mail, MapPin, User, Loader2 } from "lucide-react";
+import { BsWhatsapp, BsLinkedin, BsTelegram } from "react-icons/bs";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
 import { Seo } from "../components/Seo";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
+import { cn } from "@/lib/utils";
 
-const MotionBox = motion(Box);
+const MotionDiv = motion.div;
 
 export default function Contact() {
   const { accentColor } = useAccentColors();
   const prefersReducedMotion = useReducedMotion();
-  const toast = useToast();
   const { t } = useTranslation();
-  const secondaryText = "gray.500";
 
   const [form, setForm] = useState({ name: "", email: "", message: "", hp: "" });
   const [loading, setLoading] = useState(false);
+  const [toast, setToast] = useState(null);
+
+  useEffect(() => {
+    if (!toast) return;
+    const timer = setTimeout(() => setToast(null), 5000);
+    return () => clearTimeout(timer);
+  }, [toast]);
 
   const onChange = (e) => setForm((f) => ({ ...f, [e.target.name]: e.target.value }));
   const resetForm = () => setForm({ name: "", email: "", message: "", hp: "" });
+
+  const showToast = (title, description, type) => setToast({ title, description, type });
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -54,87 +47,234 @@ export default function Contact() {
       });
       const data = await res.json();
       if (!res.ok || !data.ok) throw new Error(data.message || t("contact.toast.errorDefault"));
-      toast({ title: t("contact.toast.successTitle"), description: t("contact.toast.successDescription"), status: "success", duration: 5000, isClosable: true });
+      showToast(t("contact.toast.successTitle"), t("contact.toast.successDescription"), "success");
       resetForm();
     } catch (err) {
-      toast({ title: t("contact.toast.errorTitle"), description: err?.message || t("contact.toast.errorDefault"), status: "error", duration: 5000, isClosable: true });
+      showToast(
+        t("contact.toast.errorTitle"),
+        err?.message || t("contact.toast.errorDefault"),
+        "error",
+      );
     } finally {
       setLoading(false);
     }
   };
 
+  const contactItems = [
+    { icon: Phone, href: "tel:+5493886709087", label: "+54 9 3886709087" },
+    { icon: Mail, href: "mailto:agustinjuarez375@gmail.com", label: "agustinjuarez375@gmail.com" },
+    { icon: MapPin, href: null, label: "Salta, Argentina" },
+  ];
+
+  const socialLinks = [
+    { icon: BsLinkedin, href: "https://www.linkedin.com/in/agustin-juarez0907/", label: "LinkedIn" },
+    { icon: BsWhatsapp, href: "https://wa.me/5493886709087", label: "WhatsApp" },
+    { icon: BsTelegram, href: "https://t.me/agustin_jzz", label: "Telegram" },
+  ];
+
   return (
     <>
       <Seo titleKey="seo.contact.title" descriptionKey="seo.contact.description" canonicalPath="/contacto" />
-      <Box w="100%" minH="100vh" bg="transparent">
-        <Container maxW="6xl" py={{ base: 8, md: 16 }}>
-          <MotionBox initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} transition={{ duration: prefersReducedMotion ? 0 : 0.6 }} viewport={{ once: true }} mb={8}>
-            <HStack mb={3} gap={2}>
-              <Box w="32px" h="2px" bg={accentColor} borderRadius="full" />
-              <Badge borderRadius="full" px={3} py={1} bg={`${accentColor}15`} color={accentColor} textTransform="uppercase" fontSize="xs" fontWeight="600" letterSpacing="wider" fontFamily="var(--font-body)">{t("contact.section.badge")}</Badge>
-            </HStack>
-            <Heading fontSize={{ base: "2xl", sm: "3xl", md: "4xl" }} fontWeight="800" fontFamily="var(--font-display)" letterSpacing="-0.02em" lineHeight="1.2" mb={2}>{t("contact.section.title")}</Heading>
-            <Text fontSize={{ base: "sm", md: "md" }} color={secondaryText} maxW="2xl" fontFamily="var(--font-body)">{t("contact.section.subtitle")}</Text>
-          </MotionBox>
 
-          <SimpleGrid columns={{ base: 1, md: 2 }} gap={{ base: 8, md: 12 }}>
-            <Box>
-              <Text mt={2} color={secondaryText} fontFamily="var(--font-body)" lineHeight="1.7" fontSize="sm" mb={5}>{t("contact.section.desc")}</Text>
-              <VStack spacing={2} align="stretch">
-                {[{ icon: MdPhone, href: "tel:+5493886709087", label: "+54 9 3886709087" }, { icon: MdEmail, href: "mailto:agustinjuarez375@gmail.com", label: "agustinjuarez375@gmail.com" }, { icon: MdLocationOn, href: null, label: "Salta, Argentina" }].map((item) => (
-                  <Button key={item.label} as={item.href ? Link : "button"} href={item.href} size="sm" h="44px" justifyContent="flex-start" variant="ghost" color={secondaryText} fontWeight="500" fontFamily="var(--font-body)" _hover={{ color: accentColor }} leftIcon={<item.icon color={accentColor} size="16px" />} transition="all 0.3s">{item.label}</Button>
-                ))}
-              </VStack>
-              <HStack spacing={2} mt={4}>
-                {[{ icon: BsLinkedin, href: "https://www.linkedin.com/in/agustin-juarez0907/", label: "LinkedIn" }, { icon: BsWhatsapp, href: "https://wa.me/5493886709087", label: "WhatsApp" }, { icon: BsTelegram, href: "https://t.me/agustin_jzz", label: "Telegram" }].map((social) => (
-                  <MotionBox key={social.label} whileHover={{ y: -2 }} transition={{ duration: prefersReducedMotion ? 0 : 0.2 }}>
-                    <IconButton as={Link} href={social.href} target="_blank" aria-label={social.label} variant="ghost" size="md" isRound color={secondaryText} _hover={{ color: accentColor }} icon={<social.icon size={18} />} transition="all 0.3s" />
-                  </MotionBox>
-                ))}
-              </HStack>
-            </Box>
+      {toast && (
+        <div
+          role="alert"
+          className={cn(
+            "fixed bottom-6 right-6 z-50 max-w-sm rounded-xl border px-4 py-3 pr-8 shadow-lg",
+            toast.type === "success"
+              ? "border-green-200 bg-green-50 text-green-900 dark:border-green-800 dark:bg-green-950 dark:text-green-100"
+              : "border-red-200 bg-red-50 text-red-900 dark:border-red-800 dark:bg-red-950 dark:text-red-100",
+          )}
+          style={{ fontFamily: "var(--font-body)" }}
+        >
+          <p className="font-semibold">{toast.title}</p>
+          {toast.description && <p className="mt-1 text-sm opacity-90">{toast.description}</p>}
+          <button
+            type="button"
+            onClick={() => setToast(null)}
+            className="absolute right-2 top-2 rounded p-1 opacity-60 hover:opacity-100"
+            aria-label="Close"
+          >
+            ×
+          </button>
+        </div>
+      )}
 
-            <Box as="form" onSubmit={onSubmit}>
-              <VStack spacing={3} align="stretch">
-                <Input type="text" name="hp" value={form.hp} onChange={onChange} display="none" aria-hidden="true" tabIndex={-1} autoComplete="off" />
-                <FormControl id="name" isRequired>
-                  <FormLabel fontFamily="var(--font-body)" fontWeight="500" fontSize="sm">{t("contact.form.name")}</FormLabel>
-                  <InputGroup>
-                    <InputLeftElement pointerEvents="none" h="44px"><BsPerson color={secondaryText} size={16} /></InputLeftElement>
-                    <Input type="text" name="name" value={form.name} onChange={onChange} placeholder={t("contact.form.name")} h="44px" _focus={{ borderColor: accentColor }} fontFamily="var(--font-body)" fontSize="sm" />
-                  </InputGroup>
-                </FormControl>
-                <FormControl id="email" isRequired>
-                  <FormLabel fontFamily="var(--font-body)" fontWeight="500" fontSize="sm">{t("contact.form.email")}</FormLabel>
-                  <InputGroup>
-                    <InputLeftElement pointerEvents="none" h="44px"><MdOutlineEmail color={secondaryText} size={16} /></InputLeftElement>
-                    <Input type="email" name="email" value={form.email} onChange={onChange} placeholder="you@mail.com" h="44px" _focus={{ borderColor: accentColor }} fontFamily="var(--font-body)" fontSize="sm" />
-                  </InputGroup>
-                </FormControl>
-                <FormControl id="message" isRequired>
-                  <FormLabel fontFamily="var(--font-body)" fontWeight="500" fontSize="sm">{t("contact.form.message")}</FormLabel>
-                  <Textarea name="message" value={form.message} onChange={onChange} placeholder={t("contact.form.desc")} _focus={{ borderColor: accentColor }} rows={4} fontFamily="var(--font-body)" fontSize="sm" />
-                </FormControl>
-                <Button 
-                  type="submit" 
-                  w="full"
-                  size="md"
-                  bg={accentColor} 
-                  color="white" 
-                  _hover={{ opacity: 0.9 }} 
-                  isLoading={loading} 
-                  borderRadius="full" 
-                  fontWeight="600" 
-                  fontFamily="var(--font-body)" 
-                  transition="all 0.2s"
+      <div className="min-h-screen w-full bg-transparent">
+        <div className="mx-auto max-w-6xl px-4 py-8 md:px-6 md:py-16">
+          <MotionDiv
+            initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: prefersReducedMotion ? 0 : 0.6 }}
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <div className="mb-3 flex items-center gap-2">
+              <span className="h-0.5 w-8 rounded-full" style={{ backgroundColor: accentColor }} />
+              <Badge
+                className="normal-case"
+                style={{ backgroundColor: `${accentColor}15`, color: accentColor, fontFamily: "var(--font-body)" }}
+              >
+                {t("contact.section.badge")}
+              </Badge>
+            </div>
+            <h1
+              className="mb-2 text-2xl font-extrabold leading-tight tracking-tight sm:text-3xl md:text-4xl"
+              style={{ fontFamily: "var(--font-display)" }}
+            >
+              {t("contact.section.title")}
+            </h1>
+            <p className="max-w-2xl text-sm text-gray-500 md:text-base" style={{ fontFamily: "var(--font-body)" }}>
+              {t("contact.section.subtitle")}
+            </p>
+          </MotionDiv>
+
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-12">
+            <div>
+              <p className="mb-5 mt-2 text-sm leading-relaxed text-gray-500" style={{ fontFamily: "var(--font-body)" }}>
+                {t("contact.section.desc")}
+              </p>
+              <div className="flex flex-col gap-2">
+                {contactItems.map((item) => {
+                  const Icon = item.icon;
+                  const content = (
+                    <>
+                      <Icon className="h-4 w-4 shrink-0" style={{ color: accentColor }} />
+                      {item.label}
+                    </>
+                  );
+                  return item.href ? (
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      className="inline-flex h-11 items-center justify-start gap-2 rounded-full px-3 text-sm font-medium text-gray-500 transition-all duration-300 hover:opacity-80"
+                      style={{ fontFamily: "var(--font-body)" }}
+                      onMouseEnter={(e) => { e.currentTarget.style.color = accentColor; }}
+                      onMouseLeave={(e) => { e.currentTarget.style.color = ""; }}
+                    >
+                      {content}
+                    </a>
+                  ) : (
+                    <span
+                      key={item.label}
+                      className="inline-flex h-11 items-center justify-start gap-2 px-3 text-sm font-medium text-gray-500"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    >
+                      {content}
+                    </span>
+                  );
+                })}
+              </div>
+              <div className="mt-4 flex gap-2">
+                {socialLinks.map((social) => {
+                  const Icon = social.icon;
+                  return (
+                    <MotionDiv
+                      key={social.label}
+                      whileHover={prefersReducedMotion ? {} : { y: -2 }}
+                      transition={{ duration: prefersReducedMotion ? 0 : 0.2 }}
+                    >
+                      <a
+                        href={social.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label={social.label}
+                        className="inline-flex h-10 w-10 items-center justify-center rounded-full text-gray-500 transition-all duration-300 hover:opacity-80"
+                        onMouseEnter={(e) => { e.currentTarget.style.color = accentColor; }}
+                        onMouseLeave={(e) => { e.currentTarget.style.color = ""; }}
+                      >
+                        <Icon size={18} />
+                      </a>
+                    </MotionDiv>
+                  );
+                })}
+              </div>
+            </div>
+
+            <form onSubmit={onSubmit}>
+              <div className="flex flex-col gap-3">
+                <Input
+                  type="text"
+                  name="hp"
+                  value={form.hp}
+                  onChange={onChange}
+                  className="hidden"
+                  aria-hidden="true"
+                  tabIndex={-1}
+                  autoComplete="off"
+                />
+
+                <div>
+                  <Label htmlFor="name">{t("contact.form.name")}</Label>
+                  <div className="relative mt-1.5">
+                    <User className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+                    <Input
+                      id="name"
+                      type="text"
+                      name="name"
+                      value={form.name}
+                      onChange={onChange}
+                      placeholder={t("contact.form.name")}
+                      required
+                      className="pl-10"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <Label htmlFor="email">{t("contact.form.email")}</Label>
+                  <div className="relative mt-1.5">
+                    <Mail className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" />
+                    <Input
+                      id="email"
+                      type="email"
+                      name="email"
+                      value={form.email}
+                      onChange={onChange}
+                      placeholder="you@mail.com"
+                      required
+                      className="pl-10"
+                      style={{ fontFamily: "var(--font-body)" }}
+                    />
+                  </div>
+                </div>
+
+                <div>
+                  <Label htmlFor="message">{t("contact.form.message")}</Label>
+                  <Textarea
+                    id="message"
+                    name="message"
+                    value={form.message}
+                    onChange={onChange}
+                    placeholder={t("contact.form.desc")}
+                    required
+                    rows={4}
+                    className="mt-1.5"
+                    style={{ fontFamily: "var(--font-body)" }}
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={loading}
+                  className="w-full text-white hover:opacity-90"
+                  style={{ backgroundColor: accentColor, fontFamily: "var(--font-body)" }}
                 >
-                  {t("contact.form.send")}
+                  {loading ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      {t("contact.form.send")}
+                    </>
+                  ) : (
+                    t("contact.form.send")
+                  )}
                 </Button>
-              </VStack>
-            </Box>
-          </SimpleGrid>
-        </Container>
-      </Box>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
     </>
   );
 }

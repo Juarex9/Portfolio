@@ -1,11 +1,11 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { Box, Badge, Heading, Text, LinkBox, LinkOverlay } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useStreamLayout } from "../hooks/useStreamLayout.js";
 import { computeScannerClip, getProjectCodeOverlay } from "./featuredStreamUtils.js";
 import { getProjectDetailPath } from "../data/projects.js";
+import { cn } from "@/lib/utils";
 
 function FeaturedStreamCard({
   cardRef,
@@ -27,80 +27,127 @@ function FeaturedStreamCard({
   const detailPath = getProjectDetailPath(project);
   const primaryLink = detailPath || project.demo || project.github || "/proyectos";
 
+  const linkClassName = cn(
+    "static font-bold text-white no-underline after:absolute after:inset-0 hover:no-underline",
+    "text-sm md:text-base",
+  );
+
   return (
-    <Box
-      as="article"
-      flex={cardWidth ? `0 0 ${cardWidth}px` : "1 1 auto"}
-      w={cardWidth ? `${cardWidth}px` : "full"}
-      maxW="100%"
-      role="group"
+    <article
+      className="group relative max-w-full"
+      style={{
+        flex: cardWidth ? `0 0 ${cardWidth}px` : "1 1 auto",
+        width: cardWidth ? `${cardWidth}px` : "100%",
+      }}
     >
-      <LinkBox>
-        <Box
-          ref={cardRef}
-          position="relative"
-          h={{ base: "170px", sm: "190px", md: "220px" }}
-          borderRadius="xl"
-          overflow="hidden"
-          border="1px solid"
-          borderColor={scanning ? accentColor : borderColor}
-          boxShadow={scanning ? `0 0 32px ${accentColor}44` : "md"}
-          transition="border-color 0.2s ease, box-shadow 0.2s ease"
-          bg="black"
-        >
-          <Box className="featured-card-normal" position="absolute" inset={0} sx={{ "--clip-right": `${clipRight}%` }}>
-            {project.image ? (
-              <Box as="img" src={project.image} alt={title} w="full" h="full" objectFit="cover" draggable={false} />
-            ) : (
-              <Box w="full" h="full" bgGradient={`linear(135deg, ${accentColor}, ${accentColor}99)`} />
-            )}
-          </Box>
-
-          <Box className="featured-card-overlay" position="absolute" inset={0} sx={{ "--clip-left": `${clipLeft}%` }}>
-            <Box
-              as="pre"
-              m={0}
-              p={3}
-              h="full"
-              overflow="hidden"
-              fontFamily="var(--font-mono)"
-              fontSize={{ base: "9px", md: "10px" }}
-              lineHeight="1.35"
-              color={`${accentColor}cc`}
-              whiteSpace="pre-wrap"
-              className={scanning ? "featured-code-glitch" : undefined}
-            >
-              {code}
-            </Box>
-          </Box>
-
-          <Box position="absolute" inset={0} bgGradient="linear(to-t, blackAlpha.800, transparent 55%)" pointerEvents="none" />
-
-          <Box position="absolute" bottom={3} left={3} right={3} zIndex={2}>
-            <Badge borderRadius="full" px={2} py={0.5} mb={2} bg={`${accentColor}22`} color={accentColor} fontSize="xs">
-              {t(`projects.types.${project.type}`)}
-            </Badge>
-            <Heading as="h3" size="sm" color="white" fontFamily="var(--font-display)" fontWeight="700" fontSize={{ base: "sm", md: "md" }}>
-              {primaryLink.startsWith("http") ? (
-                <LinkOverlay as="a" href={primaryLink} target="_blank" rel="noopener noreferrer" _hover={{ color: accentColor }}>
-                  {title}
-                </LinkOverlay>
-              ) : (
-                <LinkOverlay as={RouterLink} to={primaryLink} _hover={{ color: accentColor }}>
-                  {title}
-                </LinkOverlay>
-              )}
-            </Heading>
-          </Box>
-        </Box>
-
-        {!compact && (
-          <Text mt={3} fontSize="sm" color="gray.500" noOfLines={2} lineHeight="1.6" fontFamily="var(--font-body)">
-            {description}
-          </Text>
+      <div
+        ref={cardRef}
+        className={cn(
+          "relative h-[170px] overflow-hidden rounded-xl border bg-black sm:h-[190px] md:h-[220px]",
+          "transition-[border-color,box-shadow] duration-200 ease-in-out",
+          !scanning && "shadow-md",
         )}
-      </LinkBox>
-    </Box>
+        style={{
+          borderColor: scanning ? accentColor : borderColor,
+          boxShadow: scanning ? `0 0 32px ${accentColor}44` : undefined,
+        }}
+      >
+        <div
+          className="featured-card-normal absolute inset-0"
+          style={{ "--clip-right": `${clipRight}%` }}
+        >
+          {project.image ? (
+            <img
+              src={project.image}
+              alt={title}
+              className="h-full w-full object-cover"
+              draggable={false}
+            />
+          ) : (
+            <div
+              className="h-full w-full"
+              style={{ background: `linear-gradient(135deg, ${accentColor}, ${accentColor}99)` }}
+            />
+          )}
+        </div>
+
+        <div
+          className="featured-card-overlay absolute inset-0"
+          style={{ "--clip-left": `${clipLeft}%` }}
+        >
+          <pre
+            className={cn(
+              "m-0 h-full overflow-hidden p-3 whitespace-pre-wrap",
+              "text-[9px] leading-[1.35] md:text-[10px]",
+              scanning && "featured-code-glitch",
+            )}
+            style={{
+              fontFamily: "var(--font-mono)",
+              color: `${accentColor}cc`,
+            }}
+          >
+            {code}
+          </pre>
+        </div>
+
+        <div
+          className="pointer-events-none absolute inset-0"
+          style={{ background: "linear-gradient(to top, rgba(0,0,0,0.8), transparent 55%)" }}
+        />
+
+        <div className="absolute right-3 bottom-3 left-3 z-[2]">
+          <span
+            className="mb-2 inline-block rounded-full px-2 py-0.5 text-xs"
+            style={{ backgroundColor: `${accentColor}22`, color: accentColor }}
+          >
+            {t(`projects.types.${project.type}`)}
+          </span>
+          <h3
+            className="text-sm font-bold text-white md:text-base"
+            style={{ fontFamily: "var(--font-display)" }}
+          >
+            {primaryLink.startsWith("http") ? (
+              <a
+                href={primaryLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={linkClassName}
+                onMouseEnter={(event) => {
+                  event.currentTarget.style.color = accentColor;
+                }}
+                onMouseLeave={(event) => {
+                  event.currentTarget.style.color = "white";
+                }}
+              >
+                {title}
+              </a>
+            ) : (
+              <RouterLink
+                to={primaryLink}
+                className={linkClassName}
+                onMouseEnter={(event) => {
+                  event.currentTarget.style.color = accentColor;
+                }}
+                onMouseLeave={(event) => {
+                  event.currentTarget.style.color = "white";
+                }}
+              >
+                {title}
+              </RouterLink>
+            )}
+          </h3>
+        </div>
+      </div>
+
+      {!compact && (
+        <p
+          className="mt-3 line-clamp-2 text-sm leading-relaxed text-gray-500"
+          style={{ fontFamily: "var(--font-body)" }}
+        >
+          {description}
+        </p>
+      )}
+    </article>
   );
 }
 
@@ -140,7 +187,7 @@ export default function FeaturedProjectStream({ projects, accentColor, borderCol
       if (value > 0) return value - loopWidth;
       return value;
     },
-    [loopWidth]
+    [loopWidth],
   );
 
   const updateClips = useCallback(() => {
@@ -224,7 +271,7 @@ export default function FeaturedProjectStream({ projects, accentColor, borderCol
 
   if (prefersReducedMotion) {
     return (
-      <Box display="grid" gridTemplateColumns={{ base: "1fr", md: "repeat(2, 1fr)", lg: "repeat(3, 1fr)" }} gap={6}>
+      <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
         {projects.map((project) => (
           <FeaturedStreamCard
             key={project.key}
@@ -237,44 +284,42 @@ export default function FeaturedProjectStream({ projects, accentColor, borderCol
             t={t}
           />
         ))}
-      </Box>
+      </div>
     );
   }
 
   return (
-    <Box position="relative" mt={4} w="full" maxW="100%">
-      <Box
+    <div className="relative mt-4 w-full max-w-full">
+      <div
         ref={containerRef}
-        position="relative"
-        w="full"
-        minH={{ base: "210px", sm: "230px", md: "260px" }}
-        overflow="hidden"
+        className="relative w-full min-h-[210px] overflow-hidden sm:min-h-[230px] md:min-h-[260px]"
         onPointerEnter={() => { autoScrollRef.current = false; }}
         onPointerLeave={() => { autoScrollRef.current = true; }}
       >
-        <Box className="featured-scanner-beam" sx={{ "--scanner-color": accentColor }} aria-hidden="true">
-          <Text className="featured-scanner-label" sx={{ color: accentColor }}>
+        <div
+          className="featured-scanner-beam"
+          style={{ "--scanner-color": accentColor }}
+          aria-hidden="true"
+        >
+          <span className="featured-scanner-label" style={{ color: accentColor }}>
             scan
-          </Text>
-        </Box>
+          </span>
+        </div>
 
-        <Box
+        <div
           ref={trackRef}
-          className="featured-card-track"
-          display="flex"
-          alignItems="flex-start"
-          gap={`${cardGap}px`}
-          pl={`calc(50% - ${cardWidth / 2}px)`}
-          pr={`calc(50% - ${cardWidth / 2}px)`}
-          cursor="grab"
-          userSelect="none"
-          touchAction="pan-y"
+          className="featured-card-track flex cursor-grab select-none items-start active:cursor-grabbing"
+          style={{
+            gap: `${cardGap}px`,
+            paddingLeft: `calc(50% - ${cardWidth / 2}px)`,
+            paddingRight: `calc(50% - ${cardWidth / 2}px)`,
+            touchAction: "pan-y",
+          }}
           onPointerDown={onPointerDown}
           onPointerMove={onPointerMove}
           onPointerUp={onPointerUp}
           onPointerCancel={onPointerUp}
           onWheel={onWheel}
-          _active={{ cursor: "grabbing" }}
         >
           {streamProjects.map((project, index) => (
             <FeaturedStreamCard
@@ -293,12 +338,15 @@ export default function FeaturedProjectStream({ projects, accentColor, borderCol
               t={t}
             />
           ))}
-        </Box>
-      </Box>
+        </div>
+      </div>
 
-      <Text mt={4} textAlign="center" fontSize="xs" color="gray.500" fontFamily="var(--font-body)" px={2}>
+      <p
+        className="mt-4 px-2 text-center text-xs text-gray-500"
+        style={{ fontFamily: "var(--font-body)" }}
+      >
         {t("featured.stream_hint")}
-      </Text>
-    </Box>
+      </p>
+    </div>
   );
 }
