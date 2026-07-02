@@ -6,7 +6,6 @@ import {
   Image,
   VStack,
   HStack,
-  useColorModeValue,
   LinkBox,
   LinkOverlay,
 } from "@chakra-ui/react";
@@ -16,13 +15,14 @@ import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { experiences } from "../data/experiences.js";
+import { useColorModeValue } from "../hooks/useColorModeValue.js";
 
 const MotionBox = motion(Box);
 
 function ExperienceCard({ slug, title, subtitle, date, summary, imageSrc, opacity = 1, readMoreLabel }) {
   const { accentColor } = useAccentColors();
-  const cardBg = useColorModeValue("white", "gray.900");
-  const borderColor = useColorModeValue("gray.200", "gray.700");
+  const cardBg = useColorModeValue("#ffffff", "#111827");
+  const borderColor = useColorModeValue("#e5e7eb", "#374151");
   const secondaryText = "gray.500";
 
   return (

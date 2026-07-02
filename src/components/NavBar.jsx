@@ -1,24 +1,12 @@
-import {
-  Box,
-  Flex,
-  HStack,
-  IconButton,
-  Link as CLink,
-  useColorMode,
-  useDisclosure,
-  Collapse,
-  Menu,
-  MenuButton,
-  MenuList,
-  MenuItem,
-  Text,
-} from "@chakra-ui/react";
-import { SunIcon, MoonIcon, HamburgerIcon, CloseIcon } from "@chakra-ui/icons";
+import { useEffect, useRef, useState } from "react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 import { MdLanguage } from "react-icons/md";
 import { useAccentColors } from "../hooks/useAccentColors";
+import { useTheme } from "../hooks/useTheme.jsx";
 import { useTranslation } from "react-i18next";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import { prefetchRoute } from "../routes/pageImports.js";
+import { cn } from "@/lib/utils";
 
 const LINKS = [
   { href: "/", key: "navbar.home" },
@@ -28,10 +16,28 @@ const LINKS = [
   { href: "/contacto", key: "navbar.contact" },
 ];
 
+function NavIconButton({ ariaLabel, onClick, className, children }) {
+  return (
+    <button
+      type="button"
+      aria-label={ariaLabel}
+      onClick={onClick}
+      className={cn(
+        "inline-flex h-8 w-8 items-center justify-center rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/10",
+        className,
+      )}
+    >
+      {children}
+    </button>
+  );
+}
+
 export default function Navbar() {
   const { textColor, accentColor, bgColor } = useAccentColors();
-  const { colorMode, toggleColorMode } = useColorMode();
-  const { isOpen, onToggle } = useDisclosure();
+  const { resolvedTheme, toggleTheme } = useTheme();
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [langOpen, setLangOpen] = useState(false);
+  const langRef = useRef(null);
   const { t, i18n } = useTranslation();
   const location = useLocation();
 
@@ -40,190 +46,168 @@ export default function Navbar() {
   const handleChangeLang = (lang) => {
     i18n.changeLanguage(lang);
     localStorage.setItem("i18nextLng", lang);
+    setLangOpen(false);
   };
 
+  useEffect(() => {
+    if (!langOpen) return undefined;
+
+    const onPointerDown = (event) => {
+      if (langRef.current && !langRef.current.contains(event.target)) {
+        setLangOpen(false);
+      }
+    };
+
+    document.addEventListener("pointerdown", onPointerDown);
+    return () => document.removeEventListener("pointerdown", onPointerDown);
+  }, [langOpen]);
+
+  const isLinkActive = (href) =>
+    location.pathname === href
+    || (href === "/sobremi" && location.pathname.startsWith("/experiencias/"));
+
   return (
-    <Box
-      as="header"
-      position="sticky"
-      top={0}
-      zIndex={100}
-      w="100%"
-      bg={bgColor}
-    >
-      <Flex
-        as="nav"
-        maxW="6xl"
-        mx="auto"
-        px={{ base: 4, md: 6 }}
-        py={3}
-        align="center"
-        justify="space-between"
-        color={textColor}
+    <header className="sticky top-0 z-[100] w-full" style={{ backgroundColor: bgColor, color: textColor }}>
+      <nav
+        className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6"
+        aria-label="Main"
       >
-        <CLink
-          as={RouterLink}
+        <RouterLink
           to="/"
-          fontWeight="800"
-          fontSize="xl"
-          fontFamily="var(--font-display)"
-          letterSpacing="-0.02em"
+          className="text-xl font-extrabold no-underline hover:no-underline"
+          style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", color: textColor }}
           onMouseEnter={() => prefetchRoute("/")}
           onFocus={() => prefetchRoute("/")}
-          _hover={{ textDecoration: "none" }}
         >
-          <Text as="span" color={accentColor}>A</Text>
-          <Text as="span">JZ</Text>
-        </CLink>
+          <span style={{ color: accentColor }}>A</span>
+          <span>JZ</span>
+        </RouterLink>
 
-        <HStack
-          as="ul"
-          spacing={1}
-          mx="auto"
-          display={{ base: "none", lg: "flex" }}
-        >
+        <ul className="mx-auto hidden list-none flex-row gap-1 lg:flex">
           {LINKS.map((link) => {
-            const isActive = location.pathname === link.href
-              || (link.href === "/sobremi" && location.pathname.startsWith("/experiencias/"));
+            const isActive = isLinkActive(link.href);
             return (
-              <Box
-                as="li"
-                key={link.href}
-                listStyleType="none"
-              >
-                <CLink
-                  as={RouterLink}
+              <li key={link.href}>
+                <RouterLink
                   to={link.href}
-                  px={4}
-                  py={2}
-                  borderRadius="full"
-                  fontWeight={isActive ? "600" : "500"}
-                  fontSize="sm"
-                  fontFamily="var(--font-body)"
-                  color={isActive ? accentColor : textColor}
                   aria-current={isActive ? "page" : undefined}
+                  className="rounded-full px-4 py-2 text-sm no-underline transition-all duration-300 hover:no-underline"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontWeight: isActive ? 600 : 500,
+                    color: isActive ? accentColor : textColor,
+                  }}
                   onMouseEnter={() => prefetchRoute(link.href)}
                   onFocus={() => prefetchRoute(link.href)}
-                  _hover={{
-                    textDecoration: "none",
-                    color: accentColor,
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.color = accentColor;
                   }}
-                  transition="all 0.3s"
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.color = isActive ? accentColor : textColor;
+                  }}
                 >
                   {t(link.key)}
-                </CLink>
-              </Box>
+                </RouterLink>
+              </li>
             );
           })}
-        </HStack>
+        </ul>
 
-        <HStack spacing={1}>
-          <Menu placement="bottom-end">
-            <MenuButton
-              as={IconButton}
-              aria-label="Change language"
-              icon={
-                <Box display="flex" alignItems="center" gap={1}>
-                  <MdLanguage />
-                  <Text fontSize="xs" fontWeight="600">
-                    {currentLang.toUpperCase()}
-                  </Text>
-                </Box>
-              }
-              variant="ghost"
-              size="sm"
-              fontFamily="var(--font-body)"
-            />
-            <MenuList minW="120px" borderRadius="xl" py={2}>
-              <MenuItem
-                onClick={() => handleChangeLang("es")}
-                fontWeight={currentLang === "es" ? "700" : "400"}
-                fontFamily="var(--font-body)"
-                bg={currentLang === "es" ? `${accentColor}15` : "transparent"}
-                color={currentLang === "es" ? accentColor : textColor}
-                _hover={{
-                  bg: `${accentColor}10`,
-                  color: accentColor,
-                }}
+        <div className="flex items-center gap-1">
+          <div ref={langRef} className="relative">
+            <NavIconButton ariaLabel="Change language" onClick={() => setLangOpen((open) => !open)}>
+              <span className="flex items-center gap-1">
+                <MdLanguage size={18} />
+                <span className="text-xs font-semibold">{currentLang.toUpperCase()}</span>
+              </span>
+            </NavIconButton>
+
+            {langOpen && (
+              <div
+                className="absolute right-0 top-full z-50 mt-1 min-w-[120px] overflow-hidden rounded-xl border border-black/10 bg-white py-2 shadow-lg dark:border-white/10 dark:bg-[#111111]"
+                role="menu"
               >
-                Español
-              </MenuItem>
-              <MenuItem
-                onClick={() => handleChangeLang("en")}
-                fontWeight={currentLang === "en" ? "700" : "400"}
-                fontFamily="var(--font-body)"
-                bg={currentLang === "en" ? `${accentColor}15` : "transparent"}
-                color={currentLang === "en" ? accentColor : textColor}
-                _hover={{
-                  bg: `${accentColor}10`,
-                  color: accentColor,
-                }}
-              >
-                English
-              </MenuItem>
-            </MenuList>
-          </Menu>
+                {[
+                  { code: "es", label: "Español" },
+                  { code: "en", label: "English" },
+                ].map(({ code, label }) => {
+                  const active = currentLang === code;
+                  return (
+                    <button
+                      key={code}
+                      type="button"
+                      role="menuitem"
+                      className="block w-full px-4 py-2 text-left text-sm transition-colors"
+                      style={{
+                        fontFamily: "var(--font-body)",
+                        fontWeight: active ? 700 : 400,
+                        color: active ? accentColor : textColor,
+                        backgroundColor: active ? `${accentColor}15` : "transparent",
+                      }}
+                      onClick={() => handleChangeLang(code)}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.backgroundColor = `${accentColor}10`;
+                        e.currentTarget.style.color = accentColor;
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.backgroundColor = active ? `${accentColor}15` : "transparent";
+                        e.currentTarget.style.color = active ? accentColor : textColor;
+                      }}
+                    >
+                      {label}
+                    </button>
+                  );
+                })}
+              </div>
+            )}
+          </div>
 
-          <IconButton
-            aria-label="Toggle color mode"
-            icon={colorMode === "light" ? <MoonIcon /> : <SunIcon />}
-            onClick={toggleColorMode}
-            variant="ghost"
-            size="sm"
-          />
+          <NavIconButton ariaLabel="Toggle color mode" onClick={toggleTheme}>
+            {resolvedTheme === "light" ? <Moon size={16} /> : <Sun size={16} />}
+          </NavIconButton>
 
-          <IconButton
-            aria-label="Toggle navigation"
-            icon={isOpen ? <CloseIcon boxSize={3} /> : <HamburgerIcon />}
-            display={{ base: "inline-flex", lg: "none" }}
-            onClick={onToggle}
-            variant="ghost"
-            size="sm"
-          />
-        </HStack>
-      </Flex>
+          <NavIconButton
+            ariaLabel="Toggle navigation"
+            className="lg:hidden"
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            {menuOpen ? <X size={14} /> : <Menu size={18} />}
+          </NavIconButton>
+        </div>
+      </nav>
 
-      <Collapse in={isOpen} animateOpacity>
-        <Box
-          bg={bgColor}
-          display={{ lg: "none" }}
-          py={4}
-          px={4}
-        >
-          <HStack spacing={2} flexDirection="column" align="stretch">
+      {menuOpen && (
+        <div className="px-4 py-4 lg:hidden" style={{ backgroundColor: bgColor }}>
+          <div className="flex flex-col gap-2">
             {LINKS.map((link) => {
-              const isActive = location.pathname === link.href
-              || (link.href === "/sobremi" && location.pathname.startsWith("/experiencias/"));
+              const isActive = isLinkActive(link.href);
               return (
-                <CLink
+                <RouterLink
                   key={link.href}
-                  as={RouterLink}
                   to={link.href}
-                  w="100%"
-                  display="block"
-                  px={4}
-                  py={3}
-                  borderRadius="xl"
-                  fontWeight={isActive ? "600" : "500"}
-                  fontFamily="var(--font-body)"
-                  fontSize="md"
-                  color={isActive ? accentColor : textColor}
-                  _hover={{
-                    color: accentColor,
-                    textDecoration: "none",
+                  className="block w-full rounded-xl px-4 py-3 text-base no-underline transition-all duration-300 hover:no-underline"
+                  style={{
+                    fontFamily: "var(--font-body)",
+                    fontWeight: isActive ? 600 : 500,
+                    color: isActive ? accentColor : textColor,
                   }}
-                  transition="all 0.3s"
                   onMouseEnter={() => prefetchRoute(link.href)}
                   onFocus={() => prefetchRoute(link.href)}
-                  onClick={onToggle}
+                  onClick={() => setMenuOpen(false)}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.color = accentColor;
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.color = isActive ? accentColor : textColor;
+                  }}
                 >
                   {t(link.key)}
-                </CLink>
+                </RouterLink>
               );
             })}
-          </HStack>
-        </Box>
-      </Collapse>
-    </Box>
+          </div>
+        </div>
+      )}
+    </header>
   );
 }

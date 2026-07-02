@@ -7,18 +7,18 @@ import {
   Text,
   Stack,
   Avatar,
-  useColorModeValue,
   Image,
   SimpleGrid,
   LinkBox,
   LinkOverlay,
   Container,
 } from "@chakra-ui/react";
+import { useColorModeValue } from "../hooks/useColorModeValue.js";
 
 function BlogCard({ title, excerpt, tag, author, date, imageSrc, href }) {
-  const cardBg = useColorModeValue("white", "gray.900");
-  const headingColor = useColorModeValue("gray.700", "white");
-  const imgBg = useColorModeValue("gray.100", "gray.700");
+  const cardBg = useColorModeValue("#ffffff", "#111827");
+  const headingColor = useColorModeValue("#374151", "#ffffff");
+  const imgBg = useColorModeValue("#f3f4f6", "#374151");
 
   return (
     <LinkBox

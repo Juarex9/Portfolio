@@ -1,8 +1,9 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { Box, HStack, IconButton, Text, VisuallyHidden, useBreakpointValue } from "@chakra-ui/react";
+import { Box, HStack, IconButton, Text, VisuallyHidden } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { motion, useReducedMotion as useFramerReducedMotion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { useBreakpointValue } from "../hooks/useBreakpointValue.js";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 
 const MotionBox = motion(Box);

@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { useColorModeValue } from "@chakra-ui/react";
+import { useColorModeValue } from "../hooks/useColorModeValue.js";
 import { useFinePointer } from "../hooks/useFinePointer.js";
 import { useReducedMotion } from "../hooks/useReducedMotion.js";
 

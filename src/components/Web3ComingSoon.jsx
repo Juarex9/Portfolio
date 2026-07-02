@@ -1,7 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { Box, Container, VStack, Heading, Text, useColorModeValue } from "@chakra-ui/react";
+import { Box, Container, VStack, Heading, Text } from "@chakra-ui/react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
+import { useColorModeValue } from "../hooks/useColorModeValue.js";
 import styles from "../styles/waterfall.module.css"; // <-- (ajustá la ruta si tu estructura difiere)
 
 const MotionBox = motion(Box);
@@ -9,8 +10,8 @@ const MotionBox = motion(Box);
 export default function Web3ComingSoonFlipWords() {
   const { accentColor, bgColor, cardBg } = useAccentColors();
 
-  const muted = useColorModeValue("blackAlpha.700", "whiteAlpha.700");
-  const borderColor = useColorModeValue("blackAlpha.200", "whiteAlpha.200");
+  const muted = useColorModeValue("rgba(0, 0, 0, 0.64)", "rgba(255, 255, 255, 0.64)");
+  const borderColor = useColorModeValue("rgba(0, 0, 0, 0.08)", "rgba(255, 255, 255, 0.08)");
 
   const words = useMemo(
     () => ["dApps", "Smart contracts", "Indexación", "Integraciones", "Casos de estudio"],

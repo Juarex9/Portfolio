@@ -1,12 +1,12 @@
 import { Outlet } from "react-router-dom";
 import { Suspense, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { Box, useColorModeValue } from "@chakra-ui/react";
 
 import Navbar from "../components/NavBar";
 import Footer from "../components/Footer";
 import CustomCursor from "../components/CustomCursor.jsx";
 import { prefetchAllRoutes } from "../routes/pageImports.js";
+import { useColorModeValue } from "../hooks/useColorModeValue.js";
 
 export default function App() {
   const { i18n } = useTranslation();
@@ -29,44 +29,36 @@ export default function App() {
 
   const dotColor = useColorModeValue(
     "rgba(0, 0, 0, 0.08)",
-    "rgba(255, 255, 255, 0.03)"
+    "rgba(255, 255, 255, 0.03)",
   );
-  const skipLinkBg = useColorModeValue("blue.600", "blue.400");
 
-  const skipLabel = i18n.language === "es" ? "Saltar al contenido principal" : "Skip to main content";
+  const skipLabel =
+    i18n.language === "es" ? "Saltar al contenido principal" : "Skip to main content";
 
   return (
     <>
       <CustomCursor />
-      <Box
-        as="a"
+      <a
         href="#main-content"
-        className="skip-link"
-        bg={skipLinkBg}
-        color="white"
-        fontFamily="var(--font-body)"
-        fontSize="sm"
-        fontWeight="600"
-        borderRadius="md"
-        zIndex={1000}
+        className="skip-link rounded-md bg-blue-600 text-sm font-semibold text-white dark:bg-blue-400"
+        style={{ fontFamily: "var(--font-body)", zIndex: 1000 }}
       >
         {skipLabel}
-      </Box>
+      </a>
       <Navbar />
-      <main id="main-content" tabIndex={-1} position="relative" overflowX="hidden" w="full">
-        <Box
-          position="absolute"
-          inset={0}
-          bgImage={`radial-gradient(${dotColor} 1px, transparent 1px)`}
-          bgSize={{ base: "16px 16px", md: "20px 20px" }}
-          pointerEvents="none"
-          zIndex={0}
+      <main id="main-content" tabIndex={-1} className="relative w-full overflow-x-hidden">
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-0 z-0 bg-[length:16px_16px] md:bg-[length:20px_20px]"
+          style={{
+            backgroundImage: `radial-gradient(${dotColor} 1px, transparent 1px)`,
+          }}
         />
-        <Box position="relative" zIndex={1}>
+        <div className="relative z-[1]">
           <Suspense fallback={null}>
             <Outlet />
           </Suspense>
-        </Box>
+        </div>
       </main>
       <Footer />
     </>

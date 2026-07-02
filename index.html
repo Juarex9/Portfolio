@@ -41,11 +41,20 @@
 <body>
   <script>
     (function () {
-      var mode = localStorage.getItem('chakra-ui-color-mode');
-      if (!mode && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-        mode = 'dark';
+      var KEY = 'theme';
+      var LEGACY = 'chakra-ui-color-mode';
+      var theme = localStorage.getItem(KEY);
+      if (!theme) {
+        theme = localStorage.getItem(LEGACY);
+        if (theme) {
+          localStorage.setItem(KEY, theme);
+          localStorage.removeItem(LEGACY);
+        }
       }
-      document.documentElement.setAttribute('data-theme', mode === 'dark' ? 'dark' : 'light');
+      if (!theme) theme = 'system';
+      var isDark = theme === 'dark' || (theme === 'system' && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      document.documentElement.classList.toggle('dark', isDark);
+      document.documentElement.setAttribute('data-theme', isDark ? 'dark' : 'light');
     })();
   </script>
   <div id="root"></div>

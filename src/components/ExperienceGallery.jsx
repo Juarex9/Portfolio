@@ -8,13 +8,13 @@ import {
   Text,
   VStack,
   VisuallyHidden,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import { ChevronLeftIcon, ChevronRightIcon } from "@chakra-ui/icons";
 import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import { useColorModeValue } from "../hooks/useColorModeValue.js";
 
 const MotionBox = motion(Box);
 
@@ -27,10 +27,10 @@ export default function ExperienceGallery({ images, title, getAlt, borderColor }
   const { t } = useTranslation();
   const { accentColor } = useAccentColors();
   const prefersReducedMotion = useReducedMotion();
-  const imageBg = useColorModeValue("gray.50", "gray.800");
-  const navBtnBg = useColorModeValue("whiteAlpha.800", "blackAlpha.600");
-  const navBtnHoverBg = useColorModeValue("white", "gray.700");
-  const dotInactiveBg = useColorModeValue("gray.300", "whiteAlpha.300");
+  const imageBg = useColorModeValue("#f9fafb", "#1f2937");
+  const navBtnBg = useColorModeValue("rgba(255, 255, 255, 0.8)", "rgba(0, 0, 0, 0.6)");
+  const navBtnHoverBg = useColorModeValue("#ffffff", "#374151");
+  const dotInactiveBg = useColorModeValue("#d1d5db", "rgba(255, 255, 255, 0.3)");
   const [activeIndex, setActiveIndex] = useState(0);
   const [isDragging, setIsDragging] = useState(false);
   const dragStartX = useRef(0);

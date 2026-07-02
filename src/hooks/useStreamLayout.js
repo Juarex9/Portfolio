@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useBreakpointValue } from "@chakra-ui/react";
+import { useBreakpointValue } from "../hooks/useBreakpointValue.js";
 
 const DESKTOP_CARD_WIDTH = 320;
 const DESKTOP_CARD_GAP = 40;

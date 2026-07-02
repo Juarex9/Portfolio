@@ -6,13 +6,13 @@ import {
   Button,
   Badge,
   HStack,
-  useColorModeValue,
 } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import { useColorModeValue } from "../hooks/useColorModeValue.js";
 
 const MotionBox = motion(Box);
 
