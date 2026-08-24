@@ -2,6 +2,7 @@ import { lazy, Suspense, useMemo } from "react";
 import { Link as RouterLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import { useMediaQuery } from "../hooks/useMediaQuery";
 import { useColorModeValue } from "../hooks/useColorModeValue.js";
 import { getProjectDetailPath } from "../data/projects.js";
 
@@ -18,6 +19,7 @@ function GalleryFallback() {
 export default function FeaturedCircularGallery({ projects, accentColor, borderColor }) {
   const { t } = useTranslation();
   const prefersReducedMotion = useReducedMotion();
+  const isDesktop = useMediaQuery("(min-width: 768px)");
   const textColor = useColorModeValue("#0f172a", "#f1f5f9");
 
   const projectsWithImages = useMemo(
@@ -33,7 +35,7 @@ export default function FeaturedCircularGallery({ projects, accentColor, borderC
     [projectsWithImages, t],
   );
 
-  if (prefersReducedMotion) {
+  if (prefersReducedMotion || !isDesktop) {
     return (
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         {projectsWithImages.map((project) => {

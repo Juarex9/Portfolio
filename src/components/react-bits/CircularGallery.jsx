@@ -465,6 +465,7 @@ class App {
     });
   }
   onTouchDown(e) {
+    if (this.container && !this.container.contains(e.target)) return;
     this.isDown = true;
     this.scroll.position = this.scroll.current;
     this.start = e.touches ? e.touches[0].clientX : e.clientX;
@@ -480,6 +481,7 @@ class App {
     this.onCheck();
   }
   onWheel(e) {
+    if (this.container && !this.container.contains(e.target)) return;
     const delta = e.deltaY || e.wheelDelta || e.detail;
     this.scroll.target += (delta > 0 ? this.scrollSpeed : -this.scrollSpeed) * 0.2;
     this.onCheckDebounce();

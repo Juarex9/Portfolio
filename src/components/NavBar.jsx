@@ -41,7 +41,7 @@ export default function Navbar() {
   const { t, i18n } = useTranslation();
   const location = useLocation();
 
-  const currentLang = i18n.language;
+  const currentLang = (i18n.language || "es").split("-")[0];
 
   const handleChangeLang = (lang) => {
     i18n.changeLanguage(lang);
@@ -115,10 +115,16 @@ export default function Navbar() {
 
         <div className="flex items-center gap-1">
           <div ref={langRef} className="relative">
-            <NavIconButton ariaLabel="Change language" onClick={() => setLangOpen((open) => !open)}>
+            <NavIconButton
+              ariaLabel="Change language"
+              className="w-auto min-w-8 px-1.5"
+              onClick={() => setLangOpen((open) => !open)}
+            >
               <span className="flex items-center gap-1">
                 <MdLanguage size={18} />
-                <span className="text-xs font-semibold">{currentLang.toUpperCase()}</span>
+                <span className="whitespace-nowrap text-xs font-semibold leading-none">
+                  {currentLang.toUpperCase()}
+                </span>
               </span>
             </NavIconButton>
 

@@ -10,9 +10,11 @@ import { prefetchAllRoutes } from "../routes/pageImports.js";
 export default function App() {
   const { i18n } = useTranslation();
 
+  const lang = (i18n.language || "es").split("-")[0];
+
   useEffect(() => {
-    document.documentElement.lang = i18n.language;
-  }, [i18n.language]);
+    document.documentElement.lang = lang;
+  }, [lang]);
 
   useEffect(() => {
     const prefetch = () => prefetchAllRoutes();
@@ -27,7 +29,7 @@ export default function App() {
   }, []);
 
   const skipLabel =
-    i18n.language === "es" ? "Saltar al contenido principal" : "Skip to main content";
+    lang === "es" ? "Saltar al contenido principal" : "Skip to main content";
 
   return (
     <div className="relative min-h-screen">

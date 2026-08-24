@@ -80,7 +80,7 @@ export default function Contact() {
         <div
           role="alert"
           className={cn(
-            "fixed bottom-6 right-6 z-50 max-w-sm rounded-xl border px-4 py-3 pr-8 shadow-lg",
+            "fixed bottom-4 left-4 right-4 z-50 max-w-sm rounded-xl border px-4 py-3 pr-8 shadow-lg md:bottom-6 md:left-auto md:right-6",
             toast.type === "success"
               ? "border-green-200 bg-green-50 text-green-900 dark:border-green-800 dark:bg-green-950 dark:text-green-100"
               : "border-red-200 bg-red-50 text-red-900 dark:border-red-800 dark:bg-red-950 dark:text-red-100",
@@ -147,7 +147,7 @@ export default function Contact() {
                     <a
                       key={item.label}
                       href={item.href}
-                      className="inline-flex h-11 items-center justify-start gap-2 rounded-full px-3 text-sm font-medium text-gray-500 transition-all duration-300 hover:opacity-80"
+                      className="inline-flex min-h-11 max-w-full items-center justify-start gap-2 break-all rounded-full px-3 text-sm font-medium text-gray-500 transition-all duration-300 hover:opacity-80"
                       style={{ fontFamily: "var(--font-body)" }}
                       onMouseEnter={(e) => { e.currentTarget.style.color = accentColor; }}
                       onMouseLeave={(e) => { e.currentTarget.style.color = ""; }}

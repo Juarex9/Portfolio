@@ -110,17 +110,17 @@ export default function Hero() {
                 {t("hero.subtitle")}
               </p>
 
-              <div className="flex flex-wrap justify-center gap-2 lg:justify-start">
+              <div className="flex w-full flex-col items-stretch justify-center gap-2 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start">
                 <RouterLink
                   to="/contacto"
-                  className="inline-flex h-10 items-center rounded-full px-5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
+                  className="inline-flex h-10 items-center justify-center rounded-full px-5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
                   style={{ backgroundColor: accentColor, fontFamily: "var(--font-body)" }}
                 >
                   {t("hero.btn_contact")}
                 </RouterLink>
                 <RouterLink
                   to="/proyectos"
-                  className="inline-flex h-10 items-center rounded-full border bg-transparent px-5 text-sm font-semibold transition-all hover:opacity-90"
+                  className="inline-flex h-10 items-center justify-center rounded-full border bg-transparent px-5 text-sm font-semibold transition-all hover:opacity-90"
                   style={{
                     color: accentColor,
                     borderColor: `${accentColor}50`,
