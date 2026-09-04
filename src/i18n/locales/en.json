@@ -279,7 +279,13 @@
         "problem": "Businesses need to coordinate appointments without friction between staff and customers.",
         "role": "End-to-end development: database, JWT REST API, and React frontend.",
         "description": "Appointment management system with calendar, reminders, and admin panel.",
-        "tech": ["React", "Node.js", "MongoDB", "JWT", "REST API"]
+        "tech": [
+          "React",
+          "Node.js",
+          "MongoDB",
+          "JWT",
+          "REST API"
+        ]
       },
       "scraper-precios": {
         "title": "Price Scraper",
@@ -287,7 +293,13 @@
         "problem": "Manually comparing supermarket prices is slow and does not scale.",
         "role": "Designed and built the scraping pipeline, FastAPI service, and PostgreSQL storage.",
         "description": "Automated data extraction to monitor price fluctuations in real time.",
-        "tech": ["Python", "FastAPI", "PostgreSQL", "BeautifulSoup", "Jinja2"]
+        "tech": [
+          "Python",
+          "FastAPI",
+          "PostgreSQL",
+          "BeautifulSoup",
+          "Jinja2"
+        ]
       },
       "real-time-chat": {
         "title": "Real-Time Chat",
@@ -295,7 +307,13 @@
         "problem": "Real-time messaging requires synchronized state and low latency across users.",
         "role": "Implemented rooms, authentication, and full-duplex communication with Socket.io and Express.",
         "description": "Scalable instant messaging app with multi-room support.",
-        "tech": ["React", "Socket.io", "Node.js", "Express", "MongoDB"]
+        "tech": [
+          "React",
+          "Socket.io",
+          "Node.js",
+          "Express",
+          "MongoDB"
+        ]
       },
       "leivy": {
         "title": "Leivy",
@@ -303,7 +321,13 @@
         "problem": "Evaluating grants and subsidies on Polkadot is hard without tools that centralize analysis.",
         "role": "Contributed to backend, frontend, and analysis logic at the Sub0 hackathon with SaltaDev.",
         "description": "System for analyzing grants and subsidies in the Polkadot ecosystem.",
-        "tech": ["React", "Node.js", "Polkadot", "API", "Blockchain & Web3"]
+        "tech": [
+          "React",
+          "Node.js",
+          "Polkadot",
+          "API",
+          "Blockchain & Web3"
+        ]
       },
       "ink-ai-risk-detector": {
         "title": "Ink | AI Risk Detector",
@@ -311,7 +335,15 @@
         "problem": "Interacting with smart contracts without risk assessment exposes users to avoidable losses.",
         "role": "Built the backend, AI analysis engine, risk scoring, and IPFS integration.",
         "description": "Analyzes smart contract addresses and returns a score based on 10+ risk criteria.",
-        "tech": ["Javascript", "Node.js", "API", "IPFS", "Pinata", "MongoDB", "Blockchain & Web3"]
+        "tech": [
+          "Javascript",
+          "Node.js",
+          "API",
+          "IPFS",
+          "Pinata",
+          "MongoDB",
+          "Blockchain & Web3"
+        ]
       },
       "fintrack": {
         "title": "FinTrack",
@@ -319,7 +351,13 @@
         "problem": "Tracking personal finances in spreadsheets makes it hard to spot patterns and hit savings goals.",
         "role": "Built the app with Next.js, Prisma data modeling, and Tailwind UI.",
         "description": "Personal finance manager with savings plans and spending strategies.",
-        "tech": ["Next.js", "Typescript", "TailwindCSS", "Prisma", "Vercel"]
+        "tech": [
+          "Next.js",
+          "Typescript",
+          "TailwindCSS",
+          "Prisma",
+          "Vercel"
+        ]
       },
       "vitistrust": {
         "title": "VitisTrust",
@@ -327,7 +365,14 @@
         "problem": "Tokenized vineyards need verifiable proof of existence and sanitary condition.",
         "role": "Built the oracle with satellite monitoring, Python backend, and blockchain layers (Hedera/Stellar).",
         "description": "Monitors vineyards via satellite and issues certification for tokenized vineyards.",
-        "tech": ["React", "Python", "Groq", "Hedera", "Stellar", "Blockchain & Web3"]
+        "tech": [
+          "React",
+          "Python",
+          "Groq",
+          "Hedera",
+          "Stellar",
+          "Blockchain & Web3"
+        ]
       },
       "zafra": {
         "title": "Zafra",
@@ -344,11 +389,38 @@
           "Designed around real use cases in Northwest Argentina, not lab-only prototypes."
         ],
         "outcome": "Zafra strengthens my AgTech and applied AI work: a product built for the territory, connecting satellite insight with daily decisions and broader access to intelligent tools for agriculture.",
-        "tech": ["Python", "Agentic AI", "Sub-agents", "Satellite data", "Telegram", "Livestock", "Agriculture", "AgTech"],
+        "tech": [
+          "Python",
+          "Agentic AI",
+          "Sub-agents",
+          "Satellite data",
+          "Telegram",
+          "Livestock",
+          "Agriculture",
+          "AgTech"
+        ],
         "seo": {
           "title": "Zafra | Agustín Juárez",
           "description": "Zafra: agentic AI system for agriculture in Northwest Argentina. Sub-agents, satellite data, alerts, and Telegram chat."
         }
+      },
+      "qcamp": {
+        "title": "QCamp",
+        "subtitle": "The producer's notebook, offline",
+        "problem": "During harvest, the producer weighs the raw material but the kilograms aren't recorded until there's a signal — ticket data on paper gets lost.",
+        "role": "Designed and built the full system: OCR + local field-extraction model, SQLite persistence, and HTMX UI — all offline.",
+        "description": "The producer's notebook on a notebook: snap a photo of the scale ticket and the system logs date, plate, and kg into SQLite with no cloud or API keys.",
+        "tech": [
+          "Python",
+          "FastAPI",
+          "Jinja",
+          "HTMX",
+          "SQLite",
+          "OCR",
+          "Llama 3.2 1B",
+          "QVAC",
+          "Offline"
+        ]
       }
     }
   },

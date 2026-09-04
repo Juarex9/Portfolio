@@ -279,7 +279,13 @@
         "problem": "Los negocios necesitan coordinar turnos sin fricción entre personal y clientes.",
         "role": "Desarrollo end-to-end: base de datos, API REST con JWT y frontend en React.",
         "description": "Sistema completo de gestión de turnos con calendario, recordatorios y panel admin.",
-        "tech": ["React", "Node.js", "MongoDB", "JWT", "API REST"]
+        "tech": [
+          "React",
+          "Node.js",
+          "MongoDB",
+          "JWT",
+          "API REST"
+        ]
       },
       "scraper-precios": {
         "title": "Scraper de Precios",
@@ -287,7 +293,13 @@
         "problem": "Comparar precios entre supermercados manualmente consume tiempo y no escala.",
         "role": "Diseñé y desarrollé el pipeline de scraping, API FastAPI y persistencia en PostgreSQL.",
         "description": "Sistema automatizado de extracción de datos para monitorear fluctuaciones de precios en tiempo real.",
-        "tech": ["Python", "FastAPI", "PostgreSQL", "BeautifulSoup", "Jinja2"]
+        "tech": [
+          "Python",
+          "FastAPI",
+          "PostgreSQL",
+          "BeautifulSoup",
+          "Jinja2"
+        ]
       },
       "real-time-chat": {
         "title": "Chat en Tiempo Real",
@@ -295,7 +307,13 @@
         "problem": "La mensajería en tiempo real requiere estado sincronizado y baja latencia entre usuarios.",
         "role": "Implementé salas, autenticación y comunicación full-duplex con Socket.io y Express.",
         "description": "Aplicación de mensajería instantánea escalable con soporte para múltiples salas.",
-        "tech": ["React", "Socket.io", "Node.js", "Express", "MongoDB"]
+        "tech": [
+          "React",
+          "Socket.io",
+          "Node.js",
+          "Express",
+          "MongoDB"
+        ]
       },
       "leivy": {
         "title": "Leivy",
@@ -303,7 +321,13 @@
         "problem": "Evaluar subvenciones y grants en Polkadot es complejo sin herramientas que centralicen el análisis.",
         "role": "Contribuí al backend, frontend y lógica de análisis en la hackathon Sub0 con SaltaDev.",
         "description": "Sistema para analizar subvenciones y grants de proyectos en el ecosistema Polkadot.",
-        "tech": ["React", "Node.js", "Polkadot", "API", "Blockchain & Web3"]
+        "tech": [
+          "React",
+          "Node.js",
+          "Polkadot",
+          "API",
+          "Blockchain & Web3"
+        ]
       },
       "ink-ai-risk-detector": {
         "title": "Ink | IA Risk Detector",
@@ -311,7 +335,15 @@
         "problem": "Invertir o interactuar con smart contracts sin evaluar riesgos expone a pérdidas evitables.",
         "role": "Desarrollé el backend, motor de análisis con IA, scoring de riesgo e integración IPFS.",
         "description": "Analiza direcciones de smart contracts y devuelve un score basado en +10 criterios de riesgo.",
-        "tech": ["Javascript", "Node.js", "API", "IPFS", "Pinata", "MongoDB", "Blockchain & Web3"]
+        "tech": [
+          "Javascript",
+          "Node.js",
+          "API",
+          "IPFS",
+          "Pinata",
+          "MongoDB",
+          "Blockchain & Web3"
+        ]
       },
       "fintrack": {
         "title": "FinTrack",
@@ -319,7 +351,13 @@
         "problem": "Llevar finanzas personales en hojas de cálculo dificulta ver patrones y cumplir metas de ahorro.",
         "role": "Desarrollé la aplicación con Next.js, modelado con Prisma y UI con Tailwind.",
         "description": "Gestor que facilita el conteo y manejo de finanzas personales con planes de ahorro.",
-        "tech": ["Next.js", "Typescript", "TailwindCSS", "Prisma", "Vercel"]
+        "tech": [
+          "Next.js",
+          "Typescript",
+          "TailwindCSS",
+          "Prisma",
+          "Vercel"
+        ]
       },
       "vitistrust": {
         "title": "VitisTrust",
@@ -327,7 +365,14 @@
         "problem": "Los viñedos tokenizados necesitan certificación verificable de existencia y estado sanitario.",
         "role": "Desarrollé el oráculo con monitoreo satelital, backend en Python y capas blockchain (Hedera/Stellar).",
         "description": "Monitorea viñedos vía satélite y emite certificación para viñedos tokenizados.",
-        "tech": ["React", "Python", "Groq", "Hedera", "Stellar", "Blockchain & Web3"]
+        "tech": [
+          "React",
+          "Python",
+          "Groq",
+          "Hedera",
+          "Stellar",
+          "Blockchain & Web3"
+        ]
       },
       "zafra": {
         "title": "Zafra",
@@ -344,11 +389,38 @@
           "Diseño orientado a casos de uso reales del NOA, no solo prototipos de laboratorio."
         ],
         "outcome": "Zafra consolida mi línea de trabajo en AgTech e IA aplicada: un producto pensado para operar en el territorio, conectar satélite con decisiones diarias y democratizar el acceso a herramientas inteligentes para el agro.",
-        "tech": ["Python", "IA agéntica", "Subagentes", "Datos satelitales", "Telegram", "Ganadería", "Agricultura", "AgTech"],
+        "tech": [
+          "Python",
+          "IA agéntica",
+          "Subagentes",
+          "Datos satelitales",
+          "Telegram",
+          "Ganadería",
+          "Agricultura",
+          "AgTech"
+        ],
         "seo": {
           "title": "Zafra | Agustín Juárez",
           "description": "Zafra: sistema de IA agéntica para el agro en el NOA. Subagentes, datos satelitales, alertas y chat por Telegram."
         }
+      },
+      "qcamp": {
+        "title": "QCamp",
+        "subtitle": "La libreta del productor, en el notebook",
+        "problem": "En cosecha, el productor pesa la materia prima pero los kilogramos no quedan registrados hasta que hay señal — se pierde el dato del ticket en papel.",
+        "role": "Diseñé y desarrollé el sistema completo: OCR + modelo local de extracción de campos, persistencia en SQLite y UI HTMX, todo offline.",
+        "description": "La libreta del productor en el notebook: tomas foto del ticket de balanza y el sistema registra fecha, patente y kg en SQLite sin nube ni API keys.",
+        "tech": [
+          "Python",
+          "FastAPI",
+          "Jinja",
+          "HTMX",
+          "SQLite",
+          "OCR",
+          "Llama 3.2 1B",
+          "QVAC",
+          "Offline"
+        ]
       }
     }
   },
