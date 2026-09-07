@@ -63,6 +63,8 @@ export const projects = [
     type: "sideProject",
     github: "https://github.com/Juarex9/QCamp.git",
     demo: "",
+    image: "/qcamp.png",
+    featured: true,
   },
 ];
 
