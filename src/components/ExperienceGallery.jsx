@@ -50,7 +50,7 @@ export default function ExperienceGallery({ images, title, getAlt, borderColor }
       <div className="mb-8 flex w-full flex-col gap-4">
         {title && (
           <h2
-            className="text-sm text-gray-500"
+            className="text-sm text-muted-foreground"
             style={{ fontFamily: "var(--font-display)" }}
           >
             {title}
@@ -83,7 +83,7 @@ export default function ExperienceGallery({ images, title, getAlt, borderColor }
     <div className="mb-8 flex w-full flex-col gap-4">
       {title && (
         <h2
-          className="text-sm text-gray-500"
+          className="text-sm text-muted-foreground"
           style={{ fontFamily: "var(--font-display)" }}
         >
           {title}
@@ -173,13 +173,13 @@ export default function ExperienceGallery({ images, title, getAlt, borderColor }
 
       <div className="flex flex-wrap items-center justify-between gap-2">
         <p
-          className="line-clamp-2 flex-1 text-sm text-gray-500"
+          className="line-clamp-2 flex-1 text-sm text-muted-foreground"
           style={{ fontFamily: "var(--font-body)" }}
         >
           {activeAlt}
         </p>
         <p
-          className="shrink-0 text-xs tracking-wider text-gray-500"
+          className="shrink-0 text-xs tracking-wider text-muted-foreground"
           style={{ fontFamily: "var(--font-mono)" }}
         >
           {String(activeIndex + 1).padStart(2, "0")} / {String(count).padStart(2, "0")}

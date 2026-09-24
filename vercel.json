@@ -1,9 +1,14 @@
 {
-    "rewrites": [
-      {
-        "source": "/(.*)",
-        "destination": "/"
-      }
-    ]
-  }
-  
+  "redirects": [
+    {
+      "source": "/freelance",
+      "destination": "/proyectos",
+      "permanent": true
+    },
+    {
+      "source": "/personal",
+      "destination": "/proyectos",
+      "permanent": true
+    }
+  ]
+}

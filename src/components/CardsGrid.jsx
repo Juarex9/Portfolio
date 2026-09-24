@@ -32,7 +32,7 @@ function BlogCard({ title, excerpt, tag, author, date, imageSrc, href }) {
           </a>
         </h3>
 
-        <p className="text-gray-500">{excerpt}</p>
+        <p className="text-muted-foreground">{excerpt}</p>
       </div>
 
       <div className="mt-6 flex flex-row items-center gap-4">
@@ -41,7 +41,7 @@ function BlogCard({ title, excerpt, tag, author, date, imageSrc, href }) {
         )}
         <div className="flex flex-col text-sm">
           <p className="font-semibold">{author?.name}</p>
-          <p className="text-gray-500">{date}</p>
+          <p className="text-muted-foreground">{date}</p>
         </div>
       </div>
     </article>

@@ -4,7 +4,7 @@ export const projects = [
     type: "client",
     github: "https://github.com/Juarex9/gestor-turnos.git",
     demo: "",
-    image: "/gestor-turnos.png",
+    image: "/gestor-turnos.webp",
     featured: true,
   },
   {
@@ -12,7 +12,7 @@ export const projects = [
     type: "sideProject",
     github: "https://github.com/Juarex9/prices-scraper.git",
     demo: "https://precios.agustinjz.dev/",
-    image: "/price-scraper.png",
+    image: "/price-scraper.webp",
     featured: true,
   },
   {
@@ -20,14 +20,14 @@ export const projects = [
     type: "hackathon",
     github: "https://github.com/Juarex9/Sub0_data.git",
     demo: "",
-    image: "/sub-cero.png",
+    image: "/sub-cero.webp",
   },
   {
     key: "ink-ai-risk-detector",
     type: "hackathon",
     github: "https://github.com/Juarex9/aleph-backend.git",
     demo: "https://ink-three-iota.vercel.app/",
-    image: "/ink-risk.png",
+    image: "/ink-risk.webp",
     featured: true,
   },
   {
@@ -35,14 +35,14 @@ export const projects = [
     type: "hackathon",
     github: "https://github.com/Juarex9/vitistrust.git",
     demo: "https://vitistrust.vercel.app",
-    image: "/vitistrust.png",
+    image: "/vitistrust.webp",
   },
   {
     key: "zafra",
     type: "sideProject",
     github: "",
     demo: "",
-    image: "/zafra.png",
+    image: "/zafra.webp",
     featured: true,
     hasDetailPage: true,
   },
@@ -63,7 +63,7 @@ export const projects = [
     type: "sideProject",
     github: "https://github.com/Juarex9/QCamp.git",
     demo: "",
-    image: "/qcamp.png",
+    image: "/qcamp.webp",
     featured: true,
   },
 ];
@@ -74,7 +74,8 @@ export function getProjectBySlug(slug) {
   return projects.find((item) => item.key === slug);
 }
 
-export function getProjectDetailPath(project) {
+export function getProjectDetailPath(project, locale = "es") {
   if (!project?.hasDetailPage) return null;
-  return `/proyectos/${project.key}`;
+  const base = locale === "en" ? "/en/projects" : "/proyectos";
+  return `${base}/${project.key}`;
 }

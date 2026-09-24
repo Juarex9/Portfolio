@@ -7,7 +7,7 @@ Los viñedos tokenizados necesitan certificación verificable de existencia y es
 ## Demo
 
 - Live: https://vitistrust.vercel.app
-- Portfolio: https://agustinjz.dev/proyectos
+- Portfolio: https://www.agustinjz.dev/proyectos
 
 ## Stack
 
@@ -41,4 +41,4 @@ cd vitistrust
 
 ## Author
 
-**Agustín Juárez** — [Portfolio](https://agustinjz.dev) · [GitHub](https://github.com/Juarex9)
+**Agustín Juárez** — [Portfolio](https://www.agustinjz.dev) · [GitHub](https://github.com/Juarex9)

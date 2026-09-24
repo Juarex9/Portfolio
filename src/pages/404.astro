@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import NotFoundPage from "../views/pages/NotFoundPage.jsx";
+import { ROUTES } from "../i18n/routes.js";
+---
+
+<BaseLayout locale="es" seoKey="notFound" noindex esPath={ROUTES.home.es} enPath={ROUTES.home.en}>
+  <NotFoundPage locale="es" currentPath="/404" paths={{ es: ROUTES.home.es, en: ROUTES.home.en }} client:load />
+</BaseLayout>

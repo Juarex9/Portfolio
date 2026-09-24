@@ -1,9 +1,9 @@
-import { Link as RouterLink } from "react-router-dom";
 import { BsGithub, BsLinkedin, BsEnvelope } from "react-icons/bs";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import { useLocalizedRoutes } from "../i18n/LocaleContext.jsx";
 
 const MotionDiv = motion.div;
 
@@ -16,13 +16,14 @@ const socialLinks = [
 export default function Footer() {
   const { accentColor, bgColor } = useAccentColors();
   const { t } = useTranslation();
+  const { routeFor } = useLocalizedRoutes();
   const prefersReducedMotion = useReducedMotion();
 
   const links = [
-    { href: "/proyectos", key: "projects" },
-    { href: "/educacion", key: "education" },
-    { href: "/sobremi", key: "about" },
-    { href: "/contacto", key: "contact" },
+    { href: routeFor("projects"), key: "projects" },
+    { href: routeFor("education"), key: "education" },
+    { href: routeFor("about"), key: "about" },
+    { href: routeFor("contact"), key: "contact" },
   ];
 
   return (
@@ -37,7 +38,7 @@ export default function Footer() {
               <span style={{ color: accentColor }}>A</span>
               <span>JZ</span>
             </p>
-            <p className="text-sm text-gray-500" style={{ fontFamily: "var(--font-body)" }}>
+            <p className="text-sm text-muted-foreground" style={{ fontFamily: "var(--font-body)" }}>
               {t("footer.title")}
             </p>
           </div>
@@ -54,7 +55,7 @@ export default function Footer() {
                   aria-label={social.label}
                   target={social.label === "Email" ? undefined : "_blank"}
                   rel={social.label === "Email" ? undefined : "noopener noreferrer"}
-                  className="inline-flex h-10 w-10 items-center justify-center rounded-full text-gray-500 transition-colors duration-300 hover:text-[var(--accent-brand)]"
+                  className="inline-flex h-10 w-10 items-center justify-center rounded-full text-muted-foreground transition-colors duration-300 hover:text-[var(--accent-brand)]"
                   style={{ ["--accent-brand"]: accentColor }}
                 >
                   <social.Icon size={20} />
@@ -65,22 +66,22 @@ export default function Footer() {
         </div>
 
         <div className="mt-6 flex flex-col-reverse items-start justify-between gap-4 border-t border-black/5 pt-6 dark:border-white/10 md:flex-row md:items-center">
-          <p className="text-xs text-gray-500" style={{ fontFamily: "var(--font-body)" }}>
+          <p className="text-xs text-muted-foreground" style={{ fontFamily: "var(--font-body)" }}>
             © {new Date().getFullYear()} Agustín Juárez
           </p>
 
           <nav className="flex flex-wrap gap-6">
             {links.map((item) => (
-              <RouterLink
+              <a
                 key={item.href}
-                to={item.href}
-                className="text-sm font-medium text-gray-500 no-underline transition-colors duration-300 hover:no-underline"
+                href={item.href}
+                className="text-sm font-medium text-muted-foreground no-underline transition-colors duration-300 hover:no-underline"
                 style={{ fontFamily: "var(--font-body)" }}
                 onMouseEnter={(e) => { e.currentTarget.style.color = accentColor; }}
                 onMouseLeave={(e) => { e.currentTarget.style.color = ""; }}
               >
                 {t(`footer.links.${item.key}`)}
-              </RouterLink>
+              </a>
             ))}
           </nav>
         </div>

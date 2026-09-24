@@ -7,7 +7,7 @@ Interactuar con smart contracts sin evaluar riesgos expone a pérdidas evitables
 ## Demo
 
 - Live: https://ink-three-iota.vercel.app
-- Portfolio: https://agustinjz.dev/proyectos
+- Portfolio: https://www.agustinjz.dev/proyectos
 
 ## Stack
 
@@ -43,4 +43,4 @@ npm run dev
 
 ## Author
 
-**Agustín Juárez** — [Portfolio](https://agustinjz.dev) · [GitHub](https://github.com/Juarex9)
+**Agustín Juárez** — [Portfolio](https://www.agustinjz.dev) · [GitHub](https://github.com/Juarex9)

@@ -1,9 +1,9 @@
-import { Link as RouterLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useColorModeValue } from "../hooks/useColorModeValue.js";
+import { useLocalizedRoutes } from "../i18n/LocaleContext.jsx";
 import BlurText from "./react-bits/BlurText.jsx";
 import { Badge } from "./ui/badge.jsx";
 
@@ -18,6 +18,7 @@ const floatingOrbs = [
 export default function Hero() {
   const { accentColor } = useAccentColors();
   const { t } = useTranslation();
+  const { routeFor } = useLocalizedRoutes();
   const prefersReducedMotion = useReducedMotion();
   const nameColor = useColorModeValue("#000000", "#ffffff");
 
@@ -104,22 +105,22 @@ export default function Hero() {
               </h1>
 
               <p
-                className="mb-6 max-w-xl text-sm leading-[1.7] text-gray-500 sm:text-base md:text-lg"
+                className="mb-6 max-w-xl text-sm leading-[1.7] text-muted-foreground sm:text-base md:text-lg"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 {t("hero.subtitle")}
               </p>
 
               <div className="flex w-full flex-col items-stretch justify-center gap-2 sm:flex-row sm:flex-wrap sm:justify-center lg:justify-start">
-                <RouterLink
-                  to="/contacto"
+                <a
+                  href={routeFor("contact")}
                   className="inline-flex h-10 items-center justify-center rounded-full px-5 text-sm font-semibold text-white transition-opacity hover:opacity-90"
                   style={{ backgroundColor: accentColor, fontFamily: "var(--font-body)" }}
                 >
                   {t("hero.btn_contact")}
-                </RouterLink>
-                <RouterLink
-                  to="/proyectos"
+                </a>
+                <a
+                  href={routeFor("projects")}
                   className="inline-flex h-10 items-center justify-center rounded-full border bg-transparent px-5 text-sm font-semibold transition-all hover:opacity-90"
                   style={{
                     color: accentColor,
@@ -128,7 +129,7 @@ export default function Hero() {
                   }}
                 >
                   {t("hero.btn_projects")}
-                </RouterLink>
+                </a>
               </div>
             </MotionDiv>
 
@@ -140,7 +141,7 @@ export default function Hero() {
             >
               <div className="h-[160px] w-[160px] overflow-hidden rounded-full md:h-[220px] md:w-[220px] lg:h-[260px] lg:w-[260px]">
                 <img
-                  src="./mirando-al-horizonte-modified.png"
+                  src="/mirando-al-horizonte-modified.webp"
                   alt="Agustín Juárez"
                   className="h-full w-full object-cover"
                 />

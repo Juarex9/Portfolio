@@ -6,7 +6,7 @@ Productores del NOA necesitan decisiones ágiles con datos dispersos entre ganad
 
 ## Portfolio (detalle del proyecto)
 
-https://agustinjz.dev/proyectos/zafra
+https://www.agustinjz.dev/proyectos/zafra
 
 ## Stack
 
@@ -29,4 +29,4 @@ Repositorio privado o en preparación. La documentación pública vive en el por
 
 ## Author
 
-**Agustín Juárez** — [Portfolio](https://agustinjz.dev) · [GitHub](https://github.com/Juarex9)
+**Agustín Juárez** — [Portfolio](https://www.agustinjz.dev) · [GitHub](https://github.com/Juarex9)

@@ -4,16 +4,16 @@ import { MdLanguage } from "react-icons/md";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTheme } from "../hooks/useTheme.jsx";
 import { useTranslation } from "react-i18next";
-import { Link as RouterLink, useLocation } from "react-router-dom";
-import { prefetchRoute } from "../routes/pageImports.js";
+import { useLocale, useLocalizedRoutes } from "../i18n/LocaleContext.jsx";
+import { isExperiencePath } from "../i18n/routes.js";
 import { cn } from "@/lib/utils";
 
 const LINKS = [
-  { href: "/", key: "navbar.home" },
-  { href: "/proyectos", key: "navbar.projects" },
-  { href: "/educacion", key: "navbar.education" },
-  { href: "/sobremi", key: "navbar.about" },
-  { href: "/contacto", key: "navbar.contact" },
+  { route: "home", key: "navbar.home" },
+  { route: "projects", key: "navbar.projects" },
+  { route: "education", key: "navbar.education" },
+  { route: "about", key: "navbar.about" },
+  { route: "contact", key: "navbar.contact" },
 ];
 
 function NavIconButton({ ariaLabel, onClick, className, children }) {
@@ -38,16 +38,12 @@ export default function Navbar() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [langOpen, setLangOpen] = useState(false);
   const langRef = useRef(null);
-  const { t, i18n } = useTranslation();
-  const location = useLocation();
+  const { t } = useTranslation();
+  const { locale, currentPath, paths } = useLocale();
+  const { routeFor } = useLocalizedRoutes();
 
-  const currentLang = (i18n.language || "es").split("-")[0];
-
-  const handleChangeLang = (lang) => {
-    i18n.changeLanguage(lang);
-    localStorage.setItem("i18nextLng", lang);
-    setLangOpen(false);
-  };
+  const normalize = (p) => (p !== "/" && p !== "/en/" ? p.replace(/\/$/, "") : p);
+  const current = normalize(currentPath);
 
   useEffect(() => {
     if (!langOpen) return undefined;
@@ -62,9 +58,15 @@ export default function Navbar() {
     return () => document.removeEventListener("pointerdown", onPointerDown);
   }, [langOpen]);
 
-  const isLinkActive = (href) =>
-    location.pathname === href
-    || (href === "/sobremi" && location.pathname.startsWith("/experiencias/"));
+  const isLinkActive = (link) => {
+    const href = normalize(routeFor(link.route));
+    return current === href || (link.route === "about" && isExperiencePath(current));
+  };
+
+  const langTargets = [
+    { code: "es", label: "Español", href: paths.es },
+    { code: "en", label: "English", href: paths.en },
+  ];
 
   return (
     <header className="sticky top-0 z-[100] w-full" style={{ backgroundColor: bgColor, color: textColor }}>
@@ -72,24 +74,23 @@ export default function Navbar() {
         className="mx-auto flex max-w-6xl items-center justify-between px-4 py-3 md:px-6"
         aria-label="Main"
       >
-        <RouterLink
-          to="/"
+        <a
+          href={routeFor("home")}
           className="text-xl font-extrabold no-underline hover:no-underline"
           style={{ fontFamily: "var(--font-display)", letterSpacing: "-0.02em", color: textColor }}
-          onMouseEnter={() => prefetchRoute("/")}
-          onFocus={() => prefetchRoute("/")}
         >
           <span style={{ color: accentColor }}>A</span>
           <span>JZ</span>
-        </RouterLink>
+        </a>
 
         <ul className="mx-auto hidden list-none flex-row gap-1 lg:flex">
           {LINKS.map((link) => {
-            const isActive = isLinkActive(link.href);
+            const isActive = isLinkActive(link);
+            const href = routeFor(link.route);
             return (
-              <li key={link.href}>
-                <RouterLink
-                  to={link.href}
+              <li key={link.route}>
+                <a
+                  href={href}
                   aria-current={isActive ? "page" : undefined}
                   className="rounded-full px-4 py-2 text-sm no-underline transition-all duration-300 hover:no-underline"
                   style={{
@@ -97,8 +98,6 @@ export default function Navbar() {
                     fontWeight: isActive ? 600 : 500,
                     color: isActive ? accentColor : textColor,
                   }}
-                  onMouseEnter={() => prefetchRoute(link.href)}
-                  onFocus={() => prefetchRoute(link.href)}
                   onMouseOver={(e) => {
                     e.currentTarget.style.color = accentColor;
                   }}
@@ -107,7 +106,7 @@ export default function Navbar() {
                   }}
                 >
                   {t(link.key)}
-                </RouterLink>
+                </a>
               </li>
             );
           })}
@@ -123,7 +122,7 @@ export default function Navbar() {
               <span className="flex items-center gap-1">
                 <MdLanguage size={18} />
                 <span className="whitespace-nowrap text-xs font-semibold leading-none">
-                  {currentLang.toUpperCase()}
+                  {locale.toUpperCase()}
                 </span>
               </span>
             </NavIconButton>
@@ -133,24 +132,21 @@ export default function Navbar() {
                 className="absolute right-0 top-full z-50 mt-1 min-w-[120px] overflow-hidden rounded-xl border border-black/10 bg-white py-2 shadow-lg dark:border-white/10 dark:bg-[#111111]"
                 role="menu"
               >
-                {[
-                  { code: "es", label: "Español" },
-                  { code: "en", label: "English" },
-                ].map(({ code, label }) => {
-                  const active = currentLang === code;
+                {langTargets.map(({ code, label, href }) => {
+                  const active = locale === code;
                   return (
-                    <button
+                    <a
                       key={code}
-                      type="button"
+                      href={href}
                       role="menuitem"
-                      className="block w-full px-4 py-2 text-left text-sm transition-colors"
+                      className="block w-full px-4 py-2 text-left text-sm no-underline transition-colors"
                       style={{
                         fontFamily: "var(--font-body)",
                         fontWeight: active ? 700 : 400,
                         color: active ? accentColor : textColor,
                         backgroundColor: active ? `${accentColor}15` : "transparent",
                       }}
-                      onClick={() => handleChangeLang(code)}
+                      onClick={() => setLangOpen(false)}
                       onMouseEnter={(e) => {
                         e.currentTarget.style.backgroundColor = `${accentColor}10`;
                         e.currentTarget.style.color = accentColor;
@@ -161,7 +157,7 @@ export default function Navbar() {
                       }}
                     >
                       {label}
-                    </button>
+                    </a>
                   );
                 })}
               </div>
@@ -186,19 +182,17 @@ export default function Navbar() {
         <div className="px-4 py-4 lg:hidden" style={{ backgroundColor: bgColor }}>
           <div className="flex flex-col gap-2">
             {LINKS.map((link) => {
-              const isActive = isLinkActive(link.href);
+              const isActive = isLinkActive(link);
               return (
-                <RouterLink
-                  key={link.href}
-                  to={link.href}
+                <a
+                  key={link.route}
+                  href={routeFor(link.route)}
                   className="block w-full rounded-xl px-4 py-3 text-base no-underline transition-all duration-300 hover:no-underline"
                   style={{
                     fontFamily: "var(--font-body)",
                     fontWeight: isActive ? 600 : 500,
                     color: isActive ? accentColor : textColor,
                   }}
-                  onMouseEnter={() => prefetchRoute(link.href)}
-                  onFocus={() => prefetchRoute(link.href)}
                   onClick={() => setMenuOpen(false)}
                   onMouseOver={(e) => {
                     e.currentTarget.style.color = accentColor;
@@ -208,7 +202,7 @@ export default function Navbar() {
                   }}
                 >
                   {t(link.key)}
-                </RouterLink>
+                </a>
               );
             })}
           </div>

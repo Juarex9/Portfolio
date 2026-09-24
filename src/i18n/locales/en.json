@@ -14,7 +14,7 @@
     },
     "about": {
       "title": "About Me | Agustín Juárez",
-      "description": "Developer with real freelance experience. Managing end-to-end projects: from ideation to deployment. Focused on clear APIs, usable UI, and maintainable code."
+      "description": "Software Developer from Salta, Argentina — freelance, Computer Engineering student, SaltaDev Foundation co-founder. Focused on AI, automation, and web3."
     },
     "contact": {
       "title": "Contact | Agustín Juárez",
@@ -36,14 +36,9 @@
     "title_1": "Agustín",
     "title_name": "Juárez",
     "availability": "Available for opportunities",
-    "subtitle": "Software Developer & Co-Founder SaltaDev Foundation.",
+    "subtitle": "Software Developer & Co-Founder of the SaltaDev Foundation.",
     "btn_contact": "Contact Me",
     "btn_projects": "View Projects"
-  },
-  "stats": {
-    "experience": "Years of experience",
-    "projects": "Projects in production",
-    "technologies": "Core technologies"
   },
   "featured": {
     "badge": "Featured Projects",
@@ -58,9 +53,11 @@
     "title": "Experience",
     "back": "Back to About",
     "view_project": "View project",
-    "view_event": "View event at punatech.ar",
+    "view_event": "View event at {{domain}}",
     "gallery_prev": "Previous photo",
     "gallery_next": "Next photo",
+    "carousel_prev": "Previous experience",
+    "carousel_next": "Next experience",
     "read_more": "Read story",
     "roles": {
       "developer": "Developer",
@@ -123,7 +120,7 @@
         "title": "Emprendeamos 2022 Winner",
         "subtitle": "Award",
         "date": "April - November 2022",
-        "summary": "Winner of the Emprendamos program, focused on launching a real venture.",
+        "summary": "Winner of the Emprendeamos program, focused on launching a real venture.",
         "context": "Emprendeamos was an ideathon promoted by Ing. Herminio Arrieta Technical School, Ledesma SAAI, Endeavor, and Logos. The goal was not just slides: teams had to move toward a real venture with validation and execution.",
         "developer": {
           "title": "My role as developer",
@@ -436,16 +433,18 @@
       "location": "Salta, Argentina",
       "start": "2023",
       "end": "In Progress",
+      "profile": "More than half the degree completed: the training that distinguishes an engineer from someone who only codes.",
       "highlights": [
-        "Data structures and database design",
-        "Object-oriented programming and patterns",
-        "Team development with Git and agile methodologies"
+        "Mathematical and scientific foundation: calculus, algebra, discrete math, and probability — the basis for reasoning about algorithms and systems",
+        "Algorithms and data structures: designing efficient solutions and understanding their real cost, not just making them work",
+        "The full system underneath: databases, operating systems, networks, and computer architecture",
+        "Software engineering: systems analysis and design, OOP, design patterns, and teamwork with Git and agile methodologies"
       ],
       "tags": [
         "Algorithms",
-        "PostgreSQL",
-        "React",
-        "Python"
+        "Data structures",
+        "Databases",
+        "Software engineering"
       ],
       "links": [
         {
@@ -460,22 +459,19 @@
       "location": "Online",
       "start": "2019",
       "end": "2020",
+      "profile": "What a technician must master on the software side — beyond the hardware.",
       "highlights": [
-        "Preventive and corrective hardware maintenance",
-        "Operating system installation",
-        "Equipment cleaning and optimization"
+        "Diagnosis: identifying the root cause of a failure — hardware or software — before intervening",
+        "Operating systems end-to-end: installation, configuration, drivers, and maintenance on Windows and Linux",
+        "Preventive and corrective maintenance: cleaning, optimization, and component upgrades",
+        "Security and data: malware removal, backup, and information recovery"
       ],
       "tags": [
         "Hardware",
         "PC Systems",
         "Operating Systems"
       ],
-      "links": [
-        {
-          "label": "Certificate",
-          "href": "#"
-        }
-      ]
+      "links": []
     },
     "coder": {
       "title": "Full Stack Developer Career",
@@ -483,45 +479,62 @@
       "location": "Online",
       "start": "2024",
       "end": "2025",
+      "profile": "Full-stack training: the complete lifecycle of a web product, from interface to deployment.",
       "highlights": [
-        "Web accessibility and performance",
-        "UI system design with Chakra",
-        "Final project: E-commerce web app",
-        "Databases with MongoDB"
+        "Modern frontend: HTML, CSS, and JavaScript — responsive, accessible, performant interfaces",
+        "React, Next.js, and TypeScript: components, routing, server-side rendering, and strict typing",
+        "Backend with Node.js: APIs, authentication, and persistence on SQL and NoSQL databases",
+        "Final project: a working e-commerce built end-to-end, integrating everything learned"
       ],
       "tags": [
+        "JavaScript",
+        "TypeScript",
+        "HTML",
+        "CSS",
         "React",
-        "Performance",
-        "Chakra UI",
-        "Web Development",
-        "MongoDB"
+        "Next.js",
+        "Node.js",
+        "SQL",
+        "NoSQL"
       ],
-      "links": [
-        {
-          "label": "Final Project",
-          "href": "#"
-        }
-      ]
+      "links": []
     }
   },
   "about": {
     "badge": "About me",
-    "heading": "Building efficient and scalable solutions.",
-    "context": "Professional background, technical focus, and what I can bring to your team.",
-    "p1": "I am a Software Developer with a solid foundation in Computer Engineering and a comprehensive focus on Backend development. My goal is not just to write code, but to design efficient, scalable, and maintainable systems, combining the agility of modern development with rigorous software engineering principles.",
-    "p2": "Committed to continuous learning, my vision focuses on understanding the technical fundamentals and the 'why' behind every architectural decision, prioritizing software quality over immediacy.",
-    "card1": {
-      "title": "Blockchain & Web3 Ecosystem",
-      "text": "Knowledge in blockchain architecture and decentralized applications. Experience with Web3 development languages such as Solidity and Rust. Passionate about this ecosystem, I stay in constant motion and continuous learning."
+    "heading": "Hi, I'm Agustín Juárez.",
+    "context": "Software developer from Salta, Argentina — focused on AI, process automation, and community building.",
+    "p1": "I've spent 2 years working as a freelance developer, which taught me to take projects end-to-end: understanding the client's problem, designing the solution, and shipping it to production. In parallel I study Computer Engineering, which gives me the theoretical foundation to understand the 'why' behind every technical decision — not just the 'how'.",
+    "p2": "My focus is on AI integration and process automation, with a particular interest in applying AI to agriculture — a sector where technology has a direct impact on the regional economy. Beyond that, I explore every field of computing: I'm comfortable across web2 and web3, and I'm drawn to any domain where software solves real problems.",
+    "p3": "Before all of this, in 2022 I won Emprendeamos — an ideathon backed by Endeavor, Ledesma SAAI, and Escuela Técnica Ing. Herminio Arrieta — where the goal wasn't an idea on slides but a real venture, with validation and execution. It was my first experience building under deadline pressure, with a pitch and real users. Four years later I was back on the podium: 2nd place at VendimiaTech 2026, a 48-hour hackathon focused on blockchain and web3.",
+    "community": {
+      "title": "Community — SaltaDev",
+      "paragraphs": [
+        "SaltaDev is the tech hub of northern Argentina: a community connecting developers, designers, and entrepreneurs in Salta. With 1000+ active members and 20+ partner organizations, we run meetups, workshops, and hackathons, and share jobs, courses, and resources to foster local talent.",
+        "I'm a staff member of the community and co-founder of the SaltaDev Foundation. I coordinate technical events, mentor teams during hackathons, and represent the community at regional and national events. I'm a firm believer in networking, coworking, and growing as a community.",
+        "As part of the staff, I helped organize Puna Tech 2026 — the province's largest AI conference, with 1500+ attendees — where I also participated as a speaker and mentor. I also organized the Salta satellite node for VendimiaTech 2026, coordinating teams, schedules, and local logistics during the hackathon."
+      ]
     },
-    "card2": {
-      "title": "Community",
-      "text": "Staff member at SaltaDev. Constantly working with the local developer community to foster talent and knowledge within the province. A firm believer in networking, coworking, and community-driven growth."
+    "ai": {
+      "title": "AI & Automation",
+      "paragraphs": [
+        "I design and implement AI agents and architectures oriented toward process automation, seeking to optimize operational efficiency through intelligent solutions.",
+        "My special interest is bringing AI to agriculture: a key sector of the regional economy where technology has a direct impact. I gave a talk on AI applied to agriculture, AI agents, and blockchain at Puna Tech 2026."
+      ]
     },
-    "card3": {
-      "title": "AI Solutions",
-      "text": "Development and implementation of AI agents and architectures focused on process automation, seeking to optimize operational efficiency through intelligent solutions."
-    }
+    "web3": {
+      "title": "Web3 & Blockchain",
+      "paragraphs": [
+        "I explore the decentralized ecosystem by building with Solidity and Rust and actively participating in its communities. I'm interested in what decentralized technology can bring to real problems — from agricultural traceability to financial infrastructure.",
+        "I'm a collaborator at Team1 — the Avalanche builders community — and a Stellar ambassador. Much of my web3 experience was forged in hackathons, turning ideas into functional demos under pressure.",
+        "At Sub0 (Polkadot) 2025 I built Leivy, a grant-analysis system for ecosystem projects. At Aleph 2026 I developed Ink, a smart contract risk detector with AI-assisted analysis and IPFS integration. And at VendimiaTech 2026 I took 2nd place with VitisTrust, an oracle that certifies vineyards via satellite monitoring."
+      ]
+    },
+    "cta_title": "Want to work together?",
+    "cta_text": "If you have a project in mind or just want to talk tech, reach out.",
+    "cta_contact": "Contact me",
+    "cta_cv": "Download CV",
+    "cta_cv_href": "./cv-juarez-english.pdf"
   },
   "contact": {
     "section": {
@@ -550,8 +563,6 @@
     "backHome": "Back to home"
   },
   "footer": {
-    "name": "Agustín",
-    "surename": "Juárez",
     "title": "Software Developer",
     "links": {
       "projects": "Projects",

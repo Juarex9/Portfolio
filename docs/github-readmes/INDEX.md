@@ -1,6 +1,6 @@
 # Plantillas README para repos de GitHub
 
-Copiá el contenido del proyecto correspondiente al `README.md` de cada repositorio en GitHub. Mantener alineado con las cards del portfolio en [agustinjz.dev/proyectos](https://agustinjz.dev/proyectos).
+Copiá el contenido del proyecto correspondiente al `README.md` de cada repositorio en GitHub. Mantener alineado con las cards del portfolio en [www.agustinjz.dev/proyectos](https://www.agustinjz.dev/proyectos).
 
 | Archivo | Repositorio | Demo |
 |---------|-------------|------|
@@ -11,7 +11,7 @@ Copiá el contenido del proyecto correspondiente al `README.md` de cada reposito
 | [vitistrust.md](./vitistrust.md) | [vitistrust](https://github.com/Juarex9/vitistrust) | [vitistrust.vercel.app](https://vitistrust.vercel.app) |
 | [fintrack.md](./fintrack.md) | [fintrack](https://github.com/Juarex9/fintrack) | — |
 | [real-time-chat.md](./real-time-chat.md) | [chat-realtime](https://github.com/Juarex9/chat-realtime) | Render backend |
-| [zafra.md](./zafra.md) | (privado / TBD) | [proyectos/zafra](https://agustinjz.dev/proyectos/zafra) |
+| [zafra.md](./zafra.md) | (privado / TBD) | [proyectos/zafra](https://www.agustinjz.dev/proyectos/zafra) |
 
 ## GitHub About (descripción corta)
 

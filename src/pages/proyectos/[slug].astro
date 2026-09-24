@@ -1,0 +1,21 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import ProjectPage from "../../views/pages/ProjectPage.jsx";
+import { projectStaticPaths } from "../../lib/staticPaths.js";
+import { projectPath } from "../../i18n/routes.js";
+import { t } from "../../i18n/t.js";
+
+export function getStaticPaths() {
+  return projectStaticPaths();
+}
+
+const { slug } = Astro.params;
+const title = t("es", `projects.items.${slug}.seo.title`);
+const description = t("es", `projects.items.${slug}.seo.description`);
+const esPath = projectPath(slug, "es");
+const enPath = projectPath(slug, "en");
+---
+
+<BaseLayout locale="es" title={title} description={description} esPath={esPath} enPath={enPath}>
+  <ProjectPage slug={slug} locale="es" currentPath={Astro.url.pathname} paths={{ es: esPath, en: enPath }} client:load />
+</BaseLayout>

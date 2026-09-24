@@ -14,7 +14,7 @@
     },
     "about": {
       "title": "Sobre mí | Agustín Juárez",
-      "description": "Developer con experiencia freelance real. Manejo proyectos end-to-end: desde la idea hasta el deploy. Enfoque en APIs claras, UI usable y código mantenible."
+      "description": "Software Developer de Salta, Argentina. Freelance, estudiante de Ing. Informática y cofundador de Fundación SaltaDev. Foco en IA, automatización y web3."
     },
     "contact": {
       "title": "Contacto | Agustín Juárez",
@@ -36,14 +36,9 @@
     "title_1": "Agustín",
     "title_name": "Juárez",
     "availability": "Disponible para oportunidades",
-    "subtitle": "Desarrollador de Software & Co-Fundador de SaltaDev Foundation.",
+    "subtitle": "Desarrollador de Software & Co-Fundador de la Fundación SaltaDev.",
     "btn_contact": "Contacto",
     "btn_projects": "Ver Proyectos"
-  },
-  "stats": {
-    "experience": "Años de experiencia",
-    "projects": "Proyectos en producción",
-    "technologies": "Tecnologías principales"
   },
   "featured": {
     "badge": "Proyectos destacados",
@@ -58,12 +53,14 @@
     "title": "Experiencias",
     "back": "Volver a Sobre mí",
     "view_project": "Ver proyecto",
-    "view_event": "Ver evento en punatech.ar",
+    "view_event": "Ver evento en {{domain}}",
     "gallery_prev": "Foto anterior",
     "gallery_next": "Foto siguiente",
+    "carousel_prev": "Experiencia anterior",
+    "carousel_next": "Experiencia siguiente",
     "read_more": "Leer vivencia",
     "roles": {
-      "developer": "Developer",
+      "developer": "Desarrollador",
       "organizer": "Organizador / Staff",
       "speaker": "Speaker",
       "mentor": "Mentor",
@@ -123,7 +120,7 @@
         "title": "Ganador Emprendeamos 2022",
         "subtitle": "Premio",
         "date": "Abril - Noviembre 2022",
-        "summary": "Ganador del programa Emprendamos, cuyo fin era realizar un emprendimiento real.",
+        "summary": "Ganador del programa Emprendeamos, cuyo fin era realizar un emprendimiento real.",
         "context": "Emprendeamos fue una ideathon impulsada por la Escuela Técnica Ing. Herminio Arrieta, Ledesma SAAI, Endeavor y Logos. El objetivo no era solo una idea en slides: había que llevarla a un emprendimiento real con validación y ejecución.",
         "developer": {
           "title": "Mi rol como developer",
@@ -436,16 +433,18 @@
       "location": "Salta, Argentina",
       "start": "2023",
       "end": "En curso",
+      "profile": "Más de la mitad de la carrera cursada: la formación que distingue a un ingeniero de alguien que solo programa.",
       "highlights": [
-        "Estructuras de datos y diseño de bases de datos",
-        "Programación orientada a objetos y patrones",
-        "Desarrollo en equipo con Git y metodologías ágiles"
+        "Base matemática y científica: análisis, álgebra, matemática discreta y probabilidad — el fundamento para razonar algoritmos y sistemas",
+        "Algoritmos y estructuras de datos: diseñar soluciones eficientes y entender su costo real, no solo que funcionen",
+        "El sistema completo por debajo: bases de datos, sistemas operativos, redes y arquitectura de computadoras",
+        "Ingeniería de software: análisis y diseño de sistemas, POO, patrones de diseño y trabajo en equipo con Git y metodologías ágiles"
       ],
       "tags": [
         "Algoritmos",
-        "PostgreSQL",
-        "React",
-        "Python"
+        "Estructuras de datos",
+        "Bases de datos",
+        "Ingeniería de software"
       ],
       "links": [
         {
@@ -460,22 +459,19 @@
       "location": "Online",
       "start": "2019",
       "end": "2020",
+      "profile": "Lo que un técnico debe dominar del lado del software, más allá del hardware.",
       "highlights": [
-        "Mantenimiento preventivo y correctivo de hardware",
-        "Instalación de sistemas operativos",
-        "Limpieza y optimización de equipos"
+        "Diagnóstico: identificar la causa raíz de una falla — hardware o software — antes de intervenir",
+        "Sistemas operativos de punta a punta: instalación, configuración, drivers y mantenimiento en Windows y Linux",
+        "Mantenimiento preventivo y correctivo: limpieza, optimización y actualización de componentes",
+        "Seguridad y datos: eliminación de malware, respaldo y recuperación de información"
       ],
       "tags": [
         "Hardware",
         "Equipos de PC",
         "Sistemas operativos"
       ],
-      "links": [
-        {
-          "label": "Certificado",
-          "href": "#"
-        }
-      ]
+      "links": []
     },
     "coder": {
       "title": "Carrera de Desarrollador Full Stack",
@@ -483,45 +479,62 @@
       "location": "Online",
       "start": "2024",
       "end": "2025",
+      "profile": "La formación full stack: el ciclo completo de un producto web, de la interfaz al despliegue.",
       "highlights": [
-        "Accesibilidad web y performance",
-        "Diseño de sistemas de UI con Chakra",
-        "Proyecto final: web de e-commerce",
-        "Bases de datos con MongoDB"
+        "Frontend moderno: HTML, CSS y JavaScript — interfaces responsive, accesibles y performantes",
+        "React, Next.js y TypeScript: componentes, routing, renderizado del lado del servidor y tipado estricto",
+        "Backend con Node.js: APIs, autenticación y persistencia en bases de datos SQL y NoSQL",
+        "Proyecto final: un e-commerce funcional construido de punta a punta, integrando todo lo aprendido"
       ],
       "tags": [
+        "JavaScript",
+        "TypeScript",
+        "HTML",
+        "CSS",
         "React",
-        "Performance",
-        "Chakra UI",
-        "Desarrollo web",
-        "MongoDB"
+        "Next.js",
+        "Node.js",
+        "SQL",
+        "NoSQL"
       ],
-      "links": [
-        {
-          "label": "Proyecto final",
-          "href": "#"
-        }
-      ]
+      "links": []
     }
   },
   "about": {
     "badge": "Sobre mí",
-    "heading": "Construyendo soluciones eficientes y escalables.",
-    "context": "Background profesional, enfoque técnico y lo que puedo aportar a tu equipo.",
-    "p1": "Soy un Software Developer con una base sólida en Ingeniería Informática y un enfoque integral en el Backend. Mi objetivo no es solo escribir código, sino diseñar sistemas eficientes y escalables, combinando la agilidad del desarrollo moderno con principios rigurosos de ingeniería de software.",
-    "p2": "Siempre en constante aprendizaje, mi visión se centra en comprender los fundamentos técnicos y el 'porqué' detrás de cada decisión arquitectónica, priorizando la calidad del software sobre la inmediatez.",
-    "card1": {
-      "title": "Ecosistema Blockchain & Web3",
-      "text": "Conocimiento en arquitectura blockchain y aplicaciones descentralizadas. Experiencia en lenguajes para el desarrollo de aplicaciones web3 como Solidity y Rust. Apasionado por este ecosistema, me mantengo en constante movimiento y aprendizaje."
+    "heading": "Hola, soy Agustín Juárez.",
+    "context": "Desarrollador de software de Salta, Argentina — enfocado en IA, automatización de procesos y construcción de comunidad.",
+    "p1": "Llevo 2 años trabajando como desarrollador freelance, lo que me enseñó a llevar proyectos de punta a punta: entender el problema del cliente, diseñar la solución y llevarla a producción. En paralelo estudio Ingeniería Informática, que me da la base teórica para entender el 'porqué' detrás de cada decisión técnica y no solo el 'cómo'.",
+    "p2": "Mi foco está en la integración de IA y la automatización de procesos, con un interés particular en aplicar IA al agro — un sector donde la tecnología tiene impacto directo en la economía regional. Más allá de eso, exploro todos los campos de la informática: me muevo entre web2 y web3, y me atrae cualquier dominio donde el software resuelva problemas reales.",
+    "p3": "Antes de todo esto, en 2022 gané Emprendeamos — una ideathon impulsada por Endeavor, Ledesma SAAI y la Escuela Técnica Ing. Herminio Arrieta — donde el objetivo no era una idea en slides sino un emprendimiento real, con validación y ejecución. Fue mi primera experiencia construyendo con presión de deadline, pitch y usuarios concretos. Cuatro años después repetí podio: 2° puesto en VendimiaTech 2026, una hackathon de 48hs con foco en blockchain y web3.",
+    "community": {
+      "title": "Comunidad — SaltaDev",
+      "paragraphs": [
+        "SaltaDev es el hub tecnológico del norte argentino: una comunidad que conecta desarrolladores, diseñadores y emprendedores de Salta. Con más de 1000 miembros activos y más de 20 organizaciones colaboradoras, organizamos meetups, workshops y hackathones, y compartimos empleos, cursos y recursos para impulsar el talento local.",
+        "Soy staff de la comunidad y cofundador de la Fundación SaltaDev. Coordino eventos técnicos, mentorio equipos durante las hackathones y represento a la comunidad en instancias regionales y nacionales. Creo firmemente en el networking, el coworking y en crecer en comunidad.",
+        "Como parte del staff, fui parte de la organización de Puna Tech 2026 — el congreso de IA más grande de la provincia, con más de 1500 asistentes — donde además participé como speaker y mentor. También organicé el nodo satélite de Salta para VendimiaTech 2026, coordinando equipos, tiempos y logística local durante la hackathon."
+      ]
     },
-    "card2": {
-      "title": "Comunidad",
-      "text": "Miembro staff de SaltaDev. Trabajo constante en la comunidad local de desarrolladores con el fin de impulsar el talento y el conocimiento en la provincia. Fiel creyente del networking, coworking y trabajo en comunidad."
+    "ai": {
+      "title": "IA & Automatización",
+      "paragraphs": [
+        "Diseño e implemento agentes de IA y arquitecturas orientadas a la automatización de procesos, buscando optimizar la eficiencia operativa a través de soluciones inteligentes.",
+        "Mi interés especial es llevar la IA al agro: un sector clave de la economía regional donde la tecnología tiene impacto directo. Di una charla sobre IA aplicada al agro, agentes de IA y blockchain en Puna Tech 2026."
+      ]
     },
-    "card3": {
-      "title": "Soluciones IA",
-      "text": "Desarrollo e implementación de agentes de IA y arquitecturas orientadas a la automatización de procesos, buscando optimizar la eficiencia operativa a través de soluciones inteligentes."
-    }
+    "web3": {
+      "title": "Web3 & Blockchain",
+      "paragraphs": [
+        "Exploro el ecosistema descentralizado construyendo con Solidity y Rust, y participando activamente de sus comunidades. Me interesa lo que la tecnología descentralizada puede aportar a problemas reales — desde trazabilidad agropecuaria hasta infraestructura financiera.",
+        "Soy collaborator de Team1 — la comunidad de builders de Avalanche — y embajador de Stellar. Gran parte de mi experiencia web3 se forjó en hackathones, llevando ideas a demos funcionales bajo presión.",
+        "En Sub0 (Polkadot) 2025 construí Leivy, un sistema de análisis de subvenciones para proyectos del ecosistema. En Aleph 2026 desarrollé Ink, un detector de riesgos en smart contracts con análisis asistido por IA e integración con IPFS. Y en VendimiaTech 2026 obtuve el 2° puesto con VitisTrust, un oráculo que certifica viñedos vía monitoreo satelital."
+      ]
+    },
+    "cta_title": "¿Trabajamos juntos?",
+    "cta_text": "Si tenés un proyecto en mente o querés charlar sobre tecnología, escribime.",
+    "cta_contact": "Contactame",
+    "cta_cv": "Descargar CV",
+    "cta_cv_href": "./cv-juarez-spanish.pdf"
   },
   "contact": {
     "section": {
@@ -550,8 +563,6 @@
     "backHome": "Volver al inicio"
   },
   "footer": {
-    "name": "Agustín",
-    "surename": "Juárez",
     "title": "Software Developer",
     "links": {
       "projects": "Proyectos",

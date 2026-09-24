@@ -1,9 +1,9 @@
 import { lazy, Suspense, useMemo } from "react";
-import { Link as RouterLink } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import { useReducedMotion } from "../hooks/useReducedMotion";
 import { useMediaQuery } from "../hooks/useMediaQuery";
 import { useColorModeValue } from "../hooks/useColorModeValue.js";
+import { useLocale } from "../i18n/LocaleContext.jsx";
 import { getProjectDetailPath } from "../data/projects.js";
 
 const CircularGallery = lazy(() => import("./react-bits/CircularGallery.jsx"));
@@ -18,6 +18,7 @@ function GalleryFallback() {
 
 export default function FeaturedCircularGallery({ projects, accentColor, borderColor }) {
   const { t } = useTranslation();
+  const { locale } = useLocale();
   const prefersReducedMotion = useReducedMotion();
   const isDesktop = useMediaQuery("(min-width: 768px)");
   const textColor = useColorModeValue("#0f172a", "#f1f5f9");
@@ -40,8 +41,8 @@ export default function FeaturedCircularGallery({ projects, accentColor, borderC
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         {projectsWithImages.map((project) => {
           const title = t(`projects.items.${project.key}.title`);
-          const detailPath = getProjectDetailPath(project);
-          const href = detailPath || project.demo || project.github || "/proyectos";
+          const detailPath = getProjectDetailPath(project, locale);
+          const href = detailPath || project.demo || project.github || (locale === "en" ? "/en/projects" : "/proyectos");
           const isExternal = href.startsWith("http");
 
           return (
@@ -55,9 +56,9 @@ export default function FeaturedCircularGallery({ projects, accentColor, borderC
                     {title}
                   </a>
                 ) : (
-                  <RouterLink to={href} className="hover:opacity-80" style={{ color: accentColor }}>
+                  <a href={href} className="hover:opacity-80" style={{ color: accentColor }}>
                     {title}
-                  </RouterLink>
+                  </a>
                 )}
               </h3>
             </article>
@@ -83,7 +84,7 @@ export default function FeaturedCircularGallery({ projects, accentColor, borderC
           />
         </Suspense>
       </div>
-      <p className="mt-4 px-2 text-center text-xs text-gray-500" style={{ fontFamily: "var(--font-body)" }}>
+      <p className="mt-4 px-2 text-center text-xs text-muted-foreground" style={{ fontFamily: "var(--font-body)" }}>
         {t("featured.gallery_hint")}
       </p>
     </>

@@ -1,8 +1,8 @@
-import { Link as RouterLink } from "react-router-dom";
 import { motion } from "framer-motion";
 import { useAccentColors } from "../hooks/useAccentColors";
 import { useTranslation } from "react-i18next";
 import { useReducedMotion } from "../hooks/useReducedMotion";
+import { useLocalizedRoutes } from "../i18n/LocaleContext.jsx";
 import { featuredProjects } from "../data/projects.js";
 import FeaturedCircularGallery from "./FeaturedCircularGallery.jsx";
 import { Badge } from "./ui/badge.jsx";
@@ -12,6 +12,7 @@ const MotionDiv = motion.div;
 export default function FeaturedProjects() {
   const { accentColor, borderColor } = useAccentColors();
   const { t } = useTranslation();
+  const { routeFor } = useLocalizedRoutes();
   const prefersReducedMotion = useReducedMotion();
 
   return (
@@ -40,19 +41,19 @@ export default function FeaturedProjects() {
                 {t("featured.title")}
               </h2>
               <p
-                className="max-w-2xl text-base text-gray-500 md:text-lg"
+                className="max-w-2xl text-base text-muted-foreground md:text-lg"
                 style={{ fontFamily: "var(--font-body)" }}
               >
                 {t("featured.subtitle")}
               </p>
             </div>
-            <RouterLink
-              to="/proyectos"
+            <a
+              href={routeFor("projects")}
               className="text-lg font-semibold transition-opacity hover:opacity-80"
               style={{ color: accentColor, fontFamily: "var(--font-body)" }}
             >
               {t("featured.view_all")}
-            </RouterLink>
+            </a>
           </div>
         </MotionDiv>
 

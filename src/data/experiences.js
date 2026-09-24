@@ -1,37 +1,37 @@
 export const experiences = [
   {
     slug: "punatech-2026",
-    image: "/yospeaker.jpg",
-    gallery: ["/yospeaker.jpg", "/fotogrupal.JPG", "/lospibes.jpg", "/premiospuna.JPG"],
+    image: "/yospeaker.webp",
+    gallery: ["/yospeaker.webp", "/fotogrupal.webp", "/lospibes.webp", "/premiospuna.webp"],
     roles: ["speaker", "mentor", "staff"],
     eventUrl: "https://punatech.ar",
   },
   {
     slug: "emprendeamos-2022",
-    image: "/emprendamos.jpg",
+    image: "/emprendamos.webp",
     roles: ["developer"],
   },
   {
     slug: "sub0-2025",
-    image: "/sub-cero.jpg",
+    image: "/sub-cero-event.webp",
     projectKey: "leivy",
     roles: ["developer"],
   },
   {
     slug: "aleph-2026",
-    image: "/aleph.jpg",
+    image: "/aleph.webp",
     projectKey: "ink-ai-risk-detector",
     roles: ["developer"],
   },
   {
     slug: "vendimiatech-2026",
-    image: "/vendimiatech.png",
+    image: "/vendimiatech.webp",
     projectKey: "vitistrust",
     roles: ["developer", "organizer"],
   },
   {
     slug: "saltadev-staff",
-    image: "/saltadev.png",
+    image: "/saltadev.webp",
     roles: ["organizer"],
   },
 ];

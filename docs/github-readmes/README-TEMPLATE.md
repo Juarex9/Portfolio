@@ -2,12 +2,12 @@
 
 > {One-line tagline — same as portfolio subtitle}
 
-{2–3 sentence summary: problem solved + your role. Align with [agustinjz.dev/proyectos](https://agustinjz.dev/proyectos).}
+{2–3 sentence summary: problem solved + your role. Align with [www.agustinjz.dev/proyectos](https://www.agustinjz.dev/proyectos).}
 
 ## Demo
 
 - Live: {URL or "Coming soon"}
-- Portfolio: https://agustinjz.dev/proyectos/{slug}
+- Portfolio: https://www.agustinjz.dev/proyectos/{slug}
 
 ## Screenshot
 
@@ -64,7 +64,7 @@ npm run dev
 
 ## Author
 
-**Agustín Juárez** — [Portfolio](https://agustinjz.dev) · [GitHub](https://github.com/Juarex9)
+**Agustín Juárez** — [Portfolio](https://www.agustinjz.dev) · [GitHub](https://github.com/Juarex9)
 
 ## License
 

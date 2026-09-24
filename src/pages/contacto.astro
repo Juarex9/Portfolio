@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import ContactPage from "../views/pages/ContactPage.jsx";
+import { ROUTES } from "../i18n/routes.js";
+---
+
+<BaseLayout locale="es" seoKey="contact" esPath={ROUTES.contact.es} enPath={ROUTES.contact.en}>
+  <ContactPage locale="es" currentPath={Astro.url.pathname} paths={{ es: ROUTES.contact.es, en: ROUTES.contact.en }} client:load />
+</BaseLayout>

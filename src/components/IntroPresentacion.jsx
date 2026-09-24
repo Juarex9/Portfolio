@@ -27,13 +27,13 @@ export default function IntroPresentation() {
             <div className="mb-4 flex items-center gap-3">
               <div className="h-10 w-10 shrink-0 overflow-hidden rounded-lg">
                 <img
-                  src="/mirando-al-horizonte-modified.png"
+                  src="/mirando-al-horizonte-modified.webp"
                   alt="profile"
                   className="h-full w-full object-cover"
                   loading="lazy"
                 />
               </div>
-              <div className="text-xs text-gray-500">
+              <div className="text-xs text-muted-foreground">
                 <p className="text-sm font-bold" style={{ fontFamily: "var(--font-display)" }}>Agustín Juárez</p>
                 <p style={{ fontFamily: "var(--font-body)" }}>Argentina (UTC-3)</p>
               </div>
@@ -47,7 +47,7 @@ export default function IntroPresentation() {
             </h2>
 
             <p
-              className="mb-5 max-w-2xl text-sm leading-[1.7] text-gray-500 md:text-base"
+              className="mb-5 max-w-2xl text-sm leading-[1.7] text-muted-foreground md:text-base"
               style={{ fontFamily: "var(--font-body)" }}
             >
               {t("presentation.intro_text")}
@@ -83,7 +83,7 @@ export default function IntroPresentation() {
             >
               {t("presentation.intro_focus")}
             </p>
-            <div className="flex flex-col gap-3 text-sm text-gray-500">
+            <div className="flex flex-col gap-3 text-sm text-muted-foreground">
               {[1, 2, 3].map((i) => (
                 <div key={i} className="flex items-start gap-2">
                   <span

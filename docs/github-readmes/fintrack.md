@@ -30,4 +30,4 @@ npm run dev
 
 ## Author
 
-**Agustín Juárez** — [Portfolio](https://agustinjz.dev) · [GitHub](https://github.com/Juarex9)
+**Agustín Juárez** — [Portfolio](https://www.agustinjz.dev) · [GitHub](https://github.com/Juarex9)

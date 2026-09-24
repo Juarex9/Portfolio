@@ -7,7 +7,7 @@ Comparar precios entre supermercados manualmente no escala. Este proyecto automa
 ## Demo
 
 - Live: https://precios.agustinjz.dev/
-- Portfolio: https://agustinjz.dev/proyectos
+- Portfolio: https://www.agustinjz.dev/proyectos
 
 ## Stack
 
@@ -36,4 +36,4 @@ uvicorn main:app --reload
 
 ## Author
 
-**Agustín Juárez** — [Portfolio](https://agustinjz.dev) · [GitHub](https://github.com/Juarex9)
+**Agustín Juárez** — [Portfolio](https://www.agustinjz.dev) · [GitHub](https://github.com/Juarex9)

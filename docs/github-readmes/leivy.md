@@ -6,7 +6,7 @@ Evaluar subvenciones en el ecosistema Polkadot es complejo sin herramientas cent
 
 ## Demo
 
-- Portfolio: https://agustinjz.dev/proyectos
+- Portfolio: https://www.agustinjz.dev/proyectos
 - Repo: https://github.com/Juarex9/Sub0_data
 
 ## Stack
@@ -33,4 +33,4 @@ cd Sub0_data
 
 ## Author
 
-**Agustín Juárez** — [Portfolio](https://agustinjz.dev) · [GitHub](https://github.com/Juarex9)
+**Agustín Juárez** — [Portfolio](https://www.agustinjz.dev) · [GitHub](https://github.com/Juarex9)

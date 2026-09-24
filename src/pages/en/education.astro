@@ -1,0 +1,9 @@
+---
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import EducationPage from "../../views/pages/EducationPage.jsx";
+import { ROUTES } from "../../i18n/routes.js";
+---
+
+<BaseLayout locale="en" seoKey="education" esPath={ROUTES.education.es} enPath={ROUTES.education.en}>
+  <EducationPage locale="en" currentPath={Astro.url.pathname} paths={{ es: ROUTES.education.es, en: ROUTES.education.en }} client:load />
+</BaseLayout>
