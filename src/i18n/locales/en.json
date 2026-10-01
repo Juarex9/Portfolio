@@ -418,6 +418,22 @@
           "QVAC",
           "Offline"
         ]
+      },
+      "human-zk": {
+        "title": "beHuman",
+        "subtitle": "Stellar Hacks: ZK · Proof of personhood without revealing identity",
+        "problem": "Proving you are a real, unique person without revealing who you are is still hard in Web3.",
+        "role": "Group project for Stellar Hacks: ZK — my part was the entire frontend (landing, KYC-ZK flows, /app/* social app and funding).",
+        "description": "Zero-knowledge KYC on Stellar: on-chain verified personhood on Soroban plus an opinion platform for verified humans only.",
+        "tech": [
+          "React",
+          "Vite",
+          "TypeScript",
+          "Stellar",
+          "Soroban",
+          "snarkjs",
+          "Blockchain & Web3"
+        ]
       }
     }
   },

@@ -418,6 +418,22 @@
           "QVAC",
           "Offline"
         ]
+      },
+      "human-zk": {
+        "title": "beHuman",
+        "subtitle": "Stellar Hacks: ZK · Prueba de humanidad sin exponer identidad",
+        "problem": "Probar que sos una persona real y única sin revelar quién sos sigue siendo difícil en Web3.",
+        "role": "Trabajo en grupo para la hackathon Stellar Hacks: ZK — mi parte fue todo el frontend (landing, flujos KYC-ZK, app social /app/* y funding).",
+        "description": "KYC con zero-knowledge en Stellar: prueba de humanidad verificada on-chain en Soroban y plataforma de opiniones solo para humanos verificados.",
+        "tech": [
+          "React",
+          "Vite",
+          "TypeScript",
+          "Stellar",
+          "Soroban",
+          "snarkjs",
+          "Blockchain & Web3"
+        ]
       }
     }
   },

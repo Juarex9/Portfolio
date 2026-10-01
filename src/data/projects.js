@@ -38,6 +38,12 @@ export const projects = [
     image: "/vitistrust.webp",
   },
   {
+    key: "human-zk",
+    type: "hackathon",
+    github: "https://github.com/behuman-org/human-zk",
+    demo: "https://human-zk-web.vercel.app",
+  },
+  {
     key: "zafra",
     type: "sideProject",
     github: "",
