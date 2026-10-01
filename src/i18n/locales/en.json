@@ -298,20 +298,6 @@
           "Jinja2"
         ]
       },
-      "real-time-chat": {
-        "title": "Real-Time Chat",
-        "subtitle": "Real-time messaging application",
-        "problem": "Real-time messaging requires synchronized state and low latency across users.",
-        "role": "Implemented rooms, authentication, and full-duplex communication with Socket.io and Express.",
-        "description": "Scalable instant messaging app with multi-room support.",
-        "tech": [
-          "React",
-          "Socket.io",
-          "Node.js",
-          "Express",
-          "MongoDB"
-        ]
-      },
       "ink-ai-risk-detector": {
         "title": "Ink | AI Risk Detector",
         "subtitle": "Aleph Hackathon · Smart Contract risk detector",

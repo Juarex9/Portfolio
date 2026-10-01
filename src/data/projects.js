@@ -54,12 +54,6 @@ export const projects = [
     image: "/fintrack.webp",
   },
   {
-    key: "real-time-chat",
-    type: "sideProject",
-    github: "https://github.com/Juarex9/chat-realtime.git",
-    demo: "https://backend1-coderhouse.onrender.com/",
-  },
-  {
     key: "qcamp",
     type: "sideProject",
     github: "https://github.com/Juarex9/QCamp.git",
