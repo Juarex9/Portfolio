@@ -41,7 +41,8 @@ export const projects = [
     key: "human-zk",
     type: "hackathon",
     github: "https://github.com/behuman-org/human-zk",
-    demo: "https://human-zk-web.vercel.app",
+    demo: "https://human-web-psi.vercel.app",
+    image: "/human-zk.webp",
   },
   {
     key: "zafra",
