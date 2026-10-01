@@ -58,6 +58,7 @@ export const projects = [
     type: "sideProject",
     github: "https://github.com/Juarex9/fintrack.git",
     demo: "",
+    image: "/fintrack.webp",
   },
   {
     key: "real-time-chat",
