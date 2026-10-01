@@ -73,10 +73,12 @@ export default function Proyectos() {
               const baseKey = `projects.items.${project.key}`;
               const detailPath = getProjectDetailPath(project, locale);
               const techList = t(`${baseKey}.tech`, { returnObjects: true });
+              const hasImage = Boolean(project.image);
 
               return (
                 <MotionDiv
                   key={project.key}
+                  className={hasImage ? undefined : "self-start"}
                   initial={prefersReducedMotion ? false : { opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{
@@ -86,7 +88,7 @@ export default function Proyectos() {
                   viewport={{ once: true }}
                 >
                   <article
-                    className="flex h-full flex-col overflow-hidden rounded-xl border shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md"
+                    className={`flex flex-col overflow-hidden rounded-xl border shadow-sm transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md${hasImage ? " h-full" : ""}`}
                     style={{ borderColor }}
                   >
                     {project.image && (
@@ -100,7 +102,7 @@ export default function Proyectos() {
                       </div>
                     )}
 
-                    <div className="flex flex-1 flex-col p-4">
+                    <div className={`flex flex-1 flex-col ${hasImage ? "p-4" : "p-3"}`}>
                       <div className="mb-2 flex flex-wrap gap-2">
                         <Badge
                           className="normal-case px-2 py-0.5 text-xs"
