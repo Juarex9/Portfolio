@@ -312,20 +312,6 @@
           "MongoDB"
         ]
       },
-      "leivy": {
-        "title": "Leivy",
-        "subtitle": "Sub0 Polkadot · Análisis de subvenciones",
-        "problem": "Evaluar subvenciones y grants en Polkadot es complejo sin herramientas que centralicen el análisis.",
-        "role": "Contribuí al backend, frontend y lógica de análisis en la hackathon Sub0 con SaltaDev.",
-        "description": "Sistema para analizar subvenciones y grants de proyectos en el ecosistema Polkadot.",
-        "tech": [
-          "React",
-          "Node.js",
-          "Polkadot",
-          "API",
-          "Blockchain & Web3"
-        ]
-      },
       "ink-ai-risk-detector": {
         "title": "Ink | IA Risk Detector",
         "subtitle": "Hackathon Aleph · Detector de riesgos en Smart Contracts",

@@ -14,7 +14,6 @@ export const experiences = [
   {
     slug: "sub0-2025",
     image: "/sub-cero-event.webp",
-    projectKey: "leivy",
     roles: ["developer"],
   },
   {

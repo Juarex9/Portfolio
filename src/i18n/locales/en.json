@@ -312,20 +312,6 @@
           "MongoDB"
         ]
       },
-      "leivy": {
-        "title": "Leivy",
-        "subtitle": "Sub0 Polkadot · Grant analysis",
-        "problem": "Evaluating grants and subsidies on Polkadot is hard without tools that centralize analysis.",
-        "role": "Contributed to backend, frontend, and analysis logic at the Sub0 hackathon with SaltaDev.",
-        "description": "System for analyzing grants and subsidies in the Polkadot ecosystem.",
-        "tech": [
-          "React",
-          "Node.js",
-          "Polkadot",
-          "API",
-          "Blockchain & Web3"
-        ]
-      },
       "ink-ai-risk-detector": {
         "title": "Ink | AI Risk Detector",
         "subtitle": "Aleph Hackathon · Smart Contract risk detector",

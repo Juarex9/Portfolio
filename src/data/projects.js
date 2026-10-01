@@ -16,13 +16,6 @@ export const projects = [
     featured: true,
   },
   {
-    key: "leivy",
-    type: "hackathon",
-    github: "https://github.com/Juarex9/Sub0_data.git",
-    demo: "",
-    image: "/sub-cero.webp",
-  },
-  {
     key: "ink-ai-risk-detector",
     type: "hackathon",
     github: "https://github.com/Juarex9/aleph-backend.git",
